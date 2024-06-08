@@ -45,73 +45,44 @@ class AdminUserController extends Controller
         $toggleSortLastname = $this->sortOrder($sortByLastname);
         $toggleSortFirstname = $this->sortOrder($sortByFirstname);
 
-        //query
-        $usersQuery = User::where('role_id', '3')
-                    ->orderBy($sortByColumn, $sortOrder)
-                    ->rightJoin('scores', 'users.id', '=', 'scores.user_id');
+        // Initialize query with role_id filter and sorting
+        $usersQuery = User::where('role_id', 3)
+                        ->orderBy($sortByColumn, $sortOrder);
 
         // Searching
-        if (request('search')) {
-            $usersQuery->where('name', 'like', '%' . request('search') . '%')
-                        ->orWhere('lastname', 'like', '%' . request('search') . '%');
-        }
-
-        // Get the selected tags from the request
-        $websites = $request->input('websites', []);
-        $applications = $request->input('applications', []);
-        $tools = $request->input('tools', []);
-        $skills = $request->input('skills', []);
-        $softskills = $request->input('softskills', []);
-
-        // Filter by websites
-        if (!empty($websites)) {
-            $usersQuery->where(function ($query) use ($websites) {
-                foreach ($websites as $tag) {
-                    $query->orWhere('scores.website', 'like', '%' . $tag . '%');
-                }
+        if ($search = $request->query('search')) {
+            $usersQuery->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('lastname', 'like', '%' . $search . '%');
             });
         }
 
-        // Filter by applications
-        if (!empty($applications)) {
-            $usersQuery->where(function ($query) use ($applications) {
-                foreach ($applications as $tag) {
-                    $query->orWhere('scores.application', 'like', '%' . $tag . '%');
-                }
-            });
+        // Join with scores table using leftJoin to include users with null scores
+        $usersQuery->leftJoin('scores', 'users.id', '=', 'scores.user_id');
+
+        // Apply tag filters
+        $tagFields = [
+            'websites' => 'scores.website',
+            'applications' => 'scores.application',
+            'tools' => 'scores.tool',
+            'skills' => 'scores.skill',
+            'softskills' => 'scores.softskill',
+        ];
+
+        foreach ($tagFields as $inputField => $dbField) {
+            if ($tags = $request->input($inputField, [])) {
+                $usersQuery->where(function ($query) use ($tags, $dbField) {
+                    foreach ($tags as $tag) {
+                        $query->orWhere($dbField, 'like', '%' . $tag . '%');
+                    }
+                });
+            }
         }
 
-        // Filter by tools
-        if (!empty($tools)) {
-            $usersQuery->where(function ($query) use ($tools) {
-                foreach ($tools as $tag) {
-                    $query->orWhere('scores.tool', 'like', '%' . $tag . '%');
-                }
-            });
-        }
+        // Get the results with pagination
+        $users = $usersQuery->select('users.*')->paginate(12);
 
-        // Filter by skills
-        if (!empty($skills)) {
-            $usersQuery->where(function ($query) use ($skills) {
-                foreach ($skills as $tag) {
-                    $query->orWhere('scores.skill', 'like', '%' . $tag . '%');
-                }
-            });
-        }
-
-        // Filter by softskills
-        if (!empty($softskills)) {
-            $usersQuery->where(function ($query) use ($softskills) {
-                foreach ($softskills as $tag) {
-                    $query->orWhere('scores.softskill', 'like', '%' . $tag . '%');
-                }
-            });
-        }
-
-        // Get the results with eager loading of 'scores' and paginate
-        $users = $usersQuery->paginate(12);
-
-        //append sorting parameters to pagination links.
+        // Append sorting parameters to pagination links
         $users->appends(['sortByLastname' => $sortByLastname, 'sortByFirstname' => $sortByFirstname]);
 
         // Display data on FILTERS
