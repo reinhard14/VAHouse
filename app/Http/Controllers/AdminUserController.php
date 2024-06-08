@@ -47,21 +47,20 @@ class AdminUserController extends Controller
 
         // Initialize query with role_id filter and sorting
         $usersQuery = User::where('role_id', 3)
+                        ->leftJoin('scores', 'users.id', '=', 'scores.user_id')
+                        ->select('users.*', 'scores.*')
                         ->orderBy($sortByColumn, $sortOrder);
 
         // Searching
         if ($search = $request->query('search')) {
             $usersQuery->where(function ($query) use ($search) {
-                $query->where('name', 'like', '%' . $search . '%')
-                    ->orWhere('lastname', 'like', '%' . $search . '%');
+                $query->where('users.name', 'like', '%' . $search . '%')
+                    ->orWhere('users.lastname', 'like', '%' . $search . '%');
             });
         }
 
-        // Join with scores table using leftJoin to include users with null scores
-        $usersQuery->leftJoin('scores', 'users.id', '=', 'scores.user_id');
-
-        // Apply tag filters
-        $tagFields = [
+        // Get the selected tags from the request
+        $filters = [
             'websites' => 'scores.website',
             'applications' => 'scores.application',
             'tools' => 'scores.tool',
@@ -69,7 +68,8 @@ class AdminUserController extends Controller
             'softskills' => 'scores.softskill',
         ];
 
-        foreach ($tagFields as $inputField => $dbField) {
+        // Apply tag filters
+        foreach ($filters as $inputField => $dbField) {
             if ($tags = $request->input($inputField, [])) {
                 $usersQuery->where(function ($query) use ($tags, $dbField) {
                     foreach ($tags as $tag) {
