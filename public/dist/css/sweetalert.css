@@ -1,0 +1,22 @@
+.delete-form {
+    margin: 0px;
+}
+/* Add styles to labels */
+.swal-label {
+    display: block; /* Make labels display on new lines */
+    margin-bottom: 5px; /* Add some space below labels */
+    font-weight: bold; /* Make labels bold, if desired */
+}
+
+/* Add styles to inputs */
+.swal-input {
+    width: 100%; /* Make inputs expand to fill the container */
+    padding: 8px; /* Add some padding to inputs for spacing */
+    border: 1px solid #ccc; /* Add a border for styling */
+    border-radius: 5px; /* Round corners of inputs, if desired */
+}
+
+/* Style the container divs */
+.swal-input-container {
+    margin-bottom: 10px; /* Add space between label-input pairs */
+}
