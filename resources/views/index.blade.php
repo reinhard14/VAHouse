@@ -26,12 +26,10 @@
     <div class="content">
       <div class="container-fluid">
         <div class="row">
-            <!-- ./col -->
             <div class="col-lg-3 col-6">
-                <!-- small box -->
                 <div class="small-box bg-primary">
                 <div class="inner">
-                    <h3>44</h3>
+                    <h3>{{ $users->count() }}</h3>
 
                     <p>Users</p>
                 </div>
@@ -41,15 +39,11 @@
                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-
-            <!-- ./col -->
             <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
+                <div class="small-box bg-primary">
                 <div class="inner">
-                    <h3>44</h3>
-
-                    <p>User Registrations</p>
+                    <h3>{{ $agents->count() }}</h3>
+                    <p>Agents</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
@@ -57,23 +51,34 @@
                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            <!-- ./col -->
             <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-danger">
+                <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>65</h3>
+                    <h3>{{ $admins->count() }}</h3>
 
-                    <p>Unique Visitors</p>
+                    <p>Admin users</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-pie-graph"></i>
+                    <i class="ion ion-person-add"></i>
                 </div>
                 <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-info">
+                <div class="inner">
+                    <h3>{{ $recentUsers->count() }}</h3>
+
+                    <p>Newly registered users</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
             </div>
+        </div>
+
         <div class="row">
             <div class="col-md-8">
                 <!-- TABLE: LATEST ORDERS -->
