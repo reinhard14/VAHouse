@@ -13,17 +13,16 @@
                     @include('includes.messages')
 
                     <h4 class="text-center mt-3">
-                        Separate list by using a comma <span class="text-danger">","</span>
-                        or press the <span class="text-danger">space bar</span> . {{ $user->id }}
+                        Separate the lists by using a comma <span class="text-danger">","</span>
+                        or period <span class="text-danger">"."</span>
                     </h4>
-                    <div class="row">
+                    <div class="row mb-5">
                         <div class="d-flex justify-content-center">
                             <small>
                                 Note: Field with "<span class="text-danger">*</span>" is a required field.
                             </small>
                         </div>
                     </div>
-
 
                     <form method="post" action="{{ route('user.store') }}" id="scoresForm">
                         @csrf

@@ -127,37 +127,34 @@
 
             $('#websites').select2({
                 tags: true,
-                tokenSeparators: [',', ' '],
+                tokenSeparators: [','],
                 placeholder: 'Input all of your websites used here..',
-                allowClear: true,
             });
 
             $('#applications').select2({
                 tags: true,
-                tokenSeparators: [',', ' '],
+                tokenSeparators: [','],
                 placeholder: 'Input all of your applications used here..',
-                allowClear: true,
             });
 
             $('#tools').select2({
                 tags: true,
-                tokenSeparators: [',', ' '],
+                tokenSeparators: [','],
                 placeholder: 'Input all of your tools used here..',
-                allowClear: true,
             });
 
             $('#skills').select2({
                 tags: true,
-                tokenSeparators: [',', ' '],
+                tokenSeparators: [','],
                 placeholder: 'Input all of your skills here..',
-                allowClear: true,
             });
 
             $('#softskills').select2({
                 tags: true,
-                tokenSeparators: [',', ' '],
+                tokenSeparators: [','],
+                // tokenSeparators: [',', ' '],
                 placeholder: 'Input all soft skills here..',
-                allowClear: true,
+                // allowClear: true,
             });
         });
 

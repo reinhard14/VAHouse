@@ -152,40 +152,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script>
-    // In your Javascript (external .js resource or <script> tag)
-        $(document).ready(function() {
-            $('#websites').select2({
-                maximumSelectionLength: 10,
-                placeholder: 'Select websites..',
-                allowClear: true,
-            });
-
-            $('#applications').select2({
-                maximumSelectionLength: 10,
-                placeholder: 'Select applications..',
-                allowClear: true,
-            });
-
-            $('#tools').select2({
-                maximumSelectionLength: 10,
-                placeholder: 'Select tools..',
-                allowClear: true,
-            });
-
-            $('#skills').select2({
-                maximumSelectionLength: 10,
-                placeholder: 'Select skills..',
-                allowClear: true,
-            });
-
-            $('#softskills').select2({
-                maximumSelectionLength: 10,
-                placeholder: 'Select softskills..',
-                allowClear: true,
-            });
-        });
-</script>
 
 </body>
 </html>

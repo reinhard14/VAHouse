@@ -18,3 +18,33 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+
+// In your Javascript (external .js resource or <script> tag)
+    $(document).ready(function() {
+        $('#websites').select2({
+            maximumSelectionLength: 10,
+            placeholder: 'Select websites..',
+        });
+
+        $('#applications').select2({
+            maximumSelectionLength: 10,
+            placeholder: 'Select applications..',
+        });
+
+        $('#tools').select2({
+            maximumSelectionLength: 10,
+            placeholder: 'Select tools..',
+        });
+
+        $('#skills').select2({
+            maximumSelectionLength: 10,
+            placeholder: 'Select skills..',
+        });
+
+        $('#softskills').select2({
+            maximumSelectionLength: 10,
+            placeholder: 'Select softskills..',
+            // allowClear: true,
+        });
+    });
