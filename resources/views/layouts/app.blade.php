@@ -116,49 +116,6 @@
     <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
     <!-- CDN Select2 -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script>
-        // In your Javascript (external .js resource or <script> tag)
-            $(document).ready(function() {
-                $('.js-example-basic-multiple').select2();
-            });
-    </script>
-    <script>
-        $(document).ready(function() {
-
-            $('#websites').select2({
-                tags: true,
-                tokenSeparators: [','],
-                placeholder: 'Input all of your websites used here..',
-            });
-
-            $('#applications').select2({
-                tags: true,
-                tokenSeparators: [','],
-                placeholder: 'Input all of your applications used here..',
-            });
-
-            $('#tools').select2({
-                tags: true,
-                tokenSeparators: [','],
-                placeholder: 'Input all of your tools used here..',
-            });
-
-            $('#skills').select2({
-                tags: true,
-                tokenSeparators: [','],
-                placeholder: 'Input all of your skills here..',
-            });
-
-            $('#softskills').select2({
-                tags: true,
-                tokenSeparators: [','],
-                // tokenSeparators: [',', ' '],
-                placeholder: 'Input all soft skills here..',
-                // allowClear: true,
-            });
-        });
-
-    </script>
 
 </body>
 </html>

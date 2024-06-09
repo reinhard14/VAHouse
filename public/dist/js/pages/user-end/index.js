@@ -20,31 +20,37 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-// In your Javascript (external .js resource or <script> tag)
-    $(document).ready(function() {
-        $('#websites').select2({
-            maximumSelectionLength: 10,
-            placeholder: 'Select websites..',
-        });
+$(document).ready(function() {
 
-        $('#applications').select2({
-            maximumSelectionLength: 10,
-            placeholder: 'Select applications..',
-        });
-
-        $('#tools').select2({
-            maximumSelectionLength: 10,
-            placeholder: 'Select tools..',
-        });
-
-        $('#skills').select2({
-            maximumSelectionLength: 10,
-            placeholder: 'Select skills..',
-        });
-
-        $('#softskills').select2({
-            maximumSelectionLength: 10,
-            placeholder: 'Select softskills..',
-            // allowClear: true,
-        });
+    $('#websites').select2({
+        tags: true,
+        tokenSeparators: [','],
+        placeholder: 'Input all of your websites used here..',
     });
+
+    $('#applications').select2({
+        tags: true,
+        tokenSeparators: [','],
+        placeholder: 'Input all of your applications used here..',
+    });
+
+    $('#tools').select2({
+        tags: true,
+        tokenSeparators: [','],
+        placeholder: 'Input all of your tools used here..',
+    });
+
+    $('#skills').select2({
+        tags: true,
+        tokenSeparators: [','],
+        placeholder: 'Input all of your skills here..',
+    });
+
+    $('#softskills').select2({
+        tags: true,
+        tokenSeparators: [','],
+        // tokenSeparators: [',', ' '],
+        placeholder: 'Input all soft skills here..',
+        // allowClear: true,
+    });
+});
