@@ -126,5 +126,7 @@
     </div>
 </div>
 
+
 <script src="{{ asset('dist/js/pages/user/form.js') }}"></script>
+
 @endsection
