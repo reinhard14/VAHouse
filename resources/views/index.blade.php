@@ -83,8 +83,8 @@
                             <table class="table m-0">
                                 <thead>
                                     <tr>
-                                        <th>Department Form</th>
-                                        <th>Department</th>
+                                        <th>Department Name</th>
+                                        <th>Department Description</th>
                                         <th>Manager</th>
                                         <th>Status</th>
                                         <th>Submissions</th>
@@ -93,12 +93,12 @@
                                 <tbody>
                                     @foreach ($departments as $department)
                                         <tr>
-                                            <td><a href="#form">Form {{ $department->id }}</a></td>
+                                            <td><a href="#form">Department {{ $department->id }}</a></td>
                                             <td>{{ $department->name }}</td>
                                             <td>Admin Name</td>
-                                            <td><span class="badge badge-success">Completed</span></td>
+                                            <td><span class="badge badge-success">Vacant</span></td>
                                             <td>
-                                            <div class="sparkbar" data-color="#00a65a" data-height="20">90</div>
+                                            <div class="sparkbar" data-color="#00a65a" data-height="20">90/100</div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -141,7 +141,7 @@
                         </div>
 
                         <div class="card-footer text-center">
-                            <a href="javascript:void(0)" class="uppercase">View All Products</a>
+                            <a href="javascript:void(0)" class="uppercase">View All Targets</a>
                         </div>
                         <!-- /.card-footer -->
                     </div>

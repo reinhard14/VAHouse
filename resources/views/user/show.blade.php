@@ -33,55 +33,58 @@
                     </div>
 
                     @if(is_null($aWebsites))
-                        nah, i'd win!
-                    @else
-                        {{-- <button type="button" class="btn btn-outline-primary mb-2" data-bs-target="#collapseAlert" data-bs-toggle="collapse">Show</button>
-                        <div class="collapse show" id="collapseAlert"> --}}
-                            <div class="row my-4 p-3">
-                                <h3>Skillset:</h3>
-                                <div class="table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                            <th scope="col">Websites</th>
-                                            <th scope="col">Applications</th>
-                                            <th scope="col">Tools</th>
-                                            <th scope="col">Skills</th>
-                                            <th scope="col">Soft skill</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td scope="row">
-                                                    @foreach($aWebsites as $index => $scoreData)
-                                                        {{ $scoreData }} </br>
-                                                    @endforeach
-                                                </td>
-                                                <td>
-                                                    @foreach($aApplications as $index => $scoreData)
-                                                        {{ $scoreData }} </br>
-                                                    @endforeach
-                                                </td>
-                                                <td>
-                                                    @foreach($aTools as $index => $scoreData)
-                                                        {{ $scoreData }} </br>
-                                                    @endforeach
-                                                </td>
-                                                <td>
-                                                    @foreach($aSkills as $index => $scoreData)
-                                                        {{ $scoreData }} </br>
-                                                    @endforeach
-                                                </td>
-                                                <td>
-                                                    @foreach($aSoftskills as $index => $scoreData)
-                                                        {{ $scoreData }} </br>
-                                                    @endforeach
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                        <div class="row my-4 p-4 border rounded border-line border-secondary">
+                            <div class="text-center">
+                                <h3>No <span class="text-danger">Skillset</span> added yet.</h3>
+                                <p class="pt-3">Click the <span class="text-info">"Dashboard"</span> and add skillset on specified fields.</p>
                             </div>
+                        </div>
+                    @else
+                        <div class="row my-4 p-3">
+                            <h3>Skillset:</h3>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">Websites</th>
+                                        <th scope="col">Applications</th>
+                                        <th scope="col">Tools</th>
+                                        <th scope="col">Skills</th>
+                                        <th scope="col">Soft skill</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row">
+                                                @foreach($aWebsites as $index => $scoreData)
+                                                    {{ $scoreData }} </br>
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                @foreach($aApplications as $index => $scoreData)
+                                                    {{ $scoreData }} </br>
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                @foreach($aTools as $index => $scoreData)
+                                                    {{ $scoreData }} </br>
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                @foreach($aSkills as $index => $scoreData)
+                                                    {{ $scoreData }} </br>
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                @foreach($aSoftskills as $index => $scoreData)
+                                                    {{ $scoreData }} </br>
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
 
                     <div class="row mb-5 py-5">
                         <div class="col">

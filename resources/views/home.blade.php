@@ -13,8 +13,8 @@
                     @include('includes.messages')
 
                     <h4 class="text-center mt-3">
-                        Separate the lists by using a comma <span class="text-danger">","</span>
-                        or period <span class="text-danger">"."</span>
+                        Separate the list by using a comma <span class="text-danger">","</span>.
+                        {{-- or period <span class="text-danger">"."</span> --}}
                     </h4>
                     <div class="row mb-5">
                         <div class="d-flex justify-content-center">
