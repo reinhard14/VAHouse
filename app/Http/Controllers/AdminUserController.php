@@ -49,6 +49,7 @@ class AdminUserController extends Controller
         $usersQuery = User::where('role_id', 3)
                         ->leftJoin('scores', 'users.id', '=', 'scores.user_id')
                         ->select('users.*', 'scores.*')
+                        ->distinct()
                         ->orderBy($sortByColumn, $sortOrder);
 
         // Searching
@@ -178,8 +179,13 @@ class AdminUserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
+        $skillset = Score::where('user_id', $user->id )
+                                ->latest()
+                                ->first();
 
-        return view('admin-users.show', compact('user'));
+        return view('admin-users.show', compact('user',
+                                        'skillset',
+                                        ));
     }
 
 
@@ -235,6 +241,7 @@ class AdminUserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+
         $user->delete();
 
         return redirect()->route('admin.users.index');

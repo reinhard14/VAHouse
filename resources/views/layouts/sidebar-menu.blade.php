@@ -11,13 +11,13 @@
         <li class="nav-item" >
             <a href="{{ route('administrator.index') }}" class="nav-link {{ request()->segment(2) === 'administrators' ? 'active' : '' }}">
             <i class="bi bi-person-fill-gear"></i>
-            <p>Administrator</p>
+            <p>Administrators</p>
             </a>
         </li>
         <li class="nav-item" >
             <a href="{{ route('admin.users.index') }}" class="nav-link {{ (request()->segment(2) === 'users' && request()->segment(2) === 'users') ? 'active' : '' }}">
             <i class="bi bi-file-person"></i>
-            <p>Users List</p>
+            <p>Applicants</p>
             </a>
         </li>
         <li class="nav-item {{ request()->segment(2) === 'department' ? 'menu-open' : 'menu' }}">

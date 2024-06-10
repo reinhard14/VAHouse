@@ -53,23 +53,23 @@
 
                     <div class="row mb-3">
                         <div class="col-md-2">Websites: </div>
-                        <div class="col">{{ $user->scores->website ?? 'N/A'  }} </div>
+                        <div class="col">{{ $skillset->website ?? 'N/A'  }} </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-2">Applications: </div>
-                        <div class="col">{{ $user->scores->application ?? 'N/A'  }} </div>
+                        <div class="col">{{ $skillset->application ?? 'N/A'  }} </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-2">Tools: </div>
-                        <div class="col">{{ $user->scores->tool ?? 'N/A'  }} </div>
+                        <div class="col">{{ $skillset->tool ?? 'N/A'  }} </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-2">Skills: </div>
-                        <div class="col">{{ $user->scores->skill ?? 'N/A'  }} </div>
+                        <div class="col">{{ $skillset->skill ?? 'N/A'  }} </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-2">Soft skills: </div>
-                        <div class="col">{{ $user->scores->softskill ?? 'N/A'  }} </div>
+                        <div class="col">{{ $skillset->softskill ?? 'N/A'  }} </div>
                     </div>
 
                     <div class="row">

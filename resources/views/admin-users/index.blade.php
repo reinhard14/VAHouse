@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="ml-2">Users</h1>
+                    <h1 class="ml-2">Applicants</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -159,7 +159,8 @@
                                                             data-toggle="tooltip" title="Click to descend First name."><strong>First Name</strong> <i class="bi bi-sort-alpha-up"></i> </a>
                                                     @endif
                                                 </th>
-                                                <th class="text-center">Action</th>
+                                                <th class="text-center">Skills</th>
+                                                <th class="text-center">Actions</th>
                                                 <th class="text-center">Form/s Submitted</th>
                                                 <th class="text-right">
                                                     <label class="form-check-label" for="deleteMasterCheckbox">Delete?</label>
@@ -172,6 +173,12 @@
                                                 <tr>
                                                     <td>{{ $user->lastname }}</td>
                                                     <td>{{ $user->name }}</td>
+                                                    <td>
+                                                        {{ $user->scores->skill ?? 'N/A'}}
+                                                        {{-- @foreach ($user->scores as $skill)
+                                                            {{ $skill }}
+                                                        @endforeach --}}
+                                                    </td>
                                                     <td>
                                                         <div class="d-flex justify-content-center align-items-center">
                                                             <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal">
