@@ -141,7 +141,7 @@
                         </div>
 
                         <div class="card-footer text-center">
-                            <a href="javascript:void(0)" class="uppercase">View All Targets</a>
+                            <a href="#" id="viewTarget">View All Targets</a>
                         </div>
                         <!-- /.card-footer -->
                     </div>
@@ -154,5 +154,9 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
 
 @endsection
