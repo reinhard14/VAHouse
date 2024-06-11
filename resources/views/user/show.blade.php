@@ -23,8 +23,33 @@
                     </div>
 
                     <div class="row p-2">
+                        <div class="col-md-3">Contact Number:</div>
+                        <div class="col-md-9">{{ $user->contactnumber }}</div>
+                    </div>
+
+                    <div class="row p-2">
                         <div class="col-md-3">Email:</div>
                         <div class="col-md-9">{{ $user->email }}</div>
+                    </div>
+
+                    <div class="row p-2">
+                        <div class="col-md-3">Happy Rate:</div>
+                        <div class="col-md-9">{{ $user->scores->rate }}</div>
+                    </div>
+
+                    <div class="row p-2">
+                        <div class="col-md-3">Video introduction link:</div>
+                        <div class="col-md-9">{{ $user->scores->videolink }}</div>
+                    </div>
+
+                    <div class="row p-2">
+                        <div class="col-md-3">Portfolio link:</div>
+                        <div class="col-md-9">{{ $user->scores->portfolio }}</div>
+                    </div>
+
+                    <div class="row p-2">
+                        <div class="col-md-3">Resume Attachment:</div>
+                        <div class="col-md-9">{{ $user->created_at }}</div>
                     </div>
 
                     <div class="row p-2">
@@ -76,9 +101,13 @@
                                                 @endforeach
                                             </td>
                                             <td>
-                                                @foreach($aSoftskills as $index => $scoreData)
-                                                    {{ $scoreData }} </br>
-                                                @endforeach
+                                                @if(is_null($aSoftskills))
+                                                    No data available.
+                                                @else
+                                                    @foreach($aSoftskills as $index => $scoreData)
+                                                        {{ $scoreData }} </br>
+                                                    @endforeach
+                                                @endif
                                             </td>
                                         </tr>
                                     </tbody>
@@ -86,27 +115,6 @@
                             </div>
                         </div>
 
-                    <div class="row mb-5 py-5">
-                        <div class="col">
-                            <div class="form-row">
-                                <div class="col text-right p-2">
-                                    <label for="attachment">Attach resume here: </label>
-                                </div>
-                                <div class="col p-2">
-                                    <input type="button" onclick="alert('Insert attachment!')" value="attachment" class="btn btn-info btn-sm">
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col text-right">
-                                    <label for="attachment">Attach image here: </label>
-                                </div>
-                                <div class="col">
-                                    <input type="button" onclick="alert('Insert picture here!')" value="image" class="btn btn-info btn-sm">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="d-flex justify-content-center">
                             <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary mr-2"><i class="bi bi-save me-1"></i>Edit</a>

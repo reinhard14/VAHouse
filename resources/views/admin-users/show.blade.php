@@ -45,6 +45,18 @@
                             <label>Email</label>
                             <p> {{ $user->email }} </p>
                         </div>
+
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label>Contact Number</label>
+                            <p> {{ $user->contactnumber }} </p>
+                        </div>
+                        <div class="col">
+                            {{-- <label>Contact Number</label>
+                            <p> {{ $user->contactnumber }} </p> --}}
+                        </div>
                         <div class="col">
                             <label>Status</label>
                             <p> <span class="p-1 bg-success text-white">New!</span> </p>

@@ -34,6 +34,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'websites' => 'required|array',
             'websites.*' => 'string',
@@ -43,19 +44,27 @@ class UserController extends Controller
             'tools.*' => 'string',
             'skills' => 'required|array',
             'skills.*' => 'string',
-            'softskills' => 'required|array',
+            'softskills' => 'array',
             'softskills.*' => 'string',
+            'rate' => 'required',
+            'portfolio' => 'required',
+            'videolink' => 'required',
+            // 'resume' => 'required',
         ]);
 
         // Create a new Score instance
-        $scores = new Score();
-        $scores->website = json_encode($request->input('websites'));
-        $scores->application = json_encode($request->input('applications'));
-        $scores->tool = json_encode($request->input('tools'));
-        $scores->skill = json_encode($request->input('skills'));
-        $scores->softskill = json_encode($request->input('softskills'));
-        $scores->user_id = Auth::id();
-        $scores->save();
+        $score = new Score();
+        $score->website = json_encode($request->input('websites'));
+        $score->application = json_encode($request->input('applications'));
+        $score->tool = json_encode($request->input('tools'));
+        $score->skill = json_encode($request->input('skills'));
+        $score->softskill = json_encode($request->input('softskills'));
+        $score->rate = $request->input('rate');
+        $score->videolink = $request->input('videolink');
+        $score->portfolio = $request->input('portfolio');
+        $score->resume = $request->input('resume');
+        $score->user_id = Auth::id();
+        $score->save();
 
         $tags = $request->only(['websites', 'applications', 'tools', 'skills', 'softskills']);
 

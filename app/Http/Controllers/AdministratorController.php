@@ -52,6 +52,7 @@ class AdministratorController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'lastname' => 'required',
+            'contactnumber' => 'required',
             'gender' => 'required',
             'email' => ['required', 'email'],
             'department' => 'required',
@@ -70,6 +71,7 @@ class AdministratorController extends Controller
         //get form data
         $user->name = $request->input('name');
         $user->lastname = $request->input('lastname');
+        $user->contactnumber = $request->input('contactnumber');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->role_id = 2;
@@ -135,6 +137,7 @@ class AdministratorController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'lastname' => 'required',
+            'contactnumber' => 'required',
             'gender' => 'required',
             'email' => ['required', 'email'],
             'department' => 'required',
@@ -160,6 +163,7 @@ class AdministratorController extends Controller
 
         $user->name = $request->input('name');
         $user->lastname = $request->input('lastname');
+        $user->name = $request->input('contactnumber');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
 

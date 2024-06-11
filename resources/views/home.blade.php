@@ -67,14 +67,41 @@
                             </small>
                         </div>
 
-                        <div class="form-group mb-5">
-                            <label for="softskills"><span class="text-danger">*</span> List all the <span class="text-primary">Soft skills</span> you possess:</label>
-                            <select id="softskills" name="softskills[]" class="select2" multiple="multiple" style="width: 100%;" required>
+                        <div class="form-group">
+                            <label for="softskills"> List all the <span class="text-primary">Soft skills</span> you possess:</label>
+                            <select id="softskills" name="softskills[]" class="select2" multiple="multiple" style="width: 100%;">
                                 <option value="none">None</option>
                             </select>
                             <small class="d-flex justify-content-end">
                                 Select "<span class="text-danger">None</span>" if nothing is applicable.
                             </small>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="rate"><span class="text-danger">*</span> Happy rate: </label>
+                                    <input name="rate" type="text" class="form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="portfolio"><span class="text-danger">*</span> Portfolio: </label>
+                                    <input name="portfolio" type="text" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="videolink"><span class="text-danger">*</span> Video introduction link here: </label>
+                                    <input name="videolink" type="text" class="form-control" required>
+                                </div>
+
+                                <div class="form-group mb-5">
+                                    <label for="resume"><span class="text-danger">*</span> Attach resume here: </label>
+                                    <input name="resume" type="button" onclick="alert('Insert attachment!')" value="attachment" class="btn btn-info btn-sm form-control">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="d-flex justify-content-center">

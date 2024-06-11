@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'developer super-admin',
             'lastname' => 'Administrator',
-            'email' => '09204884884',
+            'contactnumber' => '09204884884',
             'email' => 'admin@admin.com',
             'password' => bcrypt('secret'),
             'role_id' => 1

@@ -44,7 +44,7 @@
                             <label for="contactnumber" class="col-md-4 col-form-label text-md-end">{{ __('Contact Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="contactnumber" type="text" class="form-control @error('contactnumber') is-invalid @enderror" name="contactnumber" value="{{ old('contactnumber') }}" required autocomplete="contactnumber">
+                                <input id="contactnumber" type="number" class="form-control @error('contactnumber') is-invalid @enderror" name="contactnumber" value="{{ old('contactnumber') }}" required autocomplete="contactnumber">
 
                                 @error('contactnumber')
                                     <span class="invalid-feedback" role="alert">

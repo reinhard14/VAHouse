@@ -43,6 +43,10 @@
                             <p> {{ $administrator->user->lastname }} </p>
                         </div>
                         <div class="form-group">
+                            <label>Contact Number</label>
+                            <p> {{ $administrator->user->contactnumber }} </p>
+                        </div>
+                        <div class="form-group">
                             <label>Gender</label>
                             <p> {{ $administrator->gender }} </p>
                         </div>

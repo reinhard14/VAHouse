@@ -290,9 +290,13 @@ function handleClearSelects() {
     }).then((result) => {
         if (result.isConfirmed) {
             const select2Fields = document.querySelectorAll('.select2');
+            const inputFields = document.querySelectorAll('input');
 
             select2Fields.forEach((select) => {
                 $(select).val(null).trigger('change');
+            });
+            inputFields.forEach((input) => {
+                input.value = '';
             });
 
             Swal.fire({

@@ -45,6 +45,10 @@
                                 <input type="text" class="form-control" value="{{ $administrator->user->lastname }}" name="lastname" required>
                             </div>
                             <div class="form-group">
+                                <label for="contactnumber">Contact Number</label>
+                                <input type="number" class="form-control" value="{{ $administrator->user->contactnumber }}" name="contactnumber" required>
+                            </div>
+                            <div class="form-group">
                                 <label for="department">Department</label>
                                 <select class="form-control" id="department" name="department" {{ $departments->isEmpty() ? 'disabled' : ''}}>
                                     @foreach ($departments as $department)

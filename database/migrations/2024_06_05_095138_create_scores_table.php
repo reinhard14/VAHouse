@@ -21,6 +21,10 @@ class CreateScoresTable extends Migration
             $table->text('tool')->nullable();
             $table->text('skill')->nullable();
             $table->text('softskill')->nullable();
+            $table->text('rate')->nullable();
+            $table->text('videolink')->nullable();
+            $table->text('portfolio')->nullable();
+            $table->text('resume')->nullable();
             $table->foreignId('user_id');
         });
     }

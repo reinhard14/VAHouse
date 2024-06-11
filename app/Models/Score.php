@@ -12,9 +12,14 @@ class Score extends Model
 
     protected $fillable = [
         'website',
+        'application',
         'tool',
         'skill',
         'softskill',
+        'rate',
+        'videolink',
+        'portfolio',
+        'resume',
     ];
 
     public function user()
