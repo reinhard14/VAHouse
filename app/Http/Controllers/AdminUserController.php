@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Password as RulesPassword;
 
 
+
 class AdminUserController extends Controller
 {
 
@@ -76,7 +77,6 @@ class AdminUserController extends Controller
                 $usersQuery->where(function ($query) use ($tags, $dbField) {
                     foreach ($tags as $tag) {
                         if (is_numeric($tag)) {
-                            // For numeric fields, use exact match
                             $query->orWhere($dbField, '=', $tag);
                         } else {
                             $query->orWhere($dbField, 'like', '%' . $tag . '%');
@@ -106,7 +106,6 @@ class AdminUserController extends Controller
                         ->values()
                         ->all();
         }
-
 
         // Get unique values for each field
         $uniqueWebsites = getUniqueValues($scores, 'website');

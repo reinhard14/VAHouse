@@ -34,15 +34,15 @@
                     <p>Department</p>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('administrator.index') }}" class="nav-link">
                     <ion-icon name="id-card-outline"></ion-icon>
                     <p>Update</p>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </li>
-        <li class="nav-item {{ request()->segment(1) === 'reports' ? 'menu-open' : 'menu' }}">
+        {{-- <li class="nav-item {{ request()->segment(1) === 'reports' ? 'menu-open' : 'menu' }}">
             <a href=# class="nav-link">
             <i class="bi bi-graph-up-arrow"></i>
             <p>Reports
@@ -63,15 +63,15 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
 
         <li class="nav-header">ACCOUNT SETTINGS</li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon far fa-circle text-info"></i>
                 <p>User's Information</p>
             </a>
-        </li>
+        </li> --}}
         <li class="nav-item">
             <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="nav-icon far fa-circle text-danger"></i>

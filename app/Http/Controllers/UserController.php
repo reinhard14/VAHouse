@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Score;
 use App\Models\User;
+use App\Models\PDF;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,8 +40,8 @@ class UserController extends Controller
         $this->validate($request, [
             'websites' => 'required|array',
             'websites.*' => 'string',
-            'applications' => 'required|array',
-            'applications.*' => 'string',
+            // 'applications' => 'required|array',
+            // 'applications.*' => 'string',
             'tools' => 'required|array',
             'tools.*' => 'string',
             'skills' => 'required|array',
@@ -50,21 +52,29 @@ class UserController extends Controller
             'portfolio' => 'required',
             'videolink' => 'required',
             'experience' => 'required',
-            // 'resume' => 'required',
+            'resume' => 'required|mimes:pdf|max:10000',
         ]);
+
+        // Handle PDF file upload
+        if ($request->hasFile('resume')) {
+            $pdfPath = $request->file('resume')->store('pdfs', 'public');
+        } else {
+            // Handle the case when no PDF file is uploaded
+            return back()->with('error', 'Please upload a PDF file.');
+        }
 
         // Create a new Score instance
         $score = new Score();
         $score->website = json_encode($request->input('websites'));
-        $score->application = json_encode($request->input('applications'));
+        // $score->application = json_encode($request->input('applications'));
         $score->tool = json_encode($request->input('tools'));
         $score->skill = json_encode($request->input('skills'));
         $score->softskill = json_encode($request->input('softskills'));
         $score->rate = $request->input('rate');
         $score->videolink = $request->input('videolink');
         $score->portfolio = $request->input('portfolio');
-        $score->resume = $request->input('resume');
         $score->experience = $request->input('experience');
+        $score->resume = $pdfPath; // Save the path to the PDF file
         $score->user_id = Auth::id();
         $score->save();
 
@@ -151,5 +161,23 @@ class UserController extends Controller
     {
         //test
     }
+
+    public function showPDF($id)
+    {
+        $score = Score::findOrFail(7);
+        $pdfContent = $score->pdf_content;
+
+        // Set the PDF MIME type
+        $mimeType = 'application/pdf';
+
+        // Set the headers for the response
+        $headers = [
+            'Content-Type' => $mimeType,
+        ];
+
+        // Return the response with the PDF content
+        return response($pdfContent, 200, $headers);
+    }
+
 
 }

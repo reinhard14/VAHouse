@@ -24,7 +24,7 @@
                         </div>
                     </div>
 
-                    <form method="post" action="{{ route('user.store') }}" id="scoresForm">
+                    <form method="post" action="{{ route('user.store') }}" id="scoresForm" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">
@@ -183,8 +183,10 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group mb-5">
-                                    <label for="resume"><span class="text-danger">*</span> Attach resume here: </label>
-                                    <input name="resume" type="button" onclick="alert('Insert attachment!')" value="attachment" class="btn btn-info btn-sm form-control">
+                                    {{-- <label for="resume"><span class="text-danger">*</span> Attach resume here: (PDF file only) </label>
+                                    <input name="resume" type="button" onclick="alert('Insert attachment!')" value="attachment" class="btn btn-info btn-sm form-control"> --}}
+                                    <label for="resume">Attach resume here: (PDF file only)</label>
+                                    <input type="file" id="resume" name="resume" accept="application/pdf" required>
                                 </div>
                             </div>
                         </div>

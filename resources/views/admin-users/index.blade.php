@@ -184,6 +184,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+
                                             @foreach ($users as $user)
                                                 <tr>
                                                     <td>{{ $user->lastname }}</td>
@@ -200,7 +201,8 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        {{ $user->scores->skill ?? 'N/A'}}
+                                                        {{-- {{ \Illuminate\Support\Str::limit($user->scores->skill, 30) ?? 'N/A' }} --}}
+                                                        {{ $user->scores->skill ?? 'N/A' }}
                                                     </td>
                                                     <td>
                                                         <div class="d-flex justify-content-center align-items-center">

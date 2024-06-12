@@ -84,7 +84,6 @@
                                 <thead>
                                     <tr>
                                         <th>Department Name</th>
-                                        <th>Department Description</th>
                                         <th>Manager</th>
                                         <th>Status</th>
                                         <th>Submissions</th>
@@ -93,7 +92,6 @@
                                 <tbody>
                                     @foreach ($departments as $department)
                                         <tr>
-                                            <td><a href="#form">Department {{ $department->id }}</a></td>
                                             <td>{{ $department->name }}</td>
                                             <td>Admin Name</td>
                                             <td><span class="badge badge-success">Vacant</span></td>

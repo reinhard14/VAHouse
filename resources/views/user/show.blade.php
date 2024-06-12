@@ -54,7 +54,11 @@
 
                     <div class="row p-2">
                         <div class="col-md-3">Resume Attachment:</div>
-                        <div class="col-md-9">{{ $user->created_at ?? 'N/A' }}</div>
+                        {{-- <embed src="{{ asset($user->scores->resume) }}" type="application/pdf" width="100%" height="600px" /> --}}
+                        {{-- <iframe src="{{ asset($user->scores->resume) }}" width="100%" height="600px" frameborder="0"></iframe> --}}
+                        <!-- Using embed tag -->
+                        {{-- <embed src="{{ route('pdf.show', $user->scores->resume) }}" type="application/pdf" width="100%" height="600px" /> --}}
+                        {{-- <div class="col-md-9">{{ $user->created_at ?? 'N/A' }}</div> --}}
                     </div>
 
                     <div class="row p-2">
