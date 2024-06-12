@@ -28,12 +28,6 @@ $(document).ready(function() {
         placeholder: 'Input all of your websites used here..',
     });
 
-    $('#applications').select2({
-        tags: true,
-        tokenSeparators: [','],
-        placeholder: 'Input all of your applications used here..',
-    });
-
     $('#tools').select2({
         tags: true,
         tokenSeparators: [','],
