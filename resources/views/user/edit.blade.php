@@ -33,7 +33,7 @@
                         </div>
                     </div>
 
-                    <div class="row mb-5 py-5">
+                    {{-- <div class="row mb-5 py-5">
                         <div class="col">
                             <div class="form-row">
                                 <div class="col text-right p-2">
@@ -53,7 +53,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
+
                     <div class="row">
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn btn-primary mr-2"><i class="bi bi-save me-1"></i> Update</button>
