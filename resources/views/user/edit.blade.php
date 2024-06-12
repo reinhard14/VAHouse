@@ -26,7 +26,7 @@
                         </div>
                     </div>
 
-                    <div class="row p-2">
+                    <div class="row p-2 mb-5">
                         <div class="col-md-3">Email:</div>
                         <div class="col-md-9">
                             <input type="text" value="{{ $user->email}}" class="form-control">
