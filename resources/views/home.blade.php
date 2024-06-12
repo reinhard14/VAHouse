@@ -38,16 +38,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="applications"><span class="text-danger">*</span> List all the <span class="text-primary">applications</span> used:</label>
-                            <select id="applications" name="applications[]" class="select2" multiple="multiple" style="width: 100%;" required>
-                                <option value="none">None</option>
-                            </select>
-                            <small class="d-flex justify-content-end">
-                                Select "<span class="text-danger">None</span>" if nothing is applicable.
-                            </small>
-                        </div>
-
-                        <div class="form-group">
                             <label for="tools"><span class="text-danger">*</span> List all the <span class="text-primary">tools</span> used:</label>
                             <select id="tools" name="tools[]" class="select2" multiple="multiple" style="width: 100%;" required>
                                 <option value="none">None</option>
@@ -68,7 +58,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="softskills"> List all the <span class="text-primary">Soft skills</span> you possess:</label>
+                            <label for="softskills"> List all the <span class="text-primary">soft skills</span> you possess:</label>
                             <select id="softskills" name="softskills[]" class="select2" multiple="multiple" style="width: 100%;">
                                 <option value="none">None</option>
                             </select>

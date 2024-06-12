@@ -77,7 +77,6 @@
                                     <thead>
                                         <tr>
                                         <th scope="col">Websites</th>
-                                        <th scope="col">Applications</th>
                                         <th scope="col">Tools</th>
                                         <th scope="col">Skills</th>
                                         <th scope="col">Soft skill</th>
@@ -87,11 +86,6 @@
                                         <tr>
                                             <td scope="row">
                                                 @foreach($aWebsites as $index => $scoreData)
-                                                    {{ $scoreData }} </br>
-                                                @endforeach
-                                            </td>
-                                            <td>
-                                                @foreach($aApplications as $index => $scoreData)
                                                     {{ $scoreData }} </br>
                                                 @endforeach
                                             </td>

@@ -12,7 +12,7 @@ class Score extends Model
 
     protected $fillable = [
         'website',
-        'application',
+        // 'application',
         'tool',
         'skill',
         'softskill',

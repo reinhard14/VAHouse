@@ -17,7 +17,7 @@ class CreateScoresTable extends Migration
             $table->id();
             $table->timestamps();
             $table->text('website')->nullable();
-            $table->text('application')->nullable();
+            // $table->text('application')->nullable();
             $table->text('tool')->nullable();
             $table->text('skill')->nullable();
             $table->text('softskill')->nullable();
