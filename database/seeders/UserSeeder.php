@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'name' => 'developer super-admin',
             'lastname' => 'Administrator',
             'contactnumber' => '09204884884',
-            'email' => 'admin@admin.com',
+            'email' => 'va_admin@gmail.com',
             'password' => bcrypt('secret'),
             'role_id' => 1
         ]);
