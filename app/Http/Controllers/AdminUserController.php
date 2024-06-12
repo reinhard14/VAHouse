@@ -101,6 +101,7 @@ class AdminUserController extends Controller
                         ->all();
         }
 
+
         // Get unique values for each field
         $uniqueWebsites = getUniqueValues($scores, 'website');
         $uniqueApplications = getUniqueValues($scores, 'application');

@@ -121,6 +121,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
+
                                                         @if ($index == $totalFields - 1)
                                                             <div class="col-md-6 mb-3 d-flex align-items-center justify-content-end">
                                                                 <button type="submit" class="btn btn-primary btn-sm ml-3">
@@ -130,6 +131,7 @@
                                                         @endif
                                                         @php $count++; @endphp
                                                     @endforeach
+
                                                 </div>
                                             </form>
 
@@ -159,9 +161,11 @@
                                                             data-toggle="tooltip" title="Click to descend First name."><strong>First Name</strong> <i class="bi bi-sort-alpha-up"></i> </a>
                                                     @endif
                                                 </th>
+                                                <th class="text-center">Level</th>
                                                 <th class="text-center">Skills</th>
                                                 <th class="text-center">Actions</th>
                                                 <th class="text-center">Form/s Submitted</th>
+                                                <th class="text-center">Intro Vid</th>
                                                 <th class="text-right">
                                                     <label class="form-check-label" for="deleteMasterCheckbox">Delete?</label>
                                                     <input type="checkbox" id="deleteMasterCheckbox">
@@ -174,10 +178,12 @@
                                                     <td>{{ $user->lastname }}</td>
                                                     <td>{{ $user->name }}</td>
                                                     <td>
+                                                        <div class="text-center">
+                                                            {{ $user->scores->experience ?? 'N/A'}}
+                                                        </div>
+                                                    </td>
+                                                    <td>
                                                         {{ $user->scores->skill ?? 'N/A'}}
-                                                        {{-- @foreach ($user->scores as $skill)
-                                                            {{ $skill }}
-                                                        @endforeach --}}
                                                     </td>
                                                     <td>
                                                         <div class="d-flex justify-content-center align-items-center">
@@ -193,6 +199,11 @@
                                                     </td>
                                                     <td class="text-center">
                                                         <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-outline-info"><i class="bi bi-file-earmark-break"></i> View</a>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-center">
+                                                            <a href="#" > link</a>
+                                                        </div>
                                                     </td>
                                                     <td class="text-right">
                                                         <input type="checkbox" class="deleteItemCheckboxes" data-admin-id="{{ $user->id }}">
