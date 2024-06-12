@@ -28,8 +28,8 @@ class RedirectBasedOnRoleId
                     return route('admin.dashboard');
                 case '3':
                     return route('user.dashboard');
-                default:
-                    return RouteServiceProvider::HOME;
+                // default:
+                //     return RouteServiceProvider::HOME;
             }
         }
 
