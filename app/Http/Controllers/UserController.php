@@ -98,9 +98,9 @@ class UserController extends Controller
                             ->latest('created_at')
                             ->value('website');
 
-            $applications = Score::where('user_id', $user->id)
-                            ->latest('created_at')
-                            ->value('application');
+            // $applications = Score::where('user_id', $user->id)
+            //                 ->latest('created_at')
+            //                 ->value('application');
 
             $tools = Score::where('user_id', $user->id)
                             ->latest('created_at')
@@ -115,12 +115,13 @@ class UserController extends Controller
                             ->value('softskill');
 
             $aWebsites = json_decode($websites);
-            $aApplications = json_decode($applications);
+            // $aApplications = json_decode($applications);
             $aTools = json_decode($tools);
             $aSkills = json_decode($skills);
             $aSoftskills = json_decode($softskills);
 
-        return view('user.show', compact('user', 'aWebsites', 'aApplications',
+        return view('user.show', compact('user', 'aWebsites',
+                                        // 'aApplications',
                                         'aTools', 'aSkills', 'aSoftskills'))->with('success', 'show here');
 
     }

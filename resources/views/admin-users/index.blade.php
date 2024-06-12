@@ -138,7 +138,7 @@
                                          </div>
                                     </div>
                                 </div>
-
+                                {{-- {{ $users }} he --}}
                                 <div class="row">
                                     <table class="table table-hover">
                                         <thead>
@@ -178,8 +178,14 @@
                                                     <td>{{ $user->lastname }}</td>
                                                     <td>{{ $user->name }}</td>
                                                     <td>
-                                                        <div class="text-center">
-                                                            {{ $user->scores->experience ?? 'N/A'}}
+                                                        <div>
+                                                            @if ($user->scores->experience <= 2)
+                                                                Beginner
+                                                            @elseif ($user->scores->experience >= 3 && $user->scores->experience <= 5)
+                                                                Intermediate
+                                                            @else
+                                                                Seasoned
+                                                            @endif
                                                         </div>
                                                     </td>
                                                     <td>

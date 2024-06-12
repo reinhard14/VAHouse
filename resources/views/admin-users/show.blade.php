@@ -54,12 +54,10 @@
                             <p> {{ $user->contactnumber }} </p>
                         </div>
                         <div class="col">
-                            {{-- <label>Contact Number</label>
-                            <p> {{ $user->contactnumber }} </p> --}}
                         </div>
                         <div class="col">
-                            <label>Status</label>
-                            <p> <span class="p-1 bg-success text-white">New!</span> </p>
+                            <label>Registered</label>
+                            <p> <span class="p-1 bg-success text-white">{{ $user->created_at }} </span> </p>
                         </div>
                     </div>
 

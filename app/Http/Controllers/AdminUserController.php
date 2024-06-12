@@ -82,6 +82,7 @@ class AdminUserController extends Controller
 
         // Get the results with pagination
         $users = $usersQuery->select('users.*')->paginate(12);
+        // $usersScore = $usersQuery->select('score.*')->paginate(12);
 
         // Append sorting parameters to pagination links
         $users->appends(['sortByLastname' => $sortByLastname, 'sortByFirstname' => $sortByFirstname]);
@@ -109,6 +110,7 @@ class AdminUserController extends Controller
         $uniqueSkills = getUniqueValues($scores, 'skill');
         $uniqueSoftskills = getUniqueValues($scores, 'softskill');
 
+
         return view('admin-users.index', compact(
             'users',
             'sortByLastname',
@@ -120,6 +122,7 @@ class AdminUserController extends Controller
             'uniqueTools',
             'uniqueSkills',
             'uniqueSoftskills',
+            // 'usersScore',
         ));
 
     }
