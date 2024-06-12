@@ -153,6 +153,7 @@ class AdminUserController extends Controller
             'name' => 'required',
             'lastname' => 'required',
             'email' => 'required',
+            'contactnumber' => 'required',
             'password' => ['required',
             RulesPassword::min(8)
                 ->letters()
@@ -167,6 +168,7 @@ class AdminUserController extends Controller
         $user->name = $request->input('name');
         $user->lastname = $request->input('lastname');
         $user->email = $request->input('email');
+        $user->contactnumber = $request->input('contactnumber');
         $user->password = bcrypt($request->input('password'));
         $user->role_id = $request->input('role_id');
         $user->save();
