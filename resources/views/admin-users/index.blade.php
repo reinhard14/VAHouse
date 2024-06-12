@@ -102,7 +102,12 @@
                                                 @csrf
                                                 <div class="row">
                                                     @php
-                                                        $fields = ['websites', 'applications', 'tools', 'skills', 'softskills'];
+                                                        $fields = ['websites',
+                                                                    'tools',
+                                                                    'skills',
+                                                                    'softskills',
+                                                                    'experience',
+                                                    ];
                                                         $count = 0;
                                                         $totalFields = count($fields);
                                                     @endphp
@@ -115,9 +120,15 @@
                                                             <div class="form-group">
                                                                 <label for="{{ $field }}">{{ ucfirst($field) }}:</label>
                                                                 <select id="{{ $field }}" class="form-control select2"  name="{{ $field }}[]" multiple="multiple">
-                                                                    @foreach (${"unique" . ucfirst($field)} as $item)
-                                                                        <option value="{{ $item }}">{{ $item }}</option>
-                                                                    @endforeach
+                                                                    {{-- @if($field == 'experience')
+                                                                        <option value="2">Beginner</option>
+                                                                        <option value="3">Intermediate</option>
+                                                                        <option value="6">Seasoned</option>
+                                                                    @else --}}
+                                                                        @foreach (${"unique" . ucfirst($field)} as $item)
+                                                                            <option value="{{ $item }}">{{ $item }}</option>
+                                                                        @endforeach
+                                                                    {{-- @endif --}}
                                                                 </select>
                                                             </div>
                                                         </div>

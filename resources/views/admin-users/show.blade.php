@@ -54,6 +54,8 @@
                             <p> {{ $user->contactnumber }} </p>
                         </div>
                         <div class="col">
+                            <label>Years Experience</label>
+                            <p> {{ $user->scores->experience }} </p>
                         </div>
                         <div class="col">
                             <label>Registered</label>

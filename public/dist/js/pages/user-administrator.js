@@ -155,11 +155,6 @@ $(document).ready(function() {
         placeholder: 'Select websites..',
     });
 
-    $('#applications').select2({
-        maximumSelectionLength: 10,
-        placeholder: 'Select applications..',
-    });
-
     $('#tools').select2({
         maximumSelectionLength: 10,
         placeholder: 'Select tools..',
@@ -174,5 +169,10 @@ $(document).ready(function() {
         maximumSelectionLength: 10,
         placeholder: 'Select softskills..',
         // allowClear: true,
+    });
+
+    $('#experience').select2({
+        maximumSelectionLength: 4,
+        placeholder: 'Select Experience..',
     });
 });

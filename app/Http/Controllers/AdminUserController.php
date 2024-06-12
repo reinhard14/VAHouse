@@ -63,10 +63,11 @@ class AdminUserController extends Controller
         // Get the selected tags from the request
         $filters = [
             'websites' => 'scores.website',
-            'applications' => 'scores.application',
+            // 'applications' => 'scores.application',
             'tools' => 'scores.tool',
             'skills' => 'scores.skill',
             'softskills' => 'scores.softskill',
+            'experience' => 'scores.experience',
         ];
 
         // Apply tag filters
@@ -74,7 +75,12 @@ class AdminUserController extends Controller
             if ($tags = $request->input($inputField, [])) {
                 $usersQuery->where(function ($query) use ($tags, $dbField) {
                     foreach ($tags as $tag) {
-                        $query->orWhere($dbField, 'like', '%' . $tag . '%');
+                        if (is_numeric($tag)) {
+                            // For numeric fields, use exact match
+                            $query->orWhere($dbField, '=', $tag);
+                        } else {
+                            $query->orWhere($dbField, 'like', '%' . $tag . '%');
+                        }
                     }
                 });
             }
@@ -82,7 +88,6 @@ class AdminUserController extends Controller
 
         // Get the results with pagination
         $users = $usersQuery->select('users.*')->paginate(12);
-        // $usersScore = $usersQuery->select('score.*')->paginate(12);
 
         // Append sorting parameters to pagination links
         $users->appends(['sortByLastname' => $sortByLastname, 'sortByFirstname' => $sortByFirstname]);
@@ -105,11 +110,10 @@ class AdminUserController extends Controller
 
         // Get unique values for each field
         $uniqueWebsites = getUniqueValues($scores, 'website');
-        $uniqueApplications = getUniqueValues($scores, 'application');
         $uniqueTools = getUniqueValues($scores, 'tool');
         $uniqueSkills = getUniqueValues($scores, 'skill');
         $uniqueSoftskills = getUniqueValues($scores, 'softskill');
-
+        $uniqueExperience = getUniqueValues($scores, 'experience');
 
         return view('admin-users.index', compact(
             'users',
@@ -118,11 +122,10 @@ class AdminUserController extends Controller
             'toggleSortLastname',
             'toggleSortFirstname',
             'uniqueWebsites',
-            'uniqueApplications',
+            'uniqueExperience',
             'uniqueTools',
             'uniqueSkills',
             'uniqueSoftskills',
-            // 'usersScore',
         ));
 
     }
