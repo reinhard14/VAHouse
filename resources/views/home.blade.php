@@ -80,23 +80,39 @@
                         <hr>
 
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="rate"><span class="text-danger">*</span> Happy rate: </label>
                                     <input name="rate" type="text" class="form-control" required>
                                 </div>
 
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="portfolio"><span class="text-danger">*</span> Portfolio: </label>
                                     <input name="portfolio" type="text" class="form-control" required>
                                 </div>
                             </div>
-                            <div class="col">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="videolink"><span class="text-danger">*</span> Video introduction link here: </label>
                                     <input name="videolink" type="text" class="form-control" required>
                                 </div>
 
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="experience"><span class="text-danger">*</span> Years of experience: </label>
+                                    <input name="experience" type="number" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
                                 <div class="form-group mb-5">
                                     <label for="resume"><span class="text-danger">*</span> Attach resume here: </label>
                                     <input name="resume" type="button" onclick="alert('Insert attachment!')" value="attachment" class="btn btn-info btn-sm form-control">

@@ -34,22 +34,27 @@
 
                     <div class="row p-2">
                         <div class="col-md-3">Happy Rate:</div>
-                        <div class="col-md-9">{{ $user->scores->rate }}</div>
+                        <div class="col-md-9">{{ $user->scores->rate ?? 'N/A' }}</div>
                     </div>
 
                     <div class="row p-2">
                         <div class="col-md-3">Video introduction link:</div>
-                        <div class="col-md-9">{{ $user->scores->videolink }}</div>
+                        <div class="col-md-9">{{ $user->scores->videolink ?? 'N/A' }}</div>
                     </div>
 
                     <div class="row p-2">
                         <div class="col-md-3">Portfolio link:</div>
-                        <div class="col-md-9">{{ $user->scores->portfolio }}</div>
+                        <div class="col-md-9">{{ $user->scores->portfolio ?? 'N/A'}}</div>
+                    </div>
+
+                    <div class="row p-2">
+                        <div class="col-md-3">Years of experience:</div>
+                        <div class="col-md-9">{{ $user->scores->experience ?? 'N/A' }}</div>
                     </div>
 
                     <div class="row p-2">
                         <div class="col-md-3">Resume Attachment:</div>
-                        <div class="col-md-9">{{ $user->created_at }}</div>
+                        <div class="col-md-9">{{ $user->created_at ?? 'N/A' }}</div>
                     </div>
 
                     <div class="row p-2">

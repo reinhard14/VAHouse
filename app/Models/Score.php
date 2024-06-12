@@ -20,6 +20,7 @@ class Score extends Model
         'videolink',
         'portfolio',
         'resume',
+        'experience',
     ];
 
     public function user()

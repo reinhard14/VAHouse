@@ -49,6 +49,7 @@ class UserController extends Controller
             'rate' => 'required',
             'portfolio' => 'required',
             'videolink' => 'required',
+            'experience' => 'required',
             // 'resume' => 'required',
         ]);
 
@@ -63,6 +64,7 @@ class UserController extends Controller
         $score->videolink = $request->input('videolink');
         $score->portfolio = $request->input('portfolio');
         $score->resume = $request->input('resume');
+        $score->experience = $request->input('experience');
         $score->user_id = Auth::id();
         $score->save();
 
