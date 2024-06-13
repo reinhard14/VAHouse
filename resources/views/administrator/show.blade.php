@@ -34,29 +34,53 @@
                 <div class="card-body">
                     <div class="m-3">
                         <!-- text input -->
-                        <div class="form-group">
-                            <label>First Name</label>
-                            <p> {{ $administrator->user->name }} </p>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <p> {{ $administrator->user->name }} </p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <p> {{ $administrator->user->lastname }} </p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Last Name</label>
-                            <p> {{ $administrator->user->lastname }} </p>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <p> {{ $administrator->user->email }} </p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Contact Number</label>
+                                    <p> {{ $administrator->user->contactnumber }} </p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Contact Number</label>
-                            <p> {{ $administrator->user->contactnumber }} </p>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Gender</label>
+                                    <p> {{ $administrator->gender }} </p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Department</label>
+                                    <p> {{ $administrator->department }} </p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Gender</label>
-                            <p> {{ $administrator->gender }} </p>
-                        </div>
-                        <div class="form-group">
-                            <label>Department</label>
-                            <p> {{ $administrator->department }} </p>
-                        </div>
-                        <div class="form-group">
-                            <label>Position</label>
-                            <p> {{ $administrator->position }} </p>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Position</label>
+                                    <p> {{ $administrator->position }} </p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Created on:</label>
+                                    <p> {{ $administrator->created_at->diffForHumans() }} </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">

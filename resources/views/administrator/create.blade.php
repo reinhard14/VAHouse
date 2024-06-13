@@ -75,11 +75,11 @@
                             <div class="form-group">
                                 <label for="gender">Gender</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="male" required>
+                                    <input class="form-check-input" type="radio" name="gender" value="Male" required>
                                     <label class="form-check-label">Male</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="female">
+                                    <input class="form-check-input" type="radio" name="gender" value="Female">
                                     <label class="form-check-label">Female</label>
                                 </div>
                             </div>
