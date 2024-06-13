@@ -221,7 +221,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="text-center">
-                                                            <a href="#" > link</a>
+                                                            <a href={{ $user->scores->skill ?? "#" }} target="_blank">Open Link</a>
                                                         </div>
                                                     </td>
                                                     <td class="text-right">
