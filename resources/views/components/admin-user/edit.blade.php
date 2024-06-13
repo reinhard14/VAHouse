@@ -22,6 +22,9 @@
                     <label class="form-label" for="email">Email Address </label>
                     <input class="form-control mb-2" type="email" name="email" value="{{ $user->email }}" required>
 
+                    <label class="form-label" for="contactnumber">Contact Number</label>
+                    <input class="form-control mb-2" type="number" value="{{ $user->contactnumber }}" name="contactnumber" required>
+
                     <label class="form-label" for="password">Password </label>
                     <input class="form-control mb-2" type="password" name="password" required>
                 </div>

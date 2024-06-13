@@ -227,6 +227,7 @@ class AdminUserController extends Controller
 
         $user->name = $request->input('name');
         $user->lastname = $request->input('lastname');
+        $user->contactnumber = $request->input('contactnumber');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
         $user->save();
