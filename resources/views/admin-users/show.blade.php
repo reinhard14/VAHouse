@@ -70,7 +70,7 @@
                         </div>
                         <div class="col">
                             <label>Portfolio</label>
-                            <p> {{ \Illuminate\Support\Str::limit($user->scores->portfolio, 30) ?? 'N/A' }} </p>
+                            <a href={{ $user->scores->portfolio }}> {{ \Illuminate\Support\Str::limit($user->scores->portfolio, 30) ?? 'N/A' }} </a>
                         </div>
                         <div class="col">
                             <label>Resume Attachment</label>
