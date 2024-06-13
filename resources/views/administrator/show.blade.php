@@ -41,7 +41,7 @@
                                     <p> {{ $administrator->user->name }} </p>
                                 </div>
                             </div>
-                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Last Name</label>
                                     <p> {{ $administrator->user->lastname }} </p>
@@ -55,7 +55,7 @@
                                     <p> {{ $administrator->user->email }} </p>
                                 </div>
                             </div>
-                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Contact Number</label>
                                     <p> {{ $administrator->user->contactnumber }} </p>
