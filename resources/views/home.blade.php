@@ -151,7 +151,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="rate"><span class="text-danger">*</span> Happy rate: </label>
+                                    <label for="rate"><span class="text-danger">*</span> Happy rate: (In pesos) </label>
                                     <input name="rate" type="text" class="form-control" required>
                                 </div>
 
