@@ -142,7 +142,7 @@
 <!-- AdminLTE -->
 <script src="{{ asset('dist/js/adminlte.js') }}"></script>
 <!-- Show password JavaScript -->
-{{-- <script src="{{ asset('plugins/bootstrap/js/bootstrap-show-password.min.js') }}"></script> --}}
+<script src="{{ asset('plugins/bootstrap/js/bootstrap-show-password.min.js') }}"></script>
 
 <!-- OPTIONAL SCRIPTS -->
 <!-- Ion Icons -->
