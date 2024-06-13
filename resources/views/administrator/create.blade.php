@@ -35,32 +35,32 @@
                         <form method="post" action="{{ route('administrator.store') }}" id="routeAdminForm">
                             @csrf
                             <input type="hidden" name="saving_option" id="savingOption" value="">
-                            <div class="row">
-                                <div class="col-md-8">
+                            {{-- <div class="row">
+                                <div class="col-md-8"> --}}
                                     <div class="form-group">
                                         <label for="name">First Name</label>
                                         <input type="text" class="form-control" placeholder="First name.." name="name" value="{{ old('name') }}" required>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8">
+                                {{-- </div>
+                            </div> --}}
+                            {{-- <div class="row">
+                                <div class="col-md-8"> --}}
                                     <div class="form-group">
                                         <label for="lastname">Last Name</label>
                                         <input type="text" class="form-control" placeholder="Last name.." name="lastname" value="{{ old('lastname') }}" required>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8">
+                                {{-- </div>
+                            </div> --}}
+                            {{-- <div class="row">
+                                <div class="col-md-8"> --}}
                                     <div class="form-group">
                                         <label for="contactnumber">Contact Number</label>
                                         <input type="number" class="form-control" placeholder="Last name.." name="contactnumber" value="{{ old('contactnumber') }}" required>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8">
+                                {{-- </div>
+                            </div> --}}
+                            {{-- <div class="row">
+                                <div class="col-md-8"> --}}
                                     <div class="form-group">
                                         <label for="department">Department</label>
                                         <select class="form-control" id="department" name="department" {{ $departments->isEmpty() ? 'disabled' : ''}}>
@@ -69,37 +69,37 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8">
+                                {{-- </div>
+                            </div> --}}
+                            {{-- <div class="row">
+                                <div class="col-md-8"> --}}
                                     <div class="form-group">
                                         <label for="position">Position</label>
                                         <input type="text" class="form-control" placeholder="Enter position" name="position" value="{{ old('position') }}" required>
                                     </div>
-                                </div>
-                            </div>
+                                {{-- </div>
+                            </div> --}}
 
                             <hr class="alert-info mt-4">
                             <small class="p1 mb-1"> Account login Details: </small>
-                            <div class="row">
-                                <div class="col-md-8">
+                            {{-- <div class="row">
+                                <div class="col-md-8"> --}}
                                     <div class="form-group">
                                         <label for="email">Email</label>
                                         <input type="text" class="form-control" placeholder="Email address.." name="email" value="{{ old('email') }}" required autofocus>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8">
+                                {{-- </div>
+                            </div> --}}
+                            {{-- <div class="row">
+                                <div class="col-md-8"> --}}
                                     <div class="form-group">
                                         <label for="password">Password</label>
                                         <input type="password" class="form-control" placeholder="Password.." name="password" data-toggle="password" required>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8">
+                                {{-- </div>
+                            </div> --}}
+                            {{-- <div class="row">
+                                <div class="col-md-8"> --}}
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
                                         <div class="form-check">
@@ -111,8 +111,8 @@
                                             <label class="form-check-label">Female</label>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                {{-- </div>
+                            </div> --}}
                             <div class="d-flex justify-content-center">
                                 <button type="submit" class="btn btn-primary mr-2"><ion-icon name="navigate-outline" class="mr-1"></ion-icon>Submit</button>
                                 <a href="#" id="resetFieldButton" class="btn btn-outline-danger mr-2"><ion-icon name="backspace-outline" class="mr-1"></ion-icon>Reset Field</a>
