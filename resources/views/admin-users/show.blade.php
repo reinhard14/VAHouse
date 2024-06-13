@@ -85,24 +85,24 @@
                     </div>
 
                     <div class="row mb-3">
-                        <div class="col-md-2">Websites: </div>
-                        <div class="col">{{ $skillset->website ?? 'N/A'  }} </div>
+                        <div class="col-md-3">Websites: </div>
+                        <div class="col-md-9">{{ $skillset->website ?? 'N/A'  }} </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-md-2">Applications: </div>
-                        <div class="col">{{ $skillset->application ?? 'N/A'  }} </div>
+                        <div class="col-md-3">Applications: </div>
+                        <div class="col-md-9">{{ $skillset->application ?? 'N/A'  }} </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-md-2">Tools: </div>
-                        <div class="col">{{ $skillset->tool ?? 'N/A'  }} </div>
+                        <div class="col-md-3">Tools: </div>
+                        <div class="col-md-9">{{ $skillset->tool ?? 'N/A'  }} </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-md-2">Skills: </div>
-                        <div class="col">{{ $skillset->skill ?? 'N/A'  }} </div>
+                        <div class="col-md-3">Skills: </div>
+                        <div class="col-md-9">{{ $skillset->skill ?? 'N/A'  }} </div>
                     </div>
                     <div class="row mb-5">
-                        <div class="col-md-2">Soft skills: </div>
-                        <div class="col">{{ $skillset->softskill ?? 'N/A'  }} </div>
+                        <div class="col-md-3">Soft skills: </div>
+                        <div class="col-md-9">{{ $skillset->softskill ?? 'N/A'  }} </div>
                     </div>
 
                     <div class="row mt-3">

@@ -28,7 +28,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">View Administrator Information</h3>
+                    <h3 class="card-title">View Administrator's Information</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
