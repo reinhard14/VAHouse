@@ -64,6 +64,21 @@
                     </div>
 
                     <div class="row mb-3">
+                        <div class="col">
+                            <label>Happy rate</label>
+                            <p> {{ $user->scores->rate ?? 'N/A' }} </p>
+                        </div>
+                        <div class="col">
+                            <label>Portfolio</label>
+                            <p> {{ $user->scores->portfolio ?? 'N/A'}} </p>
+                        </div>
+                        <div class="col">
+                            <label>Resume Attachment</label>
+                            {{-- <p> {{ $user->scores->resume ?? 'N/A'}} </p> --}}
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
                         <div class="col-md-2">Websites: </div>
                         <div class="col">{{ $skillset->website ?? 'N/A'  }} </div>
                     </div>
