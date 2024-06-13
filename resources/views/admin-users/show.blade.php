@@ -55,7 +55,7 @@
                         </div>
                         <div class="col">
                             <label>Years Experience</label>
-                            <p> {{ $user->scores->experience }} </p>
+                            <p> {{ $user->scores->experience ?? 'N/A'}} </p>
                         </div>
                         <div class="col">
                             <label>Registered</label>
