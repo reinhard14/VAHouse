@@ -100,7 +100,7 @@
                         <div class="col-md-2">Skills: </div>
                         <div class="col">{{ $skillset->skill ?? 'N/A'  }} </div>
                     </div>
-                    <div class="row mb-3">
+                    <div class="row mb-5">
                         <div class="col-md-2">Soft skills: </div>
                         <div class="col">{{ $skillset->softskill ?? 'N/A'  }} </div>
                     </div>
