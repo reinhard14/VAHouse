@@ -190,6 +190,7 @@
                                                     <td>{{ $user->name }}</td>
                                                     <td>
                                                         <div>
+                                                            {{ $user->scores->experience ?? 'NA' }}
                                                             @if ($user->scores->experience <= 2)
                                                                 Beginner
                                                             @elseif ($user->scores->experience >= 3 && $user->scores->experience <= 5)
