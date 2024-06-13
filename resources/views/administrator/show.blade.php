@@ -40,6 +40,8 @@
                                     <label>First Name</label>
                                     <p> {{ $administrator->user->name }} </p>
                                 </div>
+                            </div>
+                            <div class="col-md-6"></div>
                                 <div class="form-group">
                                     <label>Last Name</label>
                                     <p> {{ $administrator->user->lastname }} </p>
@@ -52,6 +54,8 @@
                                     <label>Email</label>
                                     <p> {{ $administrator->user->email }} </p>
                                 </div>
+                            </div>
+                            <div class="col-md-6"></div>
                                 <div class="form-group">
                                     <label>Contact Number</label>
                                     <p> {{ $administrator->user->contactnumber }} </p>
@@ -64,6 +68,8 @@
                                     <label>Gender</label>
                                     <p> {{ $administrator->gender }} </p>
                                 </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Department</label>
                                     <p> {{ $administrator->department }} </p>
@@ -76,6 +82,8 @@
                                     <label>Position</label>
                                     <p> {{ $administrator->position }} </p>
                                 </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Created on:</label>
                                     <p> {{ $administrator->created_at->diffForHumans() }} </p>
