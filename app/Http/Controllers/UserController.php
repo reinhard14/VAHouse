@@ -40,8 +40,6 @@ class UserController extends Controller
         $this->validate($request, [
             'websites' => 'required|array',
             'websites.*' => 'string',
-            // 'applications' => 'required|array',
-            // 'applications.*' => 'string',
             'tools' => 'required|array',
             'tools.*' => 'string',
             'skills' => 'required|array',
@@ -66,7 +64,6 @@ class UserController extends Controller
         // Create a new Score instance
         $score = new Score();
         $score->website = json_encode($request->input('websites'));
-        // $score->application = json_encode($request->input('applications'));
         $score->tool = json_encode($request->input('tools'));
         $score->skill = json_encode($request->input('skills'));
         $score->softskill = json_encode($request->input('softskills'));
@@ -130,9 +127,11 @@ class UserController extends Controller
             $aSkills = json_decode($skills);
             $aSoftskills = json_decode($softskills);
 
-        return view('user.show', compact('user', 'aWebsites',
-                                        // 'aApplications',
-                                        'aTools', 'aSkills', 'aSoftskills'))->with('success', 'show here');
+        return view('user.show', compact('user',
+                                        'aWebsites',
+                                        'aTools',
+                                        'aSkills',
+                                        'aSoftskills'))->with('success', 'show here');
 
     }
 

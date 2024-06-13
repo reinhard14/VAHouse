@@ -29,11 +29,9 @@ class AdminUserController extends Controller
         $sortByLastname = $request->query('sortByLastname');
         $sortByFirstname = $request->query('sortByFirstname');
 
-        // Default sorting order
         $sortByColumn = 'lastname';
         $sortOrder = 'asc';
 
-        // set column to sort
         if ($sortByFirstname) {
             $sortByColumn = 'name';
         }
@@ -44,7 +42,6 @@ class AdminUserController extends Controller
         $toggleSortLastname = $this->sortOrder($sortByLastname);
         $toggleSortFirstname = $this->sortOrder($sortByFirstname);
 
-        // Initialize query with role_id filter and sorting
         $usersQuery = User::where('role_id', 3)
                         ->leftJoin('scores', 'users.id', '=', 'scores.user_id')
                         ->select('users.*', 'scores.*')
@@ -62,7 +59,6 @@ class AdminUserController extends Controller
         // Get the selected tags from the request
         $filters = [
             'websites' => 'scores.website',
-            // 'applications' => 'scores.application',
             'tools' => 'scores.tool',
             'skills' => 'scores.skill',
             'softskills' => 'scores.softskill',
