@@ -191,13 +191,13 @@
                                                     <td>
                                                         <div>
                                                             {{ $user->scores->experience ?? 'NA' }}
-                                                            @if ($user->scores->experience <= 2)
+                                                            {{-- @if ($user->scores->experience <= 2)
                                                                 Beginner
                                                             @elseif ($user->scores->experience >= 3 && $user->scores->experience <= 5)
                                                                 Intermediate
                                                             @else
                                                                 Seasoned
-                                                            @endif
+                                                            @endif --}}
                                                         </div>
                                                     </td>
                                                     <td>
