@@ -35,7 +35,7 @@
                     <div class="m-3">
                         <!-- text input -->
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>First Name</label>
                                     <p> {{ $administrator->user->name }} </p>
@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Email</label>
                                     <p> {{ $administrator->user->email }} </p>
@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Gender</label>
                                     <p> {{ $administrator->gender }} </p>
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Position</label>
                                     <p> {{ $administrator->position }} </p>
