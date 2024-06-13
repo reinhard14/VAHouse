@@ -105,7 +105,7 @@
                         <div class="col">{{ $skillset->softskill ?? 'N/A'  }} </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row mt-3">
                         <div class="col d-flex justify-content-center">
                             <a href="{{ route('admin.users.index') }}" class="btn btn-secondary" role="button"><i class="bi bi-arrow-return-right mr-1"></i>Back</a>
                         </div>
