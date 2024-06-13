@@ -70,7 +70,9 @@
                         </div>
                         <div class="col">
                             <label>Portfolio</label>
-                            <a href="{{ $user->scores->portfolio }}"  target="_blank" rel="noopener noreferrer"> {{ \Illuminate\Support\Str::limit($user->scores->portfolio, 30) ?? 'N/A' }} </a>
+                            <p>
+                                <a href="{{ $user->scores->portfolio }}"  target="_blank" rel="noopener noreferrer"> {{ \Illuminate\Support\Str::limit($user->scores->portfolio, 30) ?? 'N/A' }} </a>
+                            </p>
                         </div>
                         <div class="col">
                             <label>Resume Attachment</label>
