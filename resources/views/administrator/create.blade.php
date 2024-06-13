@@ -36,7 +36,7 @@
                             @csrf
                             <input type="hidden" name="saving_option" id="savingOption" value="">
                             <div class="row">
-                                <div class="col">
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label for="name">First Name</label>
                                         <input type="text" class="form-control" placeholder="First name.." name="name" value="{{ old('name') }}" required>
@@ -44,7 +44,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col">
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label for="lastname">Last Name</label>
                                         <input type="text" class="form-control" placeholder="Last name.." name="lastname" value="{{ old('lastname') }}" required>
@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col">
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label for="contactnumber">Contact Number</label>
                                         <input type="number" class="form-control" placeholder="Last name.." name="contactnumber" value="{{ old('contactnumber') }}" required>
@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col">
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label for="department">Department</label>
                                         <select class="form-control" id="department" name="department" {{ $departments->isEmpty() ? 'disabled' : ''}}>
@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col">
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label for="position">Position</label>
                                         <input type="text" class="form-control" placeholder="Enter position" name="position" value="{{ old('position') }}" required>
@@ -83,7 +83,7 @@
                             <hr class="alert-info mt-4">
                             <small class="p1 mb-1"> Account login Details: </small>
                             <div class="row">
-                                <div class="col">
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label for="email">Email</label>
                                         <input type="text" class="form-control" placeholder="Email address.." name="email" value="{{ old('email') }}" required autofocus>
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col">
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label for="password">Password</label>
                                         <input type="password" class="form-control" placeholder="Password.." name="password" data-toggle="password" required>
@@ -99,7 +99,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col">
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
                                         <div class="form-check">
