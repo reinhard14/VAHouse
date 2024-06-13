@@ -53,7 +53,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="text-center p-5">
-                                    <h3>No <span class="text-danger">Users</span> found.</h3>
+                                    <h3>No <span class="text-danger">applicants</span> found.</h3>
                                     <div> <strong>Tips:</strong> Try reducing the <span class="text-primary">tags</span> used to expect better results,</div>
                                     <div class="mb-5"> or filter using a specific skillset.</div>
                                     <a href="{{ route('admin.users.index') }}" class="btn btn-secondary" role="button"><i class="bi bi-arrow-return-right mr-1"></i>Back</a>
@@ -190,14 +190,17 @@
                                                     <td>{{ $user->name }}</td>
                                                     <td>
                                                         <div>
-                                                            {{ $user->scores->experience ?? 'NA' }}
-                                                            {{-- @if ($user->scores->experience <= 2)
-                                                                Beginner
-                                                            @elseif ($user->scores->experience >= 3 && $user->scores->experience <= 5)
-                                                                Intermediate
+                                                            @if(isset($user->scores->experience) && !empty($user->scores->experience))
+                                                                @if ($user->scores->experience <= 2)
+                                                                    Beginner
+                                                                @elseif ($user->scores->experience >= 3 && $user->scores->experience <= 5)
+                                                                    Intermediate
+                                                                @else
+                                                                    Seasoned
+                                                                @endif
                                                             @else
-                                                                Seasoned
-                                                            @endif --}}
+                                                                N/A
+                                                            @endif
                                                         </div>
                                                     </td>
                                                     <td>
