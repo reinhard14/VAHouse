@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Score;
 use App\Models\User;
-use App\Models\PDF;
+use App\Models\Review;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -61,7 +61,6 @@ class UserController extends Controller
             return back()->with('error', 'Please upload a PDF file.');
         }
 
-        // Create a new Score instance
         $score = new Score();
         $score->website = json_encode($request->input('websites'));
         $score->tool = json_encode($request->input('tools'));
@@ -71,7 +70,7 @@ class UserController extends Controller
         $score->videolink = $request->input('videolink');
         $score->portfolio = $request->input('portfolio');
         $score->experience = $request->input('experience');
-        $score->resume = $pdfPath; // Save the path to the PDF file
+        $score->resume = $pdfPath;
         $score->user_id = Auth::id();
         $score->save();
 
@@ -104,10 +103,6 @@ class UserController extends Controller
             $websites = Score::where('user_id', $user->id)
                             ->latest('created_at')
                             ->value('website');
-
-            // $applications = Score::where('user_id', $user->id)
-            //                 ->latest('created_at')
-            //                 ->value('application');
 
             $tools = Score::where('user_id', $user->id)
                             ->latest('created_at')
@@ -177,5 +172,24 @@ class UserController extends Controller
         return response($fileContent, 200)
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Disposition', 'inline; filename="' . $filename . '"');
+    }
+
+    public function addNotes(Request $request) {
+
+        $this->validate($request, [
+            'notes' => 'required',
+            'user_id' => 'required',
+        ]);
+
+        $attributes = ['user_id' => $request->input('user_id')];
+
+        $review = Review::firstOrNew($attributes);
+        $review->notes = $request->input('notes');
+        $review->user_id = $request->input('user_id');
+        $review->reviewed_by = $request->input('reviewed_by');
+        $review->review_status = $request->input('review_status');
+        $review->save();
+
+        return back()->with('success', 'Successfully added a note.');
     }
 }

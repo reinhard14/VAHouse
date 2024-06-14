@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Role;
 use App\Models\Score;
+use App\Models\Review;
 
 
 class User extends Authenticatable
@@ -56,5 +57,10 @@ class User extends Authenticatable
     public function scores()
     {
         return $this->hasOne(Score::class);
+    }
+
+    public function review()
+    {
+        return $this->hasOne(Review::class);
     }
 }

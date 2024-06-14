@@ -111,6 +111,29 @@
                         <div class="col-md-9">{{ $skillset->softskill ?? 'N/A'  }} </div>
                     </div>
 
+                    <div class="row mb-2">
+                        <div class="col-md-3"><strong>Notes:</strong> </div>
+                        <div class="col-md-6">{{ $user->review->notes ?? 'N/A'  }} </div>
+                        <div class="col-md-3">
+                            @if(!isset($user->review->created_at))
+                                N/A
+                            @else
+                                <strong>Updated on:</strong> {{ $user->review->updated_at->diffForHumans() }}
+                            @endif
+                        </div>
+                    </div>
+                    <div class="row mb-5">
+                        <div class="col-md-3"><strong>Reviewed by:</strong> </div>
+                        <div class="col-md-6">{{ $user->review->reviewed_by ?? 'N/A'  }} </div>
+                        <div class="col-md-3"><strong>Reviewed on:</strong>
+                            @if(!isset($user->review->created_at))
+                                N/A
+                            @else
+                                {{ $user->review->created_at->diffForHumans() }}
+                            @endif
+                        </div>
+                    </div>
+
                     <div class="row mt-3">
                         <div class="col d-flex justify-content-center">
                             <a href="{{ route('admin.users.index') }}" class="btn btn-secondary" role="button"><i class="bi bi-arrow-return-right mr-1"></i>Back</a>

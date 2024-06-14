@@ -205,16 +205,16 @@
                                                     </td>
                                                     <td>
                                                         <div class="d-flex justify-content-center align-items-center">
-                                                            <a href="#add-notes-modal" data-bs-toggle="modal" class="mr-1">
+                                                            <a href="#add-notes-modal-{{ $user->id }}" data-bs-toggle="modal" class="p-2">
                                                                 <i class="bi bi-chat-right-text"></i> Notes
                                                             </a>
-                                                            <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal">
+                                                            <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal" class="p-2">
                                                                 <i class="bi bi-person-gear"></i> Edit
                                                             </a>
                                                             <form method="post" action="{{ route('admin.users.destroy', $user->id) }}" class="deleteAdminForm">
                                                                 @csrf
                                                                 @method('delete')
-                                                                <button type="submit" class="btn text-danger"> <i class="bi bi-person-x"></i> Delete</button>
+                                                                <button type="submit" class="btn text-danger"> <i class="bi bi-person-x"></i> Delete </button>
                                                             </form>
                                                         </div>
                                                     </td>
@@ -258,11 +258,11 @@
 
 {{--* Modal components here --}}
 <x-admin-user.create />
-<x-admin-user.add-notes />
+
 
 @foreach ($users as $user)
-
     <x-admin-user.edit :user="$user" />
+    <x-admin-user.add-notes :user="$user" />
 @endforeach
 
 
