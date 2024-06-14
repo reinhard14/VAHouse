@@ -163,18 +163,19 @@ class AdministratorController extends Controller
 
         $user->name = $request->input('name');
         $user->lastname = $request->input('lastname');
-        $user->name = $request->input('contactnumber');
+        $user->contactnumber = $request->input('contactnumber');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
 
         $user->save();
 
-        if($request->input('saving_option') === 'save_and_exit') {
-            return redirect()->route('administrator.index');
-        } else {
-            return redirect()->route('administrator.show', compact('administrator'));
-        }
-        // return view('administrator.show', compact('administrator'))->with('success', 'Info Edited');
+        // if($request->input('saving_option') === 'save_and_exit') {
+        //     return redirect()->route('administrator.index');
+        // } else {
+        //     return redirect()->route('administrator.show', compact('administrator'));
+        // }
+
+        return view('administrator.show', compact('administrator'))->with('success', 'Info Edited');
     }
 
     /**

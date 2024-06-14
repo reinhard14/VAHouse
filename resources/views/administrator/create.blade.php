@@ -55,7 +55,7 @@
                                 <div class="col-md-8"> --}}
                                     <div class="form-group">
                                         <label for="contactnumber">Contact Number</label>
-                                        <input type="number" class="form-control" placeholder="Last name.." name="contactnumber" value="{{ old('contactnumber') }}" required>
+                                        <input type="number" class="form-control" placeholder="Contact number.." name="contactnumber" value="{{ old('contactnumber') }}" required>
                                     </div>
                                 {{-- </div>
                             </div> --}}
