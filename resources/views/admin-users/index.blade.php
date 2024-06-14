@@ -177,6 +177,7 @@
                                                 <th class="text-center">Actions</th>
                                                 <th class="text-center">Information</th>
                                                 <th class="text-center">Intro Vid</th>
+                                                <th class="text-center">Submitted on</th>
                                                 <th class="text-right">
                                                     <label class="form-check-label" for="deleteMasterCheckbox">Delete?</label>
                                                     <input type="checkbox" id="deleteMasterCheckbox">
@@ -228,6 +229,11 @@
                                                     <td>
                                                         <div class="text-center">
                                                             <a href={{ $user->scores->videolink ?? "#" }} target="_blank">Open Link</a>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-center">
+                                                            {{ $user->created_at->diffForHumans() }}
                                                         </div>
                                                     </td>
                                                     <td class="text-right">
