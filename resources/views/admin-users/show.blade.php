@@ -84,7 +84,7 @@
                                 @if (!isset($user->scores->resume))
                                     N/A
                                 @else
-                                    <a href="{{ route('view.pdf', $user->scores->resume) }}">Click here</a>
+                                    <a href="{{ route('view.pdf', $user->scores->resume) }}" target="_blank">Click here</a>
                                 @endif
                             </p>
                         </div>
