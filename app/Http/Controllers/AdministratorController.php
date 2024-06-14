@@ -189,7 +189,8 @@ class AdministratorController extends Controller
         $administrator = Administrator::find($id);
         $administrator->delete();
 
-        $user = User::find($id);
+        $user_id = $administrator->user_id;
+        $user = User::find($user_id);
         $user->delete();
 
         return redirect()->route('administrator.index');
