@@ -48,7 +48,6 @@
                 </div>
 
                 <div class="card-body table-responsive">
-
                     @if ($users->isEmpty())
                         <div class="row">
                             <div class="col">
@@ -87,7 +86,6 @@
                                                 Default
                                             </p>
                                         @endif
-
                                     </div>
                                 </div>
                                 <div class="accordion" id="filters">
@@ -142,10 +140,8 @@
                                                         @endif
                                                         @php $count++; @endphp
                                                     @endforeach
-
                                                 </div>
                                             </form>
-
                                          </div>
                                     </div>
                                 </div>
@@ -209,9 +205,9 @@
                                                     </td>
                                                     <td>
                                                         <div class="d-flex justify-content-center align-items-center">
-                                                            {{-- <a href="#add-notes-modal" data-bs-toggle="modal" class="mr-1">
+                                                            <a href="#add-notes-modal" data-bs-toggle="modal" class="mr-1">
                                                                 <i class="bi bi-chat-right-text"></i> Notes
-                                                            </a> --}}
+                                                            </a>
                                                             <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal">
                                                                 <i class="bi bi-person-gear"></i> Edit
                                                             </a>
