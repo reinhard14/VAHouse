@@ -208,7 +208,7 @@
                                                             <a href="#add-notes-modal-{{ $user->id }}" data-bs-toggle="modal" class="btn-outline-info p-2">
                                                                 <i class="bi bi-chat-right-text"></i> Notes
                                                             </a>
-                                                            <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal" class="p-2">
+                                                            <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal" class="btn-outline-primary p-2">
                                                                 <i class="bi bi-person-gear"></i> Edit
                                                             </a>
                                                             <form method="post" action="{{ route('admin.users.destroy', $user->id) }}" class="deleteAdminForm">
