@@ -98,10 +98,6 @@
                     </div>
                     <!-- /.card-body -->
                 @endforelse
-                {{-- <div class="overlay">
-                    <i class="fas fa-2x fa-sync-alt fa-spin"></i>
-                </div>
-                Loading state --}}
             </div>
             <!-- /. card -->
         </div>

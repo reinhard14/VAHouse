@@ -33,28 +33,6 @@
                         </div>
                     </div>
 
-                    {{-- <div class="row mb-5 py-5">
-                        <div class="col">
-                            <div class="form-row">
-                                <div class="col text-right p-2">
-                                    <label for="attachment">Attach resume here: </label>
-                                </div>
-                                <div class="col p-2">
-                                    <input type="button" onclick="alert('Insert attachment!')" value="attachment" class="btn btn-info btn-sm">
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="col text-right">
-                                    <label for="attachment">Attach image here: </label>
-                                </div>
-                                <div class="col">
-                                    <input type="button" onclick="alert('Insert picture here!')" value="image" class="btn btn-info btn-sm">
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
-
                     <div class="row">
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn btn-primary mr-2"><i class="bi bi-save me-1"></i> Update</button>
