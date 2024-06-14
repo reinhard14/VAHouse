@@ -35,7 +35,7 @@
                         <form method="post" action="{{ route('administrator.update', $administrator->id) }}" id="routeAdminEditForm">
                             @method('PUT')
                             @csrf
-                            <input type="hidden" name="saving_option" id="savingOption" value="">
+                            {{-- <input type="hidden" name="saving_option" id="savingOption" value=""> --}}
                             <div class="form-group">
                                 <label for="name">First Name</label>
                                 <input type="text" class="form-control" value="{{ $administrator->user->name }}" name="name" required autofocus>

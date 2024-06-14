@@ -72,10 +72,10 @@
                             <tbody>
                                 @foreach ($administrators as $administrator)
                                     <tr>
-                                        <td>{{ $administrator->user->lastname }}</td>
-                                        <td>{{ $administrator->user->name }}</td>
-                                        <td>{{ $administrator->department }}</td>
-                                        <td>{{ $administrator->position }}</td>
+                                        <td>{{ $administrator->user->lastname ?? 'N/A'}}</td>
+                                        <td>{{ $administrator->user->name ?? 'N/A' }}</td>
+                                        <td>{{ $administrator->department ?? 'N/A' }}</td>
+                                        <td>{{ $administrator->position ?? 'N/A' }}</td>
                                         <td>
                                             <div class="d-flex justify-content-center align-items-center">
                                                 <a href="{{ route('administrator.show', $administrator->id) }}" class="mr-2"> <i class="bi bi-person"></i> View</a>

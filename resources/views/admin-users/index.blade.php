@@ -209,6 +209,9 @@
                                                     </td>
                                                     <td>
                                                         <div class="d-flex justify-content-center align-items-center">
+                                                            <a href="#add-notes-modal" data-bs-toggle="modal">
+                                                                <i class="bi bi-chat-right-text"></i> Notes
+                                                            </a>
                                                             <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal">
                                                                 <i class="bi bi-person-gear"></i> Edit
                                                             </a>
@@ -250,8 +253,10 @@
 
 {{--* Modal components here --}}
 <x-admin-user.create />
+<x-admin-user.add-notes />
 
 @foreach ($users as $user)
+
     <x-admin-user.edit :user="$user" />
 @endforeach
 
