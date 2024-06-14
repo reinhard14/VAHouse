@@ -86,7 +86,6 @@
                                         <th>Department Name</th>
                                         <th>Manager</th>
                                         <th>Status</th>
-                                        {{-- <th>Submissions</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -95,9 +94,6 @@
                                             <td>{{ $department->name }}</td>
                                             <td>Admin Name</td>
                                             <td><span class="badge badge-success">Vacant</span></td>
-                                            {{-- <td>
-                                                <div class="sparkbar" data-color="#00a65a" data-height="20">90/100</div>
-                                            </td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>
