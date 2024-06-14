@@ -205,7 +205,6 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        {{-- {{ \Illuminate\Support\Str::limit($user->scores->skill, 30) ?? 'N/A' }} --}}
                                                         {{ $user->scores->skill ?? 'N/A' }}
                                                     </td>
                                                     <td>
@@ -228,7 +227,11 @@
                                                     </td>
                                                     <td>
                                                         <div class="text-center">
-                                                            <a href={{ $user->scores->videolink ?? "#" }} target="_blank">Open Link</a>
+                                                            @if (!isset($user->scores->videolink))
+                                                                N/A
+                                                            @else
+                                                                <a href={{ $user->scores->videolink}} target="_blank">Link</a>
+                                                            @endif
                                                         </div>
                                                     </td>
                                                     <td>
