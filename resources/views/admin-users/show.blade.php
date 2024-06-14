@@ -82,9 +82,9 @@
                             <label>Resume Attachment</label>
                             <p>
                                 @if (!isset($user->scores->resume))
-                                   N/A
+                                    N/A
                                 @else
-                                    <p><a href="{{ route('view.pdf', $user->scores->resume) }}">Click here</a></p>
+                                    <a href="{{ route('view.pdf', $user->scores->resume) }}">Click here</a>
                                 @endif
                             </p>
                         </div>
