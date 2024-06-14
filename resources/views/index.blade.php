@@ -42,7 +42,7 @@
                     <div class="small-box bg-info">
                         <div class="inner">
                             <h3>{{ $agents->count() }}</h3>
-                            <p>Agents</p>
+                            <p>Applicants</p>
                         </div>
                         <div class="icon">
                             <i class="bi bi-person-lines-fill"></i>
