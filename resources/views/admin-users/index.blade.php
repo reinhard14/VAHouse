@@ -175,7 +175,7 @@
                                                 <th class="text-center">Level</th>
                                                 <th class="text-center">Skills</th>
                                                 <th class="text-center">Actions</th>
-                                                <th class="text-center">Form/s Submitted</th>
+                                                <th class="text-center">Information</th>
                                                 <th class="text-center">Intro Vid</th>
                                                 <th class="text-right">
                                                     <label class="form-check-label" for="deleteMasterCheckbox">Delete?</label>
