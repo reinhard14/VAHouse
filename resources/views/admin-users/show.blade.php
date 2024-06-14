@@ -116,7 +116,7 @@
                         <div class="col-md-6">{{ $user->review->notes ?? 'N/A'  }} </div>
                         <div class="col-md-3">
                             @if(!isset($user->review->created_at))
-                                N/A
+
                             @else
                                 <strong>Updated on:</strong> {{ $user->review->updated_at->diffForHumans() }}
                             @endif
