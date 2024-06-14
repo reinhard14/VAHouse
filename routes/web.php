@@ -73,3 +73,5 @@ Route::delete('administrator/department/', [App\Http\Controllers\DepartmentContr
 Route::get('captcha', [CaptchaController::class, 'getCaptcha'])->name('captcha.get');
 Route::get('refresh-captcha', [CaptchaController::class, 'refreshCaptcha'])->name('refresh.captcha');
 
+Route::get('/storage/{id}', [AdminUserController::class, 'viewPDF'])->name('view.pdf');
+Route::get('/storage/{id}', [UserController::class, 'viewPDF'])->name('view.pdf');

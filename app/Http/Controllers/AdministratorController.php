@@ -209,4 +209,22 @@ class AdministratorController extends Controller
         return redirect()->route('administrator.index');
     }
 
+    public function viewPDF($filename)
+    {
+        $filePath = 'pdfs/' . $filename;
+
+        // Check if the file exists
+        if (!Storage::disk('public')->exists($filePath)) {
+            abort(404);
+        }
+
+        // Get the file's content
+        $fileContent = Storage::disk('public')->get($filePath);
+
+        // Return the file's content as a response
+        return response($fileContent, 200)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'inline; filename="' . $filename . '"');
+    }
+
 }

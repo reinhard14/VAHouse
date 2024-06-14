@@ -71,16 +71,22 @@
                         <div class="col">
                             <label>Portfolio</label>
                             <p>
-                                @if(isset($user->scores->portfolio) && !empty($user->scores->portfolio))
-                                    <a href="{{ $user->scores->portfolio }}" target="_blank">{{ \Illuminate\Support\Str::limit($user->scores->portfolio, 30) }}</a>
+                                @if(!isset($user->scores->portfolio))
+                                    N/A
                                 @else
-                                    <span>N/A</span>
+                                    <a href="{{ $user->scores->portfolio }}" target="_blank">{{ \Illuminate\Support\Str::limit($user->scores->portfolio, 30) }}</a>
                                 @endif
                             </p>
                         </div>
                         <div class="col">
                             <label>Resume Attachment</label>
-                            {{-- <p> {{ $user->scores->resume ?? 'N/A'}} </p> --}}
+                            <p>
+                                @if (!isset($user->scores->resume))
+                                   N/A
+                                @else
+                                    <p><a href="{{ route('view.pdf', $user->scores->resume) }}">Click here</a></p>
+                                @endif
+                            </p>
                         </div>
                     </div>
 

@@ -161,22 +161,21 @@ class UserController extends Controller
         //test
     }
 
-    public function showPDF($id)
+    public function viewPDF($filename)
     {
-        $score = Score::findOrFail(7);
-        $pdfContent = $score->pdf_content;
+        $filePath = 'pdfs/' . $filename;
 
-        // Set the PDF MIME type
-        $mimeType = 'application/pdf';
+        // Check if the file exists
+        if (!Storage::disk('public')->exists($filePath)) {
+            abort(404);
+        }
 
-        // Set the headers for the response
-        $headers = [
-            'Content-Type' => $mimeType,
-        ];
+        // Get the file's content
+        $fileContent = Storage::disk('public')->get($filePath);
 
-        // Return the response with the PDF content
-        return response($pdfContent, 200, $headers);
+        // Return the file's content as a response
+        return response($fileContent, 200)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'inline; filename="' . $filename . '"');
     }
-
-
 }
