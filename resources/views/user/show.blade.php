@@ -57,13 +57,13 @@
                             @if (!isset($user->scores->resume))
                                 <div class="col-md-9"><a href="#">N/A</a></div>
                             @else
-                                <div class="col-md-9"><a href="{{ route('view.pdf', $user->scores->resume) }}">Click here</a></div>
+                                <div class="col-md-9"><a href="{{ route('view.pdf', $user->scores->resume) }}" target="_blank">Click here</a></div>
                             @endif
                     </div>
 
                     <div class="row p-2">
                         <div class="col-md-3">Registered:</div>
-                        <div class="col-md-9">{{ $user->created_at }}</div>
+                        <div class="col-md-9">{{ $user->created_at->diffForHumans() }}</div>
                     </div>
 
                     @if(is_null($aWebsites))

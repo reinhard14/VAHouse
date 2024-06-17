@@ -28,19 +28,23 @@ class AdminUserController extends Controller
         // Check if sorting parameter exists in the URL
         $sortByLastname = $request->query('sortByLastname');
         $sortByFirstname = $request->query('sortByFirstname');
+        $sortByDateSubmitted = $request->query('sortByDateSubmitted');
 
         $sortByColumn = 'lastname';
         $sortOrder = 'asc';
 
         if ($sortByFirstname) {
             $sortByColumn = 'name';
+        // } elseif ($sortByDateSubmitted) {
+        //     $sortByColumn = 'created_at';
         }
 
         // Determine sorting order based on the parameter (asc or desc)
-        $sortOrder = ($sortByLastname === 'desc' || $sortByFirstname === 'desc') ? 'desc' : 'asc';
+        $sortOrder = ($sortByLastname === 'desc' || $sortByFirstname === 'desc' || $sortByDateSubmitted === 'desc') ? 'desc' : 'asc';
 
         $toggleSortLastname = $this->sortOrder($sortByLastname);
         $toggleSortFirstname = $this->sortOrder($sortByFirstname);
+        // $sortByDateSubmitted = $this->sortOrder($sortByDateSubmitted);
 
         $usersQuery = User::where('role_id', 3)
                         ->leftJoin('scores', 'users.id', '=', 'scores.user_id')
@@ -86,6 +90,8 @@ class AdminUserController extends Controller
         // Append sorting parameters to pagination links
         $users->appends(['sortByLastname' => $sortByLastname, 'sortByFirstname' => $sortByFirstname]);
 
+        // $users->appends(['sortByLastname' => $sortByLastname, 'sortByFirstname' => $sortByFirstname, 'sortByDateSubmitted' => $sortByDateSubmitted]);
+
         // Display data on FILTERS
         $scores = Score::all();
 
@@ -114,6 +120,7 @@ class AdminUserController extends Controller
             'sortByFirstname',
             'toggleSortLastname',
             'toggleSortFirstname',
+            // 'sortByDateSubmitted',
             'uniqueWebsites',
             'uniqueExperience',
             'uniqueTools',
