@@ -35,9 +35,7 @@ class AdminUserController extends Controller
 
         if ($sortByFirstname) {
             $sortByColumn = 'name';
-
-        }
-        if ($sortByDateSubmitted) {
+        } elseif ($sortByDateSubmitted) {
             $sortByColumn = 'created_at';
         }
         // Determine sorting order based on the parameter (asc or desc)

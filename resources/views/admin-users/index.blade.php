@@ -77,15 +77,25 @@
                                         <div class="mr-1">
                                             <p> <strong> Current view - </strong></p>
                                         </div>
-                                        @if ($sortByLastname || $sortByFirstname)
+                                        @if ($sortByLastname)
                                             <div>
-                                                <p> Last: <strong> {{ $sortByLastname }}</strong> First: <strong>{{ $sortByFirstname }}</strong> </p>
+                                                <p> Last: <strong> {{ $sortByLastname }}</strong> </p>
+                                            </div>
+                                        @elseif ($sortByFirstname)
+                                            <div>
+                                                <p> First: <strong>{{ $sortByFirstname }}</strong> </p>
+                                            </div>
+                                        @elseif ($sortByDateSubmitted)
+                                            <div>
+                                                <p> Date Order:<strong> {{ $sortByDateSubmitted }} </strong></p>
                                             </div>
                                         @else
                                             <p>
                                                 Default
                                             </p>
                                         @endif
+
+
                                     </div>
                                 </div>
                                 <div class="accordion" id="filters">
@@ -174,7 +184,6 @@
                                                 <th class="text-center">Information</th>
                                                 <th class="text-center">Intro Vid</th>
                                                 <th>
-
                                                     @if ($sortByDateSubmitted === 'desc')
                                                         <a href="{{ route('admin.users.index', ['sortByDateSubmitted' => 'asc']) }}" type="submit" class="btn text-primary"
                                                             data-toggle="tooltip" title="Click to Ascend Submitted date."><strong>Submitted on</strong> <i class="bi bi-sort-alpha-down-alt"></i> </a>
@@ -190,7 +199,6 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {{ $sortByDateSubmitted }}
                                             @foreach ($users as $user)
                                                 <tr>
                                                     <td>{{ $user->lastname }}</td>
