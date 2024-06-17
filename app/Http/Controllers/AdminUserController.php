@@ -35,16 +35,17 @@ class AdminUserController extends Controller
 
         if ($sortByFirstname) {
             $sortByColumn = 'name';
-        // } elseif ($sortByDateSubmitted) {
-        //     $sortByColumn = 'created_at';
-        }
 
+        }
+        if ($sortByDateSubmitted) {
+            $sortByColumn = 'created_at';
+        }
         // Determine sorting order based on the parameter (asc or desc)
         $sortOrder = ($sortByLastname === 'desc' || $sortByFirstname === 'desc' || $sortByDateSubmitted === 'desc') ? 'desc' : 'asc';
 
         $toggleSortLastname = $this->sortOrder($sortByLastname);
         $toggleSortFirstname = $this->sortOrder($sortByFirstname);
-        // $sortByDateSubmitted = $this->sortOrder($sortByDateSubmitted);
+        $sortByDateSubmitted = $this->sortOrder($sortByDateSubmitted);
 
         $usersQuery = User::where('role_id', 3)
                         ->leftJoin('scores', 'users.id', '=', 'scores.user_id')
@@ -88,9 +89,7 @@ class AdminUserController extends Controller
         $users = $usersQuery->select('users.*')->paginate(12);
 
         // Append sorting parameters to pagination links
-        $users->appends(['sortByLastname' => $sortByLastname, 'sortByFirstname' => $sortByFirstname]);
-
-        // $users->appends(['sortByLastname' => $sortByLastname, 'sortByFirstname' => $sortByFirstname, 'sortByDateSubmitted' => $sortByDateSubmitted]);
+        $users->appends(['sortByLastname' => $sortByLastname, 'sortByFirstname' => $sortByFirstname, 'sortByDateSubmitted' => $sortByDateSubmitted]);
 
         // Display data on FILTERS
         $scores = Score::all();
@@ -120,7 +119,7 @@ class AdminUserController extends Controller
             'sortByFirstname',
             'toggleSortLastname',
             'toggleSortFirstname',
-            // 'sortByDateSubmitted',
+            'sortByDateSubmitted',
             'uniqueWebsites',
             'uniqueExperience',
             'uniqueTools',
@@ -188,12 +187,13 @@ class AdminUserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
+
         $skillset = Score::where('user_id', $user->id )
-                                ->latest()
-                                ->first();
+                        ->latest()
+                        ->first();
 
         return view('admin-users.show', compact('user',
-                                        'skillset',
+                                                'skillset',
                                         ));
     }
 
