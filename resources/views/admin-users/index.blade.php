@@ -175,13 +175,14 @@
                                                 <th class="text-center">Intro Vid</th>
                                                 {{-- <th class="text-center">Submitted on</th> --}}
                                                 <th>
-                                                    @if ($toggleSortFirstname === 'desc')
+                                                    Date Submitted
+                                                    {{-- @if ($toggleSortFirstname === 'desc')
                                                         <a href="{{ route('admin.users.index', ['sortByDateSubmitted' => 'asc']) }}" type="submit" class="btn text-primary"
                                                             data-toggle="tooltip" title="Click to Ascend Submitted date."><strong>Submitted on</strong> <i class="bi bi-sort-alpha-down-alt"></i> </a>
                                                     @else
                                                         <a href="{{ route('admin.users.index', ['sortByDateSubmitted' => 'desc']) }}" type="submit" class="btn text-primary"
                                                             data-toggle="tooltip" title="Click to Descend Submitted date."><strong>Submitted on</strong> <i class="bi bi-sort-alpha-up"></i> </a>
-                                                    @endif
+                                                    @endif --}}
                                                 </th>
                                                 <th class="text-right">
                                                     <label class="form-check-label" for="deleteMasterCheckbox">Delete?</label>
@@ -190,7 +191,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {{ $sortByDateSubmitted }}
+                                            {{-- {{ $sortByDateSubmitted }} --}}
                                             @foreach ($users as $user)
                                                 <tr>
                                                     <td>{{ $user->lastname }}</td>
