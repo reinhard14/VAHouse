@@ -5,8 +5,9 @@
     <div class="row">
     {{-- <div class="row justify-content-center"> --}}
         <div class="col-md-6">
-            <img src="{{ asset('dist/img/logo.jpg') }}" alt="logo" width="100%" height="90%">
+            <img src="{{ asset('dist/img/logo.png') }}" alt="logo" width="100%" height="90%">
         </div>
+
         <div class="col-md-6">
             <div class="row my-5">
                 <div class="col">
