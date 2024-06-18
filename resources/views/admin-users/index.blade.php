@@ -159,109 +159,113 @@
                                 </div>
 
                                 <div class="row">
-                                    <table class="table table-responsive table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>
-                                                    @if ($toggleSortLastname === 'desc')
-                                                        <a href="{{ route('admin.users.index', ['sortByLastname' => 'asc']) }}" type="submit" class="btn text-primary"
-                                                            data-toggle="tooltip" title="Click to ascend last name."><strong>Last Name</strong> <i class="bi bi-sort-alpha-down-alt"></i> </a>
-                                                    @else
-                                                        <a href="{{ route('admin.users.index', ['sortByLastname' => 'desc']) }}" type="submit" class="btn text-primary"
-                                                            data-toggle="tooltip" title="Click to descend last name."><strong>Last Name</strong> <i class="bi bi-sort-alpha-up"></i> </a>
-                                                    @endif
-                                                </th>
-                                                <th>
-                                                    @if ($toggleSortFirstname === 'desc')
-                                                        <a href="{{ route('admin.users.index', ['sortByFirstname' => 'asc']) }}" type="submit" class="btn text-primary"
-                                                            data-toggle="tooltip" title="Click to ascend first name."><strong>First Name</strong> <i class="bi bi-sort-alpha-down-alt"></i> </a>
-                                                    @else
-                                                        <a href="{{ route('admin.users.index', ['sortByFirstname' => 'desc']) }}" type="submit" class="btn text-primary"
-                                                            data-toggle="tooltip" title="Click to descend first name."><strong>First Name</strong> <i class="bi bi-sort-alpha-up"></i> </a>
-                                                    @endif
-                                                </th>
-                                                <th class="text-center">Level</th>
-                                                <th class="text-center">Skills</th>
-                                                <th class="text-center">Actions</th>
-                                                <th class="text-center">Information</th>
-                                                <th class="text-center">Intro Vid</th>
-                                                <th>
-                                                    @if ($sortByDateSubmitted === 'desc')
-                                                        <a href="{{ route('admin.users.index', ['sortByDateSubmitted' => 'asc']) }}" type="submit" class="btn text-primary"
-                                                            data-toggle="tooltip" title="Click to descend submitted date."><strong>Submitted</strong> <i class="bi bi-sort-numeric-up"></i> </a>
-                                                    @else
-                                                        <a href="{{ route('admin.users.index', ['sortByDateSubmitted' => 'desc']) }}" type="submit" class="btn text-primary"
-                                                            data-toggle="tooltip" title="Click to ascend submitted date."><strong>Submitted</strong> <i class="bi bi-sort-numeric-down-alt"></i> </a>
-                                                    @endif
-                                                </th>
-                                                <th class="text-right">
-                                                    <label class="form-check-label" for="deleteMasterCheckbox">Delete?</label>
-                                                    <input type="checkbox" id="deleteMasterCheckbox">
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($users as $user)
-                                                <tr>
-                                                    <td>{{ $user->lastname }}</td>
-                                                    <td>{{ $user->name }}</td>
-                                                    <td>
-                                                        <div>
-                                                            @if(isset($user->scores->experience) && !empty($user->scores->experience))
-                                                                @if ($user->scores->experience <= 2)
-                                                                    Beginner
-                                                                @elseif ($user->scores->experience >= 3 && $user->scores->experience <= 5)
-                                                                    Intermediate
-                                                                @else
-                                                                    Seasoned
-                                                                @endif
+                                    <div class="col-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @if ($toggleSortLastname === 'desc')
+                                                                <a href="{{ route('admin.users.index', ['sortByLastname' => 'asc']) }}" type="submit" class="btn text-primary"
+                                                                    data-toggle="tooltip" title="Click to ascend last name."><strong>Last Name</strong> <i class="bi bi-sort-alpha-down-alt"></i> </a>
                                                             @else
-                                                                N/A
+                                                                <a href="{{ route('admin.users.index', ['sortByLastname' => 'desc']) }}" type="submit" class="btn text-primary"
+                                                                    data-toggle="tooltip" title="Click to descend last name."><strong>Last Name</strong> <i class="bi bi-sort-alpha-up"></i> </a>
                                                             @endif
-                                                        </div>
-                                                    </td>
-                                                    <td style="width: 100px;">
-                                                        {{ $user->scores->skill ?? 'N/A' }}
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex justify-content-center align-items-center">
-                                                            <a href="#add-notes-modal-{{ $user->id }}" data-bs-toggle="modal" class="btn-outline-info p-2">
-                                                                <i class="bi bi-chat-right-text"></i> Notes
-                                                            </a>
-                                                            <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal" class="btn-outline-primary p-2">
-                                                                <i class="bi bi-person-gear"></i> Edit
-                                                            </a>
-                                                            <form method="post" action="{{ route('admin.users.destroy', $user->id) }}" class="deleteAdminForm">
-                                                                @csrf
-                                                                @method('delete')
-                                                                <button type="submit" class="btn text-danger"> <i class="bi bi-person-x"></i> Delete </button>
-                                                            </form>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-outline-info"><i class="bi bi-file-earmark-break"></i> View</a>
-                                                    </td>
-                                                    <td>
-                                                        <div class="text-center">
-                                                            @if (!isset($user->scores->videolink))
-                                                                N/A
+                                                        </th>
+                                                        <th>
+                                                            @if ($toggleSortFirstname === 'desc')
+                                                                <a href="{{ route('admin.users.index', ['sortByFirstname' => 'asc']) }}" type="submit" class="btn text-primary"
+                                                                    data-toggle="tooltip" title="Click to ascend first name."><strong>First Name</strong> <i class="bi bi-sort-alpha-down-alt"></i> </a>
                                                             @else
-                                                                <a href={{ $user->scores->videolink}} target="_blank">Link</a>
+                                                                <a href="{{ route('admin.users.index', ['sortByFirstname' => 'desc']) }}" type="submit" class="btn text-primary"
+                                                                    data-toggle="tooltip" title="Click to descend first name."><strong>First Name</strong> <i class="bi bi-sort-alpha-up"></i> </a>
                                                             @endif
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="text-center">
-                                                            {{ $user->created_at->diffForHumans() }}
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-right">
-                                                        <input type="checkbox" class="deleteItemCheckboxes" data-admin-id="{{ $user->id }}">
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                                        </th>
+                                                        <th class="text-center">Level</th>
+                                                        <th class="text-center">Skills</th>
+                                                        <th class="text-center">Actions</th>
+                                                        <th class="text-center">Information</th>
+                                                        <th class="text-center">Intro Vid</th>
+                                                        <th>
+                                                            @if ($sortByDateSubmitted === 'desc')
+                                                                <a href="{{ route('admin.users.index', ['sortByDateSubmitted' => 'asc']) }}" type="submit" class="btn text-primary"
+                                                                    data-toggle="tooltip" title="Click to descend submitted date."><strong>Submitted</strong> <i class="bi bi-sort-numeric-up"></i> </a>
+                                                            @else
+                                                                <a href="{{ route('admin.users.index', ['sortByDateSubmitted' => 'desc']) }}" type="submit" class="btn text-primary"
+                                                                    data-toggle="tooltip" title="Click to ascend submitted date."><strong>Submitted</strong> <i class="bi bi-sort-numeric-down-alt"></i> </a>
+                                                            @endif
+                                                        </th>
+                                                        <th class="text-right">
+                                                            <label class="form-check-label" for="deleteMasterCheckbox">Delete?</label>
+                                                            <input type="checkbox" id="deleteMasterCheckbox">
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($users as $user)
+                                                        <tr>
+                                                            <td>{{ $user->lastname }}</td>
+                                                            <td>{{ $user->name }}</td>
+                                                            <td>
+                                                                <div>
+                                                                    @if(isset($user->scores->experience) && !empty($user->scores->experience))
+                                                                        @if ($user->scores->experience <= 2)
+                                                                            Beginner
+                                                                        @elseif ($user->scores->experience >= 3 && $user->scores->experience <= 5)
+                                                                            Intermediate
+                                                                        @else
+                                                                            Seasoned
+                                                                        @endif
+                                                                    @else
+                                                                        N/A
+                                                                    @endif
+                                                                </div>
+                                                            </td>
+                                                            <td style="width: 100px;">
+                                                                {{ $user->scores->skill ?? 'N/A' }}
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex justify-content-center align-items-center">
+                                                                    <a href="#add-notes-modal-{{ $user->id }}" data-bs-toggle="modal" class="btn-outline-info p-2">
+                                                                        <i class="bi bi-chat-right-text"></i> Notes
+                                                                    </a>
+                                                                    <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal" class="btn-outline-primary p-2">
+                                                                        <i class="bi bi-person-gear"></i> Edit
+                                                                    </a>
+                                                                    <form method="post" action="{{ route('admin.users.destroy', $user->id) }}" class="deleteAdminForm">
+                                                                        @csrf
+                                                                        @method('delete')
+                                                                        <button type="submit" class="btn text-danger"> <i class="bi bi-person-x"></i> Delete </button>
+                                                                    </form>
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-outline-info"><i class="bi bi-file-earmark-break"></i> View</a>
+                                                            </td>
+                                                            <td>
+                                                                <div class="text-center">
+                                                                    @if (!isset($user->scores->videolink))
+                                                                        N/A
+                                                                    @else
+                                                                        <a href={{ $user->scores->videolink}} target="_blank">Link</a>
+                                                                    @endif
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="text-center">
+                                                                    {{ $user->created_at->diffForHumans() }}
+                                                                </div>
+                                                            </td>
+                                                            <td class="text-right">
+                                                                <input type="checkbox" class="deleteItemCheckboxes" data-admin-id="{{ $user->id }}">
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="pagination justify-content-center mt-4">{{ $users->appends(['sortByLastname' => $sortByLastname])->links() }} </div>
                             </div>
