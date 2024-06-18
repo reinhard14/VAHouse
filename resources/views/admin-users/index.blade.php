@@ -163,19 +163,19 @@
                                                 <th>
                                                     @if ($toggleSortLastname === 'desc')
                                                         <a href="{{ route('admin.users.index', ['sortByLastname' => 'asc']) }}" type="submit" class="btn text-primary"
-                                                            data-toggle="tooltip" title="Click to ascend Last name."><strong>Last Name</strong> <i class="bi bi-sort-alpha-down-alt"></i> </a>
+                                                            data-toggle="tooltip" title="Click to ascend last name."><strong>Last Name</strong> <i class="bi bi-sort-alpha-down-alt"></i> </a>
                                                     @else
                                                         <a href="{{ route('admin.users.index', ['sortByLastname' => 'desc']) }}" type="submit" class="btn text-primary"
-                                                            data-toggle="tooltip" title="Click to descend Last name."><strong>Last Name</strong> <i class="bi bi-sort-alpha-up"></i> </a>
+                                                            data-toggle="tooltip" title="Click to descend last name."><strong>Last Name</strong> <i class="bi bi-sort-alpha-up"></i> </a>
                                                     @endif
                                                 </th>
                                                 <th>
                                                     @if ($toggleSortFirstname === 'desc')
                                                         <a href="{{ route('admin.users.index', ['sortByFirstname' => 'asc']) }}" type="submit" class="btn text-primary"
-                                                            data-toggle="tooltip" title="Click to ascend First name."><strong>First Name</strong> <i class="bi bi-sort-alpha-down-alt"></i> </a>
+                                                            data-toggle="tooltip" title="Click to ascend first name."><strong>First Name</strong> <i class="bi bi-sort-alpha-down-alt"></i> </a>
                                                     @else
                                                         <a href="{{ route('admin.users.index', ['sortByFirstname' => 'desc']) }}" type="submit" class="btn text-primary"
-                                                            data-toggle="tooltip" title="Click to descend First name."><strong>First Name</strong> <i class="bi bi-sort-alpha-up"></i> </a>
+                                                            data-toggle="tooltip" title="Click to descend first name."><strong>First Name</strong> <i class="bi bi-sort-alpha-up"></i> </a>
                                                     @endif
                                                 </th>
                                                 <th class="text-center">Level</th>
@@ -186,10 +186,10 @@
                                                 <th>
                                                     @if ($sortByDateSubmitted === 'desc')
                                                         <a href="{{ route('admin.users.index', ['sortByDateSubmitted' => 'asc']) }}" type="submit" class="btn text-primary"
-                                                            data-toggle="tooltip" title="Click to Ascend Submitted date."><strong>Submitted on</strong> <i class="bi bi-sort-alpha-down-alt"></i> </a>
+                                                            data-toggle="tooltip" title="Click to descend submitted date."><strong>Submitted</strong> <i class="bi bi-sort-numeric-up"></i> </a>
                                                     @else
                                                         <a href="{{ route('admin.users.index', ['sortByDateSubmitted' => 'desc']) }}" type="submit" class="btn text-primary"
-                                                            data-toggle="tooltip" title="Click to Descend Submitted date."><strong>Submitted on</strong> <i class="bi bi-sort-alpha-up"></i> </a>
+                                                            data-toggle="tooltip" title="Click to ascend submitted date."><strong>Submitted</strong> <i class="bi bi-sort-numeric-down-alt"></i> </a>
                                                     @endif
                                                 </th>
                                                 <th class="text-right">
