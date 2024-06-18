@@ -132,7 +132,12 @@
 
                     <div class="row mt-3">
                         <div class="col d-flex justify-content-center">
-                            <a href="{{ route('admin.users.index') }}" class="btn btn-secondary" role="button"><i class="bi bi-arrow-return-right mr-1"></i>Back</a>
+                            {{-- <div class="p-2">
+                                <a href="#" class="btn btn-primary" id="generateApplicantsForm">Generate Form</a>
+                            </div> --}}
+                            <div class="p-2">
+                                <a href="{{ route('admin.users.index') }}" class="btn btn-secondary" role="button"><i class="bi bi-arrow-return-right mr-1"></i>Back</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -146,7 +151,7 @@
 </div>
 
 <!-- Administrator JS -->
-<script src="{{ asset('dist/js/pages/administrator.js') }}"></script>
+<script src="{{ asset('dist/js/pages/administrator/show.js') }}"></script>
 
 {{-- container end --}}
 @endsection

@@ -248,6 +248,42 @@ function handleAddInputForm(submitAnswer) {
     });
 }
 
+// Reset Fields Prompt
+function generateApplicantsFormConfirmation() {
+    Swal.fire({
+    title: "Generate form",
+    text: "Are you sure you want to generate this applicant's form?",
+    icon: "Info",
+    showCancelButton: true,
+    confirmButtonColor: '#007afe',
+    cancelButtonColor: '#6d747d',
+    confirmButtonText: 'Generate',
+    }).then((result) => {
+        if (result.isConfirmed) {
+        // If the user clicks "Yes, clear," clear the input fields
+        const inputFields = document.querySelectorAll('input');
+
+        inputFields.forEach((input) => {
+            input.value = '';
+        });
+
+        Swal.fire({
+            showConfirmButton: false,
+            title: 'Please wait',
+            text: 'Generating file...',
+            icon: 'success',
+            timer: 1500,
+        });
+        } else {
+            Swal.fire({
+            title: "Returning to applicant's form.",
+            timer: 1500,
+            icon: 'error',
+            showConfirmButton: false,
+            });
+        }
+    });
+}
 
 // !Sweet alert for users-end
 //Add Virtual Agent Scores
