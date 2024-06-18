@@ -64,16 +64,20 @@
                         <div class="row">
                             <div class="col">
                                 <div class="row mb-1 d-flex justify-content-around">
-                                    <div class="col">
-                                        <div class="d-flex form-inline mb-3">
-                                            <form method="GET" action="#">
-                                                <input type="text" name="search" placeholder="Enter search here" class="form-control">
+                                    <div class="col" id="search_col">
+                                        <form method="GET" action="#" class="form-inline row">
+                                            <div class="col-md-8">
+                                                <input type="text" name="search" placeholder="Enter search here" class="form-control w-100">
+                                            </div>
+                                            <div class="col-md-2 text-right p-1">
                                                 <button type="submit" class="btn btn-secondary btn-sm"><i class="bi bi-search mr-1"></i>Search</button>
+                                            </div>
+                                            <div class="col-md-2 text-right p-1">
                                                 <a href="{{ route('admin.users.index') }}" type="submit" class="btn btn-outline-danger btn-sm" ><i class="bi bi-arrow-counterclockwise mr-1"></i>Clear</a>
-                                            </form>
-                                        </div>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <div class="col d-flex justify-content-end">
+                                    <div class="col d-flex justify-content-end" id="view_col">
                                         <div class="mr-1">
                                             <p> <strong> Current view - </strong></p>
                                         </div>
@@ -94,8 +98,6 @@
                                                 Default
                                             </p>
                                         @endif
-
-
                                     </div>
                                 </div>
                                 <div class="accordion" id="filters">
