@@ -85,7 +85,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="{{ route('admin.dashboard') }}" class="brand-link">
-                <img src="{{ asset('dist/img/logo.png') }}" alt="VA House Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="{{ asset('dist/img/x-logo.jpg') }}" alt="VA House Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">VA House</span>
             </a>
 
