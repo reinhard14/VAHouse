@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Score;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password as RulesPassword;
 
 
@@ -250,7 +251,15 @@ class AdminUserController extends Controller
     {
         $user = User::find($id);
 
-        $user->delete();
+        //
+        //check if resume is not null. then proceed with delete.
+        if (!isset($user->scores->resume)) {
+            $user->delete();
+        } else {
+            $pdf = $user->scores->resume;
+            Storage::delete('public/'.$pdf);
+            $user->delete();
+        }
 
         return redirect()->route('admin.users.index');
 
