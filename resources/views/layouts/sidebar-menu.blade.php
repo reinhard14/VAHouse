@@ -37,7 +37,7 @@
                 {{-- <li class="nav-item">
                     <a href="{{ route('administrator.index') }}" class="nav-link">
                     <ion-icon name="id-card-outline"></ion-icon>
-                    <p>Update</p>
+                    <p>Notifications</p>
                     </a>
                 </li> --}}
             </ul>
