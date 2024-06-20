@@ -251,7 +251,6 @@ class AdminUserController extends Controller
     {
         $user = User::find($id);
 
-        //
         //check if resume is not null. then proceed with delete.
         if (!isset($user->scores->resume)) {
             $user->delete();
@@ -271,7 +270,14 @@ class AdminUserController extends Controller
 
         foreach($selectedUserIds as $userId) {
             $user = User::find($userId);
-            $user->delete();
+
+            if (!isset($user->scores->resume))  {
+                $user->delete();
+            } else {
+                $pdf = $user->scores->resume;
+                Storage::delete('public/'.$pdf);
+                $user->delete();
+            }
         }
 
         return redirect()->route('admin.users.index');
