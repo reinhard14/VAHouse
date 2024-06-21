@@ -14,15 +14,15 @@ class DepartmentSeeder extends Seeder
      */
     public function run()
     {
-        // Department::create([
-        //     'code' => '001',
-        //     'name' => 'AT&T',
-        //     'description' => 'the American Telephone and Telegraph Company',
-        // ]);
-        // Department::create([
-        //     'code' => '002',
-        //     'name' => 'DC',
-        //     'description' => 'Direct Client',
-        // ]);
+        Department::create([
+            'code' => '001',
+            'name' => 'AT&T',
+            'description' => 'the American Telephone and Telegraph Company',
+        ]);
+        Department::create([
+            'code' => '002',
+            'name' => 'DC',
+            'description' => 'Direct Client',
+        ]);
     }
 }

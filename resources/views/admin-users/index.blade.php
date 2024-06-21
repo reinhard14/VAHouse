@@ -299,6 +299,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="{{ asset('dist/js/pages/user-administrator.js') }}"></script>
 
+
 {{-- container end --}}
 @endsection
 

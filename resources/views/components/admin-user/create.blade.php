@@ -27,7 +27,12 @@
                     <input class="form-control mb-2" type="number" name="contactnumber" required>
 
                     <label class="form-label" for="password">Password </label>
-                    <input class="form-control mb-2" type="password" name="password" required>
+                    <div class="input-group mb-2">
+                        <input class="form-control" type="password" name="password" id="passwordCreate" required>
+                        <button type="button" class="btn btn-outline-secondary" id="toggleCreatePassword">
+                            <i class="bi bi-eye-slash" id="toggleCreateIcon"></i>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="modal-footer">
@@ -40,3 +45,21 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const togglePassword = document.querySelector('#toggleCreatePassword');
+        const password = document.querySelector('#passwordCreate');
+        const toggleIcon = document.querySelector('#toggleCreateIcon');
+
+        togglePassword.addEventListener('click', function () {
+            // Toggle the type attribute using getAttribute() and setAttribute()
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+
+            // Toggle the icon
+            toggleIcon.classList.toggle('bi-eye');
+            toggleIcon.classList.toggle('bi-eye-slash');
+        });
+    });
+</script>

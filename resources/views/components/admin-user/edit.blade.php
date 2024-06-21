@@ -26,7 +26,12 @@
                     <input class="form-control mb-2" type="number" value="{{ $user->contactnumber }}" name="contactnumber" required>
 
                     <label class="form-label" for="password">Password </label>
-                    <input class="form-control mb-2" type="password" name="password" required>
+                    <div class="input-group mb-2">
+                        <input class="form-control" type="password" name="password" id="password" required>
+                        <button type="button" class="btn btn-outline-secondary" id="togglePassword">
+                            <i class="bi bi-eye-slash" id="toggleIcon"></i>
+                        </button>
+                    </div>
                 </div>
                 <small class="text-left ml-3">
                     last updated: {{ $user->updated_at->diffForHumans() }}
@@ -43,3 +48,21 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        const toggleIcon = document.querySelector('#toggleIcon');
+
+        togglePassword.addEventListener('click', function () {
+            // Toggle the type attribute using getAttribute() and setAttribute()
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+
+            // Toggle the icon
+            toggleIcon.classList.toggle('bi-eye');
+            toggleIcon.classList.toggle('bi-eye-slash');
+        });
+    });
+</script>
