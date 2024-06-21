@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Set the value of the input field
             selectedUserIdsInput.value = selectedUserIds.join(",");
 
-            // Submit the form, from sweetAlertJS.
+            // Submit the form, to sweetAlertJS.
             handleDeleteConfirmation(deleteForm);
         });
     }
@@ -114,7 +114,6 @@ document.addEventListener("DOMContentLoaded", function() {
     //deleting user on index.
     const deleteCheckboxes = document.querySelectorAll('.deleteCheckboxes');
 
-    //deleting user on index.
     if (deleteCheckboxes) {
         deleteCheckboxes.forEach((form) => {
             form.addEventListener('submit', (e) => {
@@ -124,10 +123,9 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    //saving admin form, and routing admin.
-    const form = document.getElementById('addUserForm')
+    //saving admin applicants
+    const form = document.getElementById('addApplicantsForm')
 
-    //saving admin form, and routing admin.
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -148,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-// In your Javascript (external .js resource or <script> tag)
+//Jquery
 $(document).ready(function() {
     $('#websites').select2({
         maximumSelectionLength: 10,

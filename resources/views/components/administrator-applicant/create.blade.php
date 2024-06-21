@@ -1,18 +1,16 @@
-<!-- Add Modal -->
+<!-- Add Applicants Modal -->
 
 <div class="modal fade" id="create-user-modal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add New User</h5>
+                <h5 class="modal-title">Add New Applicant</h5>
                 <button type="button" class="close" data-bs-dismiss="modal">x</button>
             </div>
 
-            <form id="addUserForm" method="POST" action="{{ route('admin.users.store') }}">
+            <form id="addApplicantsForm" method="POST" action="{{ route('admin.users.store') }}">
                 @csrf
                 <input type="hidden" name="role_id" value="3">
-                <input type="hidden" name="saving_route" id="savingRoute" value="">
-
                 <div class="modal-body">
                     <label class="form-label" for="name">Name </label>
                     <input class="form-control mb-2" type="text" name="name" required>
@@ -46,20 +44,3 @@
     </div>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const togglePassword = document.querySelector('#toggleCreatePassword');
-        const password = document.querySelector('#passwordCreate');
-        const toggleIcon = document.querySelector('#toggleCreateIcon');
-
-        togglePassword.addEventListener('click', function () {
-            // Toggle the type attribute using getAttribute() and setAttribute()
-            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
-
-            // Toggle the icon
-            toggleIcon.classList.toggle('bi-eye');
-            toggleIcon.classList.toggle('bi-eye-slash');
-        });
-    });
-</script>

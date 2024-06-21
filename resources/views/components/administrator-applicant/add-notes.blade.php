@@ -8,7 +8,7 @@
                 <button type="button" class="close" data-bs-dismiss="modal">x</button>
             </div>
 
-            <form id="addUserForm" method="POST" action="{{ route('add.notes') }}">
+            <form method="POST" action="{{ route('add.notes') }}">
                 @csrf
                 <input type="hidden" name="user_id" value="{{ $user->id }}">
                 <input type="hidden" name="reviewed_by" value="{{ Auth::user()->name }}">

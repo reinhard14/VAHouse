@@ -286,12 +286,11 @@
 </div>
 
 {{--* Modal components here --}}
-<x-admin-user.create />
-
+<x-administrator-applicant.create />
 
 @foreach ($users as $user)
-    <x-admin-user.edit :user="$user" />
-    <x-admin-user.add-notes :user="$user" />
+    <x-administrator-applicant.edit :user="$user" />
+    <x-administrator-applicant.add-notes :user="$user" />
 @endforeach
 
 
@@ -299,6 +298,38 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="{{ asset('dist/js/pages/user-administrator.js') }}"></script>
 
+{{-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+        const toggleIcon = document.querySelector('#toggleIcon');
+
+        togglePassword.addEventListener('click', function () {
+            // Toggle the type attribute using getAttribute() and setAttribute()
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+
+            // Toggle the icon
+            toggleIcon.classList.toggle('bi-eye');
+            toggleIcon.classList.toggle('bi-eye-slash');
+        });
+    });
+
+        const togglePassword = document.querySelector('#toggleCreatePassword');
+        const password = document.getElemenyById('#passwordCreate');
+        const toggleIcon = document.querySelector('#toggleCreateIcon');
+
+        togglePassword.addEventListener('click', function () {
+            // Toggle the type attribute using getAttribute() and setAttribute()
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+
+            // Toggle the icon
+            toggleIcon.classList.toggle('bi-eye');
+            toggleIcon.classList.toggle('bi-eye-slash');
+        });
+
+</script> --}}
 
 {{-- container end --}}
 @endsection
