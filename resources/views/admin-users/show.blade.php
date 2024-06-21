@@ -59,7 +59,7 @@
                         </div>
                         <div class="col">
                             <label>Registered</label>
-                            <p> <span class="p-1 bg-success text-white">{{ $user->created_at }} </span> </p>
+                            <p> <span class="p-1 bg-success text-white">{{ $user->created_at->diffForHumans(['parts' => 3]) }} </span> </p>
                         </div>
                     </div>
 
