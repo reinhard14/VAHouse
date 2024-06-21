@@ -59,7 +59,7 @@
                         </div>
                         <div class="col">
                             <label>Registered</label>
-                            <p> <span class="badge badge-pill badge-success text-white">{{ $user->created_at->diffForHumans(['parts' => 2]) }} </span> </p>
+                            <p> <span class="badge badge-pill badge-success">{{ $user->created_at->diffForHumans(['parts' => 2]) }} </span> </p>
                         </div>
                     </div>
 
@@ -74,7 +74,7 @@
                                 @if(!isset($user->scores->portfolio))
                                     N/A
                                 @else
-                                    <a href="{{ $user->scores->portfolio }}" target="_blank">{{ \Illuminate\Support\Str::limit($user->scores->portfolio, 30) }}</a>
+                                    <a href="{{ $user->scores->portfolio }}" target="_blank" class="badge badge-primary">{{ \Illuminate\Support\Str::limit($user->scores->portfolio, 30) }}</a>
                                 @endif
                             </p>
                         </div>
@@ -84,7 +84,7 @@
                                 @if (!isset($user->scores->resume))
                                     N/A
                                 @else
-                                    <a href="{{ route('view.pdf', $user->scores->resume) }}" target="_blank">Click here</a>
+                                    <a href="{{ route('view.pdf', $user->scores->resume) }}" target="_blank" class="badge badge-primary">Click here</a>
                                 @endif
                             </p>
                         </div>
@@ -148,8 +148,6 @@
 
 </div>
 
-<!-- Administrator JS -->
-<script src="{{ asset('dist/js/pages/administrator/show.js') }}"></script>
 
 {{-- container end --}}
 @endsection
