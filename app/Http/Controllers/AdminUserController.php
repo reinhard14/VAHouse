@@ -235,7 +235,7 @@ class AdminUserController extends Controller
         $user->lastname = $request->input('lastname');
         $user->contactnumber = $request->input('contactnumber');
         $user->email = $request->input('email');
-        $user->password = $request->input('password');
+        $user->password = bcrypt($request->input('password'));
         $user->save();
 
         return redirect()->route('admin.users.index');

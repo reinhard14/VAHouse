@@ -40,6 +40,77 @@
                             </div>
                         </div>
 
+                        {{-- <div class="row mb-3">
+                            <label for="age" class="col-md-4 col-form-label text-md-end">{{ __('Age') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="age" type="number" class="form-control @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autocomplete="age">
+
+                                @error('age')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="gender" class="col-md-4 col-form-label text-md-end">{{ __('Gender') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="gender" class="form-control">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Transgender">Transgender</option>
+                                    <option value="Non binary">Non-Binary/Non-Conforming</option>
+                                    <option value="N/A">Prefer not to respond</option>
+                                </select>
+
+                                @error('gender')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="skype" class="col-md-4 col-form-label text-md-end">{{ __('Skype ID') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="skype" type="text" class="form-control @error('skype') is-invalid @enderror" name="skype" value="{{ old('skype') }}" required autocomplete="skype">
+
+                                @error('skype')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="education" class="col-md-4 col-form-label text-md-end">{{ __('Highest Educational Attainment') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="education" class="form-control">
+                                    <option value="High School">High School</option>
+                                    <option value="Senior High School">Senior High School</option>
+                                    <option value="College Undergrad">College Undergrad</option>
+                                    <option value="College Degree">College Degree</option>
+                                    <option value="Master's Degree">Master's Degree</option>
+                                    <option value="Professional Degree">Professional Degree</option>
+                                    <option value="Doctorate Degree">Doctorate Degree</option>
+                                    <option value="Vocational">Vocational</option>
+                                </select>
+
+                                @error('education')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div> --}}
+
                         <div class="row mb-3">
                             <label for="contactnumber" class="col-md-4 col-form-label text-md-end">{{ __('Contact Number') }}</label>
 
@@ -53,6 +124,20 @@
                                 @enderror
                             </div>
                         </div>
+{{--
+                        <div class="row mb-3">
+                            <label for="photo" class="col-md-4 col-form-label text-md-end">{{ __('Formal Photo') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="photo" type="file" accept=".jpeg,.jpg,.png" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('photo') }}" required autocomplete="photo">
+
+                                @error('photo')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div> --}}
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>

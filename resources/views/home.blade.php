@@ -24,6 +24,14 @@
                         </div>
                     </div>
 
+                    {{-- <div class="row mb-5">
+                        <div class="col text-center">
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#guidelinesModal">
+                                Please click here for the complete guideline before proceeding below!
+                            </button>
+                        </div>
+                    </div> --}}
+
                     <form method="post" action="{{ route('user.store') }}" id="scoresForm" enctype="multipart/form-data">
                         @csrf
 
@@ -186,7 +194,7 @@
                                     {{-- <label for="resume"><span class="text-danger">*</span> Attach resume here: (PDF file only) </label>
                                     <input name="resume" type="button" onclick="alert('Insert attachment!')" value="attachment" class="btn btn-info btn-sm form-control"> --}}
                                     <label for="resume">Attach resume here: (PDF file only)</label>
-                                    <input type="file" id="resume" name="resume" accept="application/pdf" required>
+                                    <input type="file" id="resume" name="resume" accept="application/pdf" class="form-control" required>
                                 </div>
                             </div>
                         </div>
@@ -202,6 +210,8 @@
     </div>
 </div>
 
+{{--
+<x-applicant.guidelines /> --}}
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="{{ asset('dist/js/pages/user-end/index.js') }}"></script>
