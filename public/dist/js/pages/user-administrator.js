@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            handleUserFormSubmission(form);
+            handleApplicantsFormSubmission(form);
         });
     }
 

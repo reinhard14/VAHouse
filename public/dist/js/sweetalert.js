@@ -1,15 +1,15 @@
 //TODO Admin User Alerts
 //Administrator actions for Users Saving prompt.
-function handleUserFormSubmission(form) {
+function handleApplicantsFormSubmission(form) {
 
     Swal.fire({
         icon: 'success',
         title: 'Saved!',
-        text: 'User has been successfully added.',
+        text: 'Applicant has been successfully added.',
         showConfirmButton: false,
         timer: 1000,
         willClose: () => {
-            form.submit(); // Submit the form when the alert is closed
+            form.submit();
         }
     });
 }
