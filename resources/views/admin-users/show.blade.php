@@ -59,7 +59,7 @@
                         </div>
                         <div class="col">
                             <label>Registered</label>
-                            <p> <span class="p-1 bg-success text-white">{{ $user->created_at->diffForHumans(['parts' => 3]) }} </span> </p>
+                            <p> <span class="badge badge-pill badge-success text-white">{{ $user->created_at->diffForHumans(['parts' => 2]) }} </span> </p>
                         </div>
                     </div>
 
