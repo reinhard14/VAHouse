@@ -1,4 +1,4 @@
-//TODO Admin User Alerts
+//TODO Admin Applicants Alerts
 //Administrator actions for Users Saving prompt.
 function handleApplicantsFormSubmission(form) {
 
@@ -29,31 +29,39 @@ function handleUserEditFormSubmission(form) {
     });
 }
 
-//TODO Form Alerts
-//Add Form
-function handleAddForm(form) {
+// Generate Form Applicants Prompt
+function generateApplicantsFormConfirmation() {
     Swal.fire({
-        icon: 'success',
-        title: 'Saved!',
-        text: 'Form has been successfully saved.',
-        showConfirmButton: false,
-        timer: 1000,
-        willClose: () => {
-            form.submit(); // Submit the form when the alert is closed
-        }
-    });
-}
+    title: "Generate form",
+    text: "Are you sure you want to generate this applicant's form?",
+    icon: "Info",
+    showCancelButton: true,
+    confirmButtonColor: '#007afe',
+    cancelButtonColor: '#6d747d',
+    confirmButtonText: 'Generate',
+    }).then((result) => {
+        if (result.isConfirmed) {
+        // If the user clicks "Yes, clear," clear the input fields
+        const inputFields = document.querySelectorAll('input');
 
-//Update Form alert
-function handleUpdateForm(form) {
-    Swal.fire({
-        icon: 'success',
-        title: 'Saved!',
-        text: 'Form has been updated successfully.',
-        showConfirmButton: false,
-        timer: 1000,
-        willClose: () => {
-            form.submit(); // Submit the form when the alert is closed
+        inputFields.forEach((input) => {
+            input.value = '';
+        });
+
+        Swal.fire({
+            showConfirmButton: false,
+            title: 'Please wait',
+            text: 'Generating file...',
+            icon: 'success',
+            timer: 1500,
+        });
+        } else {
+            Swal.fire({
+            title: "Returning to applicant's form.",
+            timer: 1500,
+            icon: 'error',
+            showConfirmButton: false,
+            });
         }
     });
 }
@@ -73,6 +81,7 @@ function handleEditDepartmentForm(editDepartmentForm) {
     });
 }
 
+//TODO Departments alerts
 //Add Department
 function handleAddDepartmentForm(addDepartmentForm) {
     Swal.fire({
@@ -196,6 +205,7 @@ function handleAdminEditFormSubmission(updateForm, userRouteOption) {
         }
     });
 }
+
 // Reset Fields Prompt
 function handleClearFields() {
     Swal.fire({
@@ -233,57 +243,8 @@ function handleClearFields() {
     });
 }
 
-//TODO Input Alerts
-//Add Input prompt
-function handleAddInputForm(submitAnswer) {
-    Swal.fire({
-        icon: 'success',
-        title: 'Saved!',
-        text: 'Input has been successfully saved.',
-        showConfirmButton: false,
-        timer: 1000,
-        willClose: () => {
-            submitAnswer.submit(); // Submit the form when the alert is closed
-        }
-    });
-}
 
-// Reset Fields Prompt
-function generateApplicantsFormConfirmation() {
-    Swal.fire({
-    title: "Generate form",
-    text: "Are you sure you want to generate this applicant's form?",
-    icon: "Info",
-    showCancelButton: true,
-    confirmButtonColor: '#007afe',
-    cancelButtonColor: '#6d747d',
-    confirmButtonText: 'Generate',
-    }).then((result) => {
-        if (result.isConfirmed) {
-        // If the user clicks "Yes, clear," clear the input fields
-        const inputFields = document.querySelectorAll('input');
 
-        inputFields.forEach((input) => {
-            input.value = '';
-        });
-
-        Swal.fire({
-            showConfirmButton: false,
-            title: 'Please wait',
-            text: 'Generating file...',
-            icon: 'success',
-            timer: 1500,
-        });
-        } else {
-            Swal.fire({
-            title: "Returning to applicant's form.",
-            timer: 1500,
-            icon: 'error',
-            showConfirmButton: false,
-            });
-        }
-    });
-}
 
 // !Sweet alert for users-end
 //Add Virtual Agent Scores
