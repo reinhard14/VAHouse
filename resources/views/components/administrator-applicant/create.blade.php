@@ -25,12 +25,12 @@
                     <input class="form-control mb-2" type="number" name="contactnumber" required>
 
                     <label class="form-label" for="password">Password </label>
-                    {{-- <div class="input-group mb-2"> --}}
-                        <input class="form-control" type="password" name="password" required>
-                        {{-- <button type="button" class="btn btn-outline-secondary" id="toggleCreatePassword">
-                            <i class="bi bi-eye-slash" id="toggleCreateIcon"></i>
+                    <div class="input-group mb-2">
+                        <input class="form-control" type="password" name="password" id="password" required>
+                        <button type="button" class="btn btn-outline-secondary" id="togglePassword">
+                            <i class="bi bi-eye-slash" id="toggleIcon"></i>
                         </button>
-                    </div> --}}
+                    </div>
                 </div>
 
                 <div class="modal-footer">
@@ -43,4 +43,3 @@
         </div>
     </div>
 </div>
-

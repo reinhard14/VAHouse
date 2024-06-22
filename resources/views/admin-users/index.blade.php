@@ -297,24 +297,7 @@
 <!-- Administrator JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="{{ asset('dist/js/pages/applicants/index.js') }}"></script>
-{{--
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const togglePassword = document.querySelector('#togglePassword');
-        const password = document.querySelector('#password');
-        const toggleIcon = document.querySelector('#toggleIcon');
 
-        togglePassword.addEventListener('click', function () {
-            // Toggle the type attribute using getAttribute() and setAttribute()
-            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
-
-            // Toggle the icon
-            toggleIcon.classList.toggle('bi-eye');
-            toggleIcon.classList.toggle('bi-eye-slash');
-        });
-    });
-</script> --}}
 
 {{-- container end --}}
 @endsection
