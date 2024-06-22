@@ -158,6 +158,20 @@ document.addEventListener("DOMContentLoaded", function() {
         toggleIcon.classList.toggle('bi-eye-slash');
     });
 
+    document.querySelectorAll('.editTogglePassword').forEach(button => {
+        button.addEventListener('click', function () {
+            const editPassword = button.closest('.input-group').querySelector('.editPassword');
+            const editToggleIcon = button.querySelector('.editToggleIcon');
+
+            const type = editPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+            editPassword.setAttribute('type', type);
+
+            // Toggle the icon
+            editToggleIcon.classList.toggle('bi-eye');
+            editToggleIcon.classList.toggle('bi-eye-slash');
+        });
+    });
+
 });
 
 //Jquery

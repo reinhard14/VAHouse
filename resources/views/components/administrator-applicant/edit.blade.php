@@ -26,12 +26,14 @@
                     <input class="form-control mb-2" type="number" value="{{ $user->contactnumber }}" name="contactnumber" required>
 
                     <label class="form-label" for="password">Password </label>
-                    {{-- <div class="input-group mb-2"> --}}
-                        <input class="form-control" type="password" name="password" required>
-                        {{-- <button type="button" class="btn btn-outline-secondary" id="togglePassword">
-                            <i class="bi bi-eye-slash" id="toggleIcon"></i>
-                        </button>
-                    </div> --}}
+                    <div class="input-group mb-2">
+                        <input class="form-control editPassword" type="password" name="password" required>
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-outline-secondary editTogglePassword">
+                                <i class="bi bi-eye-slash editToggleIcon"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <small class="text-left ml-3">
                     last updated: {{ $user->updated_at->diffForHumans() }}

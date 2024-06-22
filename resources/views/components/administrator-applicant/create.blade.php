@@ -27,9 +27,11 @@
                     <label class="form-label" for="password">Password </label>
                     <div class="input-group mb-2">
                         <input class="form-control" type="password" name="password" id="password" required>
-                        <button type="button" class="btn btn-outline-secondary" id="togglePassword">
-                            <i class="bi bi-eye-slash" id="toggleIcon"></i>
-                        </button>
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-outline-secondary" id="togglePassword">
+                                <i class="bi bi-eye-slash" id="toggleIcon"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
