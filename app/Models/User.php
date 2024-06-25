@@ -8,9 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Role;
-use App\Models\Score;
+use App\Models\Skillset;
 use App\Models\Review;
-
+use App\Models\ApplicantInformation;
 
 class User extends Authenticatable
 {
@@ -27,6 +27,10 @@ class User extends Authenticatable
         'contactnumber',
         'email',
         'password',
+        'age',
+        'gender',
+        'education',
+        'address',
         'role_id',
     ];
 
@@ -54,9 +58,14 @@ class User extends Authenticatable
         return $this->hasOne(Role::class);
     }
 
+    public function information()
+    {
+        return $this->hasOne(ApplicantInformation::class);
+    }
+
     public function scores()
     {
-        return $this->hasOne(Score::class);
+        return $this->hasOne(Skillset::class);
     }
 
     public function review()

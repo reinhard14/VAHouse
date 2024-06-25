@@ -1,9 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
-    //submitting scores field.
+    //Submitting scores field.
     const form = document.getElementById('scoresForm')
-    //resetting admin fields.
-    const resetFieldButton = document.getElementById('resetFieldButton');
-
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -11,16 +8,24 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    //Resetting applicant's fields.
+    const resetFieldButton = document.getElementById('resetFieldButton');
+
     if (resetFieldButton) {
         resetFieldButton.addEventListener('click', (e) => {
             e.preventDefault();
             handleClearSelects();
         });
     }
+
+    //Show modal upon login.
+    const guidelinesModal = new bootstrap.Modal(document.getElementById('guidelinesModal'));
+    guidelinesModal.show();
 });
 
 
 $(document).ready(function() {
+    // $('#guidelinesModal').modal('show');
 
     $('#websites').select2({
         tags: true,

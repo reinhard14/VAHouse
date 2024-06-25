@@ -4,16 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User;
 
-
-class Role extends Model
+class Skillset extends Model
 {
     use HasFactory;
 
-    public function administrator()
-    {
-        return $this->hasOne(Administrator::class);
-    }
+    protected $fillable = [
+        'website',
+        'tool',
+        'skill',
+        'softskill',
+    ];
 
     public function user()
     {

@@ -6,21 +6,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
-class Score extends Model
+class ApplicantInformation extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'website',
-        // 'application',
-        'tool',
-        'skill',
-        'softskill',
         'rate',
-        'videolink',
         'portfolio',
-        'resume',
+        'videolink',
         'experience',
+        'skype',
+        'resume',
+        'niche',
+        'ub_account',
+        'ub_number',
+        'photo_id',
+        'photo_formal',
+        'disc_results',
+        'positions',
     ];
 
     public function user()

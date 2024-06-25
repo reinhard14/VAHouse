@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">Register as an applicant</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -40,7 +40,7 @@
                             </div>
                         </div>
 
-                        {{-- <div class="row mb-3">
+                        <div class="row mb-3">
                             <label for="age" class="col-md-4 col-form-label text-md-end">{{ __('Age') }}</label>
 
                             <div class="col-md-6">
@@ -74,19 +74,6 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="skype" class="col-md-4 col-form-label text-md-end">{{ __('Skype ID') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="skype" type="text" class="form-control @error('skype') is-invalid @enderror" name="skype" value="{{ old('skype') }}" required autocomplete="skype">
-
-                                @error('skype')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
                         <div class="row mb-3">
                             <label for="education" class="col-md-4 col-form-label text-md-end">{{ __('Highest Educational Attainment') }}</label>
@@ -109,7 +96,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div> --}}
+                        </div>
 
                         <div class="row mb-3">
                             <label for="contactnumber" class="col-md-4 col-form-label text-md-end">{{ __('Contact Number') }}</label>
@@ -124,20 +111,6 @@
                                 @enderror
                             </div>
                         </div>
-{{--
-                        <div class="row mb-3">
-                            <label for="photo" class="col-md-4 col-form-label text-md-end">{{ __('Formal Photo') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="photo" type="file" accept=".jpeg,.jpg,.png" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('photo') }}" required autocomplete="photo">
-
-                                @error('photo')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div> --}}
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
@@ -146,6 +119,20 @@
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="address" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address">
+
+                                @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -199,7 +186,9 @@
                                 </button>
                             </div>
                         </div>
+
                     </form>
+
                 </div>
             </div>
         </div>

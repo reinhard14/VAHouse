@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Score;
+use App\Models\Skillset;
+use App\Models\ApplicantInformation;
 use App\Models\User;
-use App\Models\Review;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Password as RulesPassword;
 
 class UserController extends Controller
 {
@@ -51,28 +52,49 @@ class UserController extends Controller
             'videolink' => 'required',
             'experience' => 'required',
             'resume' => 'required|mimes:pdf|max:10000',
+            'disc_results' => 'required|mimes:pdf|max:10000',
+            'skype' => 'required',
+            'niche' => 'required',
+            'ub_account' => 'required',
+            'ub_number' => 'required',
+            'photo_id' => 'required|max:10000',
+            'photo_formal' => 'required|max:10000',
+            // 'positions' => 'required',
         ]);
+
+        $attributes = ['user_id' => Auth::id()];
 
         // Handle PDF file upload
         if ($request->hasFile('resume')) {
             $pdfPath = $request->file('resume')->store('pdfs', 'public');
         } else {
-            // Handle the case when no PDF file is uploaded
             return back()->with('error', 'Please upload a PDF file.');
         }
 
-        $score = new Score();
+        $score = Skillset::firstOrNew($attributes);
         $score->website = json_encode($request->input('websites'));
         $score->tool = json_encode($request->input('tools'));
         $score->skill = json_encode($request->input('skills'));
         $score->softskill = json_encode($request->input('softskills'));
-        $score->rate = $request->input('rate');
-        $score->videolink = $request->input('videolink');
-        $score->portfolio = $request->input('portfolio');
-        $score->experience = $request->input('experience');
-        $score->resume = $pdfPath;
         $score->user_id = Auth::id();
         $score->save();
+
+        $information = ApplicantInformation::firstOrNew($attributes);
+        $information->rate = $request->input('rate');
+        $information->videolink = $request->input('videolink');
+        $information->portfolio = $request->input('portfolio');
+        $information->experience = $request->input('experience');
+        $information->positions = $request->input('positions');
+        $information->skype = $request->input('skype');
+        $information->niche = $request->input('niche');
+        $information->ub_account = $request->input('ub_account');
+        $information->ub_number = $request->input('ub_number');
+        $information->resume = $pdfPath;
+        $information->photo_id = $pdfPath;
+        $information->photo_formal = $pdfPath;
+        $information->disc_results = $pdfPath;
+        $information->user_id = Auth::id();
+        $information->save();
 
         $tags = $request->only(['websites', 'applications', 'tools', 'skills', 'softskills']);
 
@@ -86,7 +108,7 @@ class UserController extends Controller
             }
         }
 
-        return back()->with('success', 'Skillsets successfully added! you can view your answers on by clicking "View account".');
+        return back()->with('success', 'Form has been successfully filled-up! you can view your answers on by clicking "View account".');
 
     }
 
@@ -100,24 +122,23 @@ class UserController extends Controller
     public function show($id)
     {
             $user = User::findOrFail($id);
-            $websites = Score::where('user_id', $user->id)
+            $websites = Skillset::where('user_id', $user->id)
                             ->latest('created_at')
                             ->value('website');
 
-            $tools = Score::where('user_id', $user->id)
+            $tools = Skillset::where('user_id', $user->id)
                             ->latest('created_at')
                             ->value('tool');
 
-            $skills = Score::where('user_id', $user->id)
+            $skills = Skillset::where('user_id', $user->id)
                             ->latest('created_at')
                             ->value('skill');
 
-            $softskills = Score::where('user_id', $user->id)
+            $softskills = Skillset::where('user_id', $user->id)
                             ->latest('created_at')
                             ->value('softskill');
 
             $aWebsites = json_decode($websites);
-            // $aApplications = json_decode($applications);
             $aTools = json_decode($tools);
             $aSkills = json_decode($skills);
             $aSoftskills = json_decode($softskills);
@@ -153,43 +174,30 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //test
-    }
-
-    public function viewPDF($filename)
-    {
-        $filePath = 'pdfs/' . $filename;
-
-        // Check if the file exists
-        if (!Storage::disk('public')->exists($filePath)) {
-            abort(404);
-        }
-
-        // Get the file's content
-        $fileContent = Storage::disk('public')->get($filePath);
-
-        // Return the file's content as a response
-        return response($fileContent, 200)
-            ->header('Content-Type', 'application/pdf')
-            ->header('Content-Disposition', 'inline; filename="' . $filename . '"');
-    }
-
-    public function addNotes(Request $request) {
-
         $this->validate($request, [
-            'notes' => 'required',
-            'user_id' => 'required',
+            'password' => ['required',
+                        RulesPassword::min(8)
+                        ->letters()
+                        ->mixedCase()
+                        ->numbers()
+                        ->symbols()
+                        ->uncompromised()],
         ]);
 
-        $attributes = ['user_id' => $request->input('user_id')];
+        $user = User::findOrFail($id);
 
-        $review = Review::firstOrNew($attributes);
-        $review->notes = $request->input('notes');
-        $review->user_id = $request->input('user_id');
-        $review->reviewed_by = $request->input('reviewed_by');
-        $review->review_status = $request->input('review_status');
-        $review->save();
+        $user->name = $request->input('name');
+        $user->lastname = $request->input('lastname');
+        $user->contactnumber = $request->input('contactnumber');
+        $user->email = $request->input('email');
+        $user->age = $request->input('age');
+        $user->gender = $request->input('gender');
+        $user->education = $request->input('education');
+        $user->address = $request->input('address');
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
 
-        return back()->with('success', 'Successfully added a note.');
+        return redirect()->route('admin.users.index');
     }
+
 }

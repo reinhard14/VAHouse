@@ -75,15 +75,13 @@ class AdministratorController extends Controller
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->role_id = 2;
-        // $user->administrator_id = $user->id;
         $user->save();
 
         //after creating user ID we can use it's ID.
         $user_id = $user->id;
+
         //new admin
         $administrator = new Administrator();
-
-        //get form data
         $administrator->department = $request->input('department');
         $administrator->position = $request->input('position');
         $administrator->gender = $request->input('gender');
@@ -109,6 +107,7 @@ class AdministratorController extends Controller
     public function show($id)
     {
         $administrator = Administrator::find($id);
+
         return view('administrator.show', compact('administrator'));
     }
 
@@ -122,6 +121,7 @@ class AdministratorController extends Controller
     {
         $departments = Department::all();
         $administrator = Administrator::find($id);
+
         return view('administrator.edit', compact('administrator', 'departments'));
     }
 
@@ -151,7 +151,6 @@ class AdministratorController extends Controller
         ]);
 
         $administrator = Administrator::find($id);
-
         $administrator->department = $request->input('department');
         $administrator->position = $request->input('position');
         $administrator->gender = $request->input('gender');
@@ -160,7 +159,6 @@ class AdministratorController extends Controller
 
         $user_id = $administrator->user_id;
         $user = User::find($user_id);
-
         $user->name = $request->input('name');
         $user->lastname = $request->input('lastname');
         $user->contactnumber = $request->input('contactnumber');
@@ -168,12 +166,6 @@ class AdministratorController extends Controller
         $user->password = bcrypt($request->input('password'));
 
         $user->save();
-
-        // if($request->input('saving_option') === 'save_and_exit') {
-        //     return redirect()->route('administrator.index');
-        // } else {
-        //     return redirect()->route('administrator.show', compact('administrator'));
-        // }
 
         return view('administrator.show', compact('administrator'))->with('success', 'Info Edited');
     }

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Score;
+use App\Models\Skillset;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password as RulesPassword;
-
 
 
 class AdminUserController extends Controller
@@ -47,8 +47,8 @@ class AdminUserController extends Controller
         $sortByDateSubmitted = $this->sortOrder($sortByDateSubmitted);
 
         $usersQuery = User::where('role_id', 3)
-                        ->leftJoin('scores', 'users.id', '=', 'scores.user_id')
-                        ->select('users.*', 'scores.*')
+                        ->leftJoin('skillsets', 'users.id', '=', 'skillsets.user_id')
+                        ->select('users.*', 'skillsets.*')
                         ->distinct()
                         ->orderBy($sortByColumn, $sortOrder);
 
@@ -91,7 +91,7 @@ class AdminUserController extends Controller
         $users->appends(['sortByLastname' => $sortByLastname, 'sortByFirstname' => $sortByFirstname, 'sortByDateSubmitted' => $sortByDateSubmitted]);
 
         // Display data on FILTERS
-        $scores = Score::all();
+        $scores = Skillset::all();
 
         // Helper function to get unique values from a JSON field
         function getUniqueValues($scores, $field) {
@@ -187,7 +187,7 @@ class AdminUserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $skillset = Score::where('user_id', $user->id )
+        $skillset = Skillset::where('user_id', $user->id )
                         ->latest()
                         ->first();
 
@@ -281,5 +281,42 @@ class AdminUserController extends Controller
         }
 
         return redirect()->route('admin.users.index');
+    }
+
+    public function viewPDF($filename)
+    {
+        $filePath = 'pdfs/' . $filename;
+
+        // Check if the file exists
+        if (!Storage::disk('public')->exists($filePath)) {
+            abort(404);
+        }
+
+        // Get the file's content
+        $fileContent = Storage::disk('public')->get($filePath);
+
+        // Return the file's content as a response
+        return response($fileContent, 200)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'inline; filename="' . $filename . '"');
+    }
+
+    public function addNotes(Request $request) {
+
+        $this->validate($request, [
+            'notes' => 'required',
+            'user_id' => 'required',
+        ]);
+
+        $attributes = ['user_id' => $request->input('user_id')];
+
+        $review = Review::firstOrNew($attributes);
+        $review->notes = $request->input('notes');
+        $review->user_id = $request->input('user_id');
+        $review->reviewed_by = $request->input('reviewed_by');
+        $review->review_status = $request->input('review_status');
+        $review->save();
+
+        return back()->with('success', 'Successfully added a note.');
     }
 }

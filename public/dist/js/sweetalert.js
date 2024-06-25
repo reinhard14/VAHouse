@@ -244,8 +244,6 @@ function handleClearFields() {
 }
 
 
-
-
 // !Sweet alert for users-end
 //Add Virtual Agent Scores
 function handleScoreFormSubmission(form) {
@@ -253,7 +251,7 @@ function handleScoreFormSubmission(form) {
     Swal.fire({
         icon: 'info',
         title: 'Are you sure?',
-        text: 'Your answers will be evaluated by the management thoroughly.. Make sure everything is accurate and final.',
+        text: 'Your answers will be evaluated by the management thoroughly, make sure everything is accurate and final.',
         showCancelButton: true,
         confirmButtonColor: '#007afe',
         cancelButtonColor: '#6d747d',
@@ -261,8 +259,8 @@ function handleScoreFormSubmission(form) {
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
-            title: 'Skillset!',
-            text: 'Skillset has been saved! it will overwrite previous responses if there are any.',
+            title: 'Applicant Information!',
+            text: 'Information has been saved! this will overwrite previous responses if there are any.',
             icon: 'success',
             showConfirmButton: false,
         })
