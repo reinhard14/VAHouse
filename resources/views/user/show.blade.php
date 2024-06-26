@@ -13,7 +13,7 @@
                     @include('includes.messages')
 
                     <div class="row p-2">
-                        <div class="col">
+                        <div class="col border">
                             @if (!isset($user->information->photo_id))
                                 N/A
                             @else
