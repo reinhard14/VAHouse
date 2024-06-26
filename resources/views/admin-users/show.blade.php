@@ -45,7 +45,21 @@
                             <label>Email</label>
                             <p> {{ $user->email }} </p>
                         </div>
+                    </div>
 
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label>Age</label>
+                            <p> {{ $user->age }} </p>
+                        </div>
+                        <div class="col">
+                            <label>Highest Educational Attainment</label>
+                            <p> {{ $user->education }} </p>
+                        </div>
+                        <div class="col">
+                            <label>Address</label>
+                            <p> {{ $user->address }} </p>
+                        </div>
                     </div>
 
                     <div class="row mb-3">
@@ -55,7 +69,7 @@
                         </div>
                         <div class="col">
                             <label>Years Experience</label>
-                            <p> {{ $user->scores->experience ?? 'N/A'}} </p>
+                            <p> {{ $user->information->experience ?? 'N/A'}} </p>
                         </div>
                         <div class="col">
                             <label>Registered</label>
@@ -66,25 +80,73 @@
                     <div class="row mb-3">
                         <div class="col">
                             <label>Happy rate</label>
-                            <p> {{ $user->scores->rate ?? 'N/A' }} </p>
+                            <p> {{ $user->information->rate ?? 'N/A' }} </p>
                         </div>
                         <div class="col">
                             <label>Portfolio</label>
                             <p>
-                                @if(!isset($user->scores->portfolio))
+                                @if(!isset($user->information->portfolio))
                                     N/A
                                 @else
-                                    <a href="{{ $user->scores->portfolio }}" target="_blank" class="badge badge-primary">{{ \Illuminate\Support\Str::limit($user->scores->portfolio, 30) }}</a>
+                                    <a href="{{ $user->information->portfolio }}" target="_blank" class="badge badge-primary">{{ \Illuminate\Support\Str::limit($user->information->portfolio, 30) }}</a>
                                 @endif
                             </p>
                         </div>
                         <div class="col">
                             <label>Resume Attachment</label>
                             <p>
-                                @if (!isset($user->scores->resume))
+                                @if (!isset($user->information->resume))
                                     N/A
                                 @else
-                                    <a href="{{ route('view.pdf', $user->scores->resume) }}" target="_blank" class="badge badge-primary">Click here</a>
+                                    <a href="{{ route('view.pdf', $user->information->resume) }}" target="_blank" class="badge badge-primary">Click here</a>
+                                @endif
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label>Skype</label>
+                            <p> {{ $user->information->skype ?? 'N/A' }} </p>
+                        </div>
+                        <div class="col">
+                            <label>Niche</label>
+                            <p> {{ $user->information->niche ?? 'N/A'}} </p>
+                        </div>
+                        <div class="col">
+                            <label>Union Bank</label>
+                            <p> {{ $user->information->ub_account}} - {{ $user->information->ub_number}} </p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label>ID Attachments</label>
+                            <p>
+                                @if(!isset($user->information->photo_id))
+                                    N/A
+                                @else
+                                    <a href="{{ $user->information->photo_id }}" target="_blank" class="badge badge-primary">Click here</a>
+                                @endif
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Formal Photo</label>
+                            <p>
+                                @if(!isset($user->information->photo_formal))
+                                    N/A
+                                @else
+                                    <a href="{{ $user->information->photo_formal }}" target="_blank" class="badge badge-primary">Click here</a>
+                                @endif
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <label>DISC Results</label>
+                            <p>
+                                @if(!isset($user->information->disc_results))
+                                    N/A
+                                @else
+                                    <a href="{{ $user->information->disc_results }}" target="_blank" class="badge badge-primary">Click here</a>
                                 @endif
                             </p>
                         </div>
@@ -116,6 +178,7 @@
                             @endisset
                         </div>
                     </div>
+
                     <div class="row mb-5">
                         <div class="col-md-3"><strong>Reviewed by:</strong> </div>
                         <div class="col-md-6">{{ $user->review->reviewed_by ?? 'N/A'  }} </div>
