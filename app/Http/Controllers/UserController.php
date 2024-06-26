@@ -59,14 +59,20 @@ class UserController extends Controller
             'ub_number' => 'required',
             'photo_id' => 'required|max:10000',
             'photo_formal' => 'required|max:10000',
-            // 'positions' => 'required',
+            // 'positions' => 'sometimes|array',
+            // 'positions.*' => 'in:option1,option2,option3',
         ]);
 
         $attributes = ['user_id' => Auth::id()];
 
         // Handle PDF file upload
-        if ($request->hasFile('resume')) {
-            $pdfPath = $request->file('resume')->store('pdfs', 'public');
+        if ($request->hasFile('resume') && $request->hasFile('disc_results') && $request->hasFile('photo_id') && $request->hasFile('photo_formal') ) {
+
+            $resumePdfPath = $request->file('resume')->store('pdfs', 'public');
+            $discPdfPath = $request->file('disc_results')->store('DISC_Results', 'public');
+            $formalPath = $request->file('photo_formal')->store('formals', 'public');
+            $identificationPdfPath = $request->file('photo_id')->store('IDs', 'public');
+
         } else {
             return back()->with('error', 'Please upload a PDF file.');
         }
@@ -89,10 +95,10 @@ class UserController extends Controller
         $information->niche = $request->input('niche');
         $information->ub_account = $request->input('ub_account');
         $information->ub_number = $request->input('ub_number');
-        $information->resume = $pdfPath;
-        $information->photo_id = $pdfPath;
-        $information->photo_formal = $pdfPath;
-        $information->disc_results = $pdfPath;
+        $information->resume = $resumePdfPath;
+        $information->photo_id = $identificationPdfPath;
+        $information->photo_formal = $formalPath;
+        $information->disc_results = $discPdfPath;
         $information->user_id = Auth::id();
         $information->save();
 

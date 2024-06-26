@@ -13,9 +13,19 @@
                     @include('includes.messages')
 
                     <div class="row p-2">
+                        <div class="col">
+                            @if (!isset($user->information->photo_id))
+                                N/A
+                            @else
+                                <img src="{{ asset('storage/' . $user->information->photo_formal) }}" alt="formal photo" height="250px">
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="row p-2">
                         <div class="col-md-3">Name:</div>
                         <div class="col-md-3">{{ $user->name}}</div>
-                        <div class="col-md-6 text-right">{{ $user->information->photo_formal ?? 'N/A' }}</div>
+
                     </div>
 
                     <div class="row p-2">
@@ -92,20 +102,30 @@
                     <div class="row p-2">
                         <div class="col-md-3">ID Attachments:</div>
 
-                        @if (!isset($user->information->resume))
+                        @if (!isset($user->information->photo_id))
                             <div class="col-md-9"><a href="#">N/A</a></div>
                         @else
-                            <div class="col-md-9"><a href="{{ route('view.pdf', $user->information->resume) }}" target="_blank">Click here</a></div>
+                            <div class="col-md-9"><a href="{{ route('view.pdf', $user->information->photo_id) }}" target="_blank">Click here</a></div>
+                        @endif
+                    </div>
+
+                    <div class="row p-2">
+                        <div class="col-md-3">Formal Photos</div>
+
+                        @if (!isset($user->information->photo_formal))
+                            <div class="col-md-9"><a href="#">N/A</a></div>
+                        @else
+                            <div class="col-md-9"><a href="{{ route('view.pdf', $user->information->photo_formal) }}" target="_blank">Click here</a></div>
                         @endif
                     </div>
 
                     <div class="row p-2">
                         <div class="col-md-3">DISC results attachment:</div>
 
-                        @if (!isset($user->information->resume))
+                        @if (!isset($user->information->disc_results))
                             <div class="col-md-9"><a href="#">N/A</a></div>
                         @else
-                            <div class="col-md-9"><a href="{{ route('view.pdf', $user->information->resume) }}" target="_blank">Click here</a></div>
+                            <div class="col-md-9"><a href="{{ route('view.pdf', $user->information->disc_results) }}" target="_blank">Click here</a></div>
                         @endif
                     </div>
 

@@ -126,7 +126,7 @@
                                 @if(!isset($user->information->photo_id))
                                     N/A
                                 @else
-                                    <a href="{{ $user->information->photo_id }}" target="_blank" class="badge badge-primary">Click here</a>
+                                    <a href="{{ route('view.pdf', $user->information->photo_id) }}" target="_blank" class="badge badge-primary">Click here</a>
                                 @endif
                             </p>
                         </div>
@@ -136,7 +136,7 @@
                                 @if(!isset($user->information->photo_formal))
                                     N/A
                                 @else
-                                    <a href="{{ $user->information->photo_formal }}" target="_blank" class="badge badge-primary">Click here</a>
+                                    <a href="{{ route('view.pdf', $user->information->photo_formal) }}" target="_blank" class="badge badge-primary">Click here</a>
                                 @endif
                             </p>
                         </div>
@@ -146,7 +146,7 @@
                                 @if(!isset($user->information->disc_results))
                                     N/A
                                 @else
-                                    <a href="{{ $user->information->disc_results }}" target="_blank" class="badge badge-primary">Click here</a>
+                                    <a href="{{ route('view.pdf', $user->information->disc_results) }}" target="_blank" class="badge badge-primary">Click here</a>
                                 @endif
                             </p>
                         </div>
