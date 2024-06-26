@@ -63,28 +63,28 @@
                         <div class="row p-2">
                             <div class="col-md-3">Contact Number:</div>
                             <div class="col-md-9">
-                                <input type="text" value="{{ $user->contactnumber}}" class="form-control">
+                                <input name="contactnumber" type="text" value="{{ $user->contactnumber}}" class="form-control">
                             </div>
                         </div>
 
                         <div class="row p-2">
                             <div class="col-md-3">Address:</div>
                             <div class="col-md-9">
-                                <input type="text" value="{{ $user->address}}" class="form-control">
+                                <input name="address" type="text" value="{{ $user->address}}" class="form-control">
                             </div>
                         </div>
 
                         <div class="row p-2">
                             <div class="col-md-3">Email:</div>
                             <div class="col-md-9">
-                                <input type="text" value="{{ $user->email}}" class="form-control">
+                                <input name="email" type="text" value="{{ $user->email}}" class="form-control">
                             </div>
                         </div>
 
                         <div class="row p-2 mb-5">
                             <div class="col-md-3">Password:</div>
                             <div class="col-md-9">
-                                <input type="password" value="" class="form-control" data-toggle="password" >
+                                <input name="password" type="password" class="form-control" data-toggle="password" >
                             </div>
                         </div>
 

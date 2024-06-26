@@ -197,7 +197,7 @@ class UserController extends Controller
         $user->password = bcrypt($request->input('password'));
         $user->save();
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('user.show', $user->id)->with('success', 'Information successfully updated!');
     }
 
 }
