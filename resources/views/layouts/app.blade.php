@@ -45,13 +45,12 @@
                     </button>
                 </div>
                 <div id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -65,6 +64,10 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('New Applicant!') }}</a>
                                 </li>
                             @endif
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#guidelinesModal">Guidelines</a>
+                            </li>
                         @else
                             <li class="nav-item">
                                 <a href="{{ route('user.dashboard') }}" class="nav-link">Dashboard</a>
@@ -102,6 +105,8 @@
         </main>
 
     </div>
+
+    <x-applicant.guidelines />
 
     <!-- Sweetalert Actions-->
     <script src="{{ asset('dist/js/sweetalert.js') }}"></script>

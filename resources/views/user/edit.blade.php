@@ -38,24 +38,33 @@
 
                         <div class="row p-2">
                             <div class="col-md-3">Gender:</div>
+
                             <div class="col-md-9">
-                                <input name="gender" type="text" value="{{ $user->gender}}" class="form-control">
+                                <select name="gender" class="form-control">
+                                    <option value="" disabled {{ old('gender', $user->gender ?? '') == '' ? 'selected' : '' }}>Select on options below</option>
+                                    <option value="Male" {{ old('gender', $user->gender ?? '') == 'Male' ? 'selected' : '' }}>Male</option>
+                                    <option value="Female" {{ old('gender', $user->gender ?? '') == 'Female' ? 'selected' : '' }}>Female</option>
+                                    <option value="Transgender" {{ old('gender', $user->gender ?? '') == 'Transgender' ? 'selected' : '' }}>Transgender</option>
+                                    <option value="Non binary" {{ old('gender', $user->gender ?? '') == 'Non binary' ? 'selected' : '' }}>Non-Binary/Non-Conforming</option>
+                                    <option value="Prefer not to respond" {{ old('gender', $user->gender ?? '') == 'Prefer not to respond' ? 'selected' : '' }}>Prefer not to respond</option>
+                                </select>
                             </div>
                         </div>
 
                         <div class="row p-2">
-                            <label for="education" class="col-md-3">Highest Educational Attainment:</label>
+                            <div class="col-md-3">Highest Educational Attainment:</div>
 
                             <div class="col-md-9">
                                 <select name="education" class="form-control">
-                                    <option value="High School">High School</option>
-                                    <option value="Senior High School">Senior High School</option>
-                                    <option value="College Undergrad">College Undergrad</option>
-                                    <option value="College Degree">College Degree</option>
-                                    <option value="Master's Degree">Master's Degree</option>
-                                    <option value="Professional Degree">Professional Degree</option>
-                                    <option value="Doctorate Degree">Doctorate Degree</option>
-                                    <option value="Vocational">Vocational</option>
+                                    <option value="" disabled {{ old('education', $user->education ?? '') == '' ? 'selected' : '' }}>Select on options below</option>
+                                    <option value="High School" {{ old('education', $user->education ?? '') == 'High School' ? 'selected' : '' }}>High School</option>
+                                    <option value="Senior High School" {{ old('education', $user->education ?? '') == 'Senior High School' ? 'selected' : '' }}>Senior High School</option>
+                                    <option value="College Undergrad" {{ old('education', $user->education ?? '') == 'College Undergrad' ? 'selected' : '' }}>College Undergrad</option>
+                                    <option value="College Degree" {{ old('education', $user->education ?? '') == 'College Degree' ? 'selected' : '' }}>College Degree</option>
+                                    <option value="Masters Degree" {{ old('education', $user->education ?? '') == 'Masters Degree' ? 'selected' : '' }}>Master's Degree</option>
+                                    <option value="Professional Degree" {{ old('education', $user->education ?? '') == 'Professional Degree' ? 'selected' : '' }}>Professional Degree</option>
+                                    <option value="Doctorate Degree" {{ old('education', $user->education ?? '') == 'Doctorate Degree' ? 'selected' : '' }}>Doctorate Degree</option>
+                                    <option value="Vocational" {{ old('education', $user->education ?? '') == 'Vocational' ? 'selected' : '' }}>Vocational</option>
                                 </select>
                             </div>
                         </div>
@@ -77,14 +86,14 @@
                         <div class="row p-2">
                             <div class="col-md-3">Email:</div>
                             <div class="col-md-9">
-                                <input name="email" type="text" value="{{ $user->email}}" class="form-control">
+                                <input name="email" type="email" value="{{ $user->email}}" class="form-control">
                             </div>
                         </div>
 
                         <div class="row p-2 mb-5">
                             <div class="col-md-3">Password:</div>
                             <div class="col-md-9">
-                                <input name="password" type="password" class="form-control" data-toggle="password" >
+                                <input name="password" type="password" class="form-control" data-toggle="password" required>
                             </div>
                         </div>
 

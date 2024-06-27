@@ -63,7 +63,7 @@
                                     <option value="Female">Female</option>
                                     <option value="Transgender">Transgender</option>
                                     <option value="Non binary">Non-Binary/Non-Conforming</option>
-                                    <option value="N/A">Prefer not to respond</option>
+                                    <option value="Prefer not to respond">Prefer not to respond</option>
                                 </select>
 
                                 @error('gender')
@@ -84,7 +84,7 @@
                                     <option value="Senior High School">Senior High School</option>
                                     <option value="College Undergrad">College Undergrad</option>
                                     <option value="College Degree">College Degree</option>
-                                    <option value="Master's Degree">Master's Degree</option>
+                                    <option value="Masters Degree">Master's Degree</option>
                                     <option value="Professional Degree">Professional Degree</option>
                                     <option value="Doctorate Degree">Doctorate Degree</option>
                                     <option value="Vocational">Vocational</option>
