@@ -115,7 +115,7 @@
                         </div>
                         <div class="col">
                             <label>Union Bank</label>
-                            <p> {{ $user->information->ub_account}} - {{ $user->information->ub_number}} </p>
+                            <p> {{ $user->information->ub_account ?? 'N/A'}} - {{ $user->information->ub_number ?? 'N/A'}} </p>
                         </div>
                     </div>
 
