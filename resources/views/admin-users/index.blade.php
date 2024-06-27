@@ -265,7 +265,17 @@
                                                     </td>
                                                     <td>
                                                         <div class="text-center">
-                                                           <span class="badge badge-success"> {{ $user->status->status ?? 'N/A'}}</span>
+                                                            @if ($user->status->status == 'New')
+                                                                <span class="badge badge-success">{{ $user->status->status }} </span>
+                                                            @elseif ( $user->status->status == 'Onboarded')
+                                                                <span class="badge badge-info">{{ $user->status->status }} </span>
+                                                            @elseif ( $user->status->status == 'Hired')
+                                                                <span class="badge badge-primary">{{ $user->status->status }} </span>
+                                                            @elseif ( $user->status->status == 'Floating')
+                                                                <span class="badge badge-warning">{{ $user->status->status }} </span>
+                                                            @elseif ( $user->status->status == 'Terminated')
+                                                                <span class="badge badge-danger">{{ $user->status->status }} </span>
+                                                            @endif
                                                         </div>
                                                     </td>
                                                     <td>
