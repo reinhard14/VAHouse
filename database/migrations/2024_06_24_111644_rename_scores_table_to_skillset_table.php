@@ -6,23 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 class RenameScoresTableToSkillsetTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::rename('scores', 'skillsets');
-    }
+    // /**
+    //  * Run the migrations.
+    //  *
+    //  * @return void
+    //  */
+    // public function up()
+    // {
+    //     Schema::rename('scores', 'skillsets');
+    // }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::rename('skillsets', 'scores');
-    }
+    // /**
+    //  * Reverse the migrations.
+    //  *
+    //  * @return void
+    //  */
+    // public function down()
+    // {
+    //     Schema::rename('skillsets', 'scores');
+    // }
 }

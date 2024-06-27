@@ -194,6 +194,7 @@
                                                 <th class="text-center">Actions</th>
                                                 <th class="text-center">Information</th>
                                                 <th class="text-center">Intro Vid</th>
+                                                <th class="text-center">Status</th>
                                                 <th>
                                                     @if ($sortByDateSubmitted === 'desc')
                                                         <a href="{{ route('admin.users.index', ['sortByDateSubmitted' => 'asc']) }}" type="submit" class="btn text-primary"
@@ -234,10 +235,13 @@
                                                     </td>
                                                     <td>
                                                         <div class="d-flex justify-content-center align-items-center">
-                                                            <a href="#add-notes-modal-{{ $user->id }}" data-bs-toggle="modal" class="btn-outline-info p-2">
+                                                            <a href="#add-notes-modal-{{ $user->id }}" data-bs-toggle="modal" class="px-2">
                                                                 <i class="bi bi-chat-right-text"></i> Notes
                                                             </a>
-                                                            <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal" class="btn-outline-primary p-2">
+                                                            <a href="#update-status-{{ $user->id }}" data-bs-toggle="modal" class="px-2">
+                                                                <i class="bi bi-person-exclamation"></i> Status
+                                                            </a>
+                                                            <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal" class="px-2">
                                                                 <i class="bi bi-person-gear"></i> Edit
                                                             </a>
                                                             <form method="post" action="{{ route('admin.users.destroy', $user->id) }}" class="deleteAdminForm">
@@ -257,6 +261,11 @@
                                                             @else
                                                                 <a href={{ $user->scores->videolink}} target="_blank">Link</a>
                                                             @endif
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-center">
+                                                           <span class="badge badge-success"> {{ $user->status->status ?? 'N/A'}}</span>
                                                         </div>
                                                     </td>
                                                     <td>
@@ -291,6 +300,7 @@
 @foreach ($users as $user)
     <x-administrator-applicant.edit :user="$user" />
     <x-administrator-applicant.add-notes :user="$user" />
+    <x-administrator-applicant.update-status :user="$user" />
 @endforeach
 
 

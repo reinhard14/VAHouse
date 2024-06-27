@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Models\Role;
 use App\Models\Skillset;
 use App\Models\Review;
+use App\Models\Status;
 use App\Models\ApplicantInformation;
 
 class User extends Authenticatable
@@ -71,5 +72,9 @@ class User extends Authenticatable
     public function review()
     {
         return $this->hasOne(Review::class);
+    }
+
+    public function status() {
+        return $this->hasOne(Status::class);
     }
 }
