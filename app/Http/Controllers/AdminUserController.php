@@ -321,17 +321,17 @@ class AdminUserController extends Controller
         return back()->with('success', 'Successfully added a note.');
     }
 
-    public function updateStatus(Request $request) {
+    public function updateStatus(Request $request, $id) {
 
         $this->validate($request, [
             'status' => 'required',
             'updated_by' => 'required',
         ]);
-        dd($request);
-        $status = Status::findOrFail($request->input('user_id'));
+
+        $status = Status::where('user_id', $id)->firstOrFail();
         $status->status = $request->input('status');
         $status->updated_by = $request->input('updated_by');
-        $status->user_id = $request->input('user_id');
+        $status->user_id = $id;
         $status->save();
 
         return back()->with('success', 'Successfully updated applicants status.');

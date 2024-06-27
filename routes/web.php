@@ -76,4 +76,4 @@ Route::get('refresh-captcha', [CaptchaController::class, 'refreshCaptcha'])->nam
 // Route::get('/storage/{id}', [UserController::class, 'viewPDF'])->name('view.pdf');
 Route::get('/storage/{id}', [AdminUserController::class, 'viewPDF'])->name('view.pdf');
 Route::post('/administrator/users/notes', [AdminUserController::class, 'addNotes'])->name('add.notes');
-Route::put('/administrator/users/status', [AdminUserController::class, 'updateStatus'])->name('update.status');
+Route::put('/administrator/users/{id}/status', [AdminUserController::class, 'updateStatus'])->name('update.applicant.status');

@@ -7,8 +7,8 @@
                 <h5 class="modal-title">Set status for this applicant</h5>
                 <button type="button" class="close" data-bs-dismiss="modal">x</button>
             </div>
-            {{ route('update.status') }}
-            <form method="POST" action="{{ route('update.status') }}">
+
+            <form method="POST" action="{{ route('update.applicant.status', $user->id) }}">
                 @csrf
                 @method('put')
                 <input type="hidden" name="user_id" value="{{ $user->id }}">
