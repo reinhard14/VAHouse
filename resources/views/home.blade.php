@@ -378,8 +378,6 @@
                             </div>
                         </div>
 
-                        <hr>
-
                         <div class="row mb-5 p-5">
                             <h4 class="text-center mb-3">
                                 Position/s Applying For

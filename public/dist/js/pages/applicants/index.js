@@ -172,6 +172,8 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
+
+
 });
 
 //Jquery
@@ -201,4 +203,7 @@ $(document).ready(function() {
         maximumSelectionLength: 4,
         placeholder: 'Select Experience..',
     });
+
+    $('#collapseOne').collapse('hide');
+
 });

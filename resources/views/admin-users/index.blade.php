@@ -105,13 +105,13 @@
 
                         <div class="row">
                             <div class="col">
-                                <div class="accordion" id="filters">
+                                <div class="accordion">
                                     <h2 class="accordion-header">
                                         <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
                                             Show/Hide Filters
                                         </button>
                                     </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#filters">
+                                    <div id="collapseOne" class="collapse show">
                                         <div class="accordion-body">
                                             <form method="GET" action="#">
                                                 @csrf
