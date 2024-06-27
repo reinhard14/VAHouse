@@ -247,7 +247,8 @@
                                                             <form method="post" action="{{ route('admin.users.destroy', $user->id) }}" class="deleteAdminForm">
                                                                 @csrf
                                                                 @method('delete')
-                                                                <button type="submit" class="btn text-danger"> <i class="bi bi-person-x"></i> Delete </button>
+                                                                <button
+                                                                 type="submit" class="btn text-danger"> <i class="bi bi-person-x"></i> Delete </button>
                                                             </form>
                                                         </div>
                                                     </td>
@@ -266,15 +267,34 @@
                                                     <td>
                                                         <div class="text-center">
                                                             @if ($user->status->status == 'New')
-                                                                <span class="badge badge-success">{{ $user->status->status }} </span>
+                                                                <span class="badge badge-success" data-toggle="tooltip"
+                                                                    title="Last updated by: {{ $user->status->updated_by ?? 'N/A'}}">
+                                                                    {{ $user->status->status }}
+                                                                </span>
+
                                                             @elseif ( $user->status->status == 'Onboarded')
-                                                                <span class="badge badge-info">{{ $user->status->status }} </span>
+                                                                <span class="badge badge-info" data-toggle="tooltip"
+                                                                    title="Last updated by: {{ $user->status->updated_by }}">
+                                                                    {{ $user->status->status }}
+                                                                </span>
+
                                                             @elseif ( $user->status->status == 'Hired')
-                                                                <span class="badge badge-primary">{{ $user->status->status }} </span>
+                                                                <span class="badge badge-primary" data-toggle="tooltip"
+                                                                    title="Last updated by: {{ $user->status->updated_by }}">
+                                                                    {{ $user->status->status }}
+                                                                </span>
+
                                                             @elseif ( $user->status->status == 'Floating')
-                                                                <span class="badge badge-warning">{{ $user->status->status }} </span>
+                                                                <span class="badge badge-warning" data-toggle="tooltip"
+                                                                    title="Last updated by: {{ $user->status->updated_by }}">
+                                                                    {{ $user->status->status }}
+                                                                </span>
+
                                                             @elseif ( $user->status->status == 'Terminated')
-                                                                <span class="badge badge-danger">{{ $user->status->status }} </span>
+                                                                <span class="badge badge-danger" data-toggle="tooltip"
+                                                                    title="Last updated by: {{ $user->status->updated_by }}">
+                                                                    {{ $user->status->status }}
+                                                                </span>
                                                             @endif
                                                         </div>
                                                     </td>

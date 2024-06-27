@@ -334,6 +334,6 @@ class AdminUserController extends Controller
         $status->user_id = $id;
         $status->save();
 
-        return back()->with('success', 'Successfully updated applicants status.');
+        return back()->with('success', 'Successfully updated applicant\'s status.');
     }
 }
