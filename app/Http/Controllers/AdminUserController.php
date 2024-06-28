@@ -51,7 +51,8 @@ class AdminUserController extends Controller
 
         $usersQuery = User::where('role_id', 3)
                         ->leftJoin('skillsets', 'users.id', '=', 'skillsets.user_id')
-                        ->select('users.*', 'skillsets.*')
+                        ->leftJoin('statuses', 'users.id', '=', 'statuses.user_id')
+                        ->select('users.*', 'skillsets.*', 'skillsets.*')
                         ->distinct()
                         ->orderBy($sortByColumn, $sortOrder);
 
@@ -70,6 +71,7 @@ class AdminUserController extends Controller
             'skills' => 'skillsets.skill',
             'softskills' => 'skillsets.softskill',
             'experience' => 'skillsets.experience',
+            'statuses' => 'status',
         ];
 
         // Apply tag filters
@@ -114,8 +116,8 @@ class AdminUserController extends Controller
         $uniqueSkills = getUniqueValues($skillsets, 'skill');
         $uniqueSoftskills = getUniqueValues($skillsets, 'softskill');
         $uniqueExperience = getUniqueValues($skillsets, 'experience');
-        $uniqueStatus = Status::pluck('status');
-        $aStatus = json_decode($uniqueStatus);
+        $getStatus = Status::pluck('status')->unique();
+        $uniqueStatuses = json_decode($getStatus);
 
         return view('admin-users.index', compact(
             'users',
@@ -129,8 +131,7 @@ class AdminUserController extends Controller
             'uniqueTools',
             'uniqueSkills',
             'uniqueSoftskills',
-            'uniqueStatus',
-            'aStatus',
+            'uniqueStatuses',
         ));
 
     }

@@ -215,6 +215,11 @@ $(document).ready(function() {
         placeholder: 'Select Experience..',
     });
 
+    $('#statuses').select2({
+        // maximumSelectionLength: 5,
+        placeholder: 'Select status..',
+    });
+
     $('#collapseOne').collapse('hide');
 
 });

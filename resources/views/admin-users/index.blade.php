@@ -122,7 +122,7 @@
                                                                     'skills',
                                                                     'softskills',
                                                                     'experience',
-                                                                    'status',
+                                                                    'statuses',
                                                     ];
                                                         $count = 0;
                                                         $totalFields = count($fields);
@@ -161,10 +161,6 @@
                         </div>
                         {{-- @foreach ( $uniqueTools as $tool)
                             {{$tool }}
-                        @endforeach --}}
-
-                        {{-- @foreach ($aStatus as $website)
-                            {{ $website }}
                         @endforeach --}}
 
                         <div class="row">
