@@ -83,6 +83,21 @@
                             <p> {{ $user->information->rate ?? 'N/A' }} </p>
                         </div>
                         <div class="col">
+                            <label>Niche</label>
+                            <p> {{ $user->information->niche ?? 'N/A'}} </p>
+                        </div>
+                        <div class="col">
+                            <label>Skype</label>
+                            <p> {{ $user->information->skype ?? 'N/A' }} </p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label>Union Bank</label>
+                            <p> {{ $user->information->ub_account ?? 'N/A'}} - {{ $user->information->ub_number ?? 'N/A'}} </p>
+                        </div>
+                        <div class="col">
                             <label>Portfolio</label>
                             <p>
                                 @if(!isset($user->information->portfolio))
@@ -101,21 +116,6 @@
                                     <a href="{{ route('view.pdf', $user->information->resume) }}" target="_blank" class="badge badge-primary">Click here</a>
                                 @endif
                             </p>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col">
-                            <label>Skype</label>
-                            <p> {{ $user->information->skype ?? 'N/A' }} </p>
-                        </div>
-                        <div class="col">
-                            <label>Niche</label>
-                            <p> {{ $user->information->niche ?? 'N/A'}} </p>
-                        </div>
-                        <div class="col">
-                            <label>Union Bank</label>
-                            <p> {{ $user->information->ub_account ?? 'N/A'}} - {{ $user->information->ub_number ?? 'N/A'}} </p>
                         </div>
                     </div>
 
