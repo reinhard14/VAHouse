@@ -270,31 +270,40 @@
                                                         <div class="text-center">
                                                             @if ($user->status->status == 'New')
                                                                 <span class="badge badge-success" data-toggle="tooltip"
-                                                                    title="Last updated by: {{ $user->status->updated_by ?? 'N/A'}}">
+                                                                    title="Last updated by: {{ $user->status->updated_by ?? 'N/A'}}"
+                                                                    >
                                                                     {{ $user->status->status }}
                                                                 </span>
 
                                                             @elseif ( $user->status->status == 'Onboarded')
                                                                 <span class="badge badge-info" data-toggle="tooltip"
-                                                                    title="Last updated by: {{ $user->status->updated_by }}">
+                                                                    title="Last updated by: {{ $user->status->updated_by }}
+                                                                    Updated on: {{ $user->status->updated_at->diffForHumans(['parts'=>1]) ?? 'N/A' }} "
+                                                                    >
                                                                     {{ $user->status->status }}
                                                                 </span>
 
                                                             @elseif ( $user->status->status == 'Hired')
                                                                 <span class="badge badge-primary" data-toggle="tooltip"
-                                                                    title="Last updated by: {{ $user->status->updated_by }}">
+                                                                    title="Last updated by: {{ $user->status->updated_by }}
+                                                                    Updated on: {{ $user->status->updated_at->diffForHumans(['parts'=>1]) ?? 'N/A' }} "
+                                                                    >
                                                                     {{ $user->status->status }}
                                                                 </span>
 
                                                             @elseif ( $user->status->status == 'Floating')
                                                                 <span class="badge badge-warning" data-toggle="tooltip"
-                                                                    title="Last updated by: {{ $user->status->updated_by }}">
+                                                                    title="Last updated by: {{ $user->status->updated_by }}
+                                                                    Updated on: {{ $user->status->updated_at->diffForHumans(['parts'=>1]) ?? 'N/A' }} "
+                                                                    >
                                                                     {{ $user->status->status }}
                                                                 </span>
 
                                                             @elseif ( $user->status->status == 'Terminated')
                                                                 <span class="badge badge-danger" data-toggle="tooltip"
-                                                                    title="Last updated by: {{ $user->status->updated_by }}">
+                                                                    title="Last updated by: {{ $user->status->updated_by }}
+                                                                    Updated on: {{ $user->status->updated_at->diffForHumans(['parts'=>1]) ?? 'N/A' }} "
+                                                                    >
                                                                     {{ $user->status->status }}
                                                                 </span>
                                                             @endif

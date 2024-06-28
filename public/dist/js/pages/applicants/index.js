@@ -143,6 +143,17 @@ document.addEventListener("DOMContentLoaded", function() {
             })
         })
     }
+    const editApplicantStatus = document.querySelectorAll('.editApplicantStatus');
+
+    if(editApplicantStatus) {
+        editApplicantStatus.forEach((form) => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                handleApplicantStatusUpdateSubmission(form);
+            })
+        })
+    }
+
 
     const togglePassword = document.querySelector('#togglePassword');
     const password = document.querySelector('#password');

@@ -8,7 +8,7 @@
                 <button type="button" class="close" data-bs-dismiss="modal">x</button>
             </div>
 
-            <form method="POST" action="{{ route('update.applicant.status', $user->id) }}">
+            <form class="editApplicantStatus" method="POST" action="{{ route('update.applicant.status', $user->id) }}">
                 @csrf
                 @method('put')
                 <input type="hidden" name="user_id" value="{{ $user->id }}">

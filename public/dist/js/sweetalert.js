@@ -1,5 +1,5 @@
-//TODO Admin Applicants Alerts
-//Administrator actions for Users Saving prompt.
+//TODO Admin's side - Applicants Alerts
+//Administrator actions for Applicant's Saving prompt.
 function handleApplicantFormSubmission(form) {
 
     Swal.fire({
@@ -7,14 +7,14 @@ function handleApplicantFormSubmission(form) {
         title: 'Saving!',
         text: 'Adding applicant...',
         showConfirmButton: false,
-        timer: 1000,
+        timer: 1500,
         willClose: () => {
             form.submit();
         }
     });
 }
 
-//Administrator actions for Users Updating prompt.
+//Administrator's actions for Applicant's prompt.
 function handleApplicantEditFormSubmission(form) {
 
     // Swal.fire({
@@ -41,6 +41,33 @@ function handleApplicantEditFormSubmission(form) {
             Swal.fire({
             title: 'Saving!',
             text: 'Inserting applicant\'s data in the database...',
+            icon: 'info',
+            showConfirmButton: false,
+        })
+            setTimeout(() => {
+                // Submit the form (triggering form submission)
+                form.submit()
+            }, 1500);
+        };
+    });
+}
+
+//Administrator's actions for updating Applicant's status.
+function handleApplicantStatusUpdateSubmission(form) {
+
+    Swal.fire({
+        icon: 'info',
+        title: 'Are you sure?',
+        text: 'This will update the applicant\'s current status...',
+        showCancelButton: true,
+        confirmButtonColor: '#007afe',
+        cancelButtonColor: '#6d747d',
+        confirmButtonText: 'Confirm!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+            title: 'Saving!',
+            text: 'updating record in the database...',
             icon: 'info',
             showConfirmButton: false,
         })
