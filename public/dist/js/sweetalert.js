@@ -1,11 +1,11 @@
 //TODO Admin Applicants Alerts
 //Administrator actions for Users Saving prompt.
-function handleApplicantsFormSubmission(form) {
+function handleApplicantFormSubmission(form) {
 
     Swal.fire({
-        icon: 'success',
-        title: 'Saved!',
-        text: 'Applicant has been successfully added.',
+        icon: 'info',
+        title: 'Saving!',
+        text: 'Adding applicant...',
         showConfirmButton: false,
         timer: 1000,
         willClose: () => {
@@ -15,12 +15,12 @@ function handleApplicantsFormSubmission(form) {
 }
 
 //Administrator actions for Users Updating prompt.
-function handleUserEditFormSubmission(form) {
+function handleApplicantEditFormSubmission(form) {
 
     Swal.fire({
         icon: 'info',
         title: 'Saving!',
-        text: 'Editing user data...',
+        text: 'Editing applicant\'s data...',
         showConfirmButton: false,
         timer: 1000,
         willClose: () => {

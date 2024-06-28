@@ -196,7 +196,7 @@ class AdminUserController extends Controller
         $status->user_id = $user_id;
         $status->save();
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('success', 'Applicant has been successfully added!');
     }
 
     /**
@@ -264,7 +264,7 @@ class AdminUserController extends Controller
         $user->password = bcrypt($request->input('password'));
         $user->save();
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('success', 'Applicant information has been successfully edited!');
     }
 
     /**

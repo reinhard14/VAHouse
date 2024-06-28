@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            handleApplicantsFormSubmission(form);
+            handleApplicantFormSubmission(form);
         });
     }
 
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function() {
         editUserForm.forEach((form) => {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
-                handleUserEditFormSubmission(form);
+                handleApplicantEditFormSubmission(form);
             })
         })
     }
