@@ -41,7 +41,9 @@ class AdminUserController extends Controller
             $sortByColumn = 'created_at';
         }
         // Determine sorting order based on the parameter (asc or desc)
-        $sortOrder = ($sortByLastname === 'desc' || $sortByFirstname === 'desc' || $sortByDateSubmitted === 'desc') ? 'desc' : 'asc';
+        $sortOrder = ($sortByLastname === 'desc' ||
+                     $sortByFirstname === 'desc' ||
+                     $sortByDateSubmitted === 'desc') ? 'desc' : 'asc';
 
         $toggleSortLastname = $this->sortOrder($sortByLastname);
         $toggleSortFirstname = $this->sortOrder($sortByFirstname);
@@ -63,11 +65,11 @@ class AdminUserController extends Controller
 
         // Get the selected tags from the request
         $filters = [
-            'websites' => 'scores.website',
-            'tools' => 'scores.tool',
-            'skills' => 'scores.skill',
-            'softskills' => 'scores.softskill',
-            'experience' => 'scores.experience',
+            'websites' => 'skillsets.website',
+            'tools' => 'skillsets.tool',
+            'skills' => 'skillsets.skill',
+            'softskills' => 'skillsets.softskill',
+            'experience' => 'skillsets.experience',
         ];
 
         // Apply tag filters
@@ -92,11 +94,11 @@ class AdminUserController extends Controller
         $users->appends(['sortByLastname' => $sortByLastname, 'sortByFirstname' => $sortByFirstname, 'sortByDateSubmitted' => $sortByDateSubmitted]);
 
         // Display data on FILTERS
-        $scores = Skillset::all();
+        $skillsets = Skillset::all();
 
         // Helper function to get unique values from a JSON field
-        function getUniqueValues($scores, $field) {
-            return $scores->pluck($field)
+        function getUniqueValues($skillsets, $field) {
+            return $skillsets->pluck($field)
                         ->map(function($item) {
                             return json_decode($item, true);
                         })
@@ -107,11 +109,13 @@ class AdminUserController extends Controller
         }
 
         // Get unique values for each field
-        $uniqueWebsites = getUniqueValues($scores, 'website');
-        $uniqueTools = getUniqueValues($scores, 'tool');
-        $uniqueSkills = getUniqueValues($scores, 'skill');
-        $uniqueSoftskills = getUniqueValues($scores, 'softskill');
-        $uniqueExperience = getUniqueValues($scores, 'experience');
+        $uniqueWebsites = getUniqueValues($skillsets, 'website');
+        $uniqueTools = getUniqueValues($skillsets, 'tool');
+        $uniqueSkills = getUniqueValues($skillsets, 'skill');
+        $uniqueSoftskills = getUniqueValues($skillsets, 'softskill');
+        $uniqueExperience = getUniqueValues($skillsets, 'experience');
+        $uniqueStatus = Status::pluck('status');
+        $aStatus = json_decode($uniqueStatus);
 
         return view('admin-users.index', compact(
             'users',
@@ -125,6 +129,8 @@ class AdminUserController extends Controller
             'uniqueTools',
             'uniqueSkills',
             'uniqueSoftskills',
+            'uniqueStatus',
+            'aStatus',
         ));
 
     }

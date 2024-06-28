@@ -64,7 +64,7 @@ class User extends Authenticatable
         return $this->hasOne(ApplicantInformation::class);
     }
 
-    public function scores()
+    public function skillsets()
     {
         return $this->hasOne(Skillset::class);
     }

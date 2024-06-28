@@ -122,6 +122,7 @@
                                                                     'skills',
                                                                     'softskills',
                                                                     'experience',
+                                                                    'status',
                                                     ];
                                                         $count = 0;
                                                         $totalFields = count($fields);
@@ -135,15 +136,9 @@
                                                             <div class="form-group">
                                                                 <label for="{{ $field }}">{{ ucfirst($field) }}:</label>
                                                                 <select id="{{ $field }}" class="form-control select2"  name="{{ $field }}[]" multiple="multiple">
-                                                                    {{-- @if($field == 'experience')
-                                                                        <option value="2">Beginner</option>
-                                                                        <option value="3">Intermediate</option>
-                                                                        <option value="6">Seasoned</option>
-                                                                    @else --}}
-                                                                        @foreach (${"unique" . ucfirst($field)} as $item)
-                                                                            <option value="{{ $item }}">{{ $item }}</option>
-                                                                        @endforeach
-                                                                    {{-- @endif --}}
+                                                                    @foreach (${"unique" . ucfirst($field)} as $item)
+                                                                        <option value="{{ $item }}">{{ $item }}</option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -164,6 +159,13 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- @foreach ( $uniqueTools as $tool)
+                            {{$tool }}
+                        @endforeach --}}
+
+                        {{-- @foreach ($aStatus as $website)
+                            {{ $website }}
+                        @endforeach --}}
 
                         <div class="row">
                             <div class="col-12">
@@ -217,10 +219,10 @@
                                                     <td>{{ $user->name }}</td>
                                                     <td>
                                                         <div>
-                                                            @if(isset($user->scores->experience) && !empty($user->scores->experience))
-                                                                @if ($user->scores->experience <= 2)
+                                                            @if(isset($user->skillsets->experience) && !empty($user->skillsets->experience))
+                                                                @if ($user->skillsets->experience <= 2)
                                                                     Beginner
-                                                                @elseif ($user->scores->experience >= 3 && $user->scores->experience <= 5)
+                                                                @elseif ($user->skillsets->experience >= 3 && $user->skillsets->experience <= 5)
                                                                     Intermediate
                                                                 @else
                                                                     Seasoned
@@ -231,7 +233,7 @@
                                                         </div>
                                                     </td>
                                                     <td style="width: 100px;">
-                                                        {{ $user->scores->skill ?? 'N/A' }}
+                                                        {{ $user->skillsets->skill ?? 'N/A' }}
                                                     </td>
                                                     <td>
                                                         <div class="d-flex justify-content-center align-items-center">
@@ -257,10 +259,10 @@
                                                     </td>
                                                     <td>
                                                         <div class="text-center">
-                                                            @if (!isset($user->scores->videolink))
+                                                            @if (!isset($user->skillsets->videolink))
                                                                 N/A
                                                             @else
-                                                                <a href={{ $user->scores->videolink}} target="_blank">Link</a>
+                                                                <a href={{ $user->skillsets->videolink}} target="_blank">Link</a>
                                                             @endif
                                                         </div>
                                                     </td>
