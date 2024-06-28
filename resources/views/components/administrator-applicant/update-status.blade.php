@@ -18,12 +18,12 @@
                     <label class="form-label" for="status">Status: </label>
 
                     <select name="status" class="form-control" required>
-                        <option value="" disabled {{ old('status', $user->status->status ?? '') == '' ? 'selected' : '' }}>Select on options below</option>
-                        <option value="New" {{ old('status', $user->status->status ?? '') == 'New' ? 'selected' : '' }}>New</option>
-                        <option value="Onboarded" {{ old('status', $user->status->status ?? '') == 'Onboarded' ? 'selected' : '' }}>Onboarded</option>
-                        <option value="Hired" {{ old('status', $user->status->status ?? '') == 'Hired' ? 'selected' : '' }}>Hired</option>
-                        <option value="Floating" {{ old('status', $user->status->status ?? '') == 'Floating' ? 'selected' : '' }}>Floating</option>
-                        <option value="Terminated" {{ old('status', $user->status->status ?? '') == 'Terminated' ? 'selected' : '' }}>Terminated</option>
+                        {{-- <option value="" disabled {{ old('status', $user->status->status ?? '') == '' ? 'selected' : '' }}>Select on options below</option> --}}
+                        <option value="New" {{ old('status', $user->status->status ?? '') == 'New' ? 'selected disabled' : '' }}>New</option>
+                        <option value="Onboarded" {{ old('status', $user->status->status ?? '') == 'Onboarded' ? 'selected disabled' : '' }}>Onboarded</option>
+                        <option value="Hired" {{ old('status', $user->status->status ?? '') == 'Hired' ? 'selected disabled' : '' }}>Hired</option>
+                        <option value="Floating" {{ old('status', $user->status->status ?? '') == 'Floating' ? 'selected disabled' : '' }}>Floating</option>
+                        <option value="Terminated" {{ old('status', $user->status->status ?? '') == 'Terminated' ? 'selected disabled' : '' }}>Terminated</option>
                     </select>
                 </div>
 
