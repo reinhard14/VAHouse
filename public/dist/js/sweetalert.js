@@ -17,15 +17,38 @@ function handleApplicantFormSubmission(form) {
 //Administrator actions for Users Updating prompt.
 function handleApplicantEditFormSubmission(form) {
 
+    // Swal.fire({
+    //     icon: 'info',
+    //     title: 'Saving!',
+    //     text: 'Editing applicant\'s data...',
+    //     showConfirmButton: false,
+    //     timer: 1000,
+    //     willClose: () => {
+    //         form.submit(); // Submit the form when the alert is closed
+    //     }
+    // });
+
     Swal.fire({
         icon: 'info',
-        title: 'Saving!',
-        text: 'Editing applicant\'s data...',
-        showConfirmButton: false,
-        timer: 1000,
-        willClose: () => {
-            form.submit(); // Submit the form when the alert is closed
-        }
+        title: 'Are you sure?',
+        text: 'This will modify the applicant\'s current data...',
+        showCancelButton: true,
+        confirmButtonColor: '#007afe',
+        cancelButtonColor: '#6d747d',
+        confirmButtonText: 'Confirm!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+            title: 'Saving!',
+            text: 'Inserting applicant\'s data in the database...',
+            icon: 'info',
+            showConfirmButton: false,
+        })
+            setTimeout(() => {
+                // Submit the form (triggering form submission)
+                form.submit()
+            }, 1500);
+        };
     });
 }
 

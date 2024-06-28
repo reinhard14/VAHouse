@@ -264,7 +264,7 @@ class AdminUserController extends Controller
         $user->password = bcrypt($request->input('password'));
         $user->save();
 
-        return redirect()->route('admin.users.index')->with('success', 'Applicant information has been successfully edited!');
+        return redirect()->route('admin.users.index')->with('success', 'Applicant\'s information has been successfully edited!');
     }
 
     /**
