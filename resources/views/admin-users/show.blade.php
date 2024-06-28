@@ -29,6 +29,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Applicant's Information</h3>
+                    <h5 class="card-tools">Status: {{ $user->status->status }}</h5>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
