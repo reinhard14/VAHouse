@@ -49,7 +49,7 @@
 
                     <div class="row mb-3">
                         <div class="col">
-                            <label class="mr-1">Age</label> <label>Gender</label>
+                            <label>Age -</label> <label>Gender</label>
                             <p> {{ $user->age }} - {{ $user->gender }}</p>
                         </div>
                         <div class="col">
