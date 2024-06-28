@@ -49,8 +49,8 @@
 
                     <div class="row mb-3">
                         <div class="col">
-                            <label>Age</label>
-                            <p> {{ $user->age }} </p>
+                            <label class="mr-1">Age</label> <label>Gender</label>
+                            <p> {{ $user->age }} - {{ $user->gender }}</p>
                         </div>
                         <div class="col">
                             <label>Highest Educational Attainment</label>

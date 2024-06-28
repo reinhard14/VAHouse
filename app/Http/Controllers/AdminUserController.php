@@ -160,8 +160,12 @@ class AdminUserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'lastname' => 'required',
-            'email' => 'required',
+            'email' => ['required', 'unique:users'],
             'contactnumber' => 'required',
+            'age' => 'required',
+            'gender' => 'required',
+            'education' => 'required',
+            'address' => 'required',
             'password' => ['required',
             RulesPassword::min(8)
                 ->letters()
@@ -172,14 +176,25 @@ class AdminUserController extends Controller
             'role_id' => 'required',
         ]);
 
-        $user = New User;
+        $user = new User();
         $user->name = $request->input('name');
         $user->lastname = $request->input('lastname');
         $user->email = $request->input('email');
         $user->contactnumber = $request->input('contactnumber');
+        $user->age = $request->input('age');
+        $user->gender = $request->input('gender');
+        $user->education = $request->input('education');
+        $user->address = $request->input('address');
         $user->password = bcrypt($request->input('password'));
         $user->role_id = $request->input('role_id');
         $user->save();
+
+        $user_id = $user->id;
+
+        $status = new Status();
+        $status->status = "New";
+        $status->user_id = $user_id;
+        $status->save();
 
         return redirect()->route('admin.users.index');
     }
@@ -242,6 +257,10 @@ class AdminUserController extends Controller
         $user->lastname = $request->input('lastname');
         $user->contactnumber = $request->input('contactnumber');
         $user->email = $request->input('email');
+        $user->age = $request->input('age');
+        $user->gender = $request->input('gender');
+        $user->education = $request->input('education');
+        $user->address = $request->input('address');
         $user->password = bcrypt($request->input('password'));
         $user->save();
 

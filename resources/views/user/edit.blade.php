@@ -41,7 +41,6 @@
 
                             <div class="col-md-9">
                                 <select name="gender" class="form-control">
-                                    <option value="" disabled {{ old('gender', $user->gender ?? '') == '' ? 'selected' : '' }}>Select on options below</option>
                                     <option value="Male" {{ old('gender', $user->gender ?? '') == 'Male' ? 'selected' : '' }}>Male</option>
                                     <option value="Female" {{ old('gender', $user->gender ?? '') == 'Female' ? 'selected' : '' }}>Female</option>
                                     <option value="Transgender" {{ old('gender', $user->gender ?? '') == 'Transgender' ? 'selected' : '' }}>Transgender</option>
@@ -56,7 +55,6 @@
 
                             <div class="col-md-9">
                                 <select name="education" class="form-control">
-                                    <option value="" disabled {{ old('education', $user->education ?? '') == '' ? 'selected' : '' }}>Select on options below</option>
                                     <option value="High School" {{ old('education', $user->education ?? '') == 'High School' ? 'selected' : '' }}>High School</option>
                                     <option value="Senior High School" {{ old('education', $user->education ?? '') == 'Senior High School' ? 'selected' : '' }}>Senior High School</option>
                                     <option value="College Undergrad" {{ old('education', $user->education ?? '') == 'College Undergrad' ? 'selected' : '' }}>College Undergrad</option>
