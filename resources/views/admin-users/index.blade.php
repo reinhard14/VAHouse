@@ -300,7 +300,8 @@
                                                     </td>
                                                     <td>
                                                         <div class="text-center">
-                                                            {{ $user->created_at->diffForHumans() }}
+                                                            {{ $user->created_at->diffForHumans(['parts' => 1,
+                                                                                                'short' => true,]) }}
                                                         </div>
                                                     </td>
                                                     <td class="text-right">
