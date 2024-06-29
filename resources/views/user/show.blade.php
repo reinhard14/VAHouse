@@ -13,11 +13,11 @@
                     @include('includes.messages')
 
                     <div class="row p-2">
-                        <div class="col border">
+                        <div class="col">
                             @if (!isset($user->information->photo_id))
                                 N/A
                             @else
-                                <img src="{{ asset('storage/' . $user->information->photo_formal) }}" alt="formal photo" height="250px">
+                                <img src="{{ asset('storage/' . $user->information->photo_formal) }}" alt="formal photo" height="250px" class="border border-primary">
                             @endif
                         </div>
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ApplicantInformation;
 use App\Models\User;
 use App\Models\Skillset;
 use App\Models\Review;
@@ -277,17 +278,31 @@ class AdminUserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+        $user_id = $user->id;
+        $userApplicantInformation = ApplicantInformation::where('user_id', $user_id);
+        $userSkillset = Skillset::where('user_id', $user_id);
 
         //check if resume is not null. then proceed with delete.
         if (!isset($user->information->resume)) {
+            $userApplicantInformation->delete();
+            $userSkillset->delete();
             $user->delete();
+
         } else {
-            $pdf = $user->information->resume;
-            Storage::delete('public/'.$pdf);
+            $applicantResume = $user->information->resume;
+            $applicantId = $user->information->photo_id;
+            $applicantFormalPhoto = $user->information->photo_formal;
+            $applicantDiscResult = $user->information->disc_results;
+            Storage::delete('public/'.$applicantResume);
+            Storage::delete('public/'.$applicantId);
+            Storage::delete('public/'.$applicantFormalPhoto);
+            Storage::delete('public/'.$applicantDiscResult);
+            $userApplicantInformation->delete();
+            $userSkillset->delete();
             $user->delete();
         }
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('success', 'Applicant has been deleted!');
 
     }
 
@@ -297,17 +312,32 @@ class AdminUserController extends Controller
 
         foreach($selectedUserIds as $userId) {
             $user = User::find($userId);
+            $user_id = $user->id;
+            $userApplicantInformation = ApplicantInformation::where('user_id', $user_id);
+            $userSkillset = Skillset::where('user_id', $user_id);
+
 
             if (!isset($user->information->resume))  {
+                $userApplicantInformation->delete();
+                $userSkillset->delete();
                 $user->delete();
+
             } else {
-                $pdf = $user->information->resume;
-                Storage::delete('public/'.$pdf);
+                $applicantResume = $user->information->resume;
+                $applicantId = $user->information->photo_id;
+                $applicantFormalPhoto = $user->information->photo_formal;
+                $applicantDiscResult = $user->information->disc_results;
+                Storage::delete('public/'.$applicantResume);
+                Storage::delete('public/'.$applicantId);
+                Storage::delete('public/'.$applicantFormalPhoto);
+                Storage::delete('public/'.$applicantDiscResult);
+                $userApplicantInformation->delete();
+                $userSkillset->delete();
                 $user->delete();
             }
         }
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.users.index')->with('success', 'Selected applicant(s) has been deleted!');
     }
 
     public function viewPDF($filename)
