@@ -25,7 +25,6 @@
                     <div class="row p-2">
                         <div class="col-md-3">Name:</div>
                         <div class="col-md-3">{{ $user->name}}</div>
-
                     </div>
 
                     <div class="row p-2">
@@ -144,6 +143,19 @@
                         <div class="col-md-9">{{ $user->created_at->diffForHumans() }}</div>
                     </div>
 
+                    <div class="row p-2">
+                        <div class="col-md-3">Applying as: </div>
+                        <div class="col-md-3">
+                            @if(is_null($aPositionsApplied))
+                                N/A
+                            @else
+                                @foreach($aPositionsApplied as $index => $position)
+                                    {{ $position }} </br>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+
                     @if(is_null($aWebsites))
                         <div class="row my-4 p-4 border rounded border-line border-secondary">
                             <div class="text-center">
@@ -202,6 +214,7 @@
                         </small>
                     </div>
                     @endif
+
 
                     <div class="row mt-5">
                         <div class="d-flex justify-content-center">

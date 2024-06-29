@@ -154,6 +154,11 @@
                     </div>
 
                     <div class="row mb-3">
+                        <div class="col-md-3">Applied positions: </div>
+                        <div class="col-md-9">{{ $user->information->positions ?? 'N/A'  }} </div>
+                    </div>
+
+                    <div class="row mb-3">
                         <div class="col-md-3">Websites: </div>
                         <div class="col-md-9">{{ $skillset->website ?? 'N/A'  }} </div>
                     </div>

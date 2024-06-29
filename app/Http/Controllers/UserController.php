@@ -59,9 +59,10 @@ class UserController extends Controller
             'ub_number' => 'required',
             'photo_id' => 'required|max:10000',
             'photo_formal' => 'required|max:10000',
-            'positions' => 'sometimes|array',
-            'positions.*' => 'in:General Virtual Assistant, Social Media Manager,
-                                Callers', 'Web Developers', 'Tech VAs', 'Project Manager',
+            'positions' => 'sometimes|array|min:1',
+            'positions.*' => 'string',
+            // 'in:General Virtual Assistant, Social Media Manager,
+            //                     Callers', 'Web Developers', 'Tech VAs', 'Project Manager',
         ]);
 
         $attributes = ['user_id' => Auth::id()];
@@ -91,7 +92,7 @@ class UserController extends Controller
         $information->videolink = $request->input('videolink');
         $information->portfolio = $request->input('portfolio');
         $information->experience = $request->input('experience');
-        $information->positions = $request->input('positions');
+        $information->positions = json_encode($request->input('positions'));
         $information->skype = $request->input('skype');
         $information->niche = $request->input('niche');
         $information->ub_account = $request->input('ub_account');
@@ -145,16 +146,24 @@ class UserController extends Controller
                             ->latest('created_at')
                             ->value('softskill');
 
+            $positionsApplied = ApplicantInformation::where('user_id', $user->id)
+                            ->latest('created_at')
+                            ->value('positions');
+
             $aWebsites = json_decode($websites);
             $aTools = json_decode($tools);
             $aSkills = json_decode($skills);
             $aSoftskills = json_decode($softskills);
+            $aPositionsApplied = json_decode($positionsApplied);
+
 
         return view('user.show', compact('user',
                                         'aWebsites',
                                         'aTools',
                                         'aSkills',
-                                        'aSoftskills'))->with('success', 'show here');
+                                        'aSoftskills',
+                                        'aPositionsApplied',)
+                                        )->with('success', 'show here');
 
     }
 
