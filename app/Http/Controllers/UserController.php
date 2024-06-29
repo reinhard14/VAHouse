@@ -78,13 +78,13 @@ class UserController extends Controller
             return back()->with('error', 'Please upload a PDF file.');
         }
 
-        $score = Skillset::firstOrNew($attributes);
-        $score->website = json_encode($request->input('websites'));
-        $score->tool = json_encode($request->input('tools'));
-        $score->skill = json_encode($request->input('skills'));
-        $score->softskill = json_encode($request->input('softskills'));
-        $score->user_id = Auth::id();
-        $score->save();
+        $skillset = Skillset::firstOrNew($attributes);
+        $skillset->website = json_encode($request->input('websites'));
+        $skillset->tool = json_encode($request->input('tools'));
+        $skillset->skill = json_encode($request->input('skills'));
+        $skillset->softskill = json_encode($request->input('softskills'));
+        $skillset->user_id = Auth::id();
+        $skillset->save();
 
         $information = ApplicantInformation::firstOrNew($attributes);
         $information->rate = $request->input('rate');
