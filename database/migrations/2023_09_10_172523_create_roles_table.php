@@ -17,7 +17,7 @@ class CreateRolesTable extends Migration
             $table->id();
             $table->string('description');
             $table->timestamps();
-            $table->foreignId('user_id');
+            // $table->foreignId('user_id');
             // $table->foreignId('administrator_id');
         });
     }
