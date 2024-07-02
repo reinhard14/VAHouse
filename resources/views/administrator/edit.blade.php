@@ -40,14 +40,47 @@
                                 <label for="name">First Name</label>
                                 <input type="text" class="form-control" value="{{ $administrator->user->name }}" name="name" required autofocus>
                             </div>
+
                             <div class="form-group">
                                 <label for="lastname">Last Name</label>
                                 <input type="text" class="form-control" value="{{ $administrator->user->lastname }}" name="lastname" required>
                             </div>
+
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input name="age" type="number" class="form-control" value="{{ $administrator->user->age }}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select name="gender" class="form-control">
+                                    <option value="Male" {{ old('gender', $administrator->user->gender ?? '') == 'Male' ? 'selected' : '' }}>Male</option>
+                                    <option value="Female" {{ old('gender', $administrator->user->gender ?? '') == 'Female' ? 'selected' : '' }}>Female</option>
+                                    <option value="Transgender" {{ old('gender', $administrator->user->gender ?? '') == 'Transgender' ? 'selected' : '' }}>Transgender</option>
+                                    <option value="Non binary" {{ old('gender', $administrator->user->gender ?? '') == 'Non-Binary/Non-Conforming' ? 'selected' : '' }}>Non-Binary/Non-Conforming</option>
+                                    <option value="Prefer not to respond" {{ old('gender', $administrator->user->gender ?? '') == 'Prefer not to respond' ? 'selected' : '' }}>Prefer not to respond</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="education">Highest Educational Attainment</label>
+                                <select name="education" class="form-control">
+                                    <option value="High School" {{ old('education', $administrator->user->education ?? '') == 'High School' ? 'selected' : '' }}>High School</option>
+                                    <option value="Senior High School" {{ old('education', $administrator->user->education ?? '') == 'Senior High School' ? 'selected' : '' }}>Senior High School</option>
+                                    <option value="College Undergrad" {{ old('education', $administrator->user->education ?? '') == 'College Undergrad' ? 'selected' : '' }}>College Undergrad</option>
+                                    <option value="College Degree" {{ old('education', $administrator->user->education ?? '') == 'College Degree' ? 'selected' : '' }}>College Degree</option>
+                                    <option value="Master\'s Degree" {{ old('education', $administrator->user->education ?? '') == 'Master\'s Degree' ? 'selected' : '' }}>Master's Degree</option>
+                                    <option value="Professional Degree" {{ old('education', $administrator->user->education ?? '') == 'Professional Degree' ? 'selected' : '' }}>Professional Degree</option>
+                                    <option value="Doctorate Degree" {{ old('education', $administrator->user->education ?? '') == 'Doctorate Degree' ? 'selected' : '' }}>Doctorate Degree</option>
+                                    <option value="Vocational" {{ old('education', $administrator->user->education ?? '') == 'Vocational' ? 'selected' : '' }}>Vocational</option>
+                                </select>
+                            </div>
+
                             <div class="form-group">
                                 <label for="contactnumber">Contact Number</label>
-                                <input type="number" class="form-control" value="{{ $administrator->user->contactnumber }}" name="contactnumber" required>
+                                <input name="contactnumber" type="number" class="form-control" value="{{ $administrator->user->contactnumber }}" required>
                             </div>
+
                             <div class="form-group">
                                 <label for="department">Department</label>
                                 <select class="form-control" id="department" name="department" {{ $departments->isEmpty() ? 'disabled' : ''}}>
@@ -56,15 +89,22 @@
                                     @endforeach
                                 </select>
                             </div>
+
                             <div class="form-group">
                                 <label for="position">Position</label>
                                 <input type="text" class="form-control" value="{{ $administrator->position }}" name="position" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input name="address" type="text" class="form-control" value="{{ $administrator->user->address }}" required>
                             </div>
 
                             <hr class="alert-info mt-4">
                             <small class="p1 mb-1">
                             Account login Details:
                             </small>
+
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="text" class="form-control" value="{{ $administrator->user->email }}" name="email" required>
@@ -75,21 +115,6 @@
                                 <input type="password" class="form-control" name="password" data-toggle="password" required>
                             </div>
 
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label for="gender">Gender</label>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gender" value="male" {{ $administrator->gender === 'male' ? 'checked' : '' }}>
-                                            <label class="form-check-label">Male</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gender" value="female" {{ $administrator->gender === 'female' ? 'checked' : '' }}>
-                                            <label class="form-check-label">Female</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="d-flex justify-content-center">
                                 <button class="btn btn-primary mr-2"><i class="bi bi-arrow-clockwise"></i> Update</button>
                                 <a href="#" id="resetFieldButton" class="btn btn btn-outline-danger mr-2 mr-2"><i class="bi bi-x-square"></i> Reset Field</button>

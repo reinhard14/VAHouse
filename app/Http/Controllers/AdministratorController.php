@@ -91,7 +91,6 @@ class AdministratorController extends Controller
         $administrator = new Administrator();
         $administrator->department = $request->input('department');
         $administrator->position = $request->input('position');
-        $administrator->gender = $request->input('gender');
         $administrator->user_id = $user_id;
         $administrator->role_id = 2;
 
@@ -160,16 +159,19 @@ class AdministratorController extends Controller
         $administrator = Administrator::find($id);
         $administrator->department = $request->input('department');
         $administrator->position = $request->input('position');
-        $administrator->gender = $request->input('gender');
-
         $administrator->save();
 
         $user_id = $administrator->user_id;
+
         $user = User::find($user_id);
         $user->name = $request->input('name');
         $user->lastname = $request->input('lastname');
         $user->contactnumber = $request->input('contactnumber');
         $user->email = $request->input('email');
+        $user->age = $request->input('age');
+        $user->gender = $request->input('gender');
+        $user->education = $request->input('education');
+        $user->address = $request->input('address');
         $user->password = bcrypt($request->input('password'));
 
         $user->save();
