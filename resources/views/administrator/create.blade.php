@@ -69,7 +69,7 @@
                                     <option value="Senior High School">Senior High School</option>
                                     <option value="College Undergrad">College Undergrad</option>
                                     <option value="College Degree">College Degree</option>
-                                    <option value="Masters Degree">Master's Degree</option>
+                                    <option value="Master\'s Degree">Master's Degree</option>
                                     <option value="Professional Degree">Professional Degree</option>
                                     <option value="Doctorate Degree">Doctorate Degree</option>
                                     <option value="Vocational">Vocational</option>
@@ -111,18 +111,6 @@
                             <div class="form-group">
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" placeholder="Password.." name="password" data-toggle="password" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="gender">Gender</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="Male" required>
-                                    <label class="form-check-label">Male</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" value="Female">
-                                    <label class="form-check-label">Female</label>
-                                </div>
                             </div>
 
                             <div class="d-flex justify-content-center">

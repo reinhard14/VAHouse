@@ -159,4 +159,15 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // //administrator edit
+    // const editAdministratorForm = document.querySelectorAll('.editAdministratorForm');
+
+    // if (editAdministratorForm) {
+    //     editApplicantStatus.forEach((form) => {
+    //         form.addEventListener('submit', (e) => {
+    //             e.preventDefault();
+    //             editAdministratorFormSubmission(form);
+    //         });
+    //     })
+    // }
 });

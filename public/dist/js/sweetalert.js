@@ -293,6 +293,31 @@ function handleClearFields() {
     });
 }
 
+// //Administrator Edit prompt.
+// function editAdministratorFormSubmission(form) {
+//     Swal.fire({
+//         icon: 'info',
+//         title: 'Are you sure?',
+//         text: 'This will update the administrator\'s information.',
+//         showCancelButton: true,
+//         confirmButtonColor: '#007afe',
+//         cancelButtonColor: '#6d747d',
+//         confirmButtonText: 'Yes, Submit!'
+//     }).then((result) => {
+//         if (result.isConfirmed) {
+//             Swal.fire({
+//             title: 'Updating!',
+//             text: 'The information for the administrator is being saved at the database.',
+//             icon: 'success',
+//             showConfirmButton: false,
+//         })
+//             setTimeout(() => {
+//                 form.submit()
+//             }, 2000);
+//         };
+//     });
+// }
+
 
 // !Sweet alert for users-end
 //Add Virtual Agent Scores

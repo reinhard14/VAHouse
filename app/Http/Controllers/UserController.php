@@ -61,8 +61,6 @@ class UserController extends Controller
             'photo_formal' => 'required|max:10000',
             'positions' => 'sometimes|array|min:1',
             'positions.*' => 'string',
-            // 'in:General Virtual Assistant, Social Media Manager,
-            //                     Callers', 'Web Developers', 'Tech VAs', 'Project Manager',
         ]);
 
         $attributes = ['user_id' => Auth::id()];

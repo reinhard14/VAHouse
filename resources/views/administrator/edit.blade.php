@@ -35,7 +35,7 @@
                         <form method="post" action="{{ route('administrator.update', $administrator->id) }}" id="routeAdminEditForm">
                             @method('PUT')
                             @csrf
-                            {{-- <input type="hidden" name="saving_option" id="savingOption" value=""> --}}
+                            <input type="hidden" name="saving_option" id="savingOption" value="">
                             <div class="form-group">
                                 <label for="name">First Name</label>
                                 <input type="text" class="form-control" value="{{ $administrator->user->name }}" name="name" required autofocus>
@@ -69,7 +69,7 @@
                                     <option value="Senior High School" {{ old('education', $administrator->user->education ?? '') == 'Senior High School' ? 'selected' : '' }}>Senior High School</option>
                                     <option value="College Undergrad" {{ old('education', $administrator->user->education ?? '') == 'College Undergrad' ? 'selected' : '' }}>College Undergrad</option>
                                     <option value="College Degree" {{ old('education', $administrator->user->education ?? '') == 'College Degree' ? 'selected' : '' }}>College Degree</option>
-                                    <option value="Master\'s Degree" {{ old('education', $administrator->user->education ?? '') == 'Master\'s Degree' ? 'selected' : '' }}>Master's Degree</option>
+                                    <option value="Master's Degree" {{ old('education', $administrator->user->education ?? '') == 'Master\'s Degree' ? 'selected' : '' }}>Master's Degree</option>
                                     <option value="Professional Degree" {{ old('education', $administrator->user->education ?? '') == 'Professional Degree' ? 'selected' : '' }}>Professional Degree</option>
                                     <option value="Doctorate Degree" {{ old('education', $administrator->user->education ?? '') == 'Doctorate Degree' ? 'selected' : '' }}>Doctorate Degree</option>
                                     <option value="Vocational" {{ old('education', $administrator->user->education ?? '') == 'Vocational' ? 'selected' : '' }}>Vocational</option>
@@ -117,7 +117,7 @@
 
                             <div class="d-flex justify-content-center">
                                 <button class="btn btn-primary mr-2"><i class="bi bi-arrow-clockwise"></i> Update</button>
-                                <a href="#" id="resetFieldButton" class="btn btn btn-outline-danger mr-2 mr-2"><i class="bi bi-x-square"></i> Reset Field</button>
+                                <a href="#" id="resetFieldButton" class="btn btn btn-outline-danger mr-2 mr-2"><i class="bi bi-x-square"></i> Reset Field</a>
                                 <a href="{{ route('administrator.index') }}" class="btn btn-secondary" role="button"><i class="bi bi-arrow-left mr-1"></i> Back</a>
                             </div>
                         </form>

@@ -83,7 +83,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Gender</label>
-                                    <p> {{ $administrator->gender }} </p>
+                                    <p> {{ $administrator->user->gender }} </p>
                                 </div>
                             </div>
                             <div class="col-md-6">
