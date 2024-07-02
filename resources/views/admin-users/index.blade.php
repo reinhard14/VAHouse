@@ -265,7 +265,7 @@
                                                     <td>
                                                         <div class="text-center">
                                                             @if(!isset($user->status->status))
-                                                                'N/A'
+                                                                N/A
                                                             @else
 
                                                                 @if ($user->status->status == 'New')
