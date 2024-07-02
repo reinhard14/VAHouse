@@ -18,14 +18,13 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    //Show modal upon login.
     const guidelinesModal = new bootstrap.Modal(document.getElementById('guidelinesModal'));
     guidelinesModal.show();
+
 });
 
 
 $(document).ready(function() {
-    // $('#guidelinesModal').modal('show');
 
     $('#websites').select2({
         tags: true,
