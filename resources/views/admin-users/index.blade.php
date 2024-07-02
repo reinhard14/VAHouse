@@ -267,11 +267,11 @@
                                                             @else
 
                                                                 @if ($user->status->status == 'New')
-                                                                <span class="badge badge-success" data-toggle="tooltip"
-                                                                    title="Last updated by: {{ $user->status->updated_by ?? 'N/A'}}"
-                                                                    >
-                                                                    {{ $user->status->status }}
-                                                                </span>
+                                                                    <span class="badge badge-success" data-toggle="tooltip"
+                                                                        title="Last updated by: {{ $user->status->updated_by ?? 'N/A'}}"
+                                                                        >
+                                                                        {{ $user->status->status }}
+                                                                    </span>
 
                                                                 @elseif ( $user->status->status == 'Onboarded')
                                                                     <span class="badge badge-info" data-toggle="tooltip"
