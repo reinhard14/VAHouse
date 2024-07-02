@@ -97,7 +97,7 @@
 
                             <div class="form-group">
                                 <label for="address">Address</label>
-                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required>
+                                <input id="address" type="text" class="form-control" placeholder="Enter address" name="address" value="{{ old('address') }}" required>
                             </div>
 
                             <hr class="alert-info mt-4">
