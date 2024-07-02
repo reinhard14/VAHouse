@@ -35,84 +35,96 @@
                         <form method="post" action="{{ route('administrator.store') }}" id="routeAdminForm">
                             @csrf
                             <input type="hidden" name="saving_option" id="savingOption" value="">
-                            {{-- <div class="row">
-                                <div class="col-md-8"> --}}
-                                    <div class="form-group">
-                                        <label for="name">First Name</label>
-                                        <input type="text" class="form-control" placeholder="First name.." name="name" value="{{ old('name') }}" required>
-                                    </div>
-                                {{-- </div>
-                            </div> --}}
-                            {{-- <div class="row">
-                                <div class="col-md-8"> --}}
-                                    <div class="form-group">
-                                        <label for="lastname">Last Name</label>
-                                        <input type="text" class="form-control" placeholder="Last name.." name="lastname" value="{{ old('lastname') }}" required>
-                                    </div>
-                                {{-- </div>
-                            </div> --}}
-                            {{-- <div class="row">
-                                <div class="col-md-8"> --}}
-                                    <div class="form-group">
-                                        <label for="contactnumber">Contact Number</label>
-                                        <input type="number" class="form-control" placeholder="Contact number.." name="contactnumber" value="{{ old('contactnumber') }}" required>
-                                    </div>
-                                {{-- </div>
-                            </div> --}}
-                            {{-- <div class="row">
-                                <div class="col-md-8"> --}}
-                                    <div class="form-group">
-                                        <label for="department">Department</label>
-                                        <select class="form-control" id="department" name="department" {{ $departments->isEmpty() ? 'disabled' : ''}}>
-                                            @foreach ($departments as $department)
-                                                <option value="{{ $department->name }}">{{ $department->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                {{-- </div>
-                            </div> --}}
-                            {{-- <div class="row">
-                                <div class="col-md-8"> --}}
-                                    <div class="form-group">
-                                        <label for="position">Position</label>
-                                        <input type="text" class="form-control" placeholder="Enter position" name="position" value="{{ old('position') }}" required>
-                                    </div>
-                                {{-- </div>
-                            </div> --}}
+
+                            <div class="form-group">
+                                <label for="name">First Name</label>
+                                <input type="text" class="form-control" placeholder="First name.." name="name" value="{{ old('name') }}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastname">Last Name</label>
+                                <input type="text" class="form-control" placeholder="Last name.." name="lastname" value="{{ old('lastname') }}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input type="number" class="form-control" name="age" value="{{ old('age') }}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select name="gender" class="form-control">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Transgender">Transgender</option>
+                                    <option value="Non binary">Non-Binary/Non-Conforming</option>
+                                    <option value="Prefer not to respond">Prefer not to respond</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="education">Highest Educational Attainment</label>
+                                <select name="education" class="form-control">
+                                    <option value="High School">High School</option>
+                                    <option value="Senior High School">Senior High School</option>
+                                    <option value="College Undergrad">College Undergrad</option>
+                                    <option value="College Degree">College Degree</option>
+                                    <option value="Masters Degree">Master's Degree</option>
+                                    <option value="Professional Degree">Professional Degree</option>
+                                    <option value="Doctorate Degree">Doctorate Degree</option>
+                                    <option value="Vocational">Vocational</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contactnumber">Contact Number</label>
+                                <input type="number" class="form-control" placeholder="Contact number.." name="contactnumber" value="{{ old('contactnumber') }}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="department">Department</label>
+                                <select class="form-control" id="department" name="department" {{ $departments->isEmpty() ? 'disabled' : ''}}>
+                                    @foreach ($departments as $department)
+                                        <option value="{{ $department->name }}">{{ $department->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="position">Position</label>
+                                <input type="text" class="form-control" placeholder="Enter position" name="position" value="{{ old('position') }}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required>
+                            </div>
 
                             <hr class="alert-info mt-4">
                             <small class="p1 mb-1"> Account login Details: </small>
-                            {{-- <div class="row">
-                                <div class="col-md-8"> --}}
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="text" class="form-control" placeholder="Email address.." name="email" value="{{ old('email') }}" required autofocus>
-                                    </div>
-                                {{-- </div>
-                            </div> --}}
-                            {{-- <div class="row">
-                                <div class="col-md-8"> --}}
-                                    <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input type="password" class="form-control" placeholder="Password.." name="password" data-toggle="password" required>
-                                    </div>
-                                {{-- </div>
-                            </div> --}}
-                            {{-- <div class="row">
-                                <div class="col-md-8"> --}}
-                                    <div class="form-group">
-                                        <label for="gender">Gender</label>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gender" value="Male" required>
-                                            <label class="form-check-label">Male</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gender" value="Female">
-                                            <label class="form-check-label">Female</label>
-                                        </div>
-                                    </div>
-                                {{-- </div>
-                            </div> --}}
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" placeholder="Email address.." name="email" value="{{ old('email') }}" required autofocus>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" placeholder="Password.." name="password" data-toggle="password" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" value="Male" required>
+                                    <label class="form-check-label">Male</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="gender" value="Female">
+                                    <label class="form-check-label">Female</label>
+                                </div>
+                            </div>
+
                             <div class="d-flex justify-content-center">
                                 <button type="submit" class="btn btn-primary mr-2"><ion-icon name="navigate-outline" class="mr-1"></ion-icon>Submit</button>
                                 <a href="#" id="resetFieldButton" class="btn btn-outline-danger mr-2"><ion-icon name="backspace-outline" class="mr-1"></ion-icon>Reset Field</a>

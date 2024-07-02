@@ -37,17 +37,33 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>First Name</label>
-                                    <p> {{ $administrator->user->name }} </p>
+                                    <label>Name</label>
+                                    <p> {{ $administrator->user->name }} {{ $administrator->user->lastname }} </p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Last Name</label>
-                                    <p> {{ $administrator->user->lastname }} </p>
+                                    <label>Age</label>
+                                    <p>{{ $administrator->user->age }}</p>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Gender</label>
+                                    <p> {{ $administrator->user->gender }} </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <p> {{ $administrator->user->address }} </p>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -62,6 +78,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -76,6 +93,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -85,12 +103,17 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Created on:</label>
-                                    <p> {{ $administrator->created_at->diffForHumans() }} </p>
+                                    <label>Education</label>
+                                    <p> {{  $administrator->user->education }} </p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="small text-right">
+                        <label>Created on:</label> {{ $administrator->created_at->diffForHumans() }}
+                    </div>
+
                     <div class="d-flex justify-content-center">
                         <a href="{{ route('administrator.edit', $administrator->id) }}" class="btn btn-primary mr-2" role="button"><i class="bi bi-pencil"></i> Edit</a>
                         <form method="post" action="{{ route('administrator.destroy', $administrator->id) }}" class="mr-2" id="deleteViewForm">
