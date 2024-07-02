@@ -69,10 +69,8 @@
                                             <div class="col-md-8">
                                                 <input type="text" name="search" placeholder="Enter search here" class="form-control w-100">
                                             </div>
-                                            <div class="col-md-2 text-right p-1">
+                                            <div class="col-md-4 text-right p-1">
                                                 <button type="submit" class="btn btn-secondary btn-sm"><i class="bi bi-search mr-1"></i>Search</button>
-                                            </div>
-                                            <div class="col-md-2 text-right p-1">
                                                 <a href="{{ route('admin.users.index') }}" type="submit" class="btn btn-outline-danger btn-sm" ><i class="bi bi-arrow-counterclockwise mr-1"></i>Clear</a>
                                             </div>
                                         </form>
