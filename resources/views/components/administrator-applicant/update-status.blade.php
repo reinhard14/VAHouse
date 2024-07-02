@@ -25,6 +25,7 @@
                                 <option value="Initial-Passed" {{ old('status', $user->status->status ?? '') == 'Initial-Passed' ? 'selected disabled' : '' }}>Initial - Passed</option>
                                 <option value="Incomplete" {{ old('status', $user->status->status ?? '') == 'Incomplete' ? 'selected disabled' : '' }}>Incomplete</option>
                                 <option value="Final-Failed" {{ old('status', $user->status->status ?? '') == 'Final-Failed' ? 'selected disabled' : '' }}>Final - Failed</option>
+                                <option value="For Review" {{ old('status', $user->status->status ?? '') == 'For Review' ? 'selected disabled' : '' }}>For Review</option>
                                 <option value="For Profiling" {{ old('status', $user->status->status ?? '') == 'For Profiling' ? 'selected disabled' : '' }}>For Profiling</option>
                                 <option value="Onboarded" {{ old('status', $user->status->status ?? '') == 'Onboarded' ? 'selected disabled' : '' }}>Onboarded</option>
                                 <option value="Hired" {{ old('status', $user->status->status ?? '') == 'Hired' ? 'selected disabled' : '' }}>Hired</option>

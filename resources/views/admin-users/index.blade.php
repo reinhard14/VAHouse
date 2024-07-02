@@ -295,6 +295,7 @@
                                                                         'Initial-Passed' => 'badge-secondary',
                                                                         'Incomplete' => 'badge-warning',
                                                                         'Final-Failed' => 'badge-danger',
+                                                                        'For Review' => 'badge-secondary',
                                                                         'For Profiling' => 'badge-info',
                                                                         'Onboarded' => 'badge-info',
                                                                         'Hired' => 'badge-primary',
