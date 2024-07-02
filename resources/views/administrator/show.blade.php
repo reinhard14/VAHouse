@@ -52,12 +52,6 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Gender</label>
-                                    <p> {{ $administrator->user->gender }} </p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
                                     <label>Address</label>
                                     <p> {{ $administrator->user->address }} </p>
                                 </div>
