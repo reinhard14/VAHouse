@@ -132,7 +132,12 @@
                                                         @endif
                                                         <div class="col-lg-6 mb-3">
                                                             <div class="form-group">
-                                                                <label for="{{ $field }}">{{ ucfirst($field) }}:</label>
+                                                                {{-- {{ var_dump($field) }} --}}
+                                                                @if($field=='experience')
+                                                                    <label for="{{ $field }}">Years of {{ ucfirst($field) }}s:</label>
+                                                                @else
+                                                                    <label for="{{ $field }}">{{ ucfirst($field) }}:</label>
+                                                                @endif
                                                                 <select id="{{ $field }}" class="form-control select2"  name="{{ $field }}[]" multiple="multiple">
                                                                     @foreach (${"unique" . ucfirst($field)} as $item)
                                                                         <option value="{{ $item }}">{{ $item }}</option>
@@ -191,6 +196,7 @@
                                                 <th class="text-center">Information</th>
                                                 <th class="text-center">Intro Vid</th>
                                                 <th class="text-center">Status</th>
+                                                <th class="text-center">Tier</th>
                                                 <th>
                                                     @if ($sortByDateSubmitted === 'desc')
                                                         <a href="{{ route('admin.users.index', ['sortByDateSubmitted' => 'asc']) }}" type="submit" class="btn text-primary"
@@ -213,10 +219,10 @@
                                                     <td>{{ $user->name }}</td>
                                                     <td>
                                                         <div>
-                                                            @if(isset($user->skillsets->experience) && !empty($user->skillsets->experience))
-                                                                @if ($user->skillsets->experience <= 2)
+                                                            @if(isset($user->information->experience) && !empty($user->information->experience))
+                                                                @if ($user->information->experience <= 2)
                                                                     Beginner
-                                                                @elseif ($user->skillsets->experience >= 3 && $user->skillsets->experience <= 5)
+                                                                @elseif ($user->information->experience >= 3 && $user->information->experience <= 5)
                                                                     Intermediate
                                                                 @else
                                                                     Seasoned
@@ -227,7 +233,7 @@
                                                         </div>
                                                     </td>
                                                     <td style="width: 100px;">
-                                                        {{ $user->skillsets->skill ?? 'N/A' }}
+                                                        {{ $user->information->skill ?? 'N/A' }}
                                                     </td>
                                                     <td>
                                                         <div class="d-flex justify-content-center align-items-center">
@@ -265,46 +271,37 @@
                                                             @if(!isset($user->status->status))
                                                                 N/A
                                                             @else
-                                                                @if ($user->status->status == 'New')
-                                                                    <span class="badge badge-success" data-toggle="tooltip"
-                                                                        title="Last updated by: {{ $user->status->updated_by ?? 'N/A'}}"
-                                                                        >
-                                                                        {{ $user->status->status }}
-                                                                    </span>
+                                                                @php
+                                                                    $statusClasses = [
+                                                                        'New' => 'badge-success',
+                                                                        'Initial-Failed' => 'badge-danger',
+                                                                        'Initial-Passed' => 'badge-secondary',
+                                                                        'Incomplete' => 'badge-warning',
+                                                                        'Final-Failed' => 'badge-danger',
+                                                                        'For Profiling' => 'badge-info',
+                                                                        'Onboarded' => 'badge-info',
+                                                                        'Hired' => 'badge-primary',
+                                                                        'Floating' => 'badge-warning',
+                                                                        'Terminated' => 'badge-danger'
+                                                                    ];
 
-                                                                @elseif ( $user->status->status == 'Onboarded')
-                                                                    <span class="badge badge-info" data-toggle="tooltip"
-                                                                        title="Last updated by: {{ $user->status->updated_by }}
-                                                                        Updated on: {{ $user->status->updated_at->diffForHumans(['parts'=>1]) ?? 'N/A' }} "
-                                                                        >
-                                                                        {{ $user->status->status }}
-                                                                    </span>
+                                                                    $status = $user->status->status;
+                                                                    $badgeClass = $statusClasses[$status] ?? 'badge-default'; // default class if status is not found
+                                                                @endphp
 
-                                                                @elseif ( $user->status->status == 'Hired')
-                                                                    <span class="badge badge-primary" data-toggle="tooltip"
-                                                                        title="Last updated by: {{ $user->status->updated_by }}
-                                                                        Updated on: {{ $user->status->updated_at->diffForHumans(['parts'=>1]) ?? 'N/A' }} "
-                                                                        >
-                                                                        {{ $user->status->status }}
-                                                                    </span>
-
-                                                                @elseif ( $user->status->status == 'Floating')
-                                                                    <span class="badge badge-warning" data-toggle="tooltip"
-                                                                        title="Last updated by: {{ $user->status->updated_by }}
-                                                                        Updated on: {{ $user->status->updated_at->diffForHumans(['parts'=>1]) ?? 'N/A' }} "
-                                                                        >
-                                                                        {{ $user->status->status }}
-                                                                    </span>
-
-                                                                @elseif ( $user->status->status == 'Terminated')
-                                                                    <span class="badge badge-danger" data-toggle="tooltip"
-                                                                        title="Last updated by: {{ $user->status->updated_by }}
-                                                                        Updated on: {{ $user->status->updated_at->diffForHumans(['parts'=>1]) ?? 'N/A' }} "
-                                                                        >
-                                                                        {{ $user->status->status }}
+                                                                @if (isset($status))
+                                                                    <span class="badge {{ $badgeClass }}" data-toggle="tooltip"
+                                                                        title="Last updated by: {{ $user->status->updated_by ?? 'N/A' }}
+                                                                        Updated on: {{ $user->status->updated_at->diffForHumans(['parts'=>1]) ?? 'N/A' }}">
+                                                                        {{ $status }}
                                                                     </span>
                                                                 @endif
                                                             @endif
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="text-center">
+                                                            Tier List
                                                         </div>
                                                     </td>
                                                     <td>

@@ -15,15 +15,39 @@
                 <input type="hidden" name="updated_by" value="{{ Auth::user()->name }}">
 
                 <div class="modal-body">
-                    <label class="form-label" for="status">Status: </label>
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label" for="status">Status: </label>
 
-                    <select name="status" class="form-control" required>
-                        <option value="New" {{ old('status', $user->status->status ?? '') == 'New' ? 'selected disabled' : '' }}>New</option>
-                        <option value="Onboarded" {{ old('status', $user->status->status ?? '') == 'Onboarded' ? 'selected disabled' : '' }}>Onboarded</option>
-                        <option value="Hired" {{ old('status', $user->status->status ?? '') == 'Hired' ? 'selected disabled' : '' }}>Hired</option>
-                        <option value="Floating" {{ old('status', $user->status->status ?? '') == 'Floating' ? 'selected disabled' : '' }}>Floating</option>
-                        <option value="Terminated" {{ old('status', $user->status->status ?? '') == 'Terminated' ? 'selected disabled' : '' }}>Terminated</option>
-                    </select>
+                            <select name="status" class="form-control" required>
+                                <option value="New" {{ old('status', $user->status->status ?? '') == 'New' ? 'selected disabled' : '' }}>New</option>
+                                <option value="Initial-Failed" {{ old('status', $user->status->status ?? '') == 'Initial-Failed' ? 'selected disabled' : '' }}>Initial - Failed</option>
+                                <option value="Initial-Passed" {{ old('status', $user->status->status ?? '') == 'Initial-Passed' ? 'selected disabled' : '' }}>Initial - Passed</option>
+                                <option value="Incomplete" {{ old('status', $user->status->status ?? '') == 'Incomplete' ? 'selected disabled' : '' }}>Incomplete</option>
+                                <option value="Final-Failed" {{ old('status', $user->status->status ?? '') == 'Final-Failed' ? 'selected disabled' : '' }}>Final - Failed</option>
+                                <option value="For Profiling" {{ old('status', $user->status->status ?? '') == 'For Profiling' ? 'selected disabled' : '' }}>For Profiling</option>
+                                <option value="Onboarded" {{ old('status', $user->status->status ?? '') == 'Onboarded' ? 'selected disabled' : '' }}>Onboarded</option>
+                                <option value="Hired" {{ old('status', $user->status->status ?? '') == 'Hired' ? 'selected disabled' : '' }}>Hired</option>
+                                <option value="Floating" {{ old('status', $user->status->status ?? '') == 'Floating' ? 'selected disabled' : '' }}>Floating</option>
+                                <option value="Terminated" {{ old('status', $user->status->status ?? '') == 'Terminated' ? 'selected disabled' : '' }}>Terminated</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    {{-- <div class="row">
+                        <div class="col">
+                            <label class="form-label" for="tier">Tier: </label>
+
+                            <select name="tier" class="form-control" required>
+                                <option value="Tier 1" >Tier 1</option>
+                                <option value="Tier 2">Tier 2</option>
+                                <option value="Tier 3" >Tier 3</option>
+                                <option value="Master VA" >Master VA</option>
+                                <option value="Super VA" >Super VA</option>
+                            </select>
+                        </div>
+                    </div> --}}
+
                 </div>
 
                 <div class="modal-footer">
