@@ -296,7 +296,7 @@
                                                                         'Incomplete' => 'badge-warning',
                                                                         'Final-Failed' => 'badge-danger',
                                                                         'For Review' => 'badge-secondary',
-                                                                        'For Profiling' => 'badge-info',
+                                                                        'Ready for shortlisting' => 'badge-info',
                                                                         'Onboarded' => 'badge-info',
                                                                         'Hired' => 'badge-primary',
                                                                         'Floating' => 'badge-warning',
