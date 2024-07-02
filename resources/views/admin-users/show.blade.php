@@ -29,7 +29,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Applicant's Information</h3>
-                    <h5 class="card-tools">Status: {{ $user->status->status }}</h5>
+                    <h5 class="card-tools">Status: @if(!isset($user->status->status)) N/A @else {{ $user->status->status }} @endif</h5>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
