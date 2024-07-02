@@ -155,24 +155,114 @@
 
                     <div class="row mb-3">
                         <div class="col-md-3">Applied positions: </div>
-                        <div class="col-md-9">{{ $user->information->positions ?? 'N/A'  }} </div>
+                        <div class="col-md-9">
+                            @php
+                                $positions = [];
+
+                                if (isset($user->information->positions) && !is_null($user->information->positions)) {
+                                    $positions = json_decode($user->information->positions, true);
+                                }
+                            @endphp
+
+                            @if (!empty($positions) && is_array($positions))
+                                <ul>
+                                    @foreach ($positions as $position)
+                                        <li>{{ $position }}</li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <p>No positions selected by the applicant.</p>
+                            @endif
+                        </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-3">Websites: </div>
-                        <div class="col-md-9">{{ $skillset->website ?? 'N/A'  }} </div>
+                        <div class="col-md-9">
+                            @php
+                                $websites = [];
+
+                                if (isset($skillset->website) && !is_null($skillset->website)) {
+                                    $websites = json_decode($skillset->website, true);
+                                }
+                            @endphp
+
+                            @if (!empty($websites) && is_array($websites))
+                                <ul>
+                                    @foreach ($websites as $website)
+                                        <li>{{ $website }}</li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <p>No websites selected by the applicant.</p>
+                            @endif
+                        </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-3">Tools: </div>
-                        <div class="col-md-9">{{ $skillset->tool ?? 'N/A'  }} </div>
+                        <div class="col-md-9">
+                            @php
+                                $tools = [];
+
+                                if (isset($skillset->tool) && !is_null($skillset->tool)) {
+                                    $tools = json_decode($skillset->tool, true);
+                                }
+                            @endphp
+
+                            @if (!empty($tools) && is_array($tools))
+                                <ul>
+                                    @foreach ($tools as $tool)
+                                        <li>{{ $tool }}</li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <p>No tools selected by the applicant.</p>
+                            @endif
+                        </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-3">Skills: </div>
-                        <div class="col-md-9">{{ $skillset->skill ?? 'N/A'  }} </div>
+                        <div class="col-md-9">
+                            @php
+                                $skills = [];
+
+                                if (isset($skillset->skill) && !is_null($skillset->skill)) {
+                                    $skills = json_decode($skillset->skill, true);
+                                }
+                            @endphp
+
+                            @if (!empty($skills) && is_array($skills))
+                                <ul>
+                                    @foreach ($skills as $skill)
+                                        <li>{{ $skill }}</li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <p>No skills selected by the applicant.</p>
+                            @endif
+                        </div>
                     </div>
                     <div class="row mb-5">
                         <div class="col-md-3">Soft skills: </div>
-                        <div class="col-md-9">{{ $skillset->softskill ?? 'N/A'  }} </div>
+                        <div class="col-md-9">
+                            @php
+                                $softskills = [];
+
+                                if (isset($skillset->softskill) && !is_null($skillset->softskill)) {
+                                    $softskills = json_decode($skillset->softskill, true);
+                                }
+                            @endphp
+
+                            @if (!empty($softskills) && is_array($softskills))
+                                <ul>
+                                    @foreach ($softskills as $softskill)
+                                        <li>{{ $softskill }}</li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <p>No softskills selected by the applicant.</p>
+                            @endif
+                        </div>
                     </div>
 
                     <div class="row mb-2">

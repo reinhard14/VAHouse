@@ -232,8 +232,25 @@
                                                             @endif
                                                         </div>
                                                     </td>
-                                                    <td style="width: 100px;">
-                                                        {{ $user->information->skill ?? 'N/A' }}
+
+                                                    <td class="text-left">
+                                                        @php
+                                                            $skills = [];
+
+                                                            if (isset($user->skillsets->skill) && !is_null($user->skillsets->skill)) {
+                                                                $skills = json_decode($user->skillsets->skill, true);
+                                                            }
+                                                        @endphp
+
+                                                        @if (!empty($skills) && is_array($skills))
+                                                            <ul>
+                                                                @foreach ($skills as $skill)
+                                                                    <li>{{ $skill }}</li>
+                                                                @endforeach
+                                                            </ul>
+                                                        @else
+                                                            <p>No skills available.</p>
+                                                        @endif
                                                     </td>
                                                     <td>
                                                         <div class="d-flex justify-content-center align-items-center">
