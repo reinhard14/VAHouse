@@ -66,17 +66,17 @@
 
                 <div>
                     <small><strong 10 device manage wifi disabled>Intro Video Link</strong></small>
-                    <small>{{ $user->information->videolink ?? 'N/A' }}</small>
+                    <small>https://vahouseapplicants.com/storage/{{ $user->information->videolink ?? 'N/A' }}</small>
                 </div>
 
                 <div>
                     <small><strong>CV Link</strong></small>
-                    <small>{{ $user->information->resume ?? 'N/A' }}</small>
+                    <small>https://vahouseapplicants.com/storage/{{ $user->information->resume ?? 'N/A' }}</small>
                 </div>
 
                 <div>
                     <small><strong>Portfolio Link</strong></small>
-                    <small>{{ $user->information->portfolio ?? 'N/A' }}</small>
+                    <small>https://vahouseapplicants.com/storage/{{ $user->information->portfolio ?? 'N/A' }}</small>
                 </div>
             </div>
 
