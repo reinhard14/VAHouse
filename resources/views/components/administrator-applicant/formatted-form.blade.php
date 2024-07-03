@@ -1,0 +1,86 @@
+<!-- Formatted Form Modal -->
+
+<div class="modal fade" id="formatted-form-modal-{{ $user->id }}" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Formatted Form</h5>
+                <button type="button" class="close" data-bs-dismiss="modal">x</button>
+            </div>
+
+            <div class="modal-body">
+                <strong>{{ $user->name }} {{ $user->lastname }} </strong>
+                @php
+                    $skills = [];
+
+                    if (isset($user->skillsets->skill) && !is_null($user->skillsets->skill)) {
+                        $skills = json_decode($user->skillsets->skill, true);
+                    }
+                @endphp
+
+                <ul>
+                    <li>{{ $user->lastname }}</li>
+
+                    @if (!empty($skills) && is_array($skills))
+                        @foreach ($skills as $skill)
+                            <li>{{ $skill }}</li>
+                        @endforeach
+
+                    @else
+                        <li>No skills available.</li>
+                    @endif
+                </ul>
+
+                <strong>Tools & CRM</strong>
+                @php
+                    $tools = [];
+                    $websites = [];
+
+                    if ((isset($user->skillsets->tool, $user->skillset->website)) &&
+                        !is_null($user->skillsets->tool) ||
+                        !is_null($user->skillsets->website)) {
+
+                        $tools = json_decode($user->skillsets->tool, true);
+                        $websites = json_decode($user->skillsets->website, true);
+                    }
+                @endphp
+
+                <ul>
+                    @if ((!empty($tools) && is_array($tools)) &&
+                         (!empty($websites) && is_array($websites)))
+
+                        @foreach ($tools as $tool)
+                            <li>{{ $tool }}</li>
+                        @endforeach
+
+                        @foreach ($websites as $website)
+                            <li>{{ $website }}</li>
+                        @endforeach
+
+                    @else
+                        <li>No tools & websites available.</li>
+                    @endif
+                </ul>
+
+                <div>
+                    <strong>Intro Video Link</strong>
+                    <p>{{ $user->information->videolink ?? 'N/A' }}</p>
+                </div>
+
+                <div>
+                    <strong>CV Link</strong>
+                    <p>{{ $user->information->resume ?? 'N/A' }}</p>
+                </div>
+
+                <div>
+                    <strong>Portfolio Link</strong>
+                    <p>{{ $user->information->portfolio ?? 'N/A' }}</p>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"><i class="bi bi-file-x  mr-1"></i>Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -289,9 +289,9 @@
 
                     <div class="row mt-3">
                         <div class="col d-flex justify-content-center">
-                            {{-- <div class="p-2">
-                                <a href="#" class="btn btn-primary" id="generateApplicantsForm">Generate Form</a>
-                            </div> --}}
+                            <div class="p-2">
+                                <a href="#formatted-form-modal-{{ $user->id }}" class="btn btn-primary" data-bs-toggle="modal">Generate Form</a>
+                            </div>
                             <div class="p-2">
                                 <a href="{{ route('admin.users.index') }}" class="btn btn-secondary" role="button"><i class="bi bi-arrow-return-right mr-1"></i>Back</a>
                             </div>
@@ -307,6 +307,8 @@
 
 </div>
 
+{{--* Modal components here --}}
+<x-administrator-applicant.formatted-form :user="$user" />
 
 {{-- container end --}}
 @endsection

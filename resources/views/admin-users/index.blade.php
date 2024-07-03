@@ -304,7 +304,7 @@
                                                                     ];
 
                                                                     $status = $user->status->status;
-                                                                    $badgeClass = $statusClasses[$status] ?? 'badge-default'; // default class if status is not found
+                                                                    $badgeClass = $statusClasses[$status] ?? 'badge-default';
                                                                 @endphp
 
                                                                 @if (isset($status))
