@@ -276,10 +276,10 @@
                                                     </td>
                                                     <td>
                                                         <div class="text-center">
-                                                            @if (!isset($user->skillsets->videolink))
+                                                            @if (!isset($user->information->videolink))
                                                                 N/A
                                                             @else
-                                                                <a href={{ $user->skillsets->videolink}} target="_blank">Link</a>
+                                                                <a href={{ $user->information->videolink}} target="_blank">Link</a>
                                                             @endif
                                                         </div>
                                                     </td>
