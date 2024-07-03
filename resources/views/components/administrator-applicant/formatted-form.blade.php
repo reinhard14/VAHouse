@@ -65,18 +65,18 @@
                 </ul>
 
                 <div>
-                    <strong>Intro Video Link</strong>
-                    <p>{{ $user->information->videolink ?? 'N/A' }}</p>
+                    <small><strong 10 device manage wifi disabled>Intro Video Link</strong></small>
+                    <small>{{ $user->information->videolink ?? 'N/A' }}</small>
                 </div>
 
                 <div>
-                    <strong>CV Link</strong>
-                    <p>{{ $user->information->resume ?? 'N/A' }}</p>
+                    <small><strong>CV Link</strong></small>
+                    <small>{{ $user->information->resume ?? 'N/A' }}</small>
                 </div>
 
                 <div>
-                    <strong>Portfolio Link</strong>
-                    <p>{{ $user->information->portfolio ?? 'N/A' }}</p>
+                    <small><strong>Portfolio Link</strong></small>
+                    <small>{{ $user->information->portfolio ?? 'N/A' }}</small>
                 </div>
             </div>
 
