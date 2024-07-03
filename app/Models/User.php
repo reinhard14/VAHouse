@@ -11,6 +11,7 @@ use App\Models\Role;
 use App\Models\Skillset;
 use App\Models\Review;
 use App\Models\Status;
+use App\Models\Tier;
 use App\Models\ApplicantInformation;
 
 class User extends Authenticatable
@@ -76,5 +77,9 @@ class User extends Authenticatable
 
     public function status() {
         return $this->hasOne(Status::class);
+    }
+
+    public function tier() {
+        return $this->hasOne(Tier::class);
     }
 }

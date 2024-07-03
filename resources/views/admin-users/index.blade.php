@@ -319,7 +319,29 @@
                                                     </td>
                                                     <td>
                                                         <div class="text-center">
-                                                            Tier List
+                                                            @if(!isset($user->tier->tier))
+                                                                N/A
+                                                            @else
+                                                                @php
+                                                                    $tierClasses = [
+                                                                        'Tier 1' => 'badge-secondary',
+                                                                        'Tier 2' => 'badge-warning',
+                                                                        'Tier 3' => 'badge-info',
+                                                                        'Master VA' => 'badge-primary',
+                                                                        'Super VA' => 'badge-success',
+                                                                    ];
+
+                                                                    $tier = $user->tier->tier;
+                                                                    $badgeClass = $tierClasses[$tier] ?? 'badge-default';
+                                                                @endphp
+
+                                                                @if (isset($tier))
+                                                                    <span class="badge {{ $badgeClass }}" data-toggle="tooltip"
+                                                                        title="Updated on: {{ $user->tier->updated_at->diffForHumans(['parts'=>1]) ?? 'N/A' }}">
+                                                                        {{ $tier }}
+                                                                    </span>
+                                                                @endif
+                                                            @endif
                                                         </div>
                                                     </td>
                                                     <td>

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Skillset;
 use App\Models\Review;
 use App\Models\Status;
+use App\Models\Tier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -389,6 +390,11 @@ class AdminUserController extends Controller
         $status->updated_by = $request->input('updated_by');
         $status->user_id = $id;
         $status->save();
+
+        $tier = Tier::where('user_id', $id)->firstOrFail();
+        $tier->tier = $request->input('tier');
+        $tier->user_id = $id;
+        $tier->save();
 
         return back()->with('success', 'Successfully updated applicant\'s status.');
     }
