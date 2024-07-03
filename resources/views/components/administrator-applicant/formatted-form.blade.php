@@ -36,30 +36,34 @@
                     $tools = [];
                     $websites = [];
 
-                    if ((isset($user->skillsets->tool, $user->skillset->website)) &&
-                        !is_null($user->skillsets->tool) ||
-                        !is_null($user->skillsets->website)) {
-
+                    if (isset($user->skillsets->tool) && !is_null($user->skillsets->tool)) {
                         $tools = json_decode($user->skillsets->tool, true);
+                    }
+
+                    if(isset($user->skillsets->website) && !is_null($user->skillsets->website)) {
                         $websites = json_decode($user->skillsets->website, true);
                     }
                 @endphp
 
                 <ul>
-                    @if ((!empty($tools) && is_array($tools)) &&
-                         (!empty($websites) && is_array($websites)))
-
+                    @if ((!empty($tools) && is_array($tools)))
                         @foreach ($tools as $tool)
                             <li>{{ $tool }}</li>
                         @endforeach
 
+                    @else
+                        <li>No tools available.</li>
+                    @endif
+
+                    @if (!empty($websites) && is_array($websites))
                         @foreach ($websites as $website)
                             <li>{{ $website }}</li>
                         @endforeach
 
                     @else
-                        <li>No tools & websites available.</li>
+                        <li>No websites available.</li>
                     @endif
+
                 </ul>
 
                 <div>
