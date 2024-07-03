@@ -93,6 +93,10 @@ class RegisterController extends Controller
             'status' => 'New',
         ]);
 
+        $user->tier()->create([
+            'tier' => 'Tier 1',
+        ]);
+
         return $user;
 
     }
