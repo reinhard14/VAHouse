@@ -19,8 +19,6 @@
                 @endphp
 
                 <ul>
-                    <li>{{ $user->lastname }}</li>
-
                     @if (!empty($skills) && is_array($skills))
                         @foreach ($skills as $skill)
                             <li>{{ $skill }}</li>
