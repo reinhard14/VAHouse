@@ -66,54 +66,27 @@
 
                 <div>
                     <small><strong>Intro Video Link</strong></small>
-
-                    @if (!isset($user->information->videolink))
-                        N/A
-                    @else
-                        <small>{{ route('view.pdf', $user->information->videolink)}}</small>
-                    @endif
+                    <small>{{ isset($user->information->videolink) ? route('view.pdf', $user->information->videolink) : 'N/A' }}</small>
                 </div>
 
                 <div>
                     <small><strong>CV Link</strong></small>
-
-                    @if (!isset($user->information->resume))
-                        N/A
-                    @else
-                        <small>{{ route('view.pdf', $user->information->resume)}}</small>
-                    @endif
+                    <small>{{ isset($user->information->resume) ? route('view.pdf', $user->information->resume) : 'N/A' }}</small></small>
                 </div>
 
                 <div>
                     <small><strong>Portfolio Link</strong></small>
-
-                    @if (!isset($user->information->portfolio))
-                        N/A
-                    @else
-                        <small>{{ route('view.pdf', $user->information->portfolio)}}</small>
-                    @endif
+                    <small>{{ isset($user->information->portfolio) ? route('view.pdf', $user->information->portfolio) : 'N/A' }}</small></small>
                 </div>
 
                 <div>
                     <small><strong>DISC Results</strong></small>
-
-                    @if (!isset($user->information->disc_results))
-                        N/A
-                    @else
-                        <small>{{ route('view.pdf', $user->information->disc_results)}}</small>
-                    @endif
-
+                    <small>{{ isset($user->information->disc_results) ? route('view.pdf', $user->information->disc_results) : 'N/A' }}</small></small>
                 </div>
 
                 <div>
                     <small><strong>Formal Photo</strong></small>
-
-                    @if (!isset($user->information->videolink))
-                        N/A
-                    @else
-                        <small>{{ route('view.pdf', $user->information->photo_formal) ?? 'N/A' }}</small>
-                    @endif
-
+                    <small>{{ isset($user->information->photo_formal) ? route('view.pdf', $user->information->photo_formal) : 'N/A' }}</small></small>
                 </div>
 
             </div>
