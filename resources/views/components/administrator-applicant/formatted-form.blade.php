@@ -65,19 +65,30 @@
                 </ul>
 
                 <div>
-                    <small><strong 10 device manage wifi disabled>Intro Video Link</strong></small>
-                    <small>https://vahouseapplicants.com/storage/{{ $user->information->videolink ?? 'N/A' }}</small>
+                    <small><strong>Intro Video Link</strong></small>
+                    <small>{{ route('view.pdf', $user->information->videolink) }}</small>
                 </div>
 
                 <div>
                     <small><strong>CV Link</strong></small>
-                    <small>https://vahouseapplicants.com/storage/{{ $user->information->resume ?? 'N/A' }}</small>
+                    <small>{{ route('view.pdf', $user->information->resume) }}</small>
                 </div>
 
                 <div>
                     <small><strong>Portfolio Link</strong></small>
-                    <small>https://vahouseapplicants.com/storage/{{ $user->information->portfolio ?? 'N/A' }}</small>
+                    <small>{{ route('view.pdf', $user->information->portfolio) }}</small>
                 </div>
+
+                <div>
+                    <small><strong>DISC Results</strong></small>
+                    <small>{{ route('view.pdf', $user->information->disc_results) }}</small>
+                </div>
+
+                <div>
+                    <small><strong>Formal Photo</strong></small>
+                    <small>{{ route('view.pdf', $user->information->photo_formal) }}</small>
+                </div>
+
             </div>
 
             <div class="modal-footer">

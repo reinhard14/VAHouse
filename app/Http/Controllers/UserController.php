@@ -48,8 +48,8 @@ class UserController extends Controller
             'softskills' => 'array',
             'softskills.*' => 'string',
             'rate' => 'required',
-            'portfolio' => 'required',
-            'videolink' => 'required',
+            'portfolio' => 'required|mimes:pdf|max:10000',
+            'videolink' => 'required|mimes:mp4,avi,mov,wmv|max:15000',
             'experience' => 'required',
             'resume' => 'required|mimes:pdf|max:10000',
             'disc_results' => 'required|mimes:pdf|max:10000',
@@ -61,20 +61,29 @@ class UserController extends Controller
             'photo_formal' => 'required|max:10000',
             'positions' => 'sometimes|array|min:1',
             'positions.*' => 'string',
-        ]);
+        ],  [
+            'videolink.required' => 'Video file is missing.',
+            'videolink.mimes' => 'Type must be MP4.',
+            'videolink.max' => 'File size exceed the 15mb limit!',
+            ]);
 
         $attributes = ['user_id' => Auth::id()];
 
         // Handle PDF file upload
-        if ($request->hasFile('resume') && $request->hasFile('disc_results') && $request->hasFile('photo_id') && $request->hasFile('photo_formal') ) {
+        if ($request->hasFile('resume') && $request->hasFile('disc_results') &&
+            $request->hasFile('photo_id') && $request->hasFile('photo_formal') &&
+            $request->hasFile('portfolio') && $request->hasFile('videolink')) {
 
             $resumePdfPath = $request->file('resume')->store('pdfs', 'public');
             $discPdfPath = $request->file('disc_results')->store('DISC_Results', 'public');
             $formalPath = $request->file('photo_formal')->store('formals', 'public');
             $identificationPdfPath = $request->file('photo_id')->store('IDs', 'public');
+            $portfolioPath = $request->file('portfolio')->store('portfolios', 'public');
+            $introVideoPdfPath = $request->file('videolink')->store('intro_videos', 'public');
 
+            // dd('File uploaded successfully', $introVideoPdfPath);
         } else {
-            return back()->with('error', 'Please upload a PDF file.');
+            return back()->with('error', 'Please upload a file.');
         }
 
         $skillset = Skillset::firstOrNew($attributes);
@@ -87,8 +96,6 @@ class UserController extends Controller
 
         $information = ApplicantInformation::firstOrNew($attributes);
         $information->rate = $request->input('rate');
-        $information->videolink = $request->input('videolink');
-        $information->portfolio = $request->input('portfolio');
         $information->experience = $request->input('experience');
         $information->positions = json_encode($request->input('positions'));
         $information->skype = $request->input('skype');
@@ -99,6 +106,8 @@ class UserController extends Controller
         $information->photo_id = $identificationPdfPath;
         $information->photo_formal = $formalPath;
         $information->disc_results = $discPdfPath;
+        $information->videolink = $introVideoPdfPath;
+        $information->portfolio = $portfolioPath;
         $information->user_id = Auth::id();
         $information->save();
 

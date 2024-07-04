@@ -282,24 +282,6 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="portfolio"><span class="text-danger">*</span> Portfolio: </label>
-
-                                    <input name="portfolio" type="text" class="form-control" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="videolink"><span class="text-danger">*</span> Video introduction link here: </label>
-
-                                    <input name="videolink" type="text" class="form-control" required>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
                                     <label for="niche"><span class="text-danger">*</span> Niche</label>
 
                                     <input name="niche" type="text" class="form-control" required>
@@ -374,6 +356,25 @@
                                     <label for="disc_results"><span class="text-danger">*</span> DISC Result: (PDF file only)</label>
 
                                     <input name="disc_results" type="file" accept="application/pdf" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="portfolio"><span class="text-danger">*</span> Portfolio:  (PDF file only)</label>
+
+                                    <input name="portfolio" type="file" accept="application/pdf" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="videolink"><span class="text-danger">*</span> Upload video introduction: </label>
+
+                                    <input name="videolink" type="file" class="form-control" required>
                                 </div>
                             </div>
                         </div>

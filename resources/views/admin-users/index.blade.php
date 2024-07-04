@@ -279,7 +279,7 @@
                                                             @if (!isset($user->information->videolink))
                                                                 N/A
                                                             @else
-                                                                <a href={{ $user->information->videolink}} target="_blank">Link</a>
+                                                                <a href="{{ route('view.pdf', $user->information->videolink) }}" target="_blank">Open</a>
                                                             @endif
                                                         </div>
                                                     </td>
