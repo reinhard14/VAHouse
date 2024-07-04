@@ -79,8 +79,11 @@
 
                     <div class="row p-2">
                         <div class="col-md-3">Union bank Account:</div>
-                        <div class="col-md-3">{{ $user->information->ub_number ?? 'N/A' }}</div>
-                        <div class="col-md-6">{{ $user->information->ub_account ?? 'N/A' }}</div>
+                        <div class="col-md-9">
+                            {{ $user->information->ub_account ?? 'N/A' }} -
+                            {{ $user->information->ub_number ?? 'N/A' }}
+                        </div>
+
                     </div>
 
                     <div class="row p-2">
