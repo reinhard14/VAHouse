@@ -82,4 +82,8 @@ class User extends Authenticatable
     public function tier() {
         return $this->hasOne(Tier::class);
     }
+
+    public function experiences() {
+        return $this->hasMany(Experience::class);
+    }
 }

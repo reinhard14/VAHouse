@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Skillset;
 use App\Models\ApplicantInformation;
 use App\Models\User;
+use App\Models\Experience;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -81,7 +82,6 @@ class UserController extends Controller
             $portfolioPath = $request->file('portfolio')->store('portfolios', 'public');
             $introVideoPdfPath = $request->file('videolink')->store('intro_videos', 'public');
 
-            // dd('File uploaded successfully', $introVideoPdfPath);
         } else {
             return back()->with('error', 'Please upload a file.');
         }
@@ -223,4 +223,23 @@ class UserController extends Controller
         return redirect()->route('user.show', $user->id)->with('success', 'Information successfully updated!');
     }
 
+    public function experiences(Request $request) {
+        $this->validate($request, [
+            'title' => 'required',
+            'duration' => 'required',
+            'user_id' => 'required',
+        ]);
+
+        $experience = new Experience();
+        $experience->title = $request->input('title');
+        $experience->duration = $request->input('duration');
+        $experience->user_id = $request->input('user_id');
+        $experience->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Experience saved successfully!',
+        ]);
+        // return redirect()->route('user.dashboard');
+    }
 }

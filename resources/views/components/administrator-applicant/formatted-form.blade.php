@@ -10,6 +10,11 @@
 
             <div class="modal-body">
                 <strong>{{ $user->name }} {{ $user->lastname }} </strong>
+                <ul>
+                @foreach ($user->experiences as $experience)
+                    <li>{{ $experience->duration }} - {{ $experience->title }}</li>
+                @endforeach
+
                 @php
                     $skills = [];
 
@@ -18,7 +23,7 @@
                     }
                 @endphp
 
-                <ul>
+
                     @if (!empty($skills) && is_array($skills))
                         @foreach ($skills as $skill)
                             <li>{{ $skill }}</li>

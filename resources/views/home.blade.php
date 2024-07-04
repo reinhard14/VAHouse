@@ -300,7 +300,14 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="experience"><span class="text-danger">*</span> Years of experience: </label>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="experience"><span class="text-danger">*</span> Years of experience: </label>
+                                        </div>
+                                        <div class="col text-end">
+                                            <span class="text-danger">*</span><a href="#create-details-modal" data-bs-toggle="modal" class="button">Click here to Expand</a>
+                                        </div>
+                                    </div>
 
                                     <input name="experience" type="number" class="form-control" required>
                                 </div>
@@ -464,6 +471,7 @@
 
 
 <x-applicant.guidelines />
+<x-applicant.details />
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="{{ asset('dist/js/pages/user-end/index.js') }}"></script>
