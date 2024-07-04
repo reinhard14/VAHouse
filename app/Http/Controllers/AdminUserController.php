@@ -387,6 +387,7 @@ class AdminUserController extends Controller
 
         $status = Status::where('user_id', $id)->firstOrFail();
         $status->status = $request->input('status');
+        $status->lesson = $request->input('lesson');
         $status->updated_by = $request->input('updated_by');
         $status->user_id = $id;
         $status->save();

@@ -15,7 +15,7 @@
                 <input type="hidden" name="updated_by" value="{{ Auth::user()->name }}">
 
                 <div class="modal-body">
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col">
                             <label class="form-label" for="status">Status: </label>
 
@@ -35,7 +35,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col">
                             <label class="form-label" for="tier">Tier: </label>
 
@@ -45,6 +45,18 @@
                                 <option value="Tier 3" {{ old('tier', $user->tier->tier ?? '') == 'Tier 3' ? 'selected' : '' }}>Tier 3</option>
                                 <option value="Master VA" {{ old('tier', $user->tier->tier ?? '') == 'Master VA' ? 'selected' : '' }}>Master VA</option>
                                 <option value="Super VA" {{ old('tier', $user->tier->tier ?? '') == 'Super VA' ? 'selected' : '' }}>Super VA</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label class="form-label" for="lesson">Applicant's Lessons Status: </label>
+
+                            <select name="lesson" class="form-control" required>
+                                <option value="Incomplete" {{ old('lesson', $user->status->lesson ?? '') == 'Incomplete' ? 'selected' : '' }}>Incomplete</option>
+                                <option value="In Progress" {{ old('lesson', $user->status->lesson ?? '') == 'In Progress' ? 'selected' : '' }}>In Progress</option>
+                                <option value="Completed" {{ old('lesson', $user->status->lesson ?? '') == 'Completed' ? 'selected' : '' }}>Completed</option>
                             </select>
                         </div>
                     </div>

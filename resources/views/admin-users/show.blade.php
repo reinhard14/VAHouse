@@ -153,6 +153,36 @@
                         </div>
                     </div>
 
+                    <div class="row mb-3 d-flex justify-content-start">
+                        <div class="col-md-4">
+                            <label>LMS Status</label>
+                            <p>
+                                @if(!isset($user->status->lesson))
+                                    <span class="badge badge-default">N/A</span>
+                                @else
+                                    @php
+                                        $statusClasses = [
+                                            'Incomplete' => 'badge-danger',
+                                            'In Progress' => 'badge-warning',
+                                            'Completed' => 'badge-success',
+                                        ];
+
+                                        $lessonStatus = $user->status->lesson;
+                                        $badgeClass = $statusClasses[$lessonStatus] ?? 'badge-default';
+                                    @endphp
+
+                                    @if (isset($lessonStatus))
+                                        <span class="badge {{ $badgeClass }}" data-toggle="tooltip"
+                                            title="Last updated by: {{ $user->status->updated_by ?? 'N/A' }}
+                                            Updated on: {{ $user->status->updated_at->diffForHumans(['parts'=>1]) ?? 'N/A' }}">
+                                            {{ $lessonStatus }}
+                                        </span>
+                                    @endif
+                                @endif
+                            </p>
+                        </div>
+                    </div>
+
                     <div class="row mb-3">
                         <div class="col-md-3">Applied positions: </div>
                         <div class="col-md-9">
