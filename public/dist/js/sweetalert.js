@@ -27,17 +27,6 @@ function handleExperienceFormSubmission() {
 //Administrator's actions for Applicant's prompt.
 function handleApplicantEditFormSubmission(form) {
 
-    // Swal.fire({
-    //     icon: 'info',
-    //     title: 'Saving!',
-    //     text: 'Editing applicant\'s data...',
-    //     showConfirmButton: false,
-    //     timer: 1000,
-    //     willClose: () => {
-    //         form.submit(); // Submit the form when the alert is closed
-    //     }
-    // });
-
     Swal.fire({
         icon: 'info',
         title: 'Are you sure?',

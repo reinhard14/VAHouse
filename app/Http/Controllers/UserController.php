@@ -239,7 +239,7 @@ class UserController extends Controller
         // return view('index');
         return response()->json([
             'success' => true,
-            'message' => 'Experience saved successfully!',
+            'message' => 'Experience has been saved successfully!',
         ]);
         // return back()->with('success','Experience saved successfully!');
         // return redirect()->route('user.dashboard');

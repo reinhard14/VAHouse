@@ -41,13 +41,13 @@
 <script>
     $(document).ready(function(){
         $('#saveButton').on('click', function(e){
-            e.preventDefault(); // Prevent form submission
+            e.preventDefault();
 
             var formData = {
                 title: $('#title').val(),
                 duration: $('#duration').val(),
                 user_id: $('#user_id').val(),
-                _token: '{{ csrf_token() }}' // Laravel CSRF token
+                _token: '{{ csrf_token() }}'
             };
 
             $.ajax({
