@@ -1,4 +1,5 @@
 <!-- Add details Modal -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <div class="modal fade" id="create-details-modal" tabindex="-1">
     <div class="modal-dialog">
@@ -12,7 +13,7 @@
                     Kindly repeat the process until the desired result is fulfilled.
                 </div>
             </div>
-            <form id="addExperienceForm" method="POST" action="{{ route('user.experience') }}">
+            <form id="experienceForm">
                 @csrf
                 <input type="hidden" name="user_id" id="user_id" value="{{ Auth::id(); }}">
                 <div class="modal-body">
@@ -39,7 +40,7 @@
 
 <script>
     $(document).ready(function(){
-        $('#addExperienceForm').on('submit', function(e){
+        $('#saveButton').on('click', function(e){
             e.preventDefault(); // Prevent form submission
 
             var formData = {
@@ -51,15 +52,14 @@
 
             $.ajax({
                 type: 'POST',
-                url: '{{ route("user.experience") }}', // Your route name
+                url: '{{ route("user.experience") }}',
                 data: formData,
                 success: function(response) {
-                    // Handle success
-                    alert('Data saved successfully!');
-                    $('#create-details-modal').modal('hide'); // Hide modal
+                    handleExperienceFormSubmission();
+                    $('#experienceForm')[0].reset();
+                    $('#create-details-modal').modal('hide');
                 },
                 error: function(response) {
-                    // Handle error
                     alert('An error occurred.');
                 }
             });

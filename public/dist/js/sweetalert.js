@@ -14,6 +14,16 @@ function handleApplicantFormSubmission(form) {
     });
 }
 
+function handleExperienceFormSubmission() {
+
+    Swal.fire({
+        icon: 'success',
+        title: 'Saved!',
+        text: 'Adding experience successful...',
+        showConfirmButton: false,
+        timer: 1500
+    });
+}
 //Administrator's actions for Applicant's prompt.
 function handleApplicantEditFormSubmission(form) {
 
