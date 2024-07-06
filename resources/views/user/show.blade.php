@@ -138,11 +138,6 @@
                     </div>
 
                     <div class="row p-2">
-                        <div class="col-md-3">Registered:</div>
-                        <div class="col-md-9">{{ $user->created_at->diffForHumans() }}</div>
-                    </div>
-
-                    <div class="row p-2">
                         <div class="col-md-3">Applying as: </div>
                         <div class="col-md-3">
                             @if(is_null($aPositionsApplied))
@@ -153,6 +148,9 @@
                                 @endforeach
                             @endif
                         </div>
+
+                        <div class="col-md-3">Registered:</div>
+                        <div class="col-md-3">{{ $user->created_at->diffForHumans() }}</div>
                     </div>
 
                     <hr>
