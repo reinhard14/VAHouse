@@ -177,8 +177,8 @@
                             </div>
                         </div>
                     @else
-                        <div class="row my-4 p-3">
-                            <h3>Skillset:</h3>
+                        <div class="row mt-4 p-3">
+                            <h5>Skillset details</h5>
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <thead>
@@ -228,6 +228,41 @@
                     </div>
                     @endif
 
+                    @if($user->experiences->count() < 1)
+                        <div class="row my-4 p-4 border rounded border-line border-secondary">
+                            <div class="text-center">
+                                <h3>No <span class="text-danger">Experience</span> added yet.</h3>
+                            </div>
+                        </div>
+                    @else
+                        <div class="row mt-4 p-3">
+                            <h5>Experience details:</h5>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">Job Experience</th>
+                                        <th scope="col">Duration</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                @foreach($user->experiences as $experience)
+                                                    {{ $experience->title }} </br>
+                                                @endforeach
+                                            </td>
+                                            <td>
+                                                @foreach($user->experiences as $experience)
+                                                    {{ $experience->duration }} </br>
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    @endif
 
                     <div class="row mt-5">
                         <div class="d-flex justify-content-center">
