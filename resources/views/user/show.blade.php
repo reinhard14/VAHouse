@@ -158,8 +158,7 @@
                     @if(is_null($aWebsites))
                         <div class="row my-4 p-4 border rounded border-line border-secondary">
                             <div class="text-center">
-                                <h3>No <span class="text-danger">Skillset</span> added yet.</h3>
-                                <p class="pt-3">Click the <span class="text-info">"Dashboard"</span> and add skillset on specified fields.</p>
+                                <h5>No <span class="text-danger">Skillsets</span> added yet.</h5>
                             </div>
                         </div>
                     @else
@@ -217,7 +216,8 @@
                     @if($user->experiences->count() < 1)
                         <div class="row my-4 p-4 border rounded border-line border-secondary">
                             <div class="text-center">
-                                <h3>No <span class="text-danger">Experience</span> added yet.</h3>
+                                <h5>No <span class="text-danger">Experiences</span> added yet.</h5>
+                                <p class="pt-3">Please fill up the fields on the <span class="text-info">"Dashboard"</span> page.</p>
                             </div>
                         </div>
                     @else
