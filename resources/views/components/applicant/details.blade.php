@@ -72,8 +72,8 @@
                                     </thead>
                                     <tbody id="experienceRow">
                                         <tr>
-                                            <td>Experience: ` + response.experience.title + '</td>' +
-                                            '<td>Duration: ' + response.experience.duration + `</td>
+                                            <td>` + response.experience.title + '</td>' +
+                                            '<td>' + response.experience.duration + `</td>
                                         </tr>
                                     </tbody>
                                 </table>`;
@@ -82,10 +82,10 @@
                     } else {
                         const newRow = `
                                 <tr>
-                                    <td>Experience: `
+                                    <td>`
                                         + response.experience.title +
                                     '</td>' +
-                                    '<td>Duration: '
+                                    '<td>'
                                         + response.experience.duration + `
                                     </td>
                                 </tr>
