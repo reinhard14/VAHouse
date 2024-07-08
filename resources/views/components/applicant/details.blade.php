@@ -60,7 +60,6 @@
                     $('#noExperiencePlaceholder').remove();
                     const hasExperiences = response.exists;
 
-                    console.log(hasExperiences);
                     if (!hasExperiences) {
                         const newTable = `
                                 <table class="table table-hover border">
@@ -72,10 +71,10 @@
                                     </thead>
                                     <tbody id="experienceRow">
                                         <tr>
-                                            <td>` + response.experience.title + '</td>' +
-                                            '<td>' + response.experience.duration + `</td>
+                                            <td>` + response.experience.title + `</td>` +
+                                            `<td>` + response.experience.duration + `</td>
                                         </tr>
-                                    </tbody>
+                                    </tbody
                                 </table>`;
 
                         $('#showExperiencesTable').append(newTable);
@@ -84,10 +83,10 @@
                                 <tr>
                                     <td>`
                                         + response.experience.title +
-                                    '</td>' +
-                                    '<td>'
-                                        + response.experience.duration + `
-                                    </td>
+                                    `</td>` +
+                                    `<td>`
+                                        + response.experience.duration +
+                                    `</td>
                                 </tr>
                                 `;
                         $('#experienceRow').append(newRow);
