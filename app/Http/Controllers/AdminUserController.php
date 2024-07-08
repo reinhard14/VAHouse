@@ -290,14 +290,20 @@ class AdminUserController extends Controller
             $user->delete();
 
         } else {
+            $applicantVideo = $user->information->videolink;
+            $applicantPortfolio = $user->information->portfolio;
             $applicantResume = $user->information->resume;
             $applicantId = $user->information->photo_id;
             $applicantFormalPhoto = $user->information->photo_formal;
             $applicantDiscResult = $user->information->disc_results;
+
+            Storage::delete('public/'.$applicantVideo);
+            Storage::delete('public/'.$applicantPortfolio);
             Storage::delete('public/'.$applicantResume);
             Storage::delete('public/'.$applicantId);
             Storage::delete('public/'.$applicantFormalPhoto);
             Storage::delete('public/'.$applicantDiscResult);
+
             $userApplicantInformation->delete();
             $userSkillset->delete();
             $user->delete();
@@ -324,14 +330,20 @@ class AdminUserController extends Controller
                 $user->delete();
 
             } else {
+                $applicantVideo = $user->information->videolink;
+                $applicantPortfolio = $user->information->portfolio;
                 $applicantResume = $user->information->resume;
                 $applicantId = $user->information->photo_id;
                 $applicantFormalPhoto = $user->information->photo_formal;
                 $applicantDiscResult = $user->information->disc_results;
+
+                Storage::delete('public/'.$applicantVideo);
+                Storage::delete('public/'.$applicantPortfolio);
                 Storage::delete('public/'.$applicantResume);
                 Storage::delete('public/'.$applicantId);
                 Storage::delete('public/'.$applicantFormalPhoto);
                 Storage::delete('public/'.$applicantDiscResult);
+
                 $userApplicantInformation->delete();
                 $userSkillset->delete();
                 $user->delete();
