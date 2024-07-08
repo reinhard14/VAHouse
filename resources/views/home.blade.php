@@ -276,7 +276,7 @@
                                 <div class="form-group">
                                     <label for="skype"><span class="text-danger">*</span> Skype ID</label>
 
-                                    <input name="skype" type="text" class="form-control" required>
+                                    <input name="skype" type="text" class="form-control" placeholder="Skype id here.." required>
                                 </div>
                             </div>
 
@@ -284,7 +284,7 @@
                                 <div class="form-group">
                                     <label for="niche"><span class="text-danger">*</span> Niche</label>
 
-                                    <input name="niche" type="text" class="form-control" required>
+                                    <input name="niche" type="text" class="form-control" placeholder="Input niche here.." required>
                                 </div>
                             </div>
                         </div>
@@ -294,7 +294,7 @@
                                 <div class="form-group">
                                     <label for="rate"><span class="text-danger">*</span> Happy rate: <strong>(In pesos)</strong> </label>
 
-                                    <input name="rate" type="number" class="form-control" required>
+                                    <input name="rate" type="number" class="form-control" placeholder="Enter monthly rate.." required>
                                 </div>
                             </div>
 
@@ -302,14 +302,15 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col">
-                                            <label for="experience"><span class="text-danger">*</span> Years of experience: </label>
+                                            <label for="experience"><span class="text-danger">
+                                                *</span> Years of experience: </label>
                                         </div>
                                         <div class="col text-end">
                                             <span class="text-danger">*</span><a href="#create-details-modal" data-bs-toggle="modal" class="button">Click to Expand</a>
                                         </div>
                                     </div>
 
-                                    <input name="experience" type="number" class="form-control" required>
+                                    <input name="experience" type="number" class="form-control" placeholder="Please 'Click to Expand' to specify your experiences.." required>
                                 </div>
                             </div>
                         </div>
@@ -319,7 +320,7 @@
                                 <div class="form-group">
                                     <label for="ub_account"><span class="text-danger">*</span> Union Bank Account Holder Name</label>
 
-                                    <input name="ub_account" type="text" class="form-control" required>
+                                    <input name="ub_account" type="text" class="form-control" placeholder="Enter your bank account name.." required>
                                 </div>
                             </div>
 
@@ -327,7 +328,7 @@
                                 <div class="form-group">
                                     <label for="ub_number"><span class="text-danger">*</span> Union Bank Account Number</label>
 
-                                    <input name="ub_number" type="text" class="form-control" required>
+                                    <input name="ub_number" type="text" class="form-control" placeholder="Enter bank account number.." required>
                                 </div>
                             </div>
                         </div>

@@ -347,7 +347,7 @@ function handleScoreFormSubmission(form) {
 }
 
 // Reset Fields Prompt
-function handleClearSelects() {
+function handleClearFields() {
     Swal.fire({
     title: "Clear All Fields?",
     text: "Are you sure you want to clear all input fields?",
@@ -366,6 +366,7 @@ function handleClearSelects() {
             });
             inputFields.forEach((input) => {
                 input.value = '';
+                input.checked = false;
             });
 
             Swal.fire({

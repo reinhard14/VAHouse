@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (resetFieldButton) {
         resetFieldButton.addEventListener('click', (e) => {
             e.preventDefault();
-            handleClearSelects();
+            handleClearFields();
         });
     }
 
