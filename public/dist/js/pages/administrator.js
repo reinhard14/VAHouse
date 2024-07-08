@@ -158,16 +158,4 @@ document.addEventListener("DOMContentLoaded", function() {
             handleClearFields();
         });
     }
-
-    // //administrator edit
-    // const editAdministratorForm = document.querySelectorAll('.editAdministratorForm');
-
-    // if (editAdministratorForm) {
-    //     editApplicantStatus.forEach((form) => {
-    //         form.addEventListener('submit', (e) => {
-    //             e.preventDefault();
-    //             editAdministratorFormSubmission(form);
-    //         });
-    //     })
-    // }
 });

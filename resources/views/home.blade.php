@@ -303,16 +303,57 @@
                                     <div class="row">
                                         <div class="col">
                                             <label for="experience"><span class="text-danger">
-                                                *</span> Years of experience: </label>
-                                        </div>
-                                        <div class="col text-end">
-                                            <span class="text-danger">*</span><a href="#create-details-modal" data-bs-toggle="modal" class="button">Click to Expand</a>
+                                                *</span> Total years of experience: </label>
+                                                <strong>(Click to <a href="#create-details-modal" data-bs-toggle="modal" class="button">Expand</a>)</strong>
                                         </div>
                                     </div>
 
                                     <input name="experience" type="number" class="form-control" placeholder="Please 'Click to Expand' to specify your experiences.." required>
                                 </div>
                             </div>
+                        </div>
+
+                        @if($user->experiences->count() < 1)
+                            <div class="row m-1 p-3 border rounded border-line border-secondary" id="noExperiencePlaceholder">
+                                <div class="col">
+                                    <div class="text-center">
+                                        <h6>No <span class="text-danger">Experiences</span> added yet.</h6>
+                                        <p class="pt-3">Please click <span class="text-info">"Expand"</span> to add experiences.</p>
+                                        <p class="italic-fst">This is a required field</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive" id="showExperiencesTable">
+                            </div>
+                        @else
+                            <div class="row">
+                                <p>Experience details:</p>
+                                <div class="table-responsive">
+                                    <table class="table table-hover border">
+                                        <thead>
+                                            <tr>
+                                            <th scope="col">Job Experience</th>
+                                            <th scope="col">Duration</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="experienceList">
+                                            @foreach($user->experiences as $experience)
+                                            <tr>
+                                                <td>
+                                                    {{ $experience->title }}
+                                                </td>
+                                                <td>
+                                                    {{ $experience->duration }}
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        @endif
+                        <div  class="">
+
                         </div>
 
                         <div class="row">
@@ -380,7 +421,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="videolink"><span class="text-danger">*</span> Upload video introduction: </label>
+                                    <label for="videolink"><span class="text-danger">*</span> Upload video introduction: <strong>(10MB limit)</strong> </label>
 
                                     <input name="videolink" type="file" class="form-control" required>
                                 </div>

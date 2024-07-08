@@ -230,6 +230,8 @@ class UserController extends Controller
             'user_id' => 'required',
         ]);
 
+        $exists = Experience::where('user_id', $request->input('user_id'))->exists();
+
         $experience = new Experience();
         $experience->title = $request->input('title');
         $experience->duration = $request->input('duration');
@@ -240,6 +242,8 @@ class UserController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Experience has been saved successfully!',
+            'experience' => $experience,
+            'exists' => $exists,
         ]);
         // return back()->with('success','Experience saved successfully!');
         // return redirect()->route('user.dashboard');

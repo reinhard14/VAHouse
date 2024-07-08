@@ -232,18 +232,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                @foreach($user->experiences as $experience)
-                                                    {{ $experience->title }} </br>
-                                                @endforeach
-                                            </td>
-                                            <td>
-                                                @foreach($user->experiences as $experience)
-                                                    {{ $experience->duration }} </br>
-                                                @endforeach
-                                            </td>
-                                        </tr>
+                                        @foreach($user->experiences as $experience)
+                                            <tr>
+                                                <td>
+                                                    {{ $experience->title }}
+                                                </td>
+                                                <td>
+                                                    {{ $experience->duration }}
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

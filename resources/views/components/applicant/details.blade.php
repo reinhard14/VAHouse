@@ -57,10 +57,45 @@
                 success: function(response) {
                     handleExperienceFormSubmission();
                     $('#experienceForm')[0].reset();
+                    $('#noExperiencePlaceholder').remove();
+                    const hasExperiences = response;
+
+                    console.log(hasExperiences);
+                    if (hasExperiences) {
+                        console.log("Has record.")
+                        const newTable = `
+                                <table class="table table-hover border">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Job Experience</th>
+                                            <th scope="col">Duration</th>
+                                        </tr>
+                                    </thead>
+                                        <tr id="experienceRow"><td>Experience: ` + response.experience.title + '</td>' + '<td>Duration: '
+                                                                + response.experience.duration + `</td></tr>
+                                </table>`;
+
+                        $('#showExperiencesTable').append(newTable);
+                    } else {
+                        console.log("Has none.")
+                        const newRow = `
+                                <tr id="experienceRow">
+                                    <td>Experience: `
+                                        + response.experience.title +
+                                    '</td>' +
+                                    '<td>Duration: '
+                                        + response.experience.duration + `
+                                    </td>
+                                </tr>
+                                `;
+                        $('#showExperiencesTable').append(newRow);
+                    }
+
                     $('#create-details-modal').modal('hide');
+
                 },
                 error: function(response) {
-                    alert('An error occurred.');
+                    alert('Please fill the fields with correct data.');
                 }
             });
         });

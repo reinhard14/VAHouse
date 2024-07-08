@@ -320,7 +320,7 @@ function handleClearFields() {
 
 // !Sweet alert for users-end
 //Add Virtual Agent Scores
-function handleScoreFormSubmission(form) {
+function handleDashboardFormSubmission(form) {
 
     Swal.fire({
         icon: 'info',
@@ -333,13 +333,12 @@ function handleScoreFormSubmission(form) {
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
+            icon: 'info',
             title: 'Applicant Information!',
-            text: 'Information has been saved! this will overwrite previous responses if there are any.',
-            icon: 'success',
+            text: 'Information being saved, please wait a moment! this will overwrite previous responses if there are any.',
             showConfirmButton: false,
         })
             setTimeout(() => {
-                // Submit the form (triggering form submission)
                 form.submit()
             }, 2000);
         };
