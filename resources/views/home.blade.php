@@ -336,7 +336,7 @@
                                             <th scope="col">Duration</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="experienceList">
+                                        <tbody id="experienceRow">
                                             @foreach($user->experiences as $experience)
                                             <tr>
                                                 <td>

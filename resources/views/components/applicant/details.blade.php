@@ -42,12 +42,14 @@
     $(document).ready(function(){
         $('#saveButton').on('click', function(e){
             e.preventDefault();
+            // Get CSRF token
+            var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
             var formData = {
                 title: $('#title').val(),
                 duration: $('#duration').val(),
                 user_id: $('#user_id').val(),
-                _token: '{{ csrf_token() }}'
+                _token: csrfToken,
             };
 
             $.ajax({
@@ -74,7 +76,7 @@
                                             <td>` + response.experience.title + `</td>` +
                                             `<td>` + response.experience.duration + `</td>
                                         </tr>
-                                    </tbody
+                                    </tbody>
                                 </table>`;
 
                         $('#showExperiencesTable').append(newTable);
