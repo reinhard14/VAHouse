@@ -61,8 +61,7 @@
                     const hasExperiences = response.exists;
 
                     console.log(hasExperiences);
-                    if (hasExperiences) {
-                        console.log("Has record.")
+                    if (!hasExperiences) {
                         const newTable = `
                                 <table class="table table-hover border">
                                     <thead>
@@ -71,15 +70,18 @@
                                             <th scope="col">Duration</th>
                                         </tr>
                                     </thead>
-                                        <tr id="experienceRow"><td>Experience: ` + response.experience.title + '</td>' + '<td>Duration: '
-                                                                + response.experience.duration + `</td></tr>
+                                    <tbody id="experienceRow">
+                                        <tr>
+                                            <td>Experience: ` + response.experience.title + '</td>' +
+                                            '<td>Duration: ' + response.experience.duration + `</td>
+                                        </tr>
+                                    </tbody>
                                 </table>`;
 
                         $('#showExperiencesTable').append(newTable);
                     } else {
-                        console.log("Has none.")
                         const newRow = `
-                                <tr id="experienceRow">
+                                <tr>
                                     <td>Experience: `
                                         + response.experience.title +
                                     '</td>' +
@@ -88,7 +90,7 @@
                                     </td>
                                 </tr>
                                 `;
-                        $('#showExperiencesTable').append(newRow);
+                        $('#experienceRow').append(newRow);
                     }
 
                     $('#create-details-modal').modal('hide');
