@@ -58,7 +58,7 @@
                     handleExperienceFormSubmission();
                     $('#experienceForm')[0].reset();
                     $('#noExperiencePlaceholder').remove();
-                    const hasExperiences = response;
+                    const hasExperiences = $exists;
 
                     console.log(hasExperiences);
                     if (hasExperiences) {
