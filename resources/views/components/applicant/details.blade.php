@@ -10,7 +10,7 @@
             </div>
             <div class="row text-center p-3">
                 <div class="col fst-italic">
-                    Kindly repeat the process until the desired result is fulfilled.
+                    Kindly add all of your previous experiences.
                 </div>
             </div>
             <form id="experienceForm">
