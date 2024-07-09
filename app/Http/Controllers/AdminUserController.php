@@ -165,7 +165,7 @@ class AdminUserController extends Controller
             'lastname' => 'required',
             'email' => ['required', 'unique:users'],
             'contactnumber' => 'required',
-            'age' => 'required',
+            'age' => 'required|gte:18',
             'gender' => 'required',
             'education' => 'required',
             'address' => 'required',
