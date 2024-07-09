@@ -7,21 +7,57 @@ function handleApplicantFormSubmission(form) {
         title: 'Saving!',
         text: 'Adding applicant...',
         showConfirmButton: false,
-        timer: 1500,
+        timer: 2000,
         willClose: () => {
             form.submit();
         }
     });
 }
 
+// function handleExperienceFormSubmission() {
+
+//     Swal.fire({
+//         icon: 'success',
+//         title: 'Saved!',
+//         text: 'Adding experience successful...',
+//         showConfirmButton: false,
+//         timer: 2000
+//     });
+// }
+
 function handleExperienceFormSubmission() {
 
     Swal.fire({
-        icon: 'success',
-        title: 'Saved!',
-        text: 'Adding experience successful...',
-        showConfirmButton: false,
-        timer: 1500
+        title: 'Add more experiences?',
+        text: 'Select "Exit" to return to dashboard, and select "Add another experience" to add more details from previous job experiences',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Exit',
+        denyButtonText: 'Add another experience',
+        confirmButtonColor: '#007afe',
+        denyButtonColor: '#3ec2ee',
+    }).then((result) => {
+        if (result.isConfirmed) {
+        Swal.fire({
+            icon: 'success',
+            title: 'Saved!',
+            text: 'Adding experience successful...',
+            showConfirmButton: false,
+            timer: 2000
+            });
+        } else if (result.isDenied) {
+        Swal.fire({
+            icon: 'success',
+            title: 'Saved!',
+            text: 'Adding experience successful...Re-opening modal',
+            showConfirmButton: false,
+            timer: 2000
+            });
+
+            const createExperienceModal = new bootstrap.Modal(document.getElementById('create-details-modal'));
+            createExperienceModal.show();
+
+        }
     });
 }
 //Administrator's actions for Applicant's prompt.
@@ -46,7 +82,7 @@ function handleApplicantEditFormSubmission(form) {
             setTimeout(() => {
                 // Submit the form (triggering form submission)
                 form.submit()
-            }, 1500);
+            }, 2000);
         };
     });
 }
@@ -73,7 +109,7 @@ function handleApplicantStatusUpdateSubmission(form) {
             setTimeout(() => {
                 // Submit the form (triggering form submission)
                 form.submit()
-            }, 1500);
+            }, 2000);
         };
     });
 }
@@ -102,12 +138,12 @@ function generateApplicantsFormConfirmation() {
             title: 'Please wait',
             text: 'Generating file...',
             icon: 'success',
-            timer: 1500,
+            timer: 2000,
         });
         } else {
             Swal.fire({
             title: "Returning to applicant's form.",
-            timer: 1500,
+            timer: 2000,
             icon: 'error',
             showConfirmButton: false,
             });
@@ -123,7 +159,7 @@ function handleEditDepartmentForm(editDepartmentForm) {
         title: 'Saved!',
         text: 'Department has been updated successfully.',
         showConfirmButton: false,
-        timer: 1000,
+        timer: 2000,
         willClose: () => {
             editDepartmentForm.submit(); // Submit the form when the alert is closed
         }
@@ -138,7 +174,7 @@ function handleAddDepartmentForm(addDepartmentForm) {
         title: 'Saved!',
         text: 'Department has been successfully saved.',
         showConfirmButton: false,
-        timer: 1000,
+        timer: 2000,
         willClose: () => {
             addDepartmentForm.submit(); // Submit the form when the alert is closed
         }
@@ -166,7 +202,7 @@ function handleDeleteConfirmation(form) {
             setTimeout(() => {
                 // Submit the form (triggering form submission)
                 form.submit()
-            }, 1000);
+            }, 2000);
         };
     });
 }
@@ -196,20 +232,20 @@ function handleAdminFormSubmission(form) {
 
             setTimeout(() => {
                 form.submit()
-            }, 1000);
+            }, 2000);
         } else if (result.isDenied) {
         Swal.fire({
             title: 'Saving...',
             showConfirmButton: false,
             icon: 'info',
-            timer: 1000,
+            timer: 2000,
             });
             //setting hidden input value for route after saving.
             userChoiceInput.value = 'save_and_add_another';
 
             setTimeout(() => {
                 form.submit()
-            }, 1000);
+            }, 2000);
         }
     });
 }
@@ -237,20 +273,20 @@ function handleAdminEditFormSubmission(updateForm, userRouteOption) {
 
                 setTimeout(() => {
                     updateForm.submit()
-                }, 1000);
+                }, 2000);
         } else if (result.isDenied) {
             Swal.fire({
                 title: 'Saving...',
                 showConfirmButton: false,
                 icon: 'info',
-                timer: 1000,
+                timer: 2000,
                 });
                 //setting hidden input value for route after saving. change...
                 userRouteOption.value = 'save_and_view';
 
                 setTimeout(() => {
                     updateForm.submit()
-                }, 1000);
+                }, 2000);
         }
     });
 }
@@ -279,12 +315,12 @@ function handleClearFields() {
             title: 'Field reset!',
             text: 'Reset of field confirmed',
             icon: 'success',
-            timer: 1000,
+            timer: 2000,
         });
         } else {
             Swal.fire({
             title: "Reset unsuccessful.",
-            timer: 1000,
+            timer: 2000,
             icon: 'error',
             showConfirmButton: false,
             });
@@ -373,13 +409,13 @@ function handleClearFields() {
                 title: 'Field reset!',
                 text: 'Reset of field confirmed',
                 icon: 'success',
-                timer: 1000,
+                timer: 2000,
             });
 
         } else {
             Swal.fire({
             title: "Reset unsuccessful.",
-            timer: 1000,
+            timer: 2000,
             icon: 'error',
             showConfirmButton: false,
             });

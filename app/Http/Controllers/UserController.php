@@ -238,14 +238,11 @@ class UserController extends Controller
         $experience->user_id = $request->input('user_id');
         $experience->save();
 
-        // return view('index');
         return response()->json([
             'success' => true,
             'message' => 'Experience has been saved successfully!',
             'experience' => $experience,
             'exists' => $exists,
         ]);
-        // return back()->with('success','Experience saved successfully!');
-        // return redirect()->route('user.dashboard');
     }
 }

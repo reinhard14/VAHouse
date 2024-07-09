@@ -261,7 +261,7 @@
                             <label for="softskills"> List all the <span class="text-primary">soft skills</span> you possess:</label>
 
                             <select id="softskills" name="softskills[]" class="select2" multiple="multiple" style="width: 100%;">
-                                <option value="none">None</option>
+
                             </select>
 
                             <small class="d-flex justify-content-end">
