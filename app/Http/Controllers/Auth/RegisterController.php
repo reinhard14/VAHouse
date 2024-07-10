@@ -7,7 +7,6 @@ use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password as RulesPassword;
 
@@ -67,6 +66,7 @@ class RegisterController extends Controller
             'role_id' => 'required',
             'captcha' => ['required', 'captcha'],
         ]);
+
     }
 
     /**
