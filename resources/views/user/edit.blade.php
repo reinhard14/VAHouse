@@ -16,7 +16,7 @@
                     @csrf
                     @method('PUT')
                         <div class="row p-2">
-                            <div class="col-md-3">Name:</div>
+                            <div class="col-md-3">First Name:</div>
                             <div class="col-md-9">
                                 <input name="name" type="text" value="{{ $user->name}}" class="form-control">
                             </div>

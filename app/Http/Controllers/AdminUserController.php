@@ -165,7 +165,7 @@ class AdminUserController extends Controller
             'lastname' => 'required',
             'email' => ['required', 'unique:users'],
             'contactnumber' => 'required',
-            'age' => 'required|gte:18',
+            'age' => 'required|gte:18|lte:60',
             'gender' => 'required',
             'education' => 'required',
             'address' => 'required',
@@ -246,6 +246,7 @@ class AdminUserController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+            'age' => 'required|gte:18|lte:60',
             'password' => ['required',
                         RulesPassword::min(8)
                         ->letters()
@@ -254,6 +255,7 @@ class AdminUserController extends Controller
                         ->symbols()
                         ->uncompromised()],
         ]);
+
         $user = User::findOrFail($id);
 
         $user->name = $request->input('name');

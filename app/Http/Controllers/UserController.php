@@ -198,6 +198,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
+            'age' => 'required|gte:18|lte:60',
             'password' => ['required',
                         RulesPassword::min(8)
                         ->letters()
