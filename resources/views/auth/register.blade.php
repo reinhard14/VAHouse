@@ -14,6 +14,7 @@
                     </ul>
                 </div>
             @endif
+
             <div class="card">
                 <div class="card-header">Register as an applicant</div>
                 <div class="card-body">
