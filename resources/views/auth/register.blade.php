@@ -69,18 +69,12 @@
 
                             <div class="col-md-6">
                                 <select name="gender" class="form-control">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Transgender">Transgender</option>
-                                    <option value="Non binary">Non-Binary/Non-Conforming</option>
-                                    <option value="Prefer not to respond">Prefer not to respond</option>
+                                    <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }} >Male</option>
+                                    <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }} >Female</option>
+                                    <option value="Transgender" {{ old('gender') == 'Transgender' ? 'selected' : '' }} >Transgender</option>
+                                    <option value="Non binary" {{ old('gender') == 'Non binary' ? 'selected' : '' }} >Non-Binary/Non-Conforming</option>
+                                    <option value="Prefer not to respond" {{ old('gender') == 'Prefer not to respond' ? 'selected' : '' }} >Prefer not to respond</option>
                                 </select>
-
-                                @error('gender')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
 
@@ -90,21 +84,15 @@
 
                             <div class="col-md-6">
                                 <select name="education" class="form-control">
-                                    <option value="High School">High School</option>
-                                    <option value="Senior High School">Senior High School</option>
-                                    <option value="College Undergrad">College Undergrad</option>
-                                    <option value="College Degree">College Degree</option>
-                                    <option value="Masters Degree">Master's Degree</option>
-                                    <option value="Professional Degree">Professional Degree</option>
-                                    <option value="Doctorate Degree">Doctorate Degree</option>
-                                    <option value="Vocational">Vocational</option>
+                                    <option value="High School" {{ old('education') == 'High School' ? 'selected' : '' }} >High School</option>
+                                    <option value="Senior High School" {{ old('education') == 'Senior High School' ? 'selected' : '' }} >Senior High School</option>
+                                    <option value="College Undergrad" {{ old('education') == 'College Undergrad' ? 'selected' : '' }} >College Undergrad</option>
+                                    <option value="College Degree" {{ old('education') == 'College Degree' ? 'selected' : '' }} >College Degree</option>
+                                    <option value="Master's Degree" {{ old('education') == 'Master\'s Degree' ? 'selected' : '' }} >Master's Degree</option>
+                                    <option value="Professional Degree" {{ old('education') == 'Professional Degree' ? 'selected' : '' }} >Professional Degree</option>
+                                    <option value="Doctorate Degree" {{ old('education') == 'Doctorate Degree' ? 'selected' : '' }} >Doctorate Degree</option>
+                                    <option value="Vocational" {{ old('education') == 'Vocational' ? 'selected' : '' }} >Vocational</option>
                                 </select>
-
-                                @error('education')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
 
