@@ -54,7 +54,8 @@ class AdminUserController extends Controller
         $usersQuery = User::where('role_id', 3)
                         ->leftJoin('skillsets', 'users.id', '=', 'skillsets.user_id')
                         ->leftJoin('statuses', 'users.id', '=', 'statuses.user_id')
-                        ->select('users.*', 'skillsets.*', 'skillsets.*')
+                        ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
+                        ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience')
                         ->distinct()
                         ->orderBy($sortByColumn, $sortOrder);
 
@@ -72,7 +73,7 @@ class AdminUserController extends Controller
             'tools' => 'skillsets.tool',
             'skills' => 'skillsets.skill',
             'softskills' => 'skillsets.softskill',
-            'experience' => 'skillsets.experience',
+            'experience' => 'applicant_information.experience',
             'statuses' => 'status',
         ];
 
@@ -117,8 +118,9 @@ class AdminUserController extends Controller
         $uniqueTools = getUniqueValues($skillsets, 'tool');
         $uniqueSkills = getUniqueValues($skillsets, 'skill');
         $uniqueSoftskills = getUniqueValues($skillsets, 'softskill');
-        $uniqueExperience = getUniqueValues($skillsets, 'experience');
         $getStatus = Status::pluck('status')->unique();
+        $uniqueExperience = ApplicantInformation::pluck('experience')->unique();
+
         $uniqueStatuses = json_decode($getStatus);
 
         return view('admin-users.index', compact(

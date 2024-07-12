@@ -132,7 +132,6 @@
                                                         @endif
                                                         <div class="col-lg-6 mb-3">
                                                             <div class="form-group">
-                                                                {{-- {{ var_dump($field) }} --}}
                                                                 @if($field=='experience')
                                                                     <label for="{{ $field }}">Years of {{ ucfirst($field) }}s:</label>
                                                                 @else
@@ -162,9 +161,6 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- @foreach ( $uniqueTools as $tool)
-                            {{$tool }}
-                        @endforeach --}}
 
                         <div class="row">
                             <div class="col-12">
