@@ -52,7 +52,7 @@ class UserController extends Controller
             'softskills.*' => 'string',
             'rate' => 'required',
             'portfolio' => 'required|mimes:pdf|max:10000',
-            'videolink' => 'required|mimes:mp4,avi,mov,wmv|max:15000',
+            'videolink' => 'required|mimes:mp4,avi,mov,wmv|max:30000',
             'experience' => 'required',
             'resume' => 'required|mimes:pdf|max:10000',
             'disc_results' => 'required|mimes:pdf|max:10000',
@@ -67,7 +67,7 @@ class UserController extends Controller
         ],  [
             'videolink.required' => 'Video file is missing.',
             'videolink.mimes' => 'Type must be MP4.',
-            'videolink.max' => 'File size exceed the 15mb limit!',
+            'videolink.max' => 'File size exceed the 30mb limit!',
             ]);
 
         $attributes = ['user_id' => Auth::id()];
