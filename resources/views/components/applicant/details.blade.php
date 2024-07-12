@@ -18,10 +18,10 @@
                 <input type="hidden" name="user_id" id="user_id" value="{{ Auth::id(); }}">
                 <div class="modal-body">
                     <label class="form-label" for="title">Job Experience</label>
-                    <input class="form-control mb-2" type="text" id="title" name="title" required>
+                    <input class="form-control mb-2" type="text" id="title" name="title">
 
                     <label class="form-label" for="duration">Duration of experience</label>
-                    <input class="form-control mb-2" type="text" id="duration" name="duration" required>
+                    <input class="form-control mb-2" type="text" id="duration" name="duration">
                     <small>ex. 1 year 6 months</small>
                 </div>
 
@@ -42,7 +42,7 @@
     $(document).ready(function(){
         $('#saveButton').on('click', function(e){
             e.preventDefault();
-            // Get CSRF token
+
             var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
             var formData = {
@@ -98,7 +98,7 @@
 
                 },
                 error: function(response) {
-                    alert('Please fill the fields with correct data.');
+                    alert('Please fill the fields with a correct data.');
                 }
             });
         });

@@ -21,6 +21,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const guidelinesModal = new bootstrap.Modal(document.getElementById('guidelinesModal'));
     guidelinesModal.show();
 
+    const callers = document.getElementById('position3');
+
+    callers.addEventListener('click', (e) => {
+
+        if (callers.checked) {
+            const mockCall = new bootstrap.Modal(document.getElementById('mock-call-modal'));
+            mockCall.show();
+        }
+    })
+
 });
 
 

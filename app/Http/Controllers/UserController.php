@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Skillset;
 use App\Models\ApplicantInformation;
+use App\Models\CallSample;
 use App\Models\User;
 use App\Models\Experience;
-use Illuminate\Support\Facades\Storage;
+// use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rules\Password as RulesPassword;
 
 class UserController extends Controller
@@ -244,6 +246,39 @@ class UserController extends Controller
             'message' => 'Experience has been saved successfully!',
             'experience' => $experience,
             'exists' => $exists,
+        ]);
+    }
+
+    public function uploadMockcall(Request $request) {
+        // Log the entire request data
+        Log::info('Request data:', $request->all());
+
+        $this->validate($request, [
+            'inbound_call' => 'required|mimes:mp4,avi,mov,wmv|max:15000',
+            'outbound_call' => 'required|mimes:mp4,avi,mov,wmv|max:15000',
+            'user_id' => 'required',
+        ]);
+
+        $user_id = ['user_id' => Auth::id()];
+        $callSample = CallSample::firstOrNew($user_id);
+
+        if ($request->hasFile('inbound_call') && $request->hasFile('outbound_call')) {
+            $inboundMockcallPath = $request->file('inbound_call')->store('mockcalls/inbounds', 'public');
+            $outboundMockcallPath = $request->file('outbound_call')->store('mockcalls/outbounds', 'public');
+        } else {
+            return back()->with('error', 'Please upload a file.');
+        }
+
+        $callSample->inbound_call = $inboundMockcallPath;
+        $callSample->outbound_call = $outboundMockcallPath;
+        $callSample->user_id = $request->input('user_id');
+        $callSample->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Mock calls has been saved!',
+            'mockcalls' => $callSample,
+
         ]);
     }
 }

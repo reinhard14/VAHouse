@@ -13,6 +13,8 @@ use App\Models\Review;
 use App\Models\Status;
 use App\Models\Tier;
 use App\Models\ApplicantInformation;
+use App\Models\CallSample;
+
 
 class User extends Authenticatable
 {
@@ -85,5 +87,9 @@ class User extends Authenticatable
 
     public function experiences() {
         return $this->hasMany(Experience::class);
+    }
+
+    public function mockcalls() {
+        return $this->hasOne(CallSample::class);
     }
 }

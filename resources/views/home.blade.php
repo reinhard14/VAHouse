@@ -410,9 +410,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="portfolio"><span class="text-danger">*</span> Portfolio:  (PDF file only)</label>
+                                    <label for="portfolio"><span class="text-danger">*</span> Portfolio: </label>
 
-                                    <input name="portfolio" type="file" accept="application/pdf" class="form-control" required>
+                                    <input name="portfolio" type="file" class="form-control" required>
                                 </div>
                             </div>
 
@@ -452,16 +452,30 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row" id="callersRow">
                                     <div class="col">
                                         <input type="checkbox" id="position3" name="positions[]" value="Callers">
 
                                         <label for="position3"> Callers: </label>
+                                        <span class="fst-italic">
+                                            (upload sample of <a href="#mock-call-modal" data-bs-toggle="modal" class="button"><strong>Mock calls</strong></a> here)
+                                        </span>
 
                                         <p class="fst-italic">
                                             - CSR/Technical Support
                                         </p>
                                     </div>
+                                    @if (isset($user->mockcalls))
+                                        <div class="col-md-2" id="inboundShow">
+                                            <label for="position3"> Inbound: </label>
+                                            <a href="{{ route('view.pdf', $user->mockcalls->inbound_call) }}" target="_blank">Open</a>
+                                        </div>
+                                        <div class="col-md-2" id="outboundShow">
+                                            <label for="position3"> Outbound: </label>
+                                            <a href="{{ route('view.pdf', $user->mockcalls->outbound_call) }}" target="_blank">Open</a>
+                                        </div>
+                                    @endif
+
                                 </div>
                                 <div class="row">
                                     <div class="col">
@@ -511,6 +525,7 @@
 
 <x-applicant.guidelines />
 <x-applicant.details />
+<x-applicant.mock-call />
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="{{ asset('dist/js/pages/user-end/index.js') }}"></script>

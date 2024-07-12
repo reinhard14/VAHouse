@@ -153,6 +153,25 @@
                         <div class="col-md-3">{{ $user->created_at->diffForHumans() }}</div>
                     </div>
 
+                    @if (isset($user->mockcalls))
+                        <div class="row p-2">
+                            <strong>HR Sample mock calls:</strong>
+                            <div class="col-md-3">
+                                <label for="position3"> Inbound: </label>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="{{ route('view.pdf', $user->mockcalls->inbound_call) }}" target="_blank">Open</a>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="position3"> Outbound: </label>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="{{ route('view.pdf', $user->mockcalls->outbound_call) }}" target="_blank">Open</a>
+                            </div>
+                        </div>
+                    @endif
+
                     <hr>
 
                     @if(is_null($aWebsites))

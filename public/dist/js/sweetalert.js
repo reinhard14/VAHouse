@@ -14,16 +14,34 @@ function handleApplicantFormSubmission(form) {
     });
 }
 
-// function handleExperienceFormSubmission() {
+function handleMockcallFormSubmission(response) {
 
-//     Swal.fire({
-//         icon: 'success',
-//         title: 'Saved!',
-//         text: 'Adding experience successful...',
-//         showConfirmButton: false,
-//         timer: 2000
-//     });
-// }
+    if(response.success) {
+        Swal.fire({
+            icon: 'success',
+            title: 'Saved!',
+            text: 'Added mock call successfully...',
+            showConfirmButton: false,
+            timer: 2000
+        });
+    } else {
+        let inboundError = response.responseJSON.errors.inbound_call ? response.responseJSON.errors.inbound_call : 'Correct File.';
+        let outboundError = response.responseJSON.errors.outbound_call ? response.responseJSON.errors.outbound_call : 'Correct File.';
+
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            html:`
+                <p>${response.responseJSON.message}</p>
+                <p><strong>Inbound:</strong> ${inboundError}</p>
+                <p><strong>Outbound:</strong> ${outboundError}</p>
+                `,
+            showConfirmButton: false,
+            timer: 3000
+        });
+    }
+
+}
 
 function handleExperienceFormSubmission() {
 

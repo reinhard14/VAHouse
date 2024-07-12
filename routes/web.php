@@ -52,6 +52,7 @@ Route::get('user/{user}', [App\Http\Controllers\UserController::class, 'show'])-
 Route::get('user/{user}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
 Route::put('user/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
 Route::post('user/experience', [App\Http\Controllers\UserController::class, 'experiences'])->name('user.experience');
+Route::post('user/uploadMockcall', [App\Http\Controllers\UserController::class, 'uploadMockcall'])->name('user.mockcall');
 
 // Admin Dashboard Route -- Redirect
 Route::get('/', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('home');
