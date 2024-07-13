@@ -11,7 +11,7 @@
 
                 <div class="card-body">
                     @include('includes.messages')
-{{--
+                    {{--
                     <div class="row p-2">
                         <div class="col-md-6">
                             @if (!isset($user->information->photo_id))

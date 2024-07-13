@@ -127,8 +127,10 @@ class AdminUserController extends Controller
         $uniqueStatuses = Status::groupBy('status')->pluck('status');
         $uniqueExperiences = ApplicantInformation::groupBy('experience')->pluck('experience');
         $uniqueTitles = Experience::groupBy('title')->pluck('title');
+        //tranform titles to uppercase first letter.
+        $getUniqueTitles = array_map('ucfirst', $uniqueTitles->toArray());
         //Combine the collection and array, this is for skills, also display the title.
-        $uniqueSkillsFilter = array_merge($getUniqueSkills, $uniqueTitles->toArray());
+        $uniqueSkillsFilter = array_merge($getUniqueSkills, $getUniqueTitles);
         //get unique values only in the array.
         $uniqueSkills = array_unique($uniqueSkillsFilter);
 
