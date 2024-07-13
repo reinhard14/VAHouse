@@ -267,7 +267,7 @@
                                                         </div>
                                                     </td>
                                                     <td class="text-center">
-                                                        <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-outline-info"><i class="bi bi-file-earmark-break"></i> View</a>
+                                                        <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-outline-info" target="_blank"><i class="bi bi-file-earmark-break"></i> View</a>
                                                     </td>
                                                     <td>
                                                         <div class="text-center">

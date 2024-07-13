@@ -181,6 +181,15 @@
                                 @endif
                             </p>
                         </div>
+
+                        @if (isset($user->mockcalls->inbound_call))
+                            <div class="col-md-4">
+                                <label>Mock Calls</label>
+
+                                <p>Inbound: <a href="{{ route('view.pdf', $user->mockcalls->inbound_call) }}" target="_blank">Open</a> </p>
+                                <p>Outbound: <a href="{{ route('view.pdf', $user->mockcalls->outbound_call) }}" target="_blank">Open</a> </p>
+                            </div>
+                        @endif
                     </div>
 
                     <div class="row mb-3">
@@ -205,6 +214,7 @@
                             @endif
                         </div>
                     </div>
+
 
                     <div class="row mb-3">
                         <div class="col-md-3">Websites: </div>
