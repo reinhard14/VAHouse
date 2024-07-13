@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ApplicantInformation;
+use App\Models\Experience;
 use App\Models\User;
 use App\Models\Skillset;
 use App\Models\Review;
@@ -55,7 +56,8 @@ class AdminUserController extends Controller
                         ->leftJoin('skillsets', 'users.id', '=', 'skillsets.user_id')
                         ->leftJoin('statuses', 'users.id', '=', 'statuses.user_id')
                         ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
-                        ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience')
+                        ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
+                        ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title')
                         ->distinct()
                         ->orderBy($sortByColumn, $sortOrder);
 
@@ -84,6 +86,9 @@ class AdminUserController extends Controller
                     foreach ($tags as $tag) {
                         if (is_numeric($tag)) {
                             $query->orWhere($dbField, '=', $tag);
+                        } else if ($dbField=='skillsets.skill') {
+                            $query->orWhere($dbField, 'like', '%' . $tag . '%');
+                            $query->orWhere('experiences.title', 'like', '%' . $tag . '%');
                         } else {
                             $query->orWhere($dbField, 'like', '%' . $tag . '%');
                         }
@@ -116,11 +121,14 @@ class AdminUserController extends Controller
         // Get unique values for each field
         $uniqueWebsites = getUniqueValues($skillsets, 'website');
         $uniqueTools = getUniqueValues($skillsets, 'tool');
-        $uniqueSkills = getUniqueValues($skillsets, 'skill');
+        $getUniqueSkills = getUniqueValues($skillsets, 'skill');
         $uniqueSoftskills = getUniqueValues($skillsets, 'softskill');
-        $getStatus = Status::pluck('status')->unique();
-        $uniqueExperience = ApplicantInformation::pluck('experience')->unique();
-        $uniqueStatuses = json_decode($getStatus);
+        //Collection types
+        $uniqueStatuses = Status::groupBy('status')->pluck('status');
+        $uniqueExperiences = ApplicantInformation::groupBy('experience')->pluck('experience');
+        $uniqueTitles = Experience::groupBy('title')->pluck('title');
+        //Combine the collection and array, this is for skills, also display the title.
+        $uniqueSkills = array_merge($getUniqueSkills, $uniqueTitles->toArray());
 
         return view('admin-users.index', compact(
             'users',
@@ -130,7 +138,7 @@ class AdminUserController extends Controller
             'toggleSortFirstname',
             'sortByDateSubmitted',
             'uniqueWebsites',
-            'uniqueExperience',
+            'uniqueExperiences',
             'uniqueTools',
             'uniqueSkills',
             'uniqueSoftskills',

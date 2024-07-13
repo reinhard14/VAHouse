@@ -119,7 +119,7 @@
                                                                     'tools',
                                                                     'skills',
                                                                     'softskills',
-                                                                    'experience',
+                                                                    'experiences',
                                                                     'statuses',
                                                     ];
                                                         $count = 0;
@@ -132,7 +132,7 @@
                                                         @endif
 
                                                         <div class="form-group col-md-4 mb-3">
-                                                            @if($field=='experience')
+                                                            @if ($field=='experience')
                                                                 <label for="{{ $field }}" class="d-block">Years of {{ ucfirst($field) }}s:</label>
                                                             @else
                                                                 <label for="{{ $field }}" class="d-block">{{ ucfirst($field) }}:</label>

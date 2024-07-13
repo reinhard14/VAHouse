@@ -210,7 +210,7 @@ $(document).ready(function() {
         // allowClear: true,
     });
 
-    $('#experience').select2({
+    $('#experiences').select2({
         maximumSelectionLength: 20,
         placeholder: 'Select Experience..',
     });
