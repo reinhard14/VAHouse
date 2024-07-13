@@ -87,8 +87,8 @@ class AdminUserController extends Controller
                         if (is_numeric($tag)) {
                             $query->orWhere($dbField, '=', $tag);
                         } else if ($dbField=='skillsets.skill') {
-                            $query->orWhere($dbField, 'like', '%' . $tag . '%');
-                            $query->orWhere('experiences.title', 'like', '%' . $tag . '%');
+                            $query->orWhere($dbField, 'like', '%' . $tag . '%')
+                                    ->orWhere('experiences.title', 'like', '%' . $tag . '%');
                         } else {
                             $query->orWhere($dbField, 'like', '%' . $tag . '%');
                         }
@@ -118,7 +118,7 @@ class AdminUserController extends Controller
                         ->all();
         }
 
-        // Get unique values for each field
+        //Array types
         $uniqueWebsites = getUniqueValues($skillsets, 'website');
         $uniqueTools = getUniqueValues($skillsets, 'tool');
         $getUniqueSkills = getUniqueValues($skillsets, 'skill');
