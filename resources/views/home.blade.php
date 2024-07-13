@@ -466,11 +466,11 @@
                                         </p>
                                     </div>
                                     @if (isset($user->mockcalls))
-                                        <div class="col-md-2" id="inboundShow">
+                                        <div class="col-md-3" id="inboundShow">
                                             <label for="position3"> Inbound: </label>
                                             <a href="{{ route('view.pdf', $user->mockcalls->inbound_call) }}" target="_blank">Open</a>
                                         </div>
-                                        <div class="col-md-2" id="outboundShow">
+                                        <div class="col-md-3" id="outboundShow">
                                             <label for="position3"> Outbound: </label>
                                             <a href="{{ route('view.pdf', $user->mockcalls->outbound_call) }}" target="_blank">Open</a>
                                         </div>

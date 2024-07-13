@@ -69,19 +69,25 @@
                     $('#mock-call-modal').modal('hide');
 
                     const inboundShow = `
-                                        <div class="col-md-2" id="inboundShow">
+                                        <div class="col-md-3" id="inboundShow">
                                             <label> Inbound: </label>
                                             <a href="` + baseUrl + `/` + response.mockcalls.inbound_call +`" target="_blank">Open</a>
                                         </div>
                                         `;
                     const outboundShow = `
-                                        <div class="col-md-2" id="outboundShow">
+                                        <div class="col-md-3" id="outboundShow">
                                             <label> Outbound: </label>
                                             <a href="` + baseUrl + `/` + response.mockcalls.outbound_call +`" target="_blank">Open</a>
                                         </div>
                                         `;
+
+                    $('#inboundLabel').remove();
+                    $('#inboundLink').remove();
+                    $('#outboundLabel').remove();
+                    $('#outboundLink').remove();
                     $('#callersRow').append(inboundShow);
                     $('#callersRow').append(outboundShow);
+
                 },
                 error: function(response) {
                     handleMockcallFormSubmission(response);

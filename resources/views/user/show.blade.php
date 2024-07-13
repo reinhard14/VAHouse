@@ -155,18 +155,26 @@
 
                     @if (isset($user->mockcalls))
                         <div class="row p-2">
-                            <strong>HR Sample mock calls:</strong>
                             <div class="col-md-3">
-                                <label for="position3"> Inbound: </label>
+                                <strong>HR Sample mock calls:</strong>
                             </div>
                             <div class="col-md-3">
+                                <a href="#mock-call-modal" class="btn btn-outline-primary btn-sm px-5" data-bs-toggle="modal">Edit</a>
+                            </div>
+                        </div>
+
+                        <div class="row p-2" id="callersRow">
+                            <div class="col-md-3" id="inboundLabel">
+                                <label> Inbound: </label>
+                            </div>
+                            <div class="col-md-3" id="inboundLink">
                                 <a href="{{ route('view.pdf', $user->mockcalls->inbound_call) }}" target="_blank">Open</a>
                             </div>
 
-                            <div class="col-md-3">
-                                <label for="position3"> Outbound: </label>
+                            <div class="col-md-3" id="outboundLabel">
+                                <label> Outbound: </label>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3" id="outboundLink">
                                 <a href="{{ route('view.pdf', $user->mockcalls->outbound_call) }}" target="_blank">Open</a>
                             </div>
                         </div>
