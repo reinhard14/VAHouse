@@ -211,7 +211,7 @@ $(document).ready(function() {
     });
 
     $('#experience').select2({
-        maximumSelectionLength: 4,
+        maximumSelectionLength: 20,
         placeholder: 'Select Experience..',
     });
 
@@ -221,5 +221,6 @@ $(document).ready(function() {
     });
 
     $('#collapseOne').collapse('hide');
+    $('.sidebar-mini').addClass('sidebar-collapse')
 
 });

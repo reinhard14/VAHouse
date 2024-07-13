@@ -120,7 +120,6 @@ class AdminUserController extends Controller
         $uniqueSoftskills = getUniqueValues($skillsets, 'softskill');
         $getStatus = Status::pluck('status')->unique();
         $uniqueExperience = ApplicantInformation::pluck('experience')->unique();
-
         $uniqueStatuses = json_decode($getStatus);
 
         return view('admin-users.index', compact(

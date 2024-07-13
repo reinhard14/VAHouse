@@ -113,7 +113,7 @@
                                         <div class="accordion-body">
                                             <form method="GET" action="#">
                                                 @csrf
-                                                <div class="row">
+                                                <div class="form-row">
                                                     @php
                                                         $fields = ['websites',
                                                                     'tools',
@@ -123,37 +123,36 @@
                                                                     'statuses',
                                                     ];
                                                         $count = 0;
-                                                        $totalFields = count($fields);
                                                     @endphp
+
                                                     @foreach ($fields as $index => $field)
                                                         @if ($count % 2 == 0 && $count != 0)
                                                             </div>
-                                                            <div class="row">
+                                                            <div class="form-row">
                                                         @endif
-                                                        <div class="col-lg-6 mb-3">
-                                                            <div class="form-group">
-                                                                @if($field=='experience')
-                                                                    <label for="{{ $field }}">Years of {{ ucfirst($field) }}s:</label>
-                                                                @else
-                                                                    <label for="{{ $field }}">{{ ucfirst($field) }}:</label>
-                                                                @endif
-                                                                <select id="{{ $field }}" class="form-control select2"  name="{{ $field }}[]" multiple="multiple">
-                                                                    @foreach (${"unique" . ucfirst($field)} as $item)
-                                                                        <option value="{{ $item }}">{{ $item }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                        </div>
 
-                                                        @if ($index == $totalFields - 1)
-                                                            <div class="col-md-6 mb-3 d-flex align-items-center justify-content-end">
-                                                                <button type="submit" class="btn btn-primary btn-sm ml-3">
-                                                                    <i class="bi bi-search"></i> Filter
-                                                                </button>
-                                                            </div>
-                                                        @endif
-                                                        @php $count++; @endphp
+                                                        <div class="form-group col-md-4 mb-3">
+                                                            @if($field=='experience')
+                                                                <label for="{{ $field }}" class="d-block">Years of {{ ucfirst($field) }}s:</label>
+                                                            @else
+                                                                <label for="{{ $field }}" class="d-block">{{ ucfirst($field) }}:</label>
+                                                            @endif
+
+                                                            <select id="{{ $field }}" class="form-control select2"  name="{{ $field }}[]" multiple="multiple">
+                                                                @foreach (${"unique" . ucfirst($field)} as $item)
+                                                                    <option value="{{ $item }}">{{ $item }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
                                                     @endforeach
+
+                                                    @php $count++; @endphp
+
+                                                    <div class="form-group col-md-12 mb-3 d-flex justify-content-end">
+                                                        <button type="submit" class="btn btn-primary btn-sm px-5">
+                                                            <i class="bi bi-search"></i> Filter
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>
