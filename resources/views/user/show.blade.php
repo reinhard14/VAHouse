@@ -182,8 +182,11 @@
                         </div>
                     @else
                         <div class="row mt-4 p-3">
-                            <h5>Skillset details</h5>
-                            <div class="table-responsive">
+                            <div class="col">
+                                <h5>Skillset details</h5>
+                            </div>
+
+                            <div class="table-responsive mt-2">
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
@@ -241,8 +244,14 @@
                         </div>
                     @else
                         <div class="row mt-4 p-3">
-                            <h5>Experience details:</h5>
-                            <div class="table-responsive">
+                            <div class="col">
+                                <h5>Experience details</h5>
+                            </div>
+                            <div class="col d-flex justify-content-end">
+                                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#create-details-modal">Add more</button>
+                            </div>
+
+                            <div class="table-responsive mt-2">
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
@@ -250,7 +259,7 @@
                                         <th scope="col">Duration</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="experienceRow">
                                         @foreach($user->experiences as $experience)
                                             <tr>
                                                 <td>
@@ -279,5 +288,8 @@
     </div>
 </div>
 
+
+<x-applicant.details />
+<x-applicant.mock-call />
 
 @endsection

@@ -47,7 +47,10 @@ function handleExperienceFormSubmission() {
 
     Swal.fire({
         title: 'Add more experiences?',
-        text: 'Select "Exit" to return to dashboard, and select "Add another experience" to add more details from previous job experiences',
+        html: `
+                <p>Selecting "Exit" will close this modal.</p>
+                <p>choosing "Add another experience" will add more details from previous job experiences.</p>
+            `,
         showDenyButton: true,
         showCancelButton: false,
         confirmButtonText: 'Exit',
@@ -57,9 +60,9 @@ function handleExperienceFormSubmission() {
     }).then((result) => {
         if (result.isConfirmed) {
         Swal.fire({
-            icon: 'success',
-            title: 'Saved!',
-            text: 'Adding experience successful...',
+            icon: 'info',
+            title: 'Records saved!',
+            text: 'Finished adding experience(s), closing this modal...',
             showConfirmButton: false,
             timer: 2000
             });
@@ -67,7 +70,7 @@ function handleExperienceFormSubmission() {
         Swal.fire({
             icon: 'success',
             title: 'Saved!',
-            text: 'Adding experience successful...Re-opening modal',
+            text: 'Adding experience successful, re-opening modal...',
             showConfirmButton: false,
             timer: 2000
             });
