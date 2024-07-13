@@ -51,7 +51,7 @@ class UserController extends Controller
             'softskills' => 'array',
             'softskills.*' => 'string',
             'rate' => 'required',
-            'portfolio' => 'required|mimes:pdf|max:10000',
+            'portfolio' => 'required|max:10000',
             'videolink' => 'required|mimes:mp4,avi,mov,wmv|max:30000',
             'experience' => 'required',
             'resume' => 'required|mimes:pdf|max:10000',
