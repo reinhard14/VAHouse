@@ -162,6 +162,10 @@
                         </div>
 
                         <div class="row">
+                            @foreach ($uniqueSkills as $skills)
+                                {{ $skills }}
+                            @endforeach
+
                             <div class="col-12">
                                 <div class="table-responsive">
                                     <table class="table table-hover">

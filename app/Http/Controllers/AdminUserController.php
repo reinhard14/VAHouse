@@ -88,7 +88,7 @@ class AdminUserController extends Controller
                             $query->orWhere($dbField, '=', $tag);
                         } else if ($dbField=='skillsets.skill') {
                             $query->orWhere($dbField, 'like', '%' . $tag . '%')
-                                    ->orWhere('experiences.title', 'like', '%' . $tag . '%');
+                                  ->orWhere('experiences.title', 'like', '%' . $tag . '%');
                         } else {
                             $query->orWhere($dbField, 'like', '%' . $tag . '%');
                         }
@@ -128,7 +128,9 @@ class AdminUserController extends Controller
         $uniqueExperiences = ApplicantInformation::groupBy('experience')->pluck('experience');
         $uniqueTitles = Experience::groupBy('title')->pluck('title');
         //Combine the collection and array, this is for skills, also display the title.
-        $uniqueSkills = array_merge($getUniqueSkills, $uniqueTitles->toArray());
+        $uniqueSkillsFilter = array_merge($getUniqueSkills, $uniqueTitles->toArray());
+        //get unique values only in the array.
+        $uniqueSkills = array_unique($uniqueSkillsFilter);
 
         return view('admin-users.index', compact(
             'users',
