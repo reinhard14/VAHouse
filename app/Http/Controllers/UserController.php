@@ -56,17 +56,17 @@ class UserController extends Controller
             'experience' => 'required',
             'resume' => 'required|mimes:pdf|max:10000',
             'disc_results' => 'required|mimes:pdf|max:10000',
+            'photo_id' => 'required|max:10000',
+            'photo_formal' => 'required|max:10000',
             'skype' => 'required',
             'niche' => 'required',
             'ub_account' => 'required',
             'ub_number' => 'required',
-            'photo_id' => 'required|max:10000',
-            'photo_formal' => 'required|max:10000',
             'positions' => 'sometimes|array|min:1',
             'positions.*' => 'string',
         ],  [
             'videolink.required' => 'Video file is missing.',
-            'videolink.mimes' => 'Type must be MP4.',
+            'videolink.mimes' => 'Video Introduction file type must be MP4.',
             'videolink.max' => 'File size exceed the 30mb limit!',
             ]);
 
