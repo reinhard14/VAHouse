@@ -261,8 +261,7 @@
                                                             <form method="post" action="{{ route('admin.users.destroy', $user->id) }}" class="deleteAdminForm">
                                                                 @csrf
                                                                 @method('delete')
-                                                                <button
-                                                                 type="submit" class="btn text-danger"> <i class="bi bi-person-x"></i> Delete </button>
+                                                                <button type="submit" class="btn text-danger"> <i class="bi bi-person-x"></i> Delete </button>
                                                             </form>
                                                         </div>
                                                     </td>

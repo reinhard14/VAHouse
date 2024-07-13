@@ -281,4 +281,13 @@ class UserController extends Controller
 
         ]);
     }
+
+    public function destroyExperience($id)
+    {
+        $experience = Experience::find($id);
+        $experience->delete();
+
+        return redirect()->route('user.show', Auth::id());
+    }
+
 }

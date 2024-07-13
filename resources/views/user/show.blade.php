@@ -265,6 +265,7 @@
                                         <tr>
                                         <th scope="col">Job Experience</th>
                                         <th scope="col">Duration</th>
+                                        <th scope="col" class="text-end">Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody id="experienceRow">
@@ -275,6 +276,13 @@
                                                 </td>
                                                 <td>
                                                     {{ $experience->duration }}
+                                                </td>
+                                                <td class="text-end">
+                                                    <form method="post" action="{{ route('user.experienceDelete', $experience->id) }}" class="deleteExperienceForm">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash mr-1"></i>Delete</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -299,5 +307,5 @@
 
 <x-applicant.details />
 <x-applicant.mock-call />
-
+<script src="{{ asset('dist/js/pages/user-end/show.js') }}"> </script>
 @endsection
