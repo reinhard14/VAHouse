@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\ApplicantInformation;
+use App\Models\CallSample;
 use App\Models\Experience;
-use App\Models\User;
-use App\Models\Skillset;
 use App\Models\Review;
+use App\Models\Skillset;
 use App\Models\Status;
 use App\Models\Tier;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password as RulesPassword;
 
@@ -297,12 +297,22 @@ class AdminUserController extends Controller
         $user_id = $user->id;
         $userApplicantInformation = ApplicantInformation::where('user_id', $user_id);
         $userSkillset = Skillset::where('user_id', $user_id);
+        $userReview = Review::where('user_id', $user_id);
+        $userStatus = Status::where('user_id', $user_id);
+        $userTier = Tier::where('user_id', $user_id);
+        $userExperience = Experience ::where('user_id', $user_id);
+        $userCallSample = CallSample::where('user_id', $user_id);
 
         //check if resume is not null. then proceed with delete.
         if (!isset($user->information->resume)) {
+            $user->delete();
             $userApplicantInformation->delete();
             $userSkillset->delete();
-            $user->delete();
+            $userReview->delete();
+            $userStatus->delete();
+            $userTier->delete();
+            $userExperience->delete();
+            $userCallSample->delete();
 
         } else {
             $applicantVideo = $user->information->videolink;
@@ -311,6 +321,8 @@ class AdminUserController extends Controller
             $applicantId = $user->information->photo_id;
             $applicantFormalPhoto = $user->information->photo_formal;
             $applicantDiscResult = $user->information->disc_results;
+            $applicantMockCallInbound = $user->mockcalls->inbound_call;
+            $applicantMockCallOutbound = $user->mockcalls->outbound_call;
 
             Storage::delete('public/'.$applicantVideo);
             Storage::delete('public/'.$applicantPortfolio);
@@ -318,10 +330,17 @@ class AdminUserController extends Controller
             Storage::delete('public/'.$applicantId);
             Storage::delete('public/'.$applicantFormalPhoto);
             Storage::delete('public/'.$applicantDiscResult);
+            Storage::delete('public/'.$applicantMockCallInbound);
+            Storage::delete('public/'.$applicantMockCallOutbound);
 
+            $user->delete();
             $userApplicantInformation->delete();
             $userSkillset->delete();
-            $user->delete();
+            $userReview->delete();
+            $userStatus->delete();
+            $userTier->delete();
+            $userExperience->delete();
+            $userCallSample->delete();
         }
 
         return redirect()->route('admin.users.index')->with('success', 'Applicant has been deleted!');
@@ -337,12 +356,21 @@ class AdminUserController extends Controller
             $user_id = $user->id;
             $userApplicantInformation = ApplicantInformation::where('user_id', $user_id);
             $userSkillset = Skillset::where('user_id', $user_id);
-
+            $userReview = Review::where('user_id', $user_id);
+            $userStatus = Status::where('user_id', $user_id);
+            $userTier = Tier::where('user_id', $user_id);
+            $userExperience = Experience ::where('user_id', $user_id);
+            $userCallSample = CallSample::where('user_id', $user_id);
 
             if (!isset($user->information->resume))  {
+                $user->delete();
                 $userApplicantInformation->delete();
                 $userSkillset->delete();
-                $user->delete();
+                $userReview->delete();
+                $userStatus->delete();
+                $userTier->delete();
+                $userExperience->delete();
+                $userCallSample->delete();
 
             } else {
                 $applicantVideo = $user->information->videolink;
@@ -359,9 +387,14 @@ class AdminUserController extends Controller
                 Storage::delete('public/'.$applicantFormalPhoto);
                 Storage::delete('public/'.$applicantDiscResult);
 
+                $user->delete();
                 $userApplicantInformation->delete();
                 $userSkillset->delete();
-                $user->delete();
+                $userReview->delete();
+                $userStatus->delete();
+                $userTier->delete();
+                $userExperience->delete();
+                $userCallSample->delete();
             }
         }
 
