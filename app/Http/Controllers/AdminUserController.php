@@ -379,6 +379,8 @@ class AdminUserController extends Controller
                 $applicantId = $user->information->photo_id;
                 $applicantFormalPhoto = $user->information->photo_formal;
                 $applicantDiscResult = $user->information->disc_results;
+                $applicantMockCallInbound = $user->mockcalls->inbound_call;
+                $applicantMockCallOutbound = $user->mockcalls->outbound_call;
 
                 Storage::delete('public/'.$applicantVideo);
                 Storage::delete('public/'.$applicantPortfolio);
@@ -386,6 +388,8 @@ class AdminUserController extends Controller
                 Storage::delete('public/'.$applicantId);
                 Storage::delete('public/'.$applicantFormalPhoto);
                 Storage::delete('public/'.$applicantDiscResult);
+                Storage::delete('public/'.$applicantMockCallInbound);
+                Storage::delete('public/'.$applicantMockCallOutbound);
 
                 $user->delete();
                 $userApplicantInformation->delete();
