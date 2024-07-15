@@ -75,7 +75,7 @@ class AdminUserController extends Controller
             'tools' => 'skillsets.tool',
             'skills' => 'skillsets.skill',
             'softskills' => 'skillsets.softskill',
-            'experience' => 'applicant_information.experience',
+            'experiences' => 'applicant_information.experience',
             'statuses' => 'status',
         ];
 
