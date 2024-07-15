@@ -65,7 +65,9 @@ class AdminUserController extends Controller
         if ($search = $request->query('search')) {
             $usersQuery->where(function ($query) use ($search) {
                 $query->where('users.name', 'like', '%' . $search . '%')
-                    ->orWhere('users.lastname', 'like', '%' . $search . '%');
+                    ->orWhere('users.lastname', 'like', '%' . $search . '%')
+                    ->orWhere('skillsets.skill', 'like', '%' . $search . '%')
+                    ->orWhere('experiences.title', 'like', '%' . $search . '%');
             });
         }
 
