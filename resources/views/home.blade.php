@@ -374,9 +374,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="photo_id"><span class="text-danger">*</span> Two Valid IDs</label>
+                                    <label for="photo_id"><span class="text-danger">*</span> Two Valid IDs (Attach PDF) </label>
 
-                                    <input name="photo_id" type="file" accept=".jpeg, .jpg, .png" class="form-control" required>
+                                    <input name="photo_id" type="file" accept=".jpeg, .jpg, .png .pdf" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-md-6">

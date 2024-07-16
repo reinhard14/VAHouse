@@ -184,7 +184,7 @@
                         <div class="row">
                             <div class="col">
                                 <p>
-                                    Please generate a Google Drive link containing your two valid IDs that display your personal information.
+                                    Please generate a pdf file containing your two valid IDs that display your personal information.
                                 </p>
                             </div>
                         </div>
