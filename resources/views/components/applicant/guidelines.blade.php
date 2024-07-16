@@ -184,7 +184,7 @@
                         <div class="row">
                             <div class="col">
                                 <p>
-                                    Please generate a pdf file containing your two valid IDs that display your personal information.
+                                    Please generate a <strong>PDF</strong> file containing your two valid IDs that display your personal information.
                                 </p>
                             </div>
                         </div>

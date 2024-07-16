@@ -374,9 +374,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="photo_id"><span class="text-danger">*</span> Two Valid IDs (Attach PDF) </label>
+                                    <label for="photo_id"><span class="text-danger">*</span> Two Valid IDs: <strong>(Attach PDF)</strong> </label>
 
-                                    <input name="photo_id" type="file" accept=".jpeg, .jpg, .png .pdf" class="form-control" required>
+                                    <input name="photo_id" type="file" accept=".jpeg, .jpg, .png, .pdf" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -391,7 +391,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="resume"><span class="text-danger">*</span> Attach resume/CV here: (PDF file only)</label>
+                                    <label for="resume"><span class="text-danger">*</span> Attach resume/CV here: <strong>(PDF file only)</strong></label>
 
                                     <input name="resume" type="file" accept="application/pdf" class="form-control" required>
                                 </div>
@@ -399,7 +399,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="disc_results"><span class="text-danger">*</span> DISC Result: (PDF file only)</label>
+                                    <label for="disc_results"><span class="text-danger">*</span> DISC Result: <strong>(PDF file only)</strong></label>
 
                                     <input name="disc_results" type="file" accept="application/pdf" class="form-control" required>
                                 </div>
@@ -418,7 +418,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="videolink"><span class="text-danger">*</span> Upload video introduction: <strong>(should be within the 100 MB limit)</strong> </label>
+                                    <label for="videolink"><span class="text-danger">*</span> Upload video introduction: <strong>(100 MB limit)</strong> </label>
 
                                     <input name="videolink" type="file" class="form-control" required>
                                 </div>
