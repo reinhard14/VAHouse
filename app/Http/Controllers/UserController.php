@@ -53,7 +53,7 @@ class UserController extends Controller
             'rate' => 'required',
             'experience' => 'required',
             //images
-            'portfolio' => 'required|max:32000',
+            'portfolio' => 'required|max:64000',
             'resume' => 'required|mimes:pdf|max:32000',
             'disc_results' => 'required|mimes:pdf|max:32000',
             //files
@@ -81,7 +81,7 @@ class UserController extends Controller
             'photo_formal.max' => 'Formal photo file size exceed the 64 MB limit!',
 
             'portfolio.required' => 'Portfolio file is missing.',
-            'portfolio.max' => 'Portfolio file size exceed the 32 MB limit!',
+            'portfolio.max' => 'Portfolio file size exceed the 64 MB limit!',
 
             'resume.required' => 'Resume file is missing.',
             'resume.max' => 'Resume file size exceed the 32 MB limit!',
@@ -274,10 +274,18 @@ class UserController extends Controller
         Log::info('Request data:', $request->all());
 
         $this->validate($request, [
-            'inbound_call' => 'required|mimes:mp4,avi,mov,wmv|max:15000',
-            'outbound_call' => 'required|mimes:mp4,avi,mov,wmv|max:15000',
+            'inbound_call' => 'required|mimes:mp4,avi,mov,wmv|max:32000',
+            'outbound_call' => 'required|mimes:mp4,avi,mov,wmv|max:32000',
             'user_id' => 'required',
-        ]);
+        ], [
+            'inbound_call.required' => 'Inbound call file is missing.',
+            'inbound_call.mimes' => 'Inbound call file type is incorrect.',
+            'inbound_call.max' => 'Inbound call file size exceed the 32000 MB limit!',
+
+            'outbound_call.required' => 'Outbound call file is missing.',
+            'outbound_call.mimes' => 'Outbound call file type is incorrect.',
+            'outbound_call.max' => 'Outbound call file size exceed the 32000 MB limit!',
+            ]);
 
         $user_id = ['user_id' => Auth::id()];
         $callSample = CallSample::firstOrNew($user_id);

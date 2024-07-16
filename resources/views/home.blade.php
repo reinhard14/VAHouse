@@ -418,7 +418,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="videolink"><span class="text-danger">*</span> Upload video introduction: <strong>(10MB limit)</strong> </label>
+                                    <label for="videolink"><span class="text-danger">*</span> Upload video introduction: <strong>(should be within the 100 MB limit)</strong> </label>
 
                                     <input name="videolink" type="file" class="form-control" required>
                                 </div>

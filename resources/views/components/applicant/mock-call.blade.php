@@ -19,13 +19,13 @@
                 <div class="modal-body">
                     <div class="row p-3">
                         <div class="col">
-                            <label class="form-label" for="inbound_call">Inbound recorded mock call (10mb limit)</label>
+                            <label class="form-label" for="inbound_call">Inbound recorded mock call (30 MB limit)</label>
                             <input id="inbound_call" name="inbound_call" type="file" class="form-control">
                         </div>
                     </div>
                     <div class="row p-3">
                         <div class="col">
-                            <label class="form-label" for="outbound_call">Outbound recorded mock call (10mb limit)</label>
+                            <label class="form-label" for="outbound_call">Outbound recorded mock call (30 MB limit)</label>
                             <input id="outbound_call" name="outbound_call" type="file" class="form-control">
                         </div>
                     </div>
@@ -48,6 +48,7 @@
     $(document).ready(function(){
         $('#saveMockCall').on('click', function(e){
             e.preventDefault();
+            $(this).attr('disabled', true);
 
             var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
@@ -63,6 +64,7 @@
                 data: formData,
                 processData: false,
                 contentType: false,
+
                 success: function(response) {
                     const baseUrl = "{{ url('/storage') }}";
                     handleMockcallFormSubmission(response);
@@ -93,6 +95,10 @@
                     handleMockcallFormSubmission(response);
                 }
             });
+
+            setTimeout(() => {
+                        $(this).removeAttr('disabled');
+                    }, 10000);
         });
     });
 </script>
