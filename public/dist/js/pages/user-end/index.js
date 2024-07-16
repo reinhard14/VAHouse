@@ -22,12 +22,16 @@ document.addEventListener("DOMContentLoaded", function() {
     guidelinesModal.show();
 
     const callers = document.getElementById('position3');
+    const portfolio = document.getElementById('portfolio');
 
     callers.addEventListener('click', (e) => {
 
         if (callers.checked) {
             const mockCall = new bootstrap.Modal(document.getElementById('mock-call-modal'));
             mockCall.show();
+            portfolio.removeAttribute('required');
+        } else {
+            portfolio.setAttribute('required', 'required');
         }
     })
 

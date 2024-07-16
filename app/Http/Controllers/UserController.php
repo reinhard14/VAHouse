@@ -51,9 +51,9 @@ class UserController extends Controller
             'softskills' => 'array',
             'softskills.*' => 'string',
             'rate' => 'required',
-            'experience' => 'required',
-            //images
-            'portfolio' => 'required|max:64000',
+            'experience' => 'required|gte:0',
+            //pdfs
+            'portfolio' => 'nullable|file|max:64000',
             'resume' => 'required|mimes:pdf|max:32000',
             'disc_results' => 'required|mimes:pdf|max:32000',
             //files
@@ -80,7 +80,6 @@ class UserController extends Controller
             'photo_formal.mimes' => 'Formal Photo must be an image file.',
             'photo_formal.max' => 'Formal photo file size exceed the 64 MB limit!',
 
-            'portfolio.required' => 'Portfolio file is missing.',
             'portfolio.max' => 'Portfolio file size exceed the 64 MB limit!',
 
             'resume.required' => 'Resume file is missing.',
@@ -95,14 +94,19 @@ class UserController extends Controller
         // Handle PDF file upload
         if ($request->hasFile('resume') && $request->hasFile('disc_results') &&
             $request->hasFile('photo_id') && $request->hasFile('photo_formal') &&
-            $request->hasFile('portfolio') && $request->hasFile('videolink')) {
+            $request->hasFile('videolink') || $request->hasFile('portfolio')) {
 
             $resumePdfPath = $request->file('resume')->store('pdfs', 'public');
             $discPdfPath = $request->file('disc_results')->store('DISC_Results', 'public');
             $formalPath = $request->file('photo_formal')->store('formals', 'public');
             $identificationPdfPath = $request->file('photo_id')->store('IDs', 'public');
-            $portfolioPath = $request->file('portfolio')->store('portfolios', 'public');
             $introVideoPdfPath = $request->file('videolink')->store('intro_videos', 'public');
+
+            if(!isset($portfolioPath)) {
+                $portfolioPath = null;
+            } else {
+                $portfolioPath = $request->file('portfolio')->store('portfolios', 'public');
+            }
 
         } else {
             return back()->with('error', 'Please upload a file.');

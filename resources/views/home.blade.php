@@ -308,7 +308,7 @@
                                         </div>
                                     </div>
 
-                                    <input name="experience" type="number" class="form-control" placeholder="Please 'Click to Expand' to specify your experiences.." required>
+                                    <input name="experience" type="number" min="0" class="form-control" placeholder="Please 'Click to Expand' to specify your experiences.." required>
                                 </div>
                             </div>
                         </div>
@@ -418,7 +418,7 @@
                                 <div class="form-group">
                                     <label for="portfolio"><span class="text-danger">*</span> Portfolio: </label>
 
-                                    <input name="portfolio" type="file" class="form-control" required>
+                                    <input name="portfolio" id="portfolio" type="file" class="form-control" required>
                                 </div>
                             </div>
 
