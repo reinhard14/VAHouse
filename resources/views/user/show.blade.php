@@ -54,7 +54,7 @@
                         <div class="col-md-3">Address:</div>
                         <div class="col-md-3">{{ $user->address }}</div>
 
-                        <div class="col-md-3">Educational attainment:</div>
+                        <div class="col-md-3">Educational Attainment:</div>
                         <div class="col-md-3">{{ $user->education }}</div>
                     </div>
 
@@ -70,12 +70,12 @@
                         <div class="col-md-3">Happy Rate:</div>
                         <div class="col-md-3">{{ $user->information->rate ?? 'N/A' }}</div>
 
-                        <div class="col-md-3">Years of experience:</div>
+                        <div class="col-md-3">Years of Experience:</div>
                         <div class="col-md-3">{{ $user->information->experience ?? 'N/A' }}</div>
                     </div>
 
                     <div class="row p-2">
-                        <div class="col-md-3">Union bank Account:</div>
+                        <div class="col-md-3">Union Bank Account:</div>
                         <div class="col-md-3">
                             {{ $user->information->ub_account ?? 'N/A' }} -
                             {{ $user->information->ub_number ?? 'N/A' }}
@@ -102,7 +102,7 @@
                     </div>
 
                     <div class="row p-2">
-                        <div class="col-md-3">DISC results attachment:</div>
+                        <div class="col-md-3">DISC Results Attachment:</div>
 
                         @if (!isset($user->information->disc_results))
                             <div class="col-md-3"><a href="#">N/A</a></div>
@@ -110,7 +110,7 @@
                             <div class="col-md-3"><a href="{{ route('view.pdf', $user->information->disc_results) }}" target="_blank">Open File</a></div>
                         @endif
 
-                        <div class="col-md-3">Resume attachment:</div>
+                        <div class="col-md-3">Resume Attachment:</div>
 
                         @if (!isset($user->information->resume))
                             <div class="col-md-3"><a href="#">N/A</a></div>
@@ -120,7 +120,7 @@
                     </div>
 
                     <div class="row p-2">
-                        <div class="col-md-3">Video introduction:</div>
+                        <div class="col-md-3">Video Introduction:</div>
 
                         @if (!isset($user->information->videolink))
                             <div class="col-md-3"><a href="#">N/A</a></div>
@@ -156,7 +156,7 @@
                     @if (isset($user->mockcalls))
                         <div class="row p-2">
                             <div class="col-md-3">
-                                <strong>HR Sample mock calls:</strong>
+                                <strong>HR Sample Mock Calls:</strong>
                             </div>
                             <div class="col-md-3">
                                 <a href="#mock-call-modal" class="btn btn-outline-primary btn-sm px-5" data-bs-toggle="modal">Edit</a>
@@ -191,7 +191,7 @@
                     @else
                         <div class="row mt-4 p-3">
                             <div class="col">
-                                <h5>Skillset details</h5>
+                                <h5>Skillset Details</h5>
                             </div>
 
                             <div class="table-responsive mt-2">
@@ -253,10 +253,10 @@
                     @else
                         <div class="row mt-4 p-3">
                             <div class="col">
-                                <h5>Experience details</h5>
+                                <h5>Years of Experience details</h5>
                             </div>
                             <div class="col d-flex justify-content-end">
-                                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#create-details-modal">Add more</button>
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create-details-modal">Add Experience</button>
                             </div>
 
                             <div class="table-responsive mt-2">

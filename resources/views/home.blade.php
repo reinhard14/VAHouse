@@ -326,9 +326,15 @@
                             <div class="table-responsive" id="showExperiencesTable">
                             </div>
                         @else
-                            <div class="row">
-                                <p>Experience details:</p>
-                                <div class="table-responsive">
+                            <div class="row my-2">
+                                <div class="col">
+                                    <h5>Years of Experience details</h5>
+                                </div>
+                                <div class="col d-flex justify-content-end">
+                                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#create-details-modal">Add Experience</button>
+                                </div>
+
+                                <div class="table-responsive mt-2">
                                     <table class="table table-hover border">
                                         <thead>
                                             <tr>

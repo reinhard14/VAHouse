@@ -162,10 +162,6 @@
                         </div>
 
                         <div class="row">
-                            {{-- @foreach ($uniqueSkills as $skills)
-                                {{ $skills }}
-                            @endforeach --}}
-
                             <div class="col-12">
                                 <div class="table-responsive">
                                     <table class="table table-hover">
@@ -259,9 +255,14 @@
                                                             <a href="#update-status-{{ $user->id }}" data-bs-toggle="modal" class="px-2">
                                                                 <i class="bi bi-person-exclamation"></i> Status
                                                             </a>
-                                                            <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal" class="px-2">
+                                                            <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal" class="px-2 editApplicantModals">
                                                                 <i class="bi bi-person-gear"></i> Edit
                                                             </a>
+                                                            {{--
+                                                            <a href="#" class="px-2 editApplicantSelectModals">
+                                                                <i class="bi bi-person-gear"></i> Edit
+                                                            </a>
+                                                            --}}
                                                             <form method="post" action="{{ route('admin.users.destroy', $user->id) }}" class="deleteAdminForm">
                                                                 @csrf
                                                                 @method('delete')
