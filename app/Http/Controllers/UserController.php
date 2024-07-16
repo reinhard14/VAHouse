@@ -51,13 +51,16 @@ class UserController extends Controller
             'softskills' => 'array',
             'softskills.*' => 'string',
             'rate' => 'required',
-            'portfolio' => 'required|max:10000',
-            'videolink' => 'required|mimes:mp4,avi,mov,wmv|max:30000',
             'experience' => 'required',
-            'resume' => 'required|mimes:pdf|max:10000',
-            'disc_results' => 'required|mimes:pdf|max:10000',
-            'photo_id' => 'required|max:10000',
-            'photo_formal' => 'required|max:10000',
+            //images
+            'portfolio' => 'required|max:32000',
+            'resume' => 'required|mimes:pdf|max:32000',
+            'disc_results' => 'required|mimes:pdf|max:32000',
+            //files
+            'videolink' => 'required|mimes:mp4,avi,mov,wmv|max:128000',
+            'photo_id' => 'required|max:64000',
+            'photo_formal' => 'required|max:64000',
+            //applicant info
             'skype' => 'required',
             'niche' => 'required',
             'ub_account' => 'required',
@@ -67,7 +70,24 @@ class UserController extends Controller
         ],  [
             'videolink.required' => 'Video file is missing.',
             'videolink.mimes' => 'Video Introduction file type must be MP4.',
-            'videolink.max' => 'File size exceed the 30mb limit!',
+            'videolink.max' => 'Video file size exceed the 128000 MB limit!',
+
+            'photo_id.required' => 'ID photo file is missing.',
+            'photo_id.mimes' => 'ID photo must be an image file.',
+            'photo_id.max' => 'ID photo file size exceed the 64 MB limit!',
+
+            'photo_formal.required' => 'Formal Photo file is missing.',
+            'photo_formal.mimes' => 'Formal Photo must be an image file.',
+            'photo_formal.max' => 'Formal photo file size exceed the 64 MB limit!',
+
+            'portfolio.required' => 'Portfolio file is missing.',
+            'portfolio.max' => 'Portfolio file size exceed the 32 MB limit!',
+
+            'resume.required' => 'Resume file is missing.',
+            'resume.max' => 'Resume file size exceed the 32 MB limit!',
+
+            'disc_results.required' => 'DISC Results file is missing.',
+            'disc_results.max' => 'DISC results file size exceed the 32 MB limit!',
             ]);
 
         $attributes = ['user_id' => Auth::id()];
