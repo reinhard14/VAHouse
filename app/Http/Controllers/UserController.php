@@ -92,25 +92,27 @@ class UserController extends Controller
         $attributes = ['user_id' => Auth::id()];
 
         // Handle PDF file upload
+        if ($request->hasFile('portfolio')) {
+            $portfolioPath = $request->file('portfolio')->store('portfolios', 'public');
+        } else {
+            $portfolioPath = null;
+        }
+
         if ($request->hasFile('resume') && $request->hasFile('disc_results') &&
             $request->hasFile('photo_id') && $request->hasFile('photo_formal') &&
-            $request->hasFile('videolink') || $request->hasFile('portfolio')) {
+            $request->hasFile('videolink')) {
 
             $resumePdfPath = $request->file('resume')->store('pdfs', 'public');
             $discPdfPath = $request->file('disc_results')->store('DISC_Results', 'public');
             $formalPath = $request->file('photo_formal')->store('formals', 'public');
             $identificationPdfPath = $request->file('photo_id')->store('IDs', 'public');
             $introVideoPdfPath = $request->file('videolink')->store('intro_videos', 'public');
-            $portfolioPath = $request->file('portfolio')->store('portfolios', 'public');
-            // if(isset($portfolioPath)) {
-
-            // } else {
-            //     $portfolioPath = null;
-            // }
 
         } else {
             return back()->with('error', 'Please upload a file.');
         }
+
+
 
         $skillset = Skillset::firstOrNew($attributes);
         $skillset->website = json_encode($request->input('websites'));
