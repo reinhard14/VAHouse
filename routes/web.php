@@ -8,7 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CaptchaController;
 
 
-Auth::routes();
+// Auth::routes();
 // Home Route -- User Dashboard
 //find out why it's not working
 // Route::resource('user/', UserController::class)->names([
@@ -57,10 +57,10 @@ Route::delete('user/experiences/{id}', [App\Http\Controllers\UserController::cla
 
 
 // Admin Dashboard Route -- Redirect
-Route::get('/', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('homes');
 
 // Admin Dashboard Route
-Route::get('administrator/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('administrator/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('admin.dashboards');
 
 // Additional routes for Administrator CRUD for Users list.
 Route::delete('administrator/users', [App\Http\Controllers\AdminUserController::class, 'destroySelected'])->name('admin.users.deleteSelected');
