@@ -276,7 +276,7 @@
                                 <div class="form-group">
                                     <label for="skype"><span class="text-danger">*</span> Skype ID</label>
 
-                                    <input name="skype" type="text" class="form-control" placeholder="Skype id here.." required>
+                                    <input id="skype" name="skype" type="text" class="form-control" placeholder="Skype id here.." required>
                                 </div>
                             </div>
 
@@ -308,7 +308,7 @@
                                         </div>
                                     </div>
 
-                                    <input name="experience" type="number" min="0" class="form-control" placeholder="Please 'Click to Expand' to specify your experiences.." required>
+                                    <input id="experience" name="experience" type="number" min="0" class="form-control" placeholder="Please 'Click to Expand' to specify your experiences.." required>
                                 </div>
                             </div>
                         </div>

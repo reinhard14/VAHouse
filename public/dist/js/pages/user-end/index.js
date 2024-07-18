@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     checkboxes.forEach(function(checkbox) {
         checkbox.addEventListener('change', function() {
-            console.log(callers.id);
+            // console.log(callers.id);
             if (callers.checked) {
                 portfolio.removeAttribute('required');
                 const mockCall = new bootstrap.Modal(document.getElementById('mock-call-modal'));
@@ -37,9 +37,9 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
             checkboxes.forEach(function(cb) {
-                console.log(cb.id);
+                // console.log(cb.id);
                 if (cb.id !== 'position3' && cb.checked) {
-                    console.log("Found.");
+                    // console.log("Found.");
                     portfolio.setAttribute('required', 'required');
                 }
             });
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     const deleteExperienceForm = document.querySelectorAll('.deleteExperienceForm');
-    console.log(deleteExperienceForm);
+    // console.log(deleteExperienceForm);
     if (deleteExperienceForm) {
         deleteExperienceForm.forEach((form) => {
             form.addEventListener('submit', (e)=> {
@@ -56,6 +56,26 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });
     }
+
+    const skype = document.getElementById('skype');
+
+    skype.addEventListener('keyup', () => {
+        mappedWords = ['NA',  'N/A', 'n/a', 'na', 'none', 'None', 'NONE'];
+
+        for (var index = 0; index < mappedWords.length; index++) {
+            if (skype.value === mappedWords[index]) {
+                invalidSkype();
+            }
+        }
+
+    });
+
+    const experience = document.getElementById('experience');
+
+    experience.addEventListener('keyup', () => {
+        remindExpandExperience();
+    });
+
 
 });
 

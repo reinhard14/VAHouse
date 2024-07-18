@@ -443,3 +443,38 @@ function handleClearFields() {
         }
     });
 }
+
+//Invalid Skype
+function invalidSkype() {
+    Swal.fire({
+        icon: 'warning',
+        title: 'Warning!',
+        html: `
+            Please don\'t use the following to avoid <strong>"Not Following Instructions"</strong> penalty from the HR.
+                <div class="text-left">
+                    <p>- NA</p>
+                    <p>- N/A</p>
+                    <p>- n/a</p>
+                    <p>- na</p>
+                    <p>- none</p>
+                    <p>- None</p>
+                    <p>- NONE</p>
+                </div>
+            `,
+        showConfirmButton: false,
+        timer: 5000,
+    });
+}
+//Expand years of experience reminders.
+function remindExpandExperience() {
+    Swal.fire({
+        icon: 'info',
+        title: 'Expand',
+        html: `
+            <p>Please don\'t forget to click <strong>"Expand"</strong> in order to provide detail with experience. </p>
+            <p>Make sure that total years of experience is equal to the experience's details</p>
+            `,
+        showConfirmButton: false,
+        timer: 5000,
+    });
+}
