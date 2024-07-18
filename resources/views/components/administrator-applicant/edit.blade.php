@@ -4,7 +4,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Edit Applicant</h5>
+                <h5 class="modal-title">Edit Applicant's Information</h5>
                 <button type="button" class="close" data-bs-dismiss="modal">x</button>
             </div>
 
@@ -13,6 +13,17 @@
                 @method('PUT')
 
                 <div class="modal-body">
+                    <div class="row text-center mb-3">
+                        <div class="col">
+                            <div class="btn-group">
+                                <a href="#" type="button" class="btn btn-secondary btn-flat disabled">Personal</a>
+                                <a href="#edit-user-profile-modal-{{ $user->id }}" type="button" class="btn btn-secondary btn-flat" data-bs-toggle="modal">Profile</a>
+                                <a href="#edit-user-skillsets-modal-{{ $user->id }}" type="button" class="btn btn-secondary btn-flat" data-bs-toggle="modal">Skillset</a>
+                                <a href="#edit-user-files-modal-{{ $user->id }}" type="button" class="btn btn-secondary btn-flat" data-bs-toggle="modal">Files</a>
+                            </div>
+                        </div>
+                    </div>
+
                     <label class="form-label" for="name">First Name </label>
                     <input class="form-control mb-2" type="text" name="name" value="{{ $user->name }}" required>
 
@@ -77,3 +88,7 @@
     </div>
 </div>
 
+
+<x-administrator-applicant.edit-skillsets :user="$user" :skills="$skills" :websites="$websites" :tools="$tools" :softskills="$softskills" />
+<x-administrator-applicant.edit-files :user="$user"/>
+<x-administrator-applicant.edit-profile :user="$user"/>

@@ -38,7 +38,7 @@ class LoginController extends Controller
             case '2':
                 return route('admin.dashboard');
             case '3':
-                return route('user.dashboard');
+                return RouteServiceProvider::HOME;
             // default:
             //     return RouteServiceProvider::HOME;
         }

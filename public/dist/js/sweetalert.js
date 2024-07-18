@@ -172,42 +172,6 @@ function generateApplicantsFormConfirmation() {
     });
 }
 
-
-//Administrator selecting modal for editing applicant's data.
-function handleEditApplicantSelectModals() {
-    Swal.fire({
-        title: 'Which file to edit?',
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: 'Applicant Information',
-        denyButtonText: 'Skillsets',
-        confirmButtonColor: '#007afe',
-        denyButtonColor: '#3ec2ee',
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-                title: 'Applicant Information',
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: 'Applicant Details',
-                denyButtonText: 'Applicant Files',
-                confirmButtonColor: '#007afe',
-                denyButtonColor: '#007afe',
-                });
-        } else if (result.isDenied) {
-            Swal.fire({
-                title: 'Opening skillsets modal...',
-                showConfirmButton: false,
-                icon: 'info',
-                });
-
-                setTimeout(() => {
-                    form.submit()
-                }, 2000);
-            }
-    });
-}
-
 //TODO Department Alerts
 //Edit Department
 function handleEditDepartmentForm(editDepartmentForm) {

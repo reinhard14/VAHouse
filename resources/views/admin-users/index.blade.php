@@ -255,14 +255,9 @@
                                                             <a href="#update-status-{{ $user->id }}" data-bs-toggle="modal" class="px-2">
                                                                 <i class="bi bi-person-exclamation"></i> Status
                                                             </a>
-                                                            <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal" class="px-2 editApplicantModals">
+                                                            <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal" class="px-2">
                                                                 <i class="bi bi-person-gear"></i> Edit
                                                             </a>
-{{--
-                                                            <a href="#" class="px-2 editApplicantSelectModals">
-                                                                <i class="bi bi-person-gear"></i> Edit
-                                                            </a> --}}
-
                                                             <form method="post" action="{{ route('admin.users.destroy', $user->id) }}" class="deleteAdminForm">
                                                                 @csrf
                                                                 @method('delete')
@@ -270,8 +265,12 @@
                                                             </form>
                                                         </div>
                                                     </td>
-                                                    <td class="text-center">
-                                                        <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-outline-info" target="_blank"><i class="bi bi-file-earmark-break"></i> View</a>
+                                                    <td>
+                                                        <div class="text-center d-flex align-items-center">
+                                                            <div class="pt-2">
+                                                                <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-outline-info btn-sm" target="_blank"><i class="bi bi-file-earmark-break"></i> View</a>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                     <td>
                                                         <div class="text-center">
@@ -361,6 +360,10 @@
                         </div>
                     @endif
                 </div>
+                {{-- @foreach ($uniqueTools as $tool)
+                    {{  $tool }}
+                @endforeach --}}
+
                 <!-- /.card-body -->
             </div>
             <!-- /. card -->
@@ -373,7 +376,7 @@
 <x-administrator-applicant.create />
 
 @foreach ($users as $user)
-    <x-administrator-applicant.edit :user="$user" />
+    <x-administrator-applicant.edit :user="$user" :skills="$uniqueSkills" :websites="$uniqueWebsites" :tools="$uniqueTools" :softskills="$uniqueSoftskills" />
     <x-administrator-applicant.add-notes :user="$user" />
     <x-administrator-applicant.update-status :user="$user" />
 @endforeach

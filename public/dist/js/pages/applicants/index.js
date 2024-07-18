@@ -154,6 +154,7 @@ document.addEventListener("DOMContentLoaded", function() {
         })
     }
 
+    //for add applicant modal
     const togglePassword = document.querySelector('#togglePassword');
     const password = document.querySelector('#password');
     const toggleIcon = document.querySelector('#toggleIcon');
@@ -168,6 +169,7 @@ document.addEventListener("DOMContentLoaded", function() {
         toggleIcon.classList.toggle('bi-eye-slash');
     });
 
+    //for edit applicant modal
     document.querySelectorAll('.editTogglePassword').forEach(button => {
         button.addEventListener('click', function () {
             const editPassword = button.closest('.input-group').querySelector('.editPassword');
@@ -182,17 +184,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    const editApplicantSelectModals = document.querySelectorAll('.editApplicantSelectModals');
-
-    if (editApplicantSelectModals) {
-        editApplicantSelectModals.forEach((button => {
-             button.addEventListener('click', function () {
-                handleEditApplicantSelectModals();
-                console.log('clicked!');
-             })
-        })
-        );
-    }
 });
 
 //Jquery
@@ -231,4 +222,10 @@ $(document).ready(function() {
     $('#collapseOne').collapse('hide');
     $('.sidebar-mini').addClass('sidebar-collapse')
 
+    $('.skillsets').select2({
+        tags: true,
+        tokenSeparators: ',',
+        placeholder: 'Please select from choices..',
+        width: '100%',
+    });
 });
