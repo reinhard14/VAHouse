@@ -9,24 +9,23 @@
             </div>
 
             <div class="modal-body">
-                <strong>{{ $user->name }} {{ $user->lastname }} </strong>
+                <strong>{{ Str::ucfirst(Str::lower($user->name)) }} {{ Str::ucfirst(Str::lower($user->lastname)) }} </strong>
                 <ul>
-                @foreach ($user->experiences as $experience)
-                    <li>{{ $experience->duration }} - {{ $experience->title }}</li>
-                @endforeach
+                    @foreach ($user->experiences as $experience)
+                        <li>{{ Str::ucfirst(Str::lower($experience->duration)) }} - {{ Str::ucfirst(Str::lower($experience->title)) }}</li>
+                    @endforeach
 
-                @php
-                    $skills = [];
+                    @php
+                        $skills = [];
 
-                    if (isset($user->skillsets->skill) && !is_null($user->skillsets->skill)) {
-                        $skills = json_decode($user->skillsets->skill, true);
-                    }
-                @endphp
-
+                        if (isset($user->skillsets->skill) && !is_null($user->skillsets->skill)) {
+                            $skills = json_decode($user->skillsets->skill, true);
+                        }
+                    @endphp
 
                     @if (!empty($skills) && is_array($skills))
                         @foreach ($skills as $skill)
-                            <li>{{ $skill }}</li>
+                            <li>{{ Str::ucfirst(Str::lower($skill)) }}</li>
                         @endforeach
 
                     @else
@@ -51,20 +50,20 @@
                 <ul>
                     @if ((!empty($tools) && is_array($tools)))
                         @foreach ($tools as $tool)
-                            <li>{{ $tool }}</li>
+                            <li>{{ Str::ucfirst(Str::lower($tool)) }}</li>
                         @endforeach
 
                     @else
-                        <li>No tools available.</li>
+                        <li>No tools used.</li>
                     @endif
 
                     @if (!empty($websites) && is_array($websites))
                         @foreach ($websites as $website)
-                            <li>{{ $website }}</li>
+                            <li>{{ Str::ucfirst(Str::lower($website)) }}</li>
                         @endforeach
 
                     @else
-                        <li>No websites available.</li>
+                        <li>No websites used.</li>
                     @endif
 
                 </ul>
