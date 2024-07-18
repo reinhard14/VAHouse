@@ -9,10 +9,10 @@
             </div>
 
             <div class="modal-body">
-                <strong>{{ Str::ucfirst(Str::lower($user->name)) }} {{ Str::ucfirst(Str::lower($user->lastname)) }} </strong>
+                <strong>{{ Str::title($user->name) }} {{ Str::title($user->lastname) }} </strong>
                 <ul>
                     @foreach ($user->experiences as $experience)
-                        <li>{{ Str::ucfirst(Str::lower($experience->duration)) }} - {{ Str::ucfirst(Str::lower($experience->title)) }}</li>
+                        <li>{{ Str::title($experience->duration) }} - {{ Str::title($experience->title) }}</li>
                     @endforeach
 
                     @php
@@ -25,7 +25,7 @@
 
                     @if (!empty($skills) && is_array($skills))
                         @foreach ($skills as $skill)
-                            <li>{{ Str::ucfirst(Str::lower($skill)) }}</li>
+                            <li>{{ Str::title($skill) }}</li>
                         @endforeach
 
                     @else
@@ -50,7 +50,7 @@
                 <ul>
                     @if ((!empty($tools) && is_array($tools)))
                         @foreach ($tools as $tool)
-                            <li>{{ Str::ucfirst(Str::lower($tool)) }}</li>
+                            <li>{{ Str::title($tool) }}</li>
                         @endforeach
 
                     @else
@@ -59,7 +59,7 @@
 
                     @if (!empty($websites) && is_array($websites))
                         @foreach ($websites as $website)
-                            <li>{{ Str::ucfirst(Str::lower($website)) }}</li>
+                            <li>{{ Str::title($website) }}</li>
                         @endforeach
 
                     @else
