@@ -216,24 +216,22 @@
                                 {{-- <option value="Strong organizational skills">Strong organizational skills</option> --}}
                                 <option value="Generate financial reports and statements">Generate financial reports and statements</option>
                                 <option value="Tax preparation and filing processes">Tax preparation and filing processes</option>
-
-                                {{-- <option value="Excellent communication skills">Excellent communication skills</option>
-                                <option value="Problem-solving skills">Problem-solving skills</option>
-                                <option value="Time management">Time management</option>
-                                <option value="Communication skills">Communication skills</option>
-                                <option value="Organizational skills">Organizational skills</option>
-                                <option value="Leadership skills">Leadership skills</option>
-                                <option value="Attention to detail">Attention to detail</option>
-                                <option value="Ability to multitask">Ability to multitask</option>
-                                <option value="Decision-making skills">Decision-making skills</option>
-                                <option value="Team management">Team management</option> --}}
-
+                                {{-- <option value="Excellent communication skills">Excellent communication skills</option> --}}
+                                {{-- <option value="Problem-solving skills">Problem-solving skills</option> --}}
+                                {{-- <option value="Time management">Time management</option> --}}
+                                {{-- <option value="Communication skills">Communication skills</option> --}}
+                                {{-- <option value="Organizational skills">Organizational skills</option> --}}
+                                {{-- <option value="Leadership skills">Leadership skills</option> --}}
+                                {{-- <option value="Attention to detail">Attention to detail</option> --}}
+                                {{-- <option value="Ability to multitask">Ability to multitask</option> --}}
+                                {{-- <option value="Decision-making skills">Decision-making skills</option> --}}
+                                {{-- <option value="Team management">Team management</option> --}}
                                 <option value="Bookkeeping">Bookkeeping</option>
                                 <option value="Data entry">Data entry</option>
                                 <option value="Financial analysis">Financial analysis</option>
                                 <option value="Strong interpersonal abilities">Strong interpersonal abilities</option>
-                                <option value="Active listening skills">Active listening skills</option>
-                                <option value="Multi-tasking abilities">Multi-tasking abilities</option>
+                                {{-- <option value="Active listening skills">Active listening skills</option> --}}
+                                {{-- <option value="Multi-tasking abilities">Multi-tasking abilities</option> --}}
                                 {{-- <option value="Empathy and patience">Empathy and patience</option>
                                 <option value="Conflict resolution skills">Conflict resolution skills</option> --}}
                                 <option value="Adaptability and flexibility">Adaptability and flexibility</option>
