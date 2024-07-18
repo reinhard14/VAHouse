@@ -101,12 +101,12 @@ class UserController extends Controller
             $formalPath = $request->file('photo_formal')->store('formals', 'public');
             $identificationPdfPath = $request->file('photo_id')->store('IDs', 'public');
             $introVideoPdfPath = $request->file('videolink')->store('intro_videos', 'public');
+            $portfolioPath = $request->file('portfolio')->store('portfolios', 'public');
+            // if(isset($portfolioPath)) {
 
-            if(!isset($portfolioPath)) {
-                $portfolioPath = null;
-            } else {
-                $portfolioPath = $request->file('portfolio')->store('portfolios', 'public');
-            }
+            // } else {
+            //     $portfolioPath = null;
+            // }
 
         } else {
             return back()->with('error', 'Please upload a file.');

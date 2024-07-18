@@ -255,9 +255,10 @@
                                                             <a href="#update-status-{{ $user->id }}" data-bs-toggle="modal" class="px-2">
                                                                 <i class="bi bi-person-exclamation"></i> Status
                                                             </a>
-                                                            <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal" class="px-2">
+                                                            {{-- disable for now --}}
+                                                            {{-- <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal" class="px-2">
                                                                 <i class="bi bi-person-gear"></i> Edit
-                                                            </a>
+                                                            </a> --}}
                                                             <form method="post" action="{{ route('admin.users.destroy', $user->id) }}" class="deleteAdminForm">
                                                                 @csrf
                                                                 @method('delete')

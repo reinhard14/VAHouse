@@ -440,8 +440,7 @@
                             <div class="col">
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" id="position1" name="positions[]" value="General Virtual Assistant">
-
+                                        <input type="checkbox" id="position1" name="positions[]" value="General Virtual Assistant" class="formCheckInput">
                                         <label for="position1"> General Virtual Assistant: </label>
 
                                         <p class="fst-italic">
@@ -451,8 +450,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" id="position2" name="positions[]" value="Social Media Manager">
-
+                                        <input type="checkbox" id="position2" name="positions[]" value="Social Media Manager" class="formCheckInput">
                                         <label for="position2"> Social Media Manager: </label>
 
                                         <p class="fst-italic">
@@ -462,8 +460,7 @@
                                 </div>
                                 <div class="row" id="callersRow">
                                     <div class="col">
-                                        <input type="checkbox" id="position3" name="positions[]" value="Callers">
-
+                                        <input type="checkbox" id="position3" name="positions[]" value="Callers" class="formCheckInput">
                                         <label for="position3"> Callers: </label>
                                         <span class="fst-italic">
                                             (upload sample of <a href="#mock-call-modal" data-bs-toggle="modal" class="button"><strong>Mock calls</strong></a> here)
@@ -487,8 +484,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" id="position4" name="positions[]" value="Web Developers">
-
+                                        <input type="checkbox" id="position4" name="positions[]" value="Web Developers" class="formCheckInput">
                                         <label for="position4"> Web Developers:</label>
 
                                         <p class="fst-italic">
@@ -498,8 +494,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" id="position5" name="positions[]" value="Tech VAs">
-
+                                        <input type="checkbox" id="position5" name="positions[]" value="Tech VAs" class="formCheckInput">
                                         <label for="position5"> Tech VAs:</label>
 
                                         <p class="fst-italic">
@@ -509,8 +504,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" id="position6" name="positions[]" value="Project Manager">
-
+                                        <input type="checkbox" id="position6" name="positions[]" value="Project Manager" class="formCheckInput">
                                         <label for="position6"> Project Manager</label>
                                     </div>
                                 </div>
@@ -518,7 +512,7 @@
                         </div>
 
                         <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary mr-2"><i class="bi bi-file-arrow-down me-1"></i>Submit</button>
+                            <button id="formSubmit" type="submit" class="btn btn-primary mr-2"><i class="bi bi-file-arrow-down me-1"></i>Submit</button>
                             <a href="#" id="resetFieldButton" class="btn btn-outline-danger mr-2"><i class="bi bi-arrow-counterclockwise me-1"></i>Reset Field</a>
                         </div>
 

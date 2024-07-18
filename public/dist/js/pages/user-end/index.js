@@ -21,19 +21,30 @@ document.addEventListener("DOMContentLoaded", function() {
     const guidelinesModal = new bootstrap.Modal(document.getElementById('guidelinesModal'));
     guidelinesModal.show();
 
+    const checkboxes = document.querySelectorAll('.formCheckInput');
     const callers = document.getElementById('position3');
     const portfolio = document.getElementById('portfolio');
 
-    callers.addEventListener('click', (e) => {
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            console.log(callers.id);
+            if (callers.checked) {
+                portfolio.removeAttribute('required');
+                const mockCall = new bootstrap.Modal(document.getElementById('mock-call-modal'));
+                mockCall.show();
+            } else {
+                portfolio.setAttribute('required', 'required');
+            }
 
-        if (callers.checked) {
-            const mockCall = new bootstrap.Modal(document.getElementById('mock-call-modal'));
-            mockCall.show();
-            portfolio.removeAttribute('required');
-        } else {
-            portfolio.setAttribute('required', 'required');
-        }
-    })
+            checkboxes.forEach(function(cb) {
+                console.log(cb.id);
+                if (cb.id !== 'position3' && cb.checked) {
+                    console.log("Found.");
+                    portfolio.setAttribute('required', 'required');
+                }
+            });
+        });
+    });
 
     const deleteExperienceForm = document.querySelectorAll('.deleteExperienceForm');
     console.log(deleteExperienceForm);
