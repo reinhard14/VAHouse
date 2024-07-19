@@ -34,13 +34,11 @@ class LoginController extends Controller
 
         switch ($user->role_id) {
             case '1':
-                return route('admin.dashboard');
+                return redirect()->route('admin.dashboard');
             case '2':
-                return route('admin.dashboard');
+                return redirect()->route('admin.dashboard');
             case '3':
-                return RouteServiceProvider::HOME;
-            // default:
-            //     return RouteServiceProvider::HOME;
+                return redirect()->route('user.dashboard');
         }
     }
 
