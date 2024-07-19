@@ -49,9 +49,6 @@ Route::prefix('administrator')
         // Route resources for departments list in Admin side.
         Route::resource('department', DepartmentController::class);
 
-        // Admin Dashboard Route -- Redirect
-        Route::get('/', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('home');
-
         // Admin Dashboard Route
         Route::get('dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('admin.dashboard');
 
@@ -67,6 +64,8 @@ Route::prefix('administrator')
 
 });
 
+// Admin Dashboard Route -- Redirect
+Route::get('/', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('home');
 
 //! User dashboard
 Route::get('user/dashboard', [App\Http\Controllers\UserController::class, 'index'])->name('user.dashboard');
