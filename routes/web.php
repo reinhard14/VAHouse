@@ -22,50 +22,48 @@ Auth::routes();
 // ]);
 
 //! ADMIN
-Route::group([
-    'prefix' => 'administrator',
-    'middleware' => 'is_admin',
-], function () {
+Route::prefix('administrator')
+    ->middleware('is_admin') // Ensure 'is_admin' middleware is registered and working
+    ->group(function () {
 
+        // Route resources for administrators list in Admin side
+        Route::resource('administrators', AdministratorController::class)->names([
+            'index' => 'administrator.index',
+            'create' => 'administrator.create',
+            'destroy' => 'administrator.destroy',
+            'edit' => 'administrator.edit',
+            'show' => 'administrator.show',
+            'store' => 'administrator.store',
+            'update' => 'administrator.update',
+        ]);
+        // Route resources for Users list in Admin side
+        Route::resource('users', AdminUserController::class)->names([
+            'index' => 'admin.users.index',
+            'create' => 'admin.users.create',
+            'destroy' => 'admin.users.destroy',
+            'edit' => 'admin.users.edit',
+            'show' => 'admin.users.show',
+            'store' => 'admin.users.store',
+            'update' => 'admin.users.update',
+        ]);
+        // Route resources for departments list in Admin side.
+        Route::resource('department', DepartmentController::class);
 
-    // Route resources for administrators list in Admin side
-    Route::resource('administrators', AdministratorController::class)->names([
-        'index' => 'administrator.index',
-        'create' => 'administrator.create',
-        'destroy' => 'administrator.destroy',
-        'edit' => 'administrator.edit',
-        'show' => 'administrator.show',
-        'store' => 'administrator.store',
-        'update' => 'administrator.update',
-    ]);
-    // Route resources for Users list in Admin side
-    Route::resource('users', AdminUserController::class)->names([
-        'index' => 'admin.users.index',
-        'create' => 'admin.users.create',
-        'destroy' => 'admin.users.destroy',
-        'edit' => 'admin.users.edit',
-        'show' => 'admin.users.show',
-        'store' => 'admin.users.store',
-        'update' => 'admin.users.update',
-    ]);
-    // Route resources for departments list in Admin side.
-    Route::resource('department', DepartmentController::class);
+        // Admin Dashboard Route -- Redirect
+        Route::get('/', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('home');
 
-    // Admin Dashboard Route -- Redirect
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('home');
+        // Admin Dashboard Route
+        Route::get('dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('admin.dashboard');
 
-    // Admin Dashboard Route
-    Route::get('dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('admin.dashboard');
+        // Additional routes for Administrator CRUD for Users list.
+        Route::delete('users', [App\Http\Controllers\AdminUserController::class, 'destroySelected'])->name('admin.users.deleteSelected');
+        // Route::get('administrator/user/filter/', [App\Http\Controllers\AdminUserController::class, 'filter'])->name('admin.users.search');
 
-    // Additional routes for Administrator CRUD for Users list.
-    Route::delete('users', [App\Http\Controllers\AdminUserController::class, 'destroySelected'])->name('admin.users.deleteSelected');
-    // Route::get('administrator/user/filter/', [App\Http\Controllers\AdminUserController::class, 'filter'])->name('admin.users.search');
+        // Additional routes for Administrator
+        Route::delete('administrator/', [App\Http\Controllers\AdministratorController::class, 'destroySelected'])->name('administrator.deleteSelected');
 
-    // Additional routes for Administrator
-    Route::delete('administrator/', [App\Http\Controllers\AdministratorController::class, 'destroySelected'])->name('administrator.deleteSelected');
-
-    // Additional routes for Department
-    Route::delete('department/', [App\Http\Controllers\DepartmentController::class, 'destroySelected'])->name('department.deleteSelected');
+        // Additional routes for Department
+        Route::delete('department/', [App\Http\Controllers\DepartmentController::class, 'destroySelected'])->name('department.deleteSelected');
 
 });
 
