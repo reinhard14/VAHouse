@@ -21,10 +21,10 @@ Auth::routes();
 //     'update' => 'user.update',
 // ]);
 
-// //! ADMIN
-// Route::prefix('administrator')
-//     ->middleware('is_admin')
-//     ->group(function () {
+//! ADMIN
+Route::prefix('administrator')
+    ->middleware('is_admin')
+    ->group(function () {
 
         // Route resources for administrators list in Admin side
         Route::resource('administrators', AdministratorController::class)->names([
@@ -65,7 +65,7 @@ Auth::routes();
         // Additional routes for Department
         Route::delete('department/', [App\Http\Controllers\DepartmentController::class, 'destroySelected'])->name('department.deleteSelected');
 
-// });
+});
 
 
 //! User dashboard
