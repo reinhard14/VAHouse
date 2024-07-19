@@ -49,9 +49,6 @@ Route::prefix('administrator')
         // Route resources for departments list in Admin side.
         Route::resource('department', DepartmentController::class);
 
-        // Admin Dashboard Route
-        Route::get('dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('admin.dashboard');
-
         // Additional routes for Administrator CRUD for Users list.
         Route::delete('users', [App\Http\Controllers\AdminUserController::class, 'destroySelected'])->name('admin.users.deleteSelected');
         // Route::get('administrator/user/filter/', [App\Http\Controllers\AdminUserController::class, 'filter'])->name('admin.users.search');
@@ -63,6 +60,9 @@ Route::prefix('administrator')
         Route::delete('department/', [App\Http\Controllers\DepartmentController::class, 'destroySelected'])->name('department.deleteSelected');
 
 });
+
+// Admin Dashboard Route
+Route::get('dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('admin.dashboard');
 
 // Admin Dashboard Route -- Redirect
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
