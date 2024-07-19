@@ -29,17 +29,17 @@ class HomeController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
             switch ($user->role_id) {
-                case '1':
+                case 1:
                     return redirect()->route('admin.dashboard');
-                case '2':
+                case 2:
                     return redirect()->route('admin.dashboard');
-                case '3':
+                case 3:
                     return redirect()->route('user.dashboard');
                 default:
                     return view('auth.login');
             }
         } else {
-            return view('welcome'); // Or 'home' or any other public view
+            return view('auth.login');
         }
     }
 
