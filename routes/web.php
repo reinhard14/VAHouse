@@ -62,7 +62,7 @@ Route::prefix('administrator')
 });
 
 // Admin Dashboard Route
-Route::get('dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('administrator/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('admin.dashboard');
 
 // Admin Dashboard Route -- Redirect
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
