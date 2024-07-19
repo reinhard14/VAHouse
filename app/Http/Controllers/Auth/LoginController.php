@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::HOME;
     protected function redirectTo()
     {
         $user = Auth::user();
@@ -39,6 +39,8 @@ class LoginController extends Controller
                 return redirect()->route('admin.dashboard');
             case '3':
                 return redirect()->route('user.dashboard');
+            default:
+                return $this->redirectTo;
         }
     }
 
