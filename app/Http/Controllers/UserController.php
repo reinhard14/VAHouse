@@ -280,8 +280,8 @@ class UserController extends Controller
         Log::info('Request data:', $request->all());
 
         $this->validate($request, [
-            'inbound_call' => 'required|mimes:mp4,avi,mov,wmv|max:32000',
-            'outbound_call' => 'required|mimes:mp4,avi,mov,wmv|max:32000',
+            'inbound_call' => 'required|mimes:mp4,avi,mov,wmv,mp3,wav,aac,flac,ogg,wma|max:32000',
+            'outbound_call' => 'required|mimes:mp4,avi,mov,wmv,mp3,wav,aac,flac,ogg,wma|max:32000',
             'user_id' => 'required',
         ], [
             'inbound_call.required' => 'Inbound call file is missing.',
