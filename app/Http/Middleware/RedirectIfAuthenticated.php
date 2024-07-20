@@ -20,14 +20,16 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
+        Log::info('RedirectIfAuth middleware');
+
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 $user = Auth::guard($guard)->user();
 
                 switch ($user->role_id) {
                     case 1:
-                        return redirect()->route('user.dashboard');
                     case 2:
+                        return redirect()->route('user.dashboard');
                     case 3:
                         return redirect()->route('admin.dashboard');
                     default:

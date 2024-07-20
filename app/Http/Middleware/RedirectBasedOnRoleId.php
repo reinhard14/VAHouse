@@ -22,7 +22,6 @@ class RedirectBasedOnRoleId
 
         if (Auth::check()) {
             $user = Auth::user();
-            Log::info('User details:', ['user' => $user->toArray()]);
 
             switch ($user->role_id) {
                 case 1:
