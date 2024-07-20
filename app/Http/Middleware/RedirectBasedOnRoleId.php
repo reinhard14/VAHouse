@@ -29,8 +29,6 @@ class RedirectBasedOnRoleId
                     return redirect()->route('admin.dashboard');
                 case 3:
                     return redirect()->route('user.dashboard');
-                default:
-                    return redirect()->route('home');
             }
         }
         Log::info('Middleware RedirectBasedOnRoleId go Next');
