@@ -21,7 +21,17 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next, ...$guards)
     {
 
-        return $next($request);
+        if (Auth::guard($guard)->check()) {
+            $user = Auth::user();
 
+            if ($user->role_id == 1 || $user->role_id == 2) {
+                return redirect('/administrator/dashboard');
+
+            } elseif ($user->role_id == 3) {
+                return redirect('/user/dashboard');
+            }
+        }
+
+        return $next($request);
     }
 }
