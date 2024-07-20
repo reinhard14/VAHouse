@@ -17,7 +17,7 @@ class IsAdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        Log::info('Middleware IsAdmin executed');
+        // Log::info('Middleware IsAdmin executed');
         $SUPER_ADMIN = 1;
         $ADMIN = 2;
 
