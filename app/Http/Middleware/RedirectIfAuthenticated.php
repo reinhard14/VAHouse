@@ -18,23 +18,22 @@ class RedirectIfAuthenticated
      * @param  string|null  ...$guards
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, ...$guards)
+    public function handle(Request $request, Closure $next, $guard = null)
     {
         Log::info('RedirectIfAuth middleware');
 
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                $user = Auth::guard($guard)->user();
+        if (Auth::guard($guard)->check()) {
+            $user = Auth::guard($guard)->user();
 
-                switch ($user->role_id) {
-                    case 1:
-                    case 2:
-                        return redirect()->route('admin.dashboard');
-                    case 3:
-                        return redirect()->route('user.dashboard');
-                }
+            switch ($user->role_id) {
+                case 1:
+                case 2:
+                    return redirect()->route('admin.dashboard');
+                case 3:
+                    return redirect()->route('user.dashboard');
             }
         }
+
         Log::info('RIA go next');
         return $next($request);
     }
