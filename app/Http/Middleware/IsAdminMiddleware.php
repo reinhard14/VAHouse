@@ -20,6 +20,7 @@ class IsAdminMiddleware
         Log::info('Middleware IsAdmin executed');
         $SUPER_ADMIN = 1;
         $ADMIN = 2;
+        Log::info( $SUPER_ADMIN , $ADMIN, 'this are ids.');
 
         if (auth()->check() && auth()->user()->role_id != $SUPER_ADMIN && auth()->user()->role_id != $ADMIN) {
             abort(403);

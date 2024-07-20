@@ -19,15 +19,18 @@ class RedirectBasedOnRoleId
     public function handle(Request $request, Closure $next)
     {
         Log::info('Middleware RedirectBasedOn executed');
+
+        Auth::user();
         $user = Auth::user();
+        Log::info($user);
 
         if ($user) {
             switch ($user->role_id) {
-                case '1':
+                case 1:
                     return redirect()->route('admin.dashboard');
-                case '2':
+                case 2:
                     return redirect()->route('admin.dashboard');
-                case '3':
+                case 3:
                     return redirect()->route('user.dashboard');
             }
         }

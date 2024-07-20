@@ -21,14 +21,20 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next, ...$guards)
     {
         Log::info('Middleware RedirectIfAuth executed');
+
         $guards = empty($guards) ? [null] : $guards;
+        Log::info($guards);
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
             }
+            Log::info($guard, 'is $guard');
+            Log::info(Auth::guard(), 'is AUTH::g');
         }
 
+        Log::info($next($request), 'nxt(($request))');
         return $next($request);
+
     }
 }
