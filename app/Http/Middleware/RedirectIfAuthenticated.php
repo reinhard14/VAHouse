@@ -23,17 +23,20 @@ class RedirectIfAuthenticated
         Log::info('Middleware RedirectIfAuth executed');
 
         $guards = empty($guards) ? [null] : $guards;
-        Log::info($guards);
+        Log::info('Guards:', ['guards' => $guards]);
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
             }
-            Log::info($guard, 'is $guard');
-            Log::info(Auth::guard(), 'is AUTH::g');
+            Log::info('Guard instance:', ['guard' => $guard]);
+            Log::info('Authenticated user:', [
+                'user' => Auth::user() ? Auth::user()->toArray() : 'No user authenticated',
+            ]);
+
         }
 
-        Log::info($next($request), 'nxt(($request))');
+        Log::info('Next request:', ['request' => $next($request)]);
         return $next($request);
 
     }
