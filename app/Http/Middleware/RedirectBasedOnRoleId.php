@@ -17,7 +17,7 @@ class RedirectBasedOnRoleId
      */
     public function handle(Request $request, Closure $next)
     {
-
+        Log::info('Middleware RedirectBasedOn executed');
         $user = Auth::user();
 
         if ($user) {
