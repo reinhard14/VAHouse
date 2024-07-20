@@ -10,6 +10,9 @@ use App\Http\Controllers\CaptchaController;
 //! Public
 Auth::routes();
 
+// Route Users -- Redirect
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 //! ADMIN
 Route::prefix('administrator')
     ->middleware('is_admin')
@@ -52,9 +55,6 @@ Route::prefix('administrator')
         Route::delete('department/', [App\Http\Controllers\DepartmentController::class, 'destroySelected'])->name('department.deleteSelected');
 
 });
-
-// Route Users -- Redirect
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //! User dashboard
 Route::get('user/dashboard', [App\Http\Controllers\UserController::class, 'index'])->name('user.dashboard');
