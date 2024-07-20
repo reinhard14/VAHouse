@@ -18,17 +18,21 @@ class RedirectIfAuthenticated
      * @param  string|null  ...$guards
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next, $guard = null)
+    public function handle(Request $request, Closure $next, ...$guards)
     {
+        foreach ($guards as $guard) {
+            if (Auth::guard($guard)->check()) {
+                $user = Auth::guard($guard)->user();
 
-        if (Auth::guard($guard)->check()) {
-            $user = Auth::user();
-
-            if ($user->role_id == 1 || $user->role_id == 2) {
-                return redirect('/administrator/dashboard');
-
-            } elseif ($user->role_id == 3) {
-                return redirect('/user/dashboard');
+                switch ($user->role_id) {
+                    case 1:
+                        return redirect()->route('user.dashboard');
+                    case 2:
+                    case 3:
+                        return redirect()->route('admin.dashboard');
+                    default:
+                        return redirect()->route('home');
+                }
             }
         }
 
