@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Administrator;
 use App\Models\Department;
 use App\Models\User;
@@ -16,6 +17,32 @@ class AdministratorController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Display the dashboard for administrator's account.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function dashboard()
+    {
+        $departments = Department::all();
+        $users = User::where('role_id', '>', 1)->get();
+        $admins =  $users->where('role_id', 2);
+        $agents =  $users->where('role_id', 3);
+
+        // Calculate the start and end dates of one week ago
+        $startOfLastWeek = Carbon::now()->subWeek()->startOfWeek();
+        $endOfLastWeek = Carbon::now();
+
+        // Query users created exactly one week ago
+        $recentUsers = User::whereBetween('created_at', [$startOfLastWeek, $endOfLastWeek])->get();
+
+
+        return view('index', compact('departments',
+                                    'users',
+                                    'admins',
+                                    'agents',
+                                    'recentUsers'));
+    }
     /**
      * Display a listing of the resource.
      *
@@ -84,7 +111,7 @@ class AdministratorController extends Controller
         $user->role_id = 2;
         $user->save();
 
-        //after creating user ID we can use it's ID.
+        //after creating user ID, we can use it's ID.
         $user_id = $user->id;
 
         //new admin

@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Department;
-use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
 
 class HomeController extends Controller
 {
@@ -29,40 +27,27 @@ class HomeController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
+            Log::info('Headers before redirect:', headers_list());
+
             switch ($user->role_id) {
                 case 1:
-                    return redirect()->route('admin.dashboard');
                 case 2:
-                    return redirect()->route('admin.dashboard');
+                    $response = redirect()->route('admin.dashboard');
+                    break;
                 case 3:
-                    return redirect()->route('user.dashboard');
+                    $response = redirect()->route('user.dashboard');
+                    break;
                 default:
-                    return view('auth.login');
+                    $response = view('auth.login');
+                    break;
             }
+
+            Log::info('Headers after setting response:', headers_list());
+            return $response;
+
         } else {
             return view('auth.login');
         }
     }
 
-    public function dashboard()
-    {
-        $departments = Department::all();
-        $users = User::where('role_id', '>', 1)->get();
-        $admins =  $users->where('role_id', 2);
-        $agents =  $users->where('role_id', 3);
-
-        // Calculate the start and end dates of one week ago
-        $startOfLastWeek = Carbon::now()->subWeek()->startOfWeek();
-        $endOfLastWeek = Carbon::now();
-
-        // Query users created exactly one week ago
-        $recentUsers = User::whereBetween('created_at', [$startOfLastWeek, $endOfLastWeek])->get();
-
-
-        return view('index', compact('departments',
-                                    'users',
-                                    'admins',
-                                    'agents',
-                                    'recentUsers'));
-    }
 }

@@ -9,22 +9,14 @@ use App\Http\Controllers\CaptchaController;
 
 //! Public
 Auth::routes();
-// Home Route -- User Dashboard
-//find out why it's not working
-// Route::resource('user/', UserController::class)->names([
-//     'index' => 'user.index',
-//     'create' => 'user.create',
-//     'destroy' => 'user.destroy',
-//     'edit' => 'user.edit',
-//     'show' => 'user.show',
-//     'store' => 'user.store',
-//     'update' => 'user.update',
-// ]);
 
 //! ADMIN
 Route::prefix('administrator')
     ->middleware('is_admin')
     ->group(function () {
+
+        // Admin Dashboard Route
+        Route::get('dashboard', [App\Http\Controllers\AdministratorController::class, 'dashboard'])->name('admin.dashboard');
 
         // Route resources for administrators list in Admin side
         Route::resource('administrators', AdministratorController::class)->names([
@@ -46,12 +38,12 @@ Route::prefix('administrator')
             'store' => 'admin.users.store',
             'update' => 'admin.users.update',
         ]);
+
         // Route resources for departments list in Admin side.
         Route::resource('department', DepartmentController::class);
 
-        // Additional routes for Administrator CRUD for Users list.
+        // Additional routes for Administrator Users list.
         Route::delete('users', [App\Http\Controllers\AdminUserController::class, 'destroySelected'])->name('admin.users.deleteSelected');
-        // Route::get('administrator/user/filter/', [App\Http\Controllers\AdminUserController::class, 'filter'])->name('admin.users.search');
 
         // Additional routes for Administrator
         Route::delete('administrator/', [App\Http\Controllers\AdministratorController::class, 'destroySelected'])->name('administrator.deleteSelected');
@@ -61,10 +53,7 @@ Route::prefix('administrator')
 
 });
 
-// Admin Dashboard Route
-Route::get('administrator/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('admin.dashboard');
-
-// Admin Dashboard Route -- Redirect
+// Route Users -- Redirect
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //! User dashboard
@@ -83,7 +72,8 @@ Route::delete('user/experiences/{id}', [App\Http\Controllers\UserController::cla
 Route::get('captcha', [CaptchaController::class, 'getCaptcha'])->name('captcha.get');
 Route::get('refresh-captcha', [CaptchaController::class, 'refreshCaptcha'])->name('refresh.captcha');
 
-// Route::get('/storage/{id}', [UserController::class, 'viewPDF'])->name('view.pdf');
 Route::get('/storage/{id}', [AdminUserController::class, 'viewPDF'])->name('view.pdf');
+
 Route::post('/administrator/users/notes', [AdminUserController::class, 'addNotes'])->name('add.notes');
+
 Route::put('/administrator/users/{id}/status', [AdminUserController::class, 'updateStatus'])->name('update.applicant.status');
