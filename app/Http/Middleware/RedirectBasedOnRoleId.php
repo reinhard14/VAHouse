@@ -33,7 +33,7 @@ class RedirectBasedOnRoleId
                     return redirect()->route('home');
             }
         }
-
+        Log::info('Middleware RedirectBasedOnRoleId go Next');
         return $next($request);
     }
 }

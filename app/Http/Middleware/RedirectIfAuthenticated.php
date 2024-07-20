@@ -29,15 +29,15 @@ class RedirectIfAuthenticated
                 switch ($user->role_id) {
                     case 1:
                     case 2:
-                        return redirect()->route('user.dashboard');
-                    case 3:
                         return redirect()->route('admin.dashboard');
+                    case 3:
+                        return redirect()->route('user.dashboard');
                     default:
                         return redirect()->route('home');
                 }
             }
         }
-
+        Log::info('RIA go next');
         return $next($request);
     }
 }

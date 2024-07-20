@@ -17,13 +17,14 @@ class IsAdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        Log::info('IsAdmin middleware');
         $SUPER_ADMIN = 1;
         $ADMIN = 2;
 
         if (auth()->check() && auth()->user()->role_id != $SUPER_ADMIN && auth()->user()->role_id != $ADMIN) {
             abort(403);
         }
-
+        Log::info('go next.');
         return $next($request);
     }
 }
