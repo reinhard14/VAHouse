@@ -21,7 +21,6 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next, $guard = null)
     {
         Log::info('RedirectIfAuth middleware started');
-        Log::info('RedirectIfAuth Headers before processing:', $response->headers->all());
         if (Auth::guard($guard)->check()) {
             $user = Auth::guard($guard)->user();
             Log::info('User is authenticated', ['user_id' => $user->id, 'role_id' => $user->role_id]);

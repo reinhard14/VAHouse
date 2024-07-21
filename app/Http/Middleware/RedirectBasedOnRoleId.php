@@ -19,7 +19,6 @@ class RedirectBasedOnRoleId
     public function handle(Request $request, Closure $next)
     {
         Log::info('Middleware RedirectBasedOnRoleId executed');
-        Log::info('RedirectBasedOnRoleId Headers before processing:', $response->headers->all());
         if (Auth::check()) {
             $user = Auth::user();
 

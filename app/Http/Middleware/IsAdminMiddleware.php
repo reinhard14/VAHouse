@@ -18,7 +18,6 @@ class IsAdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         Log::info('IsAdmin middleware');
-        Log::info('IsAdmin Headers before processing:', $response->headers->all());
         $SUPER_ADMIN = 1;
         $ADMIN = 2;
 
