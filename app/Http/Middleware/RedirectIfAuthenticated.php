@@ -15,26 +15,36 @@ class RedirectIfAuthenticated
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-     * @param  string|null  ...$guards
+     * @param  string|null  $guard
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next, $guard = null)
     {
-        Log::info('RedirectIfAuth middleware');
+        Log::info('RedirectIfAuth middleware started');
 
         if (Auth::guard($guard)->check()) {
             $user = Auth::guard($guard)->user();
+            Log::info('User is authenticated', ['user_id' => $user->id, 'role_id' => $user->role_id]);
 
             switch ($user->role_id) {
                 case 1:
+                    Log::info('Redirecting to admin dashboard');
+                    return redirect()->route('admin.dashboard');
                 case 2:
+                    Log::info('Redirecting to admin dashboard');
                     return redirect()->route('admin.dashboard');
                 case 3:
+                    Log::info('Redirecting to user dashboard');
                     return redirect()->route('user.dashboard');
+                default:
+                    Log::warning('Unknown role ID', ['role_id' => $user->role_id]);
+                    return redirect()->route('home');
             }
+        } else {
+            Log::info('User is not authenticated');
         }
 
-        Log::info('RIA go next');
+        Log::info('RedirectIfAuth middleware proceeding to next middleware');
         return $next($request);
     }
 }

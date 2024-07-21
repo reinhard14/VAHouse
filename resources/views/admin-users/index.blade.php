@@ -228,7 +228,7 @@
                                                         </div>
                                                     </td>
 
-                                                    <td class="text-left">
+                                                    <td class="text-center">
                                                         @php
                                                             $skills = [];
 
@@ -244,7 +244,7 @@
                                                                 @endforeach
                                                             </ul>
                                                         @else
-                                                            <span class="badge badge-warning text-center">Did Not Finish</span>
+                                                            <span class="badge badge-warning">Did Not Finish</span>
                                                         @endif
                                                     </td>
                                                     <td>
