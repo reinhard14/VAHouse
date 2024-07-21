@@ -19,7 +19,7 @@ class RedirectBasedOnRoleId
     public function handle(Request $request, Closure $next)
     {
         Log::info('Middleware RedirectBasedOnRoleId executed');
-
+        Log::info('RedirectBasedOnRoleId Headers before processing:', $response->headers->all());
         if (Auth::check()) {
             $user = Auth::user();
 
@@ -31,7 +31,8 @@ class RedirectBasedOnRoleId
                     return redirect()->route('user.dashboard');
             }
         }
-        Log::info('Middleware RedirectBasedOnRoleId go Next');
+        Log::info('RedirectBasedOnRoleId Middleware RedirectBasedOnRoleId go Next');
+        Log::info('Headers after processing:', $response->headers->all());
         return $next($request);
     }
 }

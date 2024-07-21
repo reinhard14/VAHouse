@@ -18,12 +18,14 @@ class IsAdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         Log::info('IsAdmin middleware');
+        Log::info('IsAdmin Headers before processing:', $response->headers->all());
         $SUPER_ADMIN = 1;
         $ADMIN = 2;
 
         if (auth()->check() && auth()->user()->role_id != $SUPER_ADMIN && auth()->user()->role_id != $ADMIN) {
             abort(403);
         }
+        Log::info('IsAdmin Headers after processing:', $response->headers->all());
         Log::info('go next.');
         return $next($request);
     }
