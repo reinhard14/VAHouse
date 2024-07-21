@@ -244,7 +244,7 @@
                                                                 @endforeach
                                                             </ul>
                                                         @else
-                                                            <p>Did not complete form.</p>
+                                                            <span class="badge badge-warning">Did Not Finish</span>
                                                         @endif
                                                     </td>
                                                     <td>
