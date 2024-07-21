@@ -43,6 +43,8 @@ class RedirectIfAuthenticated
         } else {
             Log::info('User is not authenticated');
         }
+        $response = $next($request);
+
         Log::info('RedirectIfAuth Headers after processing:', $response->headers->all());
         Log::info('RedirectIfAuth middleware proceeding to next middleware');
         return $next($request);

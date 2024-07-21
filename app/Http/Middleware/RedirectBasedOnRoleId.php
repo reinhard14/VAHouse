@@ -31,6 +31,7 @@ class RedirectBasedOnRoleId
                     return redirect()->route('user.dashboard');
             }
         }
+        $response = $next($request);
         Log::info('RedirectBasedOnRoleId Middleware RedirectBasedOnRoleId go Next');
         Log::info('Headers after processing:', $response->headers->all());
         return $next($request);
