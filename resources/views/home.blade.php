@@ -318,7 +318,11 @@
                                 <div class="col">
                                     <div class="text-center">
                                         <h6>No <span class="text-danger">Experiences</span> added yet.</h6>
-                                        <p class="pt-3">Please click <span class="text-info"><strong><a href="#create-details-modal" data-bs-toggle="modal" class="button">Expand</a></span> to add experiences.</p>
+                                        <p class="pt-3">Please click
+                                            <span class="text-info">
+                                                <strong><a href="#create-details-modal" data-bs-toggle="modal" class="button">Expand</a></strong>
+                                            </span> to add experiences.
+                                        </p>
                                         <p class="fst-italic">This is a required field.</p>
                                     </div>
                                 </div>
