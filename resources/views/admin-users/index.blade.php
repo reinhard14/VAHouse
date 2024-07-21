@@ -215,7 +215,9 @@
                                                     <td>
                                                         <div>
                                                             @if(isset($user->information->experience) && !empty($user->information->experience))
-                                                                @if ($user->information->experience <= 2)
+                                                                @if ($user->information->experience == 0)
+                                                                    No prior experience.
+                                                                @elseif ($user->information->experience <= 2)
                                                                     Beginner
                                                                 @elseif ($user->information->experience >= 3 && $user->information->experience <= 5)
                                                                     Intermediate
@@ -223,7 +225,7 @@
                                                                     Seasoned
                                                                 @endif
                                                             @else
-                                                                N/A
+                                                                <p>Did not complete form.</p>
                                                             @endif
                                                         </div>
                                                     </td>
@@ -244,7 +246,7 @@
                                                                 @endforeach
                                                             </ul>
                                                         @else
-                                                            <p>No skills available.</p>
+                                                            <p>Did not complete form.</p>
                                                         @endif
                                                     </td>
                                                     <td>

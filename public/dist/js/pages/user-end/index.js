@@ -85,26 +85,26 @@ $(document).ready(function() {
     $('#websites').select2({
         tags: true,
         tokenSeparators: [','],
-        placeholder: 'Input all of your websites used here..',
+        placeholder: 'Input all of your websites used here..select below or type the "unlisted" ones.',
     });
 
     $('#tools').select2({
         tags: true,
         tokenSeparators: [','],
-        placeholder: 'Input all of your tools used here..',
+        placeholder: 'Input all of your tools used here..select below or type the "unlisted" ones.',
     });
 
     $('#skills').select2({
         tags: true,
         tokenSeparators: [','],
-        placeholder: 'Input all of your skills here..',
+        placeholder: 'Input all of your skills here..select below or type the "unlisted" ones.',
     });
 
     $('#softskills').select2({
         tags: true,
         tokenSeparators: [','],
         // tokenSeparators: [',', ' '],
-        placeholder: 'Input all soft skills here..',
+        placeholder: 'Input all soft skills here..select below or type the "unlisted" ones.',
         // allowClear: true,
     });
 });

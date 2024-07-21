@@ -308,18 +308,18 @@
                                         </div>
                                     </div>
 
-                                    <input id="experience" name="experience" type="number" min="0" class="form-control" placeholder="Please 'Click to Expand' to specify your experiences.." required>
+                                    <input id="experience" name="experience" type="number" min="0" class="form-control" placeholder="Please enter a number only." required>
                                 </div>
                             </div>
                         </div>
 
                         @if($user->experiences->count() < 1)
-                            <div class="row m-1 p-3 border rounded border-line border-secondary" id="noExperiencePlaceholder">
+                            <div class="row my-3 p-3 border rounded border-line border-secondary" id="noExperiencePlaceholder">
                                 <div class="col">
                                     <div class="text-center">
                                         <h6>No <span class="text-danger">Experiences</span> added yet.</h6>
-                                        <p class="pt-3">Please click <span class="text-info">"Expand"</span> to add experiences.</p>
-                                        <p class="italic-fst">This is a required field</p>
+                                        <p class="pt-3">Please click <span class="text-info"><strong><a href="#create-details-modal" data-bs-toggle="modal" class="button">Expand</a></span> to add experiences.</p>
+                                        <p class="fst-italic">This is a required field.</p>
                                     </div>
                                 </div>
                             </div>
@@ -431,6 +431,8 @@
                             </div>
                         </div>
 
+                        <hr>
+
                         <div class="row mb-5 p-5">
                             <h4 class="text-center mb-3">
                                 Position/s Applying For
@@ -461,7 +463,7 @@
                                         <input type="checkbox" id="position3" name="positions[]" value="Callers" class="formCheckInput">
                                         <label for="position3"> Callers: </label>
                                         <span class="fst-italic">
-                                            (upload sample of <a href="#mock-call-modal" data-bs-toggle="modal" class="button"><strong>Mock calls</strong></a> here)
+                                            (upload sample <a href="#mock-call-modal" data-bs-toggle="modal" class="button"><strong>Mock calls</strong></a> here)
                                         </span>
 
                                         <p class="fst-italic">
