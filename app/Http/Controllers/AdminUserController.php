@@ -66,7 +66,7 @@ class AdminUserController extends Controller
                         ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
                         ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
                         ->select('users.*', 'skillsets.*', 'statuses.status', 'applicant_information.experience', 'experiences.title')
-                        ->groupBy('users.id')
+                        ->groupBy('users.id', 'skillsets.id', 'statuses.status', 'applicant_information.experience', 'experiences.title')
                         ->orderBy($sortByColumn, $sortOrder);
 
         // Searching
