@@ -34,6 +34,7 @@ class AdminUserController extends Controller
         $sortByLastname = $request->query('sortByLastname');
         $sortByFirstname = $request->query('sortByFirstname');
         $sortByDateSubmitted = $request->query('sortByDateSubmitted');
+        $displayIncompleteApplicants = $request->query('display');
 
         $sortByColumn = 'lastname';
         $sortOrder = 'asc';
@@ -52,14 +53,30 @@ class AdminUserController extends Controller
         $toggleSortFirstname = $this->sortOrder($sortByFirstname);
         $sortByDateSubmitted = $this->sortOrder($sortByDateSubmitted);
 
-        $usersQuery = User::where('role_id', 3)
-                        ->leftJoin('skillsets', 'users.id', '=', 'skillsets.user_id')
-                        ->leftJoin('statuses', 'users.id', '=', 'statuses.user_id')
-                        ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
-                        ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
-                        ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title')
-                        ->distinct()
-                        ->orderBy($sortByColumn, $sortOrder);
+        $applicant = 3;
+        if(is_null($displayIncompleteApplicants)) {
+            $usersQuery = User::where('role_id', $applicant)
+                            ->whereNotNull('skillsets.id')
+                            ->leftJoin('skillsets', 'users.id', '=', 'skillsets.user_id')
+                            ->leftJoin('statuses', 'users.id', '=', 'statuses.user_id')
+                            ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
+                            ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
+                            ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title')
+                            //distinct causes pagination error. find another way, try use groupby.
+                            ->distinct()
+                            ->orderBy($sortByColumn, $sortOrder);
+        } else {
+            $usersQuery = User::where('role_id', $applicant)
+                            ->leftJoin('skillsets', 'users.id', '=', 'skillsets.user_id')
+                            ->leftJoin('statuses', 'users.id', '=', 'statuses.user_id')
+                            ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
+                            ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
+                            ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title')
+                            //distinct causes pagination error. find another way, try use groupby.
+                            ->distinct()
+                            ->orderBy($sortByColumn, $sortOrder);
+        }
+
         // $usersQuery = User::where('role_id', 3)
         //                 ->leftJoin('skillsets', 'users.id', '=', 'skillsets.user_id')
         //                 ->leftJoin('statuses', 'users.id', '=', 'statuses.user_id')
@@ -145,7 +162,7 @@ class AdminUserController extends Controller
             'uniqueSkills',
             'uniqueSoftskills',
             'uniqueStatuses',
-            // 'uniqueTitles',
+            'displayIncompleteApplicants',
         ));
 
     }

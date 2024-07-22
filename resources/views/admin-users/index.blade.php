@@ -61,43 +61,22 @@
                         </div>
 
                     @else
-                        <div class="row">
-                            <div class="col">
-                                <div class="row mb-1 d-flex justify-content-around">
-                                    <div class="col" id="search_col">
-                                        <form method="GET" action="#" class="form-inline row">
-                                            <div class="col-md-8">
-                                                <input type="text" name="search" placeholder="Enter search here" class="form-control w-100">
-                                            </div>
-                                            <div class="col-md-4 text-right p-1">
-                                                <button type="submit" class="btn btn-secondary btn-sm"><i class="bi bi-search mr-1"></i>Search</button>
-                                                <a href="{{ route('admin.users.index') }}" type="submit" class="btn btn-outline-danger btn-sm" ><i class="bi bi-arrow-counterclockwise mr-1"></i>Clear</a>
-                                            </div>
-                                        </form>
+                        <div class="row mb-4">
+                            <div class="col-md-6" id="search_col">
+                                <form method="GET" action="#" class="form-inline row">
+                                    <div class="col-md-8">
+                                        <input type="text" name="search" placeholder="Enter search here" class="form-control w-100">
                                     </div>
-                                    <div class="col d-flex justify-content-end" id="view_col">
-                                        <div class="mr-1">
-                                            <p> <strong> Current view - </strong></p>
-                                        </div>
-                                        @if ($sortByLastname)
-                                            <div>
-                                                <p> Last: <strong> {{ $sortByLastname }}</strong> </p>
-                                            </div>
-                                        @elseif ($sortByFirstname)
-                                            <div>
-                                                <p> First: <strong>{{ $sortByFirstname }}</strong> </p>
-                                            </div>
-                                        @elseif ($sortByDateSubmitted)
-                                            <div>
-                                                <p> Date Order:<strong> {{ $sortByDateSubmitted }} </strong></p>
-                                            </div>
-                                        @else
-                                            <p>
-                                                Default
-                                            </p>
-                                        @endif
+                                    <div class="col-md-4 text-right p-1">
+                                        <button type="submit" class="btn btn-secondary btn-sm"><i class="bi bi-search mr-1"></i>Search</button>
+                                        <a href="{{ route('admin.users.index') }}" type="submit" class="btn btn-outline-danger btn-sm" ><i class="bi bi-arrow-counterclockwise mr-1"></i>Clear</a>
                                     </div>
-                                </div>
+                                </form>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    Show/Hide Filters
+                                </button>
                             </div>
                         </div>
 
@@ -105,9 +84,7 @@
                             <div class="col">
                                 <div class="accordion">
                                     <h2 class="accordion-header">
-                                        <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                                            Show/Hide Filters
-                                        </button>
+
                                     </h2>
                                     <div id="collapseOne" class="collapse show">
                                         <div class="accordion-body">
@@ -148,13 +125,36 @@
 
                                                     @php $count++; @endphp
 
-                                                    <div class="form-group col-md-12 mb-3 d-flex justify-content-end">
-                                                        <button type="submit" class="btn btn-primary btn-sm px-5">
-                                                            <i class="bi bi-search"></i> Filter
-                                                        </button>
+                                                    <div class="form-group col-md-12 mb-3 d-flex justify-content-around">
+                                                        <div class="col-md-4">
+                                                            <label for="display">
+                                                                <input type="checkbox" name="display" id="display" value="checked" {{ $displayIncompleteApplicants === null ? '' : 'checked' }}>
+                                                                Display incomplete accounts?
+                                                            </label>
+
+                                                        </div>
+                                                        <div class="col-md-4" id="view_col">
+                                                            <p> <label> Current view - </label>
+                                                                @if ($sortByLastname)
+                                                                    Last Name: <span class="badge badge-info"> {{ $sortByLastname }}</span>
+                                                                @elseif ($sortByFirstname)
+                                                                    First Name: <span class="badge badge-info">{{ $sortByFirstname }}</span>
+                                                                @elseif ($sortByDateSubmitted)
+                                                                    Date Submitted: <span class="badge badge-info"> {{ $sortByDateSubmitted }}</span>
+                                                                @else
+                                                                    Default
+                                                                @endif
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-4 text-right">
+                                                            <button type="submit" class="btn btn-primary btn-sm px-5">
+                                                                <i class="bi bi-search"></i> Filter
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </form>
+
                                         </div>
                                     </div>
                                 </div>
@@ -163,23 +163,6 @@
 
                         <div class="row">
                             <div class="col-12">
-                                {{-- @foreach ($users as $user)
-                                    {{ $user->id }}-{{ $user->name }} {{ $user->lastname }} |
-                                @endforeach --}}
-                                {{-- @foreach ( $uniqueStatuses as $status)
-                                    {{ $status->status }} |
-                                @endforeach --}}
-                                {{-- {{ $uniqueStatuses }} --}}
-                                {{-- @foreach ( $uniqueExperiences as $exp)
-                                    {{ $exp->experience }} |
-                                @endforeach --}}
-                                {{-- @foreach ( $uniqueTitles as $title)
-                                    {{ $title->title }} |
-                                @endforeach --}}
-                                {{-- @foreach ($uniqueSkills as $skill)
-                                    {{ $skill }} |
-                                @endforeach --}}
-                                {{-- {{ $uniqueSkills }} --}}
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
@@ -245,7 +228,7 @@
                                                         </div>
                                                     </td>
 
-                                                    <td class="text-center">
+                                                    <td>
                                                         @php
                                                             $skills = [];
 
@@ -261,7 +244,9 @@
                                                                 @endforeach
                                                             </ul>
                                                         @else
-                                                            <span class="badge badge-warning">Did Not Finish</span>
+                                                            <p class="text-center">
+                                                                <span class="badge badge-warning">Did Not Finish</span>
+                                                            </p>
                                                         @endif
                                                     </td>
                                                     <td>

@@ -219,9 +219,10 @@ $(document).ready(function() {
         placeholder: 'Select status..',
     });
 
-    $('#collapseOne').collapse('hide');
+    $('#collapseOne').collapse('show');
     $('.sidebar-mini').addClass('sidebar-collapse')
 
+    //for edit applicants module
     $('.skillsets').select2({
         tags: true,
         tokenSeparators: ',',
