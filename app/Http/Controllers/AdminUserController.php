@@ -307,13 +307,8 @@ class AdminUserController extends Controller
         //check if resume is not null. then proceed with delete.
         if (!isset($user->information->resume)) {
             $user->delete();
-            $userApplicantInformation->delete();
-            $userSkillset->delete();
-            $userReview->delete();
             $userStatus->delete();
             $userTier->delete();
-            $userExperience->delete();
-            $userCallSample->delete();
 
         } else {
             $applicantVideo = $user->information->videolink;
@@ -342,6 +337,7 @@ class AdminUserController extends Controller
             $userTier->delete();
             $userExperience->delete();
             $userCallSample->delete();
+
         }
 
         return redirect()->route('admin.users.index')->with('success', 'Applicant has been deleted!');
@@ -365,13 +361,8 @@ class AdminUserController extends Controller
 
             if (!isset($user->information->resume))  {
                 $user->delete();
-                $userApplicantInformation->delete();
-                $userSkillset->delete();
-                $userReview->delete();
                 $userStatus->delete();
                 $userTier->delete();
-                $userExperience->delete();
-                $userCallSample->delete();
 
             } else {
                 $applicantVideo = $user->information->videolink;
