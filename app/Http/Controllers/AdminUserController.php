@@ -108,23 +108,11 @@ class AdminUserController extends Controller
         // Display data on FILTERS
         $skillsets = Skillset::all();
 
-        // Helper function to get unique values from a JSON field
-        function getUniqueValues($skillsets, $field) {
-            return $skillsets->pluck($field)
-                        ->map(function($item) {
-                            return json_decode($item, true);
-                        })
-                        ->flatten()
-                        ->unique()
-                        ->values()
-                        ->all();
-        }
-
         //Array types
-        $uniqueWebsites = getUniqueValues($skillsets, 'website');
-        $uniqueTools = getUniqueValues($skillsets, 'tool');
-        $getUniqueSkills = getUniqueValues($skillsets, 'skill');
-        $uniqueSoftskills = getUniqueValues($skillsets, 'softskill');
+        $uniqueWebsites = $this->getUniqueValues($skillsets, 'website');
+        $uniqueTools = $this->getUniqueValues($skillsets, 'tool');
+        $getUniqueSkills = $this->getUniqueValues($skillsets, 'skill');
+        $uniqueSoftskills = $this->getUniqueValues($skillsets, 'softskill');
         //Collection types
         $uniqueStatuses = Status::groupBy('status')->pluck('status');
         $uniqueExperiences = ApplicantInformation::groupBy('experience')->pluck('experience');
@@ -151,6 +139,17 @@ class AdminUserController extends Controller
             'uniqueStatuses',
         ));
 
+    }
+    // Helper function to get unique values from a JSON field
+    private function getUniqueValues($skillsets, $field) {
+        return $skillsets->pluck($field)
+                    ->map(function($item) {
+                        return json_decode($item, true);
+                    })
+                    ->flatten()
+                    ->unique()
+                    ->values()
+                    ->all();
     }
 
     private function sortOrder($sortBy) {
