@@ -430,7 +430,7 @@
                                 <div class="form-group">
                                     <label for="videolink"><span class="text-danger">*</span> Upload video introduction: <strong>(100 MB limit)</strong> </label>
 
-                                    <input name="videolink" type="file" class="form-control" required>
+                                    <input name="videolink" type="file" accept=".mp4, .avi, .mkv, .mov, .wmv, .flv, .webm, .mpeg" class="form-control" required>
                                 </div>
                             </div>
                         </div>
