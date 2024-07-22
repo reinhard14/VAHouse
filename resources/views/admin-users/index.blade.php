@@ -163,6 +163,23 @@
 
                         <div class="row">
                             <div class="col-12">
+                                {{-- @foreach ($users as $user)
+                                    {{ $user->id }}-{{ $user->name }} {{ $user->lastname }} |
+                                @endforeach --}}
+                                {{-- @foreach ( $uniqueStatuses as $status)
+                                    {{ $status->status }} |
+                                @endforeach --}}
+                                {{-- {{ $uniqueStatuses }} --}}
+                                {{-- @foreach ( $uniqueExperiences as $exp)
+                                    {{ $exp->experience }} |
+                                @endforeach --}}
+                                {{-- @foreach ( $uniqueTitles as $title)
+                                    {{ $title->title }} |
+                                @endforeach --}}
+                                {{-- @foreach ($uniqueSkills as $skill)
+                                    {{ $skill }} |
+                                @endforeach --}}
+                                {{-- {{ $uniqueSkills }} --}}
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>

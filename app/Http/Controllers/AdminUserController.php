@@ -52,22 +52,30 @@ class AdminUserController extends Controller
         $toggleSortFirstname = $this->sortOrder($sortByFirstname);
         $sortByDateSubmitted = $this->sortOrder($sortByDateSubmitted);
 
+        // $usersQuery = User::where('role_id', 3)
+        //                 ->leftJoin('skillsets', 'users.id', '=', 'skillsets.user_id')
+        //                 ->leftJoin('statuses', 'users.id', '=', 'statuses.user_id')
+        //                 ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
+        //                 ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
+        //                 ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title')
+        //                  ->distinct()
+        //                 ->orderBy($sortByColumn, $sortOrder);
         $usersQuery = User::where('role_id', 3)
                         ->leftJoin('skillsets', 'users.id', '=', 'skillsets.user_id')
                         ->leftJoin('statuses', 'users.id', '=', 'statuses.user_id')
                         ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
                         ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
-                        ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title')
-                        ->distinct()
+                        ->select('users.id', 'users.name', 'users.email', 'skillsets.skill', 'statuses.status', 'applicant_information.experience', 'experiences.title')
+                        ->groupBy('users.id')
                         ->orderBy($sortByColumn, $sortOrder);
 
         // Searching
         if ($search = $request->query('search')) {
             $usersQuery->where(function ($query) use ($search) {
-                $query->where('users.name', 'like', '%' . $search . '%')
-                    ->orWhere('users.lastname', 'like', '%' . $search . '%')
-                    ->orWhere('skillsets.skill', 'like', '%' . $search . '%')
-                    ->orWhere('experiences.title', 'like', '%' . $search . '%');
+                        $query->where('users.name', 'like', '%' . $search . '%')
+                            ->orWhere('users.lastname', 'like', '%' . $search . '%')
+                            ->orWhere('skillsets.skill', 'like', '%' . $search . '%')
+                            ->orWhere('experiences.title', 'like', '%' . $search . '%');
             });
         }
 
@@ -101,7 +109,7 @@ class AdminUserController extends Controller
 
         // Get the results with pagination
         $users = $usersQuery->select('users.*')->paginate(12);
-
+        // dd($users);
         // Append sorting parameters to pagination links
         $users->appends(['sortByLastname' => $sortByLastname, 'sortByFirstname' => $sortByFirstname, 'sortByDateSubmitted' => $sortByDateSubmitted]);
 
@@ -137,6 +145,7 @@ class AdminUserController extends Controller
             'uniqueSkills',
             'uniqueSoftskills',
             'uniqueStatuses',
+            // 'uniqueTitles',
         ));
 
     }

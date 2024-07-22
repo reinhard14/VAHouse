@@ -27,7 +27,6 @@ class HomeController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
-            Log::info('Headers before redirect:', headers_list());
 
             switch ($user->role_id) {
                 case 1:
@@ -42,7 +41,6 @@ class HomeController extends Controller
                     break;
             }
 
-            Log::info('Headers after setting response:', headers_list());
             return $response;
 
         } else {
