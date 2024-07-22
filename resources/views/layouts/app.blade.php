@@ -29,8 +29,8 @@
     <!-- CDN Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-</head>
 
+</head>
 <body class="user-bg-color">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
