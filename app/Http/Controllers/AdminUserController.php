@@ -126,9 +126,10 @@ class AdminUserController extends Controller
 
         // Get the results with pagination
         $users = $usersQuery->select('users.*')->paginate(12);
-        // dd($users);
+
         // Append sorting parameters to pagination links
-        $users->appends(['sortByLastname' => $sortByLastname, 'sortByFirstname' => $sortByFirstname, 'sortByDateSubmitted' => $sortByDateSubmitted]);
+        $users->appends(['sortByLastname' => $sortByLastname, 'sortByFirstname' => $sortByFirstname,
+                         'sortByDateSubmitted' => $sortByDateSubmitted,'display' => $displayIncompleteApplicants]);
 
         // Display data on FILTERS
         $skillsets = Skillset::all();

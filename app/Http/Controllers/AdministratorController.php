@@ -25,10 +25,16 @@ class AdministratorController extends Controller
      */
     public function dashboard()
     {
+        // user roles
+        $SUPERADMIN = 1;
+        $ADMIN = 2;
+        $AGENTS = 3;
+
         $departments = Department::all();
-        $users = User::where('role_id', '>', 1)->get();
-        $admins =  $users->where('role_id', 2);
-        $agents =  $users->where('role_id', 3);
+
+        $users = User::where('role_id', '>', $SUPERADMIN)->get();
+        $admins =  $users->where('role_id', $ADMIN);
+        $agents =  $users->where('role_id', $AGENTS);
 
         // Calculate the start and end dates of one week ago
         $startOfLastWeek = Carbon::now()->subWeek()->startOfWeek();

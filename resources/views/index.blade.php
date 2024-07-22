@@ -76,6 +76,50 @@
                 </div>
             </div>
 
+            {{-- <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="table-responsive">
+                            <table class="table m-0">
+                                <thead>
+                                    <tr>
+                                        <th><span>Status</span></th>
+                                        <th><span>Virtual assistants</span></th>
+                                        <th><span>Registered</span></th>
+                                        <th><span>Completed</span></th>
+                                        <th><span>Incomplete</span></th>
+
+                                        <th><span>LMS</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                        <tr>
+                                            <td>New</td>
+                                            <td>13</td>
+                                            <td>13</td>
+                                            <td>7/13</td>
+                                            <td>6/13</td>
+                                            <td>1/13</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hired</td>
+                                            <td>13</td>
+                                            <td>13</td>
+                                            <td>7/13</td>
+                                            <td>6/13</td>
+                                            <td>1/13</td>
+                                        </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div> --}}
+            <!-- /.row -->
+
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
