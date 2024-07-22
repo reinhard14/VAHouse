@@ -22,7 +22,7 @@
                     @include('includes.messages')
 
                     <h4 class="text-center mt-3">
-                        Separate the list by using a comma "<span class="text-danger">,</span>" or a "<span class="text-danger">tab</span>" bar.
+                        Separate the list by using a comma <span class="text-danger">","</span> <span class="text-danger">"tab"</span> or a <span class="text-danger">"enter"</span>.
                     </h4>
 
                     <div class="row mb-5">
@@ -37,7 +37,7 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="websites"><span class="text-danger">*</span> List all the <span class="text-primary">websites</span> used:</label>
+                            <label for="websites"><span class="text-danger">*</span> List of <span class="text-primary">websites</span> used:</label>
 
                             <select id="websites" name="websites[]" class="select2" multiple="multiple" style="width: 100%;" required>
                                 <option value="Upwork">Upwork</option>
@@ -110,7 +110,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="tools"><span class="text-danger">*</span> List all the <span class="text-primary">tools/applications</span> used:</label>
+                            <label for="tools"><span class="text-danger">*</span> List of <span class="text-primary">tools/applications</span> used:</label>
 
                             <select id="tools" name="tools[]" class="select2" multiple="multiple" style="width: 100%;" required>
                                 <option value="Microsoft Office Suite">Microsoft Office Suite</option>
@@ -200,7 +200,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="skills"><span class="text-danger">*</span> List all the <span class="text-primary">skills</span> you have: </label>
+                            <label for="skills"><span class="text-danger">*</span> List of <span class="text-primary">technical skills</span> you possess: </label>
 
                             <select id="skills" name="skills[]" class="select2" multiple="multiple" style="width: 100%;" required>
                                 <option value="Content Creation">Content Creation</option>
@@ -258,7 +258,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="softskills"> List all the <span class="text-primary">soft skills</span> you possess:</label>
+                            <label for="softskills"> List of <span class="text-primary">soft skills</span> you possess:</label>
 
                             <select id="softskills" name="softskills[]" class="select2" multiple="multiple" style="width: 100%;">
 
@@ -308,7 +308,7 @@
                                         </div>
                                     </div>
 
-                                    <input id="experience" name="experience" type="number" min="0" class="form-control" placeholder="Please enter a number only." required>
+                                    <input id="experience" name="experience" type="number" min="0" class="form-control" placeholder="Please enter a number here first, then click expand." required>
                                 </div>
                             </div>
                         </div>

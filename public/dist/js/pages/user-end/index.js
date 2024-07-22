@@ -85,26 +85,26 @@ $(document).ready(function() {
     $('#websites').select2({
         tags: true,
         tokenSeparators: [','],
-        placeholder: 'Input all of your websites used here..select below or type the "unlisted" ones.',
+        placeholder: 'Select from list or type all of the websites used, if not in the list manually type in the field and separate by "enter" or "tab".',
     });
 
     $('#tools').select2({
         tags: true,
         tokenSeparators: [','],
-        placeholder: 'Input all of your tools used here..select below or type the "unlisted" ones.',
+        placeholder: 'Select from list or type all of the tools used, if not in the list manually type in the field and separate by "enter" or "tab".',
     });
 
     $('#skills').select2({
         tags: true,
         tokenSeparators: [','],
-        placeholder: 'Input all of your skills here..select below or type the "unlisted" ones.',
+        placeholder: 'Select from list or type all of your hard/technical skills, if not in the list manually type in the field and separate by "enter" or "tab".',
     });
 
     $('#softskills').select2({
         tags: true,
         tokenSeparators: [','],
         // tokenSeparators: [',', ' '],
-        placeholder: 'Input all soft skills here..select below or type the "unlisted" ones.',
+        placeholder: 'Select from list or type all of your soft skills, if not in the list manually type in the field and separate by "enter" or "tab".',
         // allowClear: true,
     });
 });
