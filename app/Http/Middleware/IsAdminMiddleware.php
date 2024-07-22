@@ -28,5 +28,6 @@ class IsAdminMiddleware
         Log::info('IsAdmin Headers after processing:', $response->headers->all());
         Log::info('go next.');
         return $next($request);
+
     }
 }

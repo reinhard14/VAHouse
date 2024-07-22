@@ -12,10 +12,11 @@ use Illuminate\Validation\Rules\Password as RulesPassword;
 
 class AdministratorController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Display the dashboard for administrator's account.

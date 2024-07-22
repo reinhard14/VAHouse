@@ -15,7 +15,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 //! ADMIN
 Route::prefix('administrator')
-    ->middleware('is_admin')
+    ->middleware(['auth', 'is_admin'])
     ->group(function () {
 
         // Admin Dashboard Route
@@ -41,31 +41,34 @@ Route::prefix('administrator')
             'store' => 'admin.users.store',
             'update' => 'admin.users.update',
         ]);
-
         // Route resources for departments list in Admin side.
         Route::resource('department', DepartmentController::class);
 
         // Additional routes for Administrator Users list.
         Route::delete('users', [App\Http\Controllers\AdminUserController::class, 'destroySelected'])->name('admin.users.deleteSelected');
-
         // Additional routes for Administrator
         Route::delete('administrator/', [App\Http\Controllers\AdministratorController::class, 'destroySelected'])->name('administrator.deleteSelected');
-
         // Additional routes for Department
         Route::delete('department/', [App\Http\Controllers\DepartmentController::class, 'destroySelected'])->name('department.deleteSelected');
 
-});
+        Route::post('users/notes', [AdminUserController::class, 'addNotes'])->name('add.notes');
+        Route::put('users/{id}/status', [AdminUserController::class, 'updateStatus'])->name('update.applicant.status');
+    });
 
 //! User dashboard
-Route::get('user/dashboard', [App\Http\Controllers\UserController::class, 'index'])->name('user.dashboard');
-Route::get('user/create', [App\Http\Controllers\UserController::class, 'create'])->name('user.create');
-Route::post('user/', [App\Http\Controllers\UserController::class, 'store'])->name('user.store');
-Route::get('user/{user}', [App\Http\Controllers\UserController::class, 'show'])->name('user.show');
-Route::get('user/{user}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
-Route::put('user/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
-Route::post('user/experience', [App\Http\Controllers\UserController::class, 'experiences'])->name('user.experience');
-Route::post('user/uploadMockcall', [App\Http\Controllers\UserController::class, 'uploadMockcall'])->name('user.mockcall');
-Route::delete('user/experiences/{id}', [App\Http\Controllers\UserController::class, 'destroyExperience'])->name('user.experienceDelete');
+Route::middleware('auth')
+    ->group(function () {
+
+    Route::get('user/dashboard', [App\Http\Controllers\UserController::class, 'index'])->name('user.dashboard');
+    Route::get('user/create', [App\Http\Controllers\UserController::class, 'create'])->name('user.create');
+    Route::post('user/', [App\Http\Controllers\UserController::class, 'store'])->name('user.store');
+    Route::get('user/{user}', [App\Http\Controllers\UserController::class, 'show'])->name('user.show');
+    Route::get('user/{user}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
+    Route::put('user/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+    Route::post('user/experience', [App\Http\Controllers\UserController::class, 'experiences'])->name('user.experience');
+    Route::post('user/uploadMockcall', [App\Http\Controllers\UserController::class, 'uploadMockcall'])->name('user.mockcall');
+    Route::delete('user/experiences/{id}', [App\Http\Controllers\UserController::class, 'destroyExperience'])->name('user.experienceDelete');
+});
 
 //! Public
 // CAPTCHA routes
@@ -73,7 +76,3 @@ Route::get('captcha', [CaptchaController::class, 'getCaptcha'])->name('captcha.g
 Route::get('refresh-captcha', [CaptchaController::class, 'refreshCaptcha'])->name('refresh.captcha');
 
 Route::get('/storage/{id}', [AdminUserController::class, 'viewPDF'])->name('view.pdf');
-
-Route::post('/administrator/users/notes', [AdminUserController::class, 'addNotes'])->name('add.notes');
-
-Route::put('/administrator/users/{id}/status', [AdminUserController::class, 'updateStatus'])->name('update.applicant.status');
