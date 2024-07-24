@@ -10,13 +10,13 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="ml-2">Applicants</h1>
-                </div><!-- /.col -->
+                </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active"><a href="#">Applicants</a></li>
                     </ol>
-                </div><!-- /.col -->
+                </div>
             </div><!-- /.row -->
         </div>
     </div>
@@ -61,6 +61,7 @@
                         </div>
 
                     @else
+                        {{-- SEARCH ROW--}}
                         <div class="row mb-4">
                             <div class="col-md-6" id="search_col">
                                 <form method="GET" action="#" class="form-inline row">
@@ -80,12 +81,10 @@
                             </div>
                         </div>
 
+                        {{-- FILTERS ROW --}}
                         <div class="row">
                             <div class="col">
                                 <div class="accordion">
-                                    <h2 class="accordion-header">
-
-                                    </h2>
                                     <div id="collapseOne" class="collapse show">
                                         <div class="accordion-body">
                                             <form method="GET" action="#">
@@ -161,8 +160,14 @@
                             </div>
                         </div>
 
+                        {{-- DISPLAYING ROW --}}
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-md-12">
+                                {{-- <ul>
+                                    @foreach ($users as $user)
+                                        <li>{{ $user->name }} -> {{ $user->skillsets->skill ?? 'na' }}</li>
+                                    @endforeach
+                                </ul> --}}
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
@@ -213,21 +218,18 @@
                                                     <td>{{ $user->lastname }}</td>
                                                     <td>{{ $user->name }}</td>
                                                     <td>
-                                                        <div>
-                                                            @if(isset($user->information->experience) && !empty($user->information->experience))
-                                                                @if ($user->information->experience <= 2)
-                                                                    Beginner
-                                                                @elseif ($user->information->experience >= 3 && $user->information->experience <= 5)
-                                                                    Intermediate
-                                                                @else
-                                                                    Seasoned
-                                                                @endif
+                                                        @if(isset($user->information->experience) && !empty($user->information->experience))
+                                                            @if ($user->information->experience <= 2)
+                                                                Beginner
+                                                            @elseif ($user->information->experience >= 3 && $user->information->experience <= 5)
+                                                                Intermediate
                                                             @else
-                                                                <p>Not available.</p>
+                                                                Seasoned
                                                             @endif
-                                                        </div>
+                                                        @else
+                                                            <p>Not available.</p>
+                                                        @endif
                                                     </td>
-
                                                     <td>
                                                         @php
                                                             $skills = [];
@@ -239,6 +241,9 @@
 
                                                         @if (!empty($skills) && is_array($skills))
                                                             <ul>
+                                                                @foreach ($user->experiences as $experience)
+                                                                    <li>{{ $experience->title }}</li>
+                                                                @endforeach
                                                                 @foreach ($skills as $skill)
                                                                     <li>{{ $skill }}</li>
                                                                 @endforeach
@@ -257,10 +262,9 @@
                                                             <a href="#update-status-{{ $user->id }}" data-bs-toggle="modal" class="px-2">
                                                                 <i class="bi bi-person-exclamation"></i> Status
                                                             </a>
-                                                            {{-- disable for now --}}
-                                                            {{-- <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal" class="px-2">
+                                                            <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal" class="px-2">
                                                                 <i class="bi bi-person-gear"></i> Edit
-                                                            </a> --}}
+                                                            </a>
                                                             <form method="post" action="{{ route('admin.users.destroy', $user->id) }}" class="deleteAdminForm">
                                                                 @csrf
                                                                 @method('delete')
@@ -277,7 +281,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="text-center">
-                                                            @if (!isset($user->information->videolink))
+                                                            @if (is_null($user->information) || is_null($user->information->videolink) || $user->information->videolink === '')
                                                                 N/A
                                                             @else
                                                                 <a href="{{ route('view.pdf', $user->information->videolink) }}" target="_blank">Open</a>
@@ -362,16 +366,9 @@
                             </div>
                         </div>
                     @endif
-                </div>
-                {{-- @foreach ($uniqueTools as $tool)
-                    {{  $tool }}
-                @endforeach --}}
-
-                <!-- /.card-body -->
-            </div>
-            <!-- /. card -->
-        </div>
-        <!-- /.container-fluid -->
+                </div><!-- /.card-body -->
+            </div> <!-- /. card -->
+        </div> <!-- /.container-fluid -->
     </section>
 </div>
 
@@ -379,7 +376,7 @@
 <x-administrator-applicant.create />
 
 @foreach ($users as $user)
-    {{-- <x-administrator-applicant.edit :user="$user" :skills="$uniqueSkills" :websites="$uniqueWebsites" :tools="$uniqueTools" :softskills="$uniqueSoftskills" /> --}}
+    <x-administrator-applicant.edit :user="$user" :skills="$uniqueSkills" :websites="$uniqueWebsites" :tools="$uniqueTools" :softskills="$uniqueSoftskills" />
     <x-administrator-applicant.add-notes :user="$user" />
     <x-administrator-applicant.update-status :user="$user" />
 @endforeach

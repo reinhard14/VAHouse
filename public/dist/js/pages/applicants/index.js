@@ -229,4 +229,21 @@ $(document).ready(function() {
         placeholder: 'Please select from choices..',
         width: '100%',
     });
+
+    //for edit applicant's position modal
+    $('.positions').select2({
+        tags: true,
+        tokenSeparators: ',',
+        placeholder: 'Please select from choices..',
+        width: '100%',
+    });
+
+
+    $('.modal.long').on('shown.bs.modal', function () {
+        $(this).find('.modal-body').css({
+            'max-height': '600px',
+            'overflow-y': 'auto'
+        });
+    });
+
 });

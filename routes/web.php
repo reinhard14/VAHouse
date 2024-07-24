@@ -51,8 +51,14 @@ Route::prefix('administrator')
         // Additional routes for Department
         Route::delete('department/', [App\Http\Controllers\DepartmentController::class, 'destroySelected'])->name('department.deleteSelected');
 
+        //administrator user's additional controller
         Route::post('users/notes', [AdminUserController::class, 'addNotes'])->name('add.notes');
         Route::put('users/{id}/status', [AdminUserController::class, 'updateStatus'])->name('update.applicant.status');
+
+        Route::put('users/{id}/profile', [AdminUserController::class, 'updateProfile'])->name('update.user.profile');
+        Route::put('users/{id}/skillset', [AdminUserController::class, 'updateSkillsets'])->name('update.user.skillsets');
+        Route::put('users/{id}/files', [AdminUserController::class, 'updateFiles'])->name('update.user.files');
+        Route::put('users/{id}/password', [AdminUserController::class, 'updatePassword'])->name('update.user.password');
     });
 
 //! User dashboard

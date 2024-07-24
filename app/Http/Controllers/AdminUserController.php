@@ -18,10 +18,6 @@ use Illuminate\Validation\Rules\Password as RulesPassword;
 class AdminUserController extends Controller
 {
 
-    // public function __construct()
-    // {
-    //     $this->middleware('is_admin');
-    // }
     /**
      * Display a listing of the resource.
      *
@@ -54,6 +50,47 @@ class AdminUserController extends Controller
         $sortByDateSubmitted = $this->sortOrder($sortByDateSubmitted);
 
         $applicant = 3;
+
+        //!disable for now
+        // //default, display is null -> show with skills only
+        // if(is_null($displayIncompleteApplicants)) {
+        //     $usersQuery = User::where('role_id', $applicant)
+        //                         ->whereHas('skillsets', function($query) {
+        //                             $query->whereNotNull('skill');
+        //                         })
+        //                         ->with(['skillsets', 'status', 'information', 'experiences'])
+        //                         ->orderBy($sortByColumn, $sortOrder);
+        // } else {
+        //     $usersQuery = User::where('role_id', $applicant)
+        //                         ->with(['skillsets', 'status', 'information', 'experiences'])
+        //                         ->orderBy($sortByColumn, $sortOrder);
+        //     }
+
+        // // Searching
+        // if ($search = $request->query('search')) {
+        //     $usersQuery->where(function($query) use ($search) {
+        //         $query->where('name', 'LIKE', '%' . $search . '%')
+        //             ->orWhere('lastname', 'LIKE', '%' . $search . '%')
+        //             ->orWhereHas('skillsets', function($query) use ($search) {
+        //                 $query->where('skill', 'LIKE', '%' . $search . '%');
+        //             })
+        //             ->orWhereHas('experiences', function($query) use ($search) {
+        //                 $query->where('title', 'LIKE', '%' . $search . '%');
+        //             });
+        //     });
+        // }
+
+        // if ($skills = $request->query('skills')) {
+        //     $skillsArray = explode(',', $skills);
+
+        //     $usersQuery->whereHas('skillsets', function($query) use ($skillsArray) {
+        //         if (is_array($skillsArray)) {
+        //             $query->whereIn('skill', $skills);
+        //         }
+        //     });
+        // }
+        //! end
+        $applicant = 3;
         if(is_null($displayIncompleteApplicants)) {
             $usersQuery = User::where('role_id', $applicant)
                             ->whereNotNull('skillsets.id')
@@ -76,15 +113,6 @@ class AdminUserController extends Controller
                             ->distinct()
                             ->orderBy($sortByColumn, $sortOrder);
         }
-
-        // $usersQuery = User::where('role_id', 3)
-        //                 ->leftJoin('skillsets', 'users.id', '=', 'skillsets.user_id')
-        //                 ->leftJoin('statuses', 'users.id', '=', 'statuses.user_id')
-        //                 ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
-        //                 ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
-        //                 ->select('users.*', 'skillsets.*', 'statuses.status', 'applicant_information.experience', 'experiences.title')
-        //                 ->groupBy('users.id', 'skillsets.id', 'statuses.status', 'applicant_information.experience', 'experiences.title')
-        //                 ->orderBy($sortByColumn, $sortOrder);
 
         // Searching
         if ($search = $request->query('search')) {
@@ -124,14 +152,15 @@ class AdminUserController extends Controller
             }
         }
 
-        // Get the results with pagination
+        // Get the results with pagination.
         $users = $usersQuery->select('users.*')->paginate(12);
 
-        // Append sorting parameters to pagination links
+        // Append parameters to pagination links.
         $users->appends(['sortByLastname' => $sortByLastname, 'sortByFirstname' => $sortByFirstname,
-                         'sortByDateSubmitted' => $sortByDateSubmitted,'display' => $displayIncompleteApplicants]);
+                         'sortByDateSubmitted' => $sortByDateSubmitted,'display' => $displayIncompleteApplicants,
+                         'searchResult' => $search]);
 
-        // Display data on FILTERS
+        // get data of skillset to display on select filters.
         $skillsets = Skillset::all();
 
         //Array types
@@ -288,13 +317,6 @@ class AdminUserController extends Controller
     {
         $this->validate($request, [
             'age' => 'required|gte:18|lte:60',
-            'password' => ['required',
-                        RulesPassword::min(8)
-                        ->letters()
-                        ->mixedCase()
-                        ->numbers()
-                        ->symbols()
-                        ->uncompromised()],
         ]);
 
         $user = User::findOrFail($id);
@@ -307,10 +329,10 @@ class AdminUserController extends Controller
         $user->gender = $request->input('gender');
         $user->education = $request->input('education');
         $user->address = $request->input('address');
-        $user->password = bcrypt($request->input('password'));
+        // $user->password = bcrypt($request->input('password'));
         $user->save();
 
-        return redirect()->route('admin.users.index')->with('success', 'Applicant\'s information has been successfully edited!');
+        return redirect()->route('admin.users.index')->with('success', "{$user->name} {$user->lastname}'s information has been updated!");
     }
 
     /**
@@ -367,7 +389,7 @@ class AdminUserController extends Controller
 
         }
 
-        return redirect()->route('admin.users.index')->with('success', 'Applicant has been deleted!');
+        return redirect()->route('admin.users.index')->with('success', "{$user->name} {$user->lastname}'s record has been deleted!");
 
     }
 
@@ -481,5 +503,105 @@ class AdminUserController extends Controller
         $tier->save();
 
         return back()->with('success', 'Successfully updated applicant\'s status.');
+    }
+
+    public function updatePassword(Request $request, $id)
+    {
+        $this->validate($request, [
+            'password' => ['required',
+                        RulesPassword::min(8)
+                        ->letters()
+                        ->mixedCase()
+                        ->numbers()
+                        ->symbols()
+                        ->uncompromised()],
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->password = bcrypt($request->input('password'));
+        $user->save();
+
+        return redirect()->route('admin.users.index')->with('success', "{$user->name} {$user->lastname}'s password has been updated!");
+    }
+
+    public function updateProfile(Request $request, $id)
+    {
+        $this->validate($request, [
+            'rate' => 'required',
+            'experience' => 'required|gte:0',
+            'skype' => 'required',
+            'niche' => 'required',
+            'ub_account' => 'required',
+            'ub_number' => 'required',
+            'positions' => 'sometimes|array|min:1',
+            'positions.*' => 'string',
+        ]);
+
+        $attributes = ['user_id' => $id];
+
+        $information = ApplicantInformation::firstOrNew($attributes);
+        $information->rate = $request->input('rate');
+        $information->experience = $request->input('experience');
+        $information->skype = $request->input('skype');
+        $information->niche = $request->input('niche');
+        $information->ub_account = $request->input('ub_account');
+        $information->ub_number = $request->input('ub_number');
+        $information->user_id = $id;
+        $information->positions = json_encode($request->input('positions'));
+        $information->save();
+
+        return redirect()->route('admin.users.index')->with('success', "{$information->user->name} {$information->user->lastname}'s VA profile has been updated!");
+    }
+
+    public function updateSkillsets(Request $request, $id)
+    {
+        $this->validate($request, [
+            'skills' => 'sometimes|array|min:1',
+            'skills.*' => 'string',
+            'tools' => 'sometimes|array|min:1',
+            'tools.*' => 'string',
+            'websites' => 'sometimes|array|min:1',
+            'websites.*' => 'string',
+            'softskills' => 'sometimes|array|min:1',
+            'softskills.*' => 'string',
+        ]);
+
+        $attributes = ['user_id' => $id];
+
+        $skillset = Skillset::firstOrNew($attributes);
+        $skillset->skill = json_encode($request->input('skills'));
+        $skillset->tool = json_encode($request->input('tools'));
+        $skillset->website = json_encode($request->input('websites'));
+        $skillset->softskill = json_encode($request->input('softskills'));
+        $skillset->user_id = $id;
+        $skillset->save();
+
+        return redirect()->route('admin.users.index')->with('success', "{$skillset->user->name} {$skillset->user->lastname}'s skillset has been updated!");
+    }
+
+    public function updateFiles(Request $request, $id)
+    {
+        $this->validate($request, [
+            'skills' => 'sometimes|array|min:1',
+            'skills.*' => 'string',
+            'tools' => 'sometimes|array|min:1',
+            'tools.*' => 'string',
+            'websites' => 'sometimes|array|min:1',
+            'websites.*' => 'string',
+            'softskills' => 'sometimes|array|min:1',
+            'softskills.*' => 'string',
+        ]);
+
+        $attributes = ['user_id' => $id];
+
+        $skillset = Skillset::firstOrNew($attributes);
+        $skillset->skill = json_encode($request->input('skills'));
+        $skillset->tool = json_encode($request->input('tools'));
+        $skillset->website = json_encode($request->input('websites'));
+        $skillset->softskill = json_encode($request->input('softskills'));
+        $skillset->user_id = $id;
+        $skillset->save();
+
+        return redirect()->route('admin.users.index')->with('success', "{$skillset->user->name} {$skillset->user->lastname}'s files has been updated!");
     }
 }
