@@ -8,7 +8,7 @@
                 <button type="button" class="close" data-bs-dismiss="modal">x</button>
             </div>
 
-            <form class="editUserForm" method="POST" action="{{ route('update.user.files', $user->id) }}">
+            <form class="editUserForm" method="POST" action="#">
                 @csrf
                 @method('PUT')
 
