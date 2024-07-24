@@ -19,7 +19,7 @@
                                 <a href="#" type="button" class="btn btn-secondary btn-flat disabled">Personal</a>
                                 <a href="#edit-user-profile-modal-{{ $user->id }}" type="button" class="btn btn-secondary btn-flat" data-bs-toggle="modal">Profile</a>
                                 <a href="#edit-user-skillsets-modal-{{ $user->id }}" type="button" class="btn btn-secondary btn-flat" data-bs-toggle="modal">Skillset</a>
-                                {{-- <a href="#edit-user-files-modal-{{ $user->id }}" type="button" class="btn btn-secondary btn-flat" data-bs-toggle="modal">Files</a> --}}
+                                <a href="#edit-user-files-modal-{{ $user->id }}" type="button" class="btn btn-secondary btn-flat" data-bs-toggle="modal">Files</a>
                                 <a href="#edit-user-password-modal-{{ $user->id }}" type="button" class="btn btn-secondary btn-flat" data-bs-toggle="modal">Password</a>
                             </div>
                         </div>
@@ -86,6 +86,6 @@
 
 
 <x-administrator-applicant.edit-skillsets :user="$user" :skills="$skills" :websites="$websites" :tools="$tools" :softskills="$softskills" />
-{{-- <x-administrator-applicant.edit-files :user="$user"/> --}}
+<x-administrator-applicant.edit-files :user="$user"/>
 <x-administrator-applicant.edit-profile :user="$user" :skills="$skills"/>
 <x-administrator-applicant.edit-password :user="$user"/>
