@@ -232,7 +232,6 @@ $(document).ready(function() {
 
     //for edit applicant's position modal
     $('.positions').select2({
-        tags: true,
         tokenSeparators: ',',
         placeholder: 'Please select from choices..',
         width: '100%',

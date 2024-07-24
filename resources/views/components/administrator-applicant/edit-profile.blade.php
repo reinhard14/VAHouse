@@ -4,7 +4,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Edit Applicant's Files</h5>
+                <h5 class="modal-title">Edit Applicant's VA Profile</h5>
                 <button type="button" class="close" data-bs-dismiss="modal">x</button>
             </div>
 
@@ -84,11 +84,11 @@
                     </div>
 
                 </div>
+
                 <small class="text-left ml-3">
                     @if (isset($user->information->updated_at))
                         last updated: {{ $user->information->updated_at->diffForHumans() }}
                     @endif
-
                 </small>
 
                 <div class="modal-footer">

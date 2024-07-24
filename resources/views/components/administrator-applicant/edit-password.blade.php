@@ -4,7 +4,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Edit Applicant's Files</h5>
+                <h5 class="modal-title">Reset Applicant's Password</h5>
                 <button type="button" class="close" data-bs-dismiss="modal">x</button>
             </div>
 
@@ -27,7 +27,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <label class="form-label" for="password">Password </label>
+                            <label class="form-label" for="password">New Password </label>
                             <div class="input-group mb-2">
                                 <input class="form-control editPassword" type="password" name="password" required>
                                 <div class="input-group-append">

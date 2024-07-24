@@ -36,7 +36,6 @@
                             @endphp
 
                             <label class="form-label" for="name">Skills </label>
-                            {{-- <p>Current: {{ $user->skillsets->skill ?? 'n/a' }} </p> --}}
 
                             <select class="form-control select2 skillsets" name="skills[]" multiple="multiple">
                                 @if (!empty($applicantSkills) && is_array($applicantSkills))
@@ -149,7 +148,9 @@
                 </div>
 
                 <small class="text-left ml-3">
-                    last updated: {{ $user->updated_at->diffForHumans() }}
+                    @if (isset($user->skillsets->updated_at))
+                        last updated: {{ $user->skillsets->updated_at->diffForHumans() }}
+                    @endif
                 </small>
 
                 <div class="modal-footer">
