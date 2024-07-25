@@ -16,11 +16,6 @@ use Illuminate\Validation\Rules\Password as RulesPassword;
 class UserController extends Controller
 {
 
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-
     /**
      * Display a listing of the resource.
      *
@@ -112,8 +107,6 @@ class UserController extends Controller
         } else {
             return back()->with('error', 'Please upload a file.');
         }
-
-
 
         $skillset = Skillset::firstOrNew($attributes);
         $skillset->website = json_encode($request->input('websites'));

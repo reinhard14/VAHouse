@@ -474,14 +474,14 @@
                                             - CSR/Technical Support
                                         </p>
                                     </div>
-                                    @if (isset($user->mockcalls))
+                                    @if (isset($user->mockcalls) && !is_null($user->mockcalls))
                                         <div class="col-md-3" id="inboundShow">
                                             <label for="position3"> Inbound: </label>
-                                            <a href="{{ route('view.pdf', $user->mockcalls->inbound_call) }}" target="_blank">Open</a>
+                                            <a href="{{ route('view.pdf', $user->mockcalls->inbound_call ?? '') }}" target="_blank">Open</a>
                                         </div>
                                         <div class="col-md-3" id="outboundShow">
                                             <label for="position3"> Outbound: </label>
-                                            <a href="{{ route('view.pdf', $user->mockcalls->outbound_call) }}" target="_blank">Open</a>
+                                            <a href="{{ route('view.pdf', $user->mockcalls->outbound_call ?? '') }}" target="_blank">Open</a>
                                         </div>
                                     @endif
 

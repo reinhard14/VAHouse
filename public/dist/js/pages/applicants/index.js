@@ -237,7 +237,6 @@ $(document).ready(function() {
         width: '100%',
     });
 
-
     $('.modal.long').on('shown.bs.modal', function () {
         $(this).find('.modal-body').css({
             'max-height': '600px',

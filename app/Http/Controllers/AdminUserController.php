@@ -604,4 +604,83 @@ class AdminUserController extends Controller
 
         return redirect()->route('admin.users.index')->with('success', "{$skillset->user->name} {$skillset->user->lastname}'s files has been updated!");
     }
+
+    public function deleteFile($id, $field)
+    {
+        $validFields = ['videolink', 'resume', 'portfolio', 'photo_id',
+                        'photo_formal', 'disc_results'];
+        $mockValidFields = ['inbound_call', 'outbound_call'];
+
+        if (!in_array($field, array_merge($validFields, $mockValidFields))) {
+            return redirect()->back()->with('error', 'Invalid field specified.');
+        }
+
+        if (in_array($field, $validFields)){
+            $record = ApplicantInformation::firstOrNew(['id' => $id]);
+        } else {
+            $record = CallSample::firstOrNew(['id' => $id]);
+        }
+
+        $filePath = $record->$field;
+
+        if ($filePath && Storage::exists('public/' . $filePath)) {
+            Storage::delete('public/' . $filePath);
+        }
+
+        $record->$field = null;
+        $record->save();
+
+        //find out why field of mockcall not properly read. THIS HAS BUG on returning ->with if users is set to $record->user->name.
+        if (in_array($field, $mockValidFields)) {
+            $user = 'It';
+        } else {
+            $user = $record->user->name;
+        }
+
+        return redirect()->route('admin.users.index')->with('success', "{$user}'s {$field} file has been deleted successfully.");
+    }
+
+    public function updateFile(Request $request, $id, $field)
+    {
+        $validFields = ['videolink', 'resume', 'portfolio', 'photo_id',
+                        'photo_formal', 'disc_results'];
+        $mockValidFields = ['inbound_call', 'outbound_call'];
+
+        $fieldsStorage = [
+            'videolink' => 'intro_videos',
+            'resume' => 'pdfs',
+            'portfolio' => 'portfolios',
+            'photo_id' => 'IDs',
+            'photo_formal' => 'formals',
+            'disc_results' => 'DISC_Results',
+            'inbound_call' => 'mockcalls/inbounds',
+            'outbound_call' => 'mockcalls/outbounds',
+        ];
+
+        if (!in_array($field, array_merge($validFields, $mockValidFields))) {
+            return redirect()->back()->with('error', 'Invalid field specified.');
+        }
+
+        if (in_array($field, $validFields)){
+            $record = ApplicantInformation::firstOrNew(['id' => $id]);
+        } else {
+            $record = CallSample::firstOrNew(['id' => $id]);
+        }
+
+        if ($request->hasFile($field)) {
+            $filePath = $request->file($field)->store($fieldsStorage[$field], 'public');
+            $record->$field = $filePath;
+            $record->save();
+        } else {
+            return redirect()->back()->with('error', 'No file provided.');
+        }
+        //find out why field of mockcall not properly read. THIS HAS BUG on returning ->with if users is set to $record->user->name.
+        if (in_array($field, $mockValidFields)) {
+            $user = 'It';
+        } else {
+            $user = $record->user->name;
+        }
+        return redirect()->route('admin.users.index')->with('success', "{$user}'s {$field} file has been updated successfully.");
+    }
+
 }

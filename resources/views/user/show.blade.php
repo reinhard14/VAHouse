@@ -238,7 +238,9 @@
 
                     <div class="d-flex justify-content-end">
                         <small>
-                            last updated last: {{ $user->information->updated_at->diffForHumans(); }}
+                            @if(isset($user->information))
+                                last updated last: {{ $user->information->updated_at->diffForHumans(); }}
+                            @endif
                         </small>
                     </div>
                     @endif
