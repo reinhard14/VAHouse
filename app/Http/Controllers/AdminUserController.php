@@ -579,36 +579,16 @@ class AdminUserController extends Controller
         return redirect()->route('admin.users.index')->with('success', "{$skillset->user->name} {$skillset->user->lastname}'s skillset has been updated!");
     }
 
-    public function updateFiles(Request $request, $id)
+    public function deleteFile(Request $request, $id, $field)
     {
-        $this->validate($request, [
-            'skills' => 'sometimes|array|min:1',
-            'skills.*' => 'string',
-            'tools' => 'sometimes|array|min:1',
-            'tools.*' => 'string',
-            'websites' => 'sometimes|array|min:1',
-            'websites.*' => 'string',
-            'softskills' => 'sometimes|array|min:1',
-            'softskills.*' => 'string',
-        ]);
+        $displayIncompleteUsers = $request->input('display');
+        $sortByFirstname = $request->input('sortByFirstname');
+        $sortByLastname = $request->input('sortByLastname');
+        $sortByDateSubmitted = $request->input('sortByDateSubmitted');
 
-        $attributes = ['user_id' => $id];
-
-        $skillset = Skillset::firstOrNew($attributes);
-        $skillset->skill = json_encode($request->input('skills'));
-        $skillset->tool = json_encode($request->input('tools'));
-        $skillset->website = json_encode($request->input('websites'));
-        $skillset->softskill = json_encode($request->input('softskills'));
-        $skillset->user_id = $id;
-        $skillset->save();
-
-        return redirect()->route('admin.users.index')->with('success', "{$skillset->user->name} {$skillset->user->lastname}'s files has been updated!");
-    }
-
-    public function deleteFile($id, $field)
-    {
         $validFields = ['videolink', 'resume', 'portfolio', 'photo_id',
                         'photo_formal', 'disc_results'];
+
         $mockValidFields = ['inbound_call', 'outbound_call'];
 
         if (!in_array($field, array_merge($validFields, $mockValidFields))) {
@@ -637,11 +617,22 @@ class AdminUserController extends Controller
             $user = $record->user->name;
         }
 
-        return redirect()->route('admin.users.index')->with('success', "{$user}'s {$field} file has been deleted successfully.");
+        return redirect()->route('admin.users.index', [
+                            'display' => $displayIncompleteUsers,
+                            'sortByFirstname' => $sortByFirstname,
+                            'sortByLastname' => $sortByLastname,
+                            'sortByDateSubmitted' => $sortByDateSubmitted,
+                        ])->with('success', "{$user}'s {$field} file has been deleted successfully.");
     }
 
     public function updateFile(Request $request, $id, $field)
     {
+        $displayIncompleteUsers = $request->input('display');
+        $sortByFirstname = $request->input('sortByFirstname');
+        $sortByLastname = $request->input('sortByLastname');
+        $sortByDateSubmitted = $request->input('sortByDateSubmitted');
+        // \Log::info('Request data: ', $request->all());
+        // dd($request->input('display'));
         $validFields = ['videolink', 'resume', 'portfolio', 'photo_id',
                         'photo_formal', 'disc_results'];
         $mockValidFields = ['inbound_call', 'outbound_call'];
@@ -680,7 +671,12 @@ class AdminUserController extends Controller
         } else {
             $user = $record->user->name;
         }
-        return redirect()->route('admin.users.index')->with('success', "{$user}'s {$field} file has been updated successfully.");
+        return redirect()->route('admin.users.index', [
+                            'display' => $displayIncompleteUsers,
+                            'sortByFirstname' => $sortByFirstname,
+                            'sortByLastname' => $sortByLastname,
+                            'sortByDateSubmitted' => $sortByDateSubmitted,
+                        ])->with('success', "{$user}'s {$field} file has been updated successfully.");
     }
 
 }

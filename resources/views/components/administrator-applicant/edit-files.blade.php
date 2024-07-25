@@ -64,6 +64,10 @@
                                                     <form method="post" action="{{ route('update.user.deleteFile', ['id' => $user->information->id, 'field' => $field]) }}" class="deleteAdminForm filesDelete">
                                                         @csrf
                                                         @method('PUT')
+                                                        <input type="hidden" name="display" value="{{ request('display') }}">
+                                                        <input type="hidden" name="sortByFirstname" value="{{ request('sortByFirstname') }}">
+                                                        <input type="hidden" name="sortByLastname" value="{{ request('sortByLastname') }}">
+                                                        <input type="hidden" name="sortByDateSubmitted" value="{{ request('sortByDateSubmitted') }}">
                                                         <button type="submit" class="btn text-danger" class="p-1 text-danger">
                                                             Delete <i class="bi bi-trash"></i>
                                                         </button>
@@ -76,6 +80,10 @@
                                     <form method="post" action="{{ route('update.user.updateFile', ['id' => $user->information->id, 'field' => $field]) }}" enctype="multipart/form-data" class="form-inline filesUpdate">
                                         @csrf
                                         @method('PUT')
+                                        <input type="hidden" name="display" value="{{ request('display') }}">
+                                        <input type="hidden" name="sortByFirstname" value="{{ request('sortByFirstname') }}">
+                                        <input type="hidden" name="sortByLastname" value="{{ request('sortByLastname') }}">
+                                        <input type="hidden" name="sortByDateSubmitted" value="{{ request('sortByDateSubmitted') }}">
                                         <div class="col-md-8">
                                             <input name="{{ $field }}" type="file" accept="{{ $informationAcceptType[$field] }}" class="form-control" required>
                                         </div>
