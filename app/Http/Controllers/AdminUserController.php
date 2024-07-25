@@ -585,6 +585,7 @@ class AdminUserController extends Controller
         $sortByFirstname = $request->input('sortByFirstname');
         $sortByLastname = $request->input('sortByLastname');
         $sortByDateSubmitted = $request->input('sortByDateSubmitted');
+        $page = $request->input('page');
 
         $validFields = ['videolink', 'resume', 'portfolio', 'photo_id',
                         'photo_formal', 'disc_results'];
@@ -622,6 +623,7 @@ class AdminUserController extends Controller
                             'sortByFirstname' => $sortByFirstname,
                             'sortByLastname' => $sortByLastname,
                             'sortByDateSubmitted' => $sortByDateSubmitted,
+                            'page' => $page,
                         ])->with('success', "{$user}'s {$field} file has been deleted successfully.");
     }
 
@@ -631,6 +633,7 @@ class AdminUserController extends Controller
         $sortByFirstname = $request->input('sortByFirstname');
         $sortByLastname = $request->input('sortByLastname');
         $sortByDateSubmitted = $request->input('sortByDateSubmitted');
+        $page = $request->input('page');
         // \Log::info('Request data: ', $request->all());
         // dd($request->input('display'));
         $validFields = ['videolink', 'resume', 'portfolio', 'photo_id',
@@ -676,6 +679,7 @@ class AdminUserController extends Controller
                             'sortByFirstname' => $sortByFirstname,
                             'sortByLastname' => $sortByLastname,
                             'sortByDateSubmitted' => $sortByDateSubmitted,
+                            'page' => $page,
                         ])->with('success', "{$user}'s {$field} file has been updated successfully.");
     }
 
