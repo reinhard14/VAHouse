@@ -51,6 +51,7 @@
                                                         <input type="hidden" name="sortByLastname" value="{{ request('sortByLastname') }}">
                                                         <input type="hidden" name="sortByDateSubmitted" value="{{ request('sortByDateSubmitted') }}">
                                                         <input type="hidden" name="page" value="{{ request('page') }}">
+                                                        <input type="hidden" name="search" value="{{ request('search') }}">
                                                         <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash mr-1"></i></button>
                                                     </form>
                                                 </td>

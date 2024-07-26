@@ -586,6 +586,7 @@ class AdminUserController extends Controller
         $sortByLastname = $request->input('sortByLastname');
         $sortByDateSubmitted = $request->input('sortByDateSubmitted');
         $page = $request->input('page');
+        $search = $request->input('search');
 
         $validFields = ['videolink', 'resume', 'portfolio', 'photo_id',
                         'photo_formal', 'disc_results'];
@@ -624,6 +625,7 @@ class AdminUserController extends Controller
                             'sortByLastname' => $sortByLastname,
                             'sortByDateSubmitted' => $sortByDateSubmitted,
                             'page' => $page,
+                            'search' => $search,
                         ])->with('success', "{$user}'s {$field} file has been deleted successfully.");
     }
 
@@ -634,6 +636,7 @@ class AdminUserController extends Controller
         $sortByLastname = $request->input('sortByLastname');
         $sortByDateSubmitted = $request->input('sortByDateSubmitted');
         $page = $request->input('page');
+        $search = $request->input('search');
         // \Log::info('Request data: ', $request->all());
         // dd($request->input('display'));
         $validFields = ['videolink', 'resume', 'portfolio', 'photo_id',
@@ -680,6 +683,7 @@ class AdminUserController extends Controller
                             'sortByLastname' => $sortByLastname,
                             'sortByDateSubmitted' => $sortByDateSubmitted,
                             'page' => $page,
+                            'search' => $search,
                         ])->with('success', "{$user}'s {$field} file has been updated successfully.");
     }
 
@@ -690,6 +694,7 @@ class AdminUserController extends Controller
         $sortByLastname = $request->input('sortByLastname');
         $sortByDateSubmitted = $request->input('sortByDateSubmitted');
         $page = $request->input('page');
+        $search = $request->input('search');
 
         $experience = Experience::findOrFail($id);
         $experience->delete();
@@ -702,6 +707,7 @@ class AdminUserController extends Controller
             'sortByLastname' => $sortByLastname,
             'sortByDateSubmitted' => $sortByDateSubmitted,
             'page' => $page,
+            'search' => $search,
         ])->with('success', "{$user}'s experience data has been deleted successfully.");
     }
 

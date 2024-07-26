@@ -70,6 +70,7 @@
                                                         <input type="hidden" name="sortByLastname" value="{{ request('sortByLastname') }}">
                                                         <input type="hidden" name="sortByDateSubmitted" value="{{ request('sortByDateSubmitted') }}">
                                                         <input type="hidden" name="page" value="{{ request('page') }}">
+                                                        <input type="hidden" name="search" value="{{ request('search') }}">
                                                         <button type="submit" class="btn text-danger" class="p-1 text-danger">
                                                             Delete <i class="bi bi-trash"></i>
                                                         </button>
@@ -87,6 +88,7 @@
                                         <input type="hidden" name="sortByLastname" value="{{ request('sortByLastname') }}">
                                         <input type="hidden" name="sortByDateSubmitted" value="{{ request('sortByDateSubmitted') }}">
                                         <input type="hidden" name="page" value="{{ request('page') }}">
+                                        <input type="hidden" name="search" value="{{ request('search') }}">
                                         <div class="col-md-8">
                                             <input name="{{ $field }}" type="file" accept="{{ $informationAcceptType[$field] }}" class="form-control" required>
                                         </div>
