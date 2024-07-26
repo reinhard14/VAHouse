@@ -99,11 +99,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     //deleting user on index.
-    const deleteForms = document.querySelectorAll('.deleteAdminForm');
+    const deleteFromForm = document.querySelectorAll('.deleteItemPrompt');
 
     //deleting admin on index.
-    if (deleteForms) {
-        deleteForms.forEach((form) => {
+    if (deleteFromForm) {
+        deleteFromForm.forEach((form) => {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 handleDeleteConfirmation(form);
@@ -243,5 +243,10 @@ $(document).ready(function() {
             'overflow-y': 'auto'
         });
     });
+
+    // $('.deleteExperience').on('submit', function(e) {
+    //     e.preventDefault();
+    //     handleDeleteConfirmation($(this));
+    // });
 
 });

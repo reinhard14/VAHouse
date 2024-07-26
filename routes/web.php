@@ -62,6 +62,7 @@ Route::prefix('administrator')
         Route::put('users/{id}/password', [AdminUserController::class, 'updatePassword'])->name('update.user.password');
         Route::put('users/files/{id}/update/{field}', [AdminUserController::class, 'updateFile'])->name('update.user.updateFile');
         Route::put('users/files/{id}/delete/{field}', [AdminUserController::class, 'deleteFile'])->name('update.user.deleteFile');
+        Route::delete('users/experiences/{id}/delete/', [AdminUserController::class, 'deleteExperience'])->name('update.user.deleteExperience');
     });
 
 //! User dashboard

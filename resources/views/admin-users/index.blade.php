@@ -265,7 +265,7 @@
                                                             <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal" class="px-2">
                                                                 <i class="bi bi-person-gear"></i> Edit
                                                             </a>
-                                                            <form method="post" action="{{ route('admin.users.destroy', $user->id) }}" class="deleteAdminForm">
+                                                            <form method="post" action="{{ route('admin.users.destroy', $user->id) }}" class="deleteItemPrompt">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit" class="btn text-danger"> <i class="bi bi-person-x"></i> Delete </button>

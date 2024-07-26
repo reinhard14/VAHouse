@@ -683,4 +683,26 @@ class AdminUserController extends Controller
                         ])->with('success', "{$user}'s {$field} file has been updated successfully.");
     }
 
+    public function deleteExperience(Request $request, $id)
+    {
+        $displayIncompleteUsers = $request->input('display');
+        $sortByFirstname = $request->input('sortByFirstname');
+        $sortByLastname = $request->input('sortByLastname');
+        $sortByDateSubmitted = $request->input('sortByDateSubmitted');
+        $page = $request->input('page');
+
+        $experience = Experience::findOrFail($id);
+        $experience->delete();
+
+        $user = $experience->user->name;
+
+        return redirect()->route('admin.users.index', [
+            'display' => $displayIncompleteUsers,
+            'sortByFirstname' => $sortByFirstname,
+            'sortByLastname' => $sortByLastname,
+            'sortByDateSubmitted' => $sortByDateSubmitted,
+            'page' => $page,
+        ])->with('success', "{$user}'s experience data has been deleted successfully.");
+    }
+
 }

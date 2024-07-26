@@ -12,11 +12,12 @@
                 <div class="row text-center mb-5">
                     <div class="col">
                         <div class="btn-group">
-                            <a href="#edit-user-modal-{{ $user->id }}" type="button" class="btn btn-secondary btn-flat" data-bs-toggle="modal">Personal</a>
-                            <a href="#edit-user-profile-modal-{{ $user->id }}" type="button" class="btn btn-secondary btn-flat" data-bs-toggle="modal">Profile</a>
-                            <a href="#edit-user-skillsets-modal-{{ $user->id }}" type="button" class="btn btn-secondary btn-flat" data-bs-toggle="modal">Skillset</a>
-                            <a href="#" type="button" class="btn btn-secondary btn-flat disabled">Files</a>
-                            <a href="#edit-user-password-modal-{{ $user->id }}" type="button" class="btn btn-secondary btn-flat" data-bs-toggle="modal">Password</a>
+                            <a href="#edit-user-modal-{{ $user->id }}" type="button" class="btn btn-secondary btn-flat btn-sm" data-bs-toggle="modal">Personal</a>
+                            <a href="#edit-user-profile-modal-{{ $user->id }}" type="button" class="btn btn-secondary btn-flat btn-sm" data-bs-toggle="modal">Profile</a>
+                            <a href="#edit-user-skillsets-modal-{{ $user->id }}" type="button" class="btn btn-secondary btn-flat btn-sm" data-bs-toggle="modal">Skillset</a>
+                            <a href="#edit-user-experience-modal-{{ $user->id }}" type="button" class="btn btn-secondary btn-flat btn-sm" data-bs-toggle="modal">Experiences</a>
+                            <a href="#" type="button" class="btn btn-secondary btn-flat btn-sm disabled">Files</a>
+                            <a href="#edit-user-password-modal-{{ $user->id }}" type="button" class="btn btn-secondary btn-flat btn-sm" data-bs-toggle="modal">Password</a>
                         </div>
                     </div>
                 </div>
@@ -61,7 +62,7 @@
                                             </div>
                                             @if(isset($user->information->$field) && !is_null($user->information->$field))
                                                 <div class="col-md-4 text-right">
-                                                    <form method="post" action="{{ route('update.user.deleteFile', ['id' => $user->information->id, 'field' => $field]) }}" class="deleteAdminForm filesDelete">
+                                                    <form method="post" action="{{ route('update.user.deleteFile', ['id' => $user->information->id, 'field' => $field]) }}" class="deleteItemPrompt">
                                                         @csrf
                                                         @method('PUT')
                                                         <input type="hidden" name="display" value="{{ request('display') }}">
