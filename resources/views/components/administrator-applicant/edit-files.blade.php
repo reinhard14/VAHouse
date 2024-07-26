@@ -104,17 +104,34 @@
                     @endforeach
 
                     <hr>
+                    @php
+                        $callSamplesFields = ['inbound_call', 'outbound_call'];
 
-                    @if(isset($user->mockcalls))
-                        @php
-                            $callSamplesFields = ['inbound_call', 'outbound_call'];
-
-                            $callSampleLabels = [
-                                                'inbound_call' => 'Inbound Call',
-                                                'outbound_call' => 'Outbound Call',
-                                                ];
-                        @endphp
-
+                        $callSampleLabels = [
+                                            'inbound_call' => 'Inbound Call',
+                                            'outbound_call' => 'Outbound Call',
+                                            ];
+                    @endphp
+                    @if(!isset($user->mockcalls))
+                        <h5 class="text-center">Applicant don't have mockcall files, upload below</h5> {{ $user->id }}
+                        @foreach ($callSamplesFields as $field)
+                            <div class="row pb-3">
+                                <label class="form-label px-3">{{ $callSampleLabels[$field] }}</label>
+                                <form method="post" action="{{ route('update.user.storeFile', ['field' => $field]) }}" enctype="multipart/form-data" class="form-inline filesUpdate">
+                                    @csrf
+                                    <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                    <div class="col-md-8">
+                                        <input name="{{ $field }}" type="file" accept=".mp4, .avi, .mkv, .mov, .wmv, .flv, .webm, .mpeg, .mp3, .wav, .aac, .flac, .ogg, .wma" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-4 text-right">
+                                        <button type="submit" class="btn btn-outline-primary btn-sm" class="p-1 text-danger">
+                                            Update <i class="bi bi-arrow-counterclockwise"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        @endforeach
+                    @else
                         <h5 class="form-label">Mock Calls:</h5>
 
                         @foreach ($callSamplesFields as $field)
@@ -163,7 +180,6 @@
                                 </div>
                             </div>
                         @endforeach
-
                     @endif
 
                 @endif

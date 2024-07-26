@@ -244,9 +244,4 @@ $(document).ready(function() {
         });
     });
 
-    // $('.deleteExperience').on('submit', function(e) {
-    //     e.preventDefault();
-    //     handleDeleteConfirmation($(this));
-    // });
-
 });

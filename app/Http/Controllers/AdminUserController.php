@@ -629,6 +629,50 @@ class AdminUserController extends Controller
                         ])->with('success', "{$user}'s {$field} file has been deleted successfully.");
     }
 
+    public function storeFile(Request $request, $field)
+    {
+        $user_id = $request->input('user_id');
+        $displayIncompleteUsers = $request->input('display');
+        $sortByFirstname = $request->input('sortByFirstname');
+        $sortByLastname = $request->input('sortByLastname');
+        $sortByDateSubmitted = $request->input('sortByDateSubmitted');
+        $page = $request->input('page');
+        $search = $request->input('search');
+
+        $mockValidFields = ['inbound_call', 'outbound_call'];
+
+        $fieldsStorage = [
+            'inbound_call' => 'mockcalls/inbounds',
+            'outbound_call' => 'mockcalls/outbounds',
+        ];
+
+        if (!in_array($field, $mockValidFields)) {
+            return redirect()->back()->with('error', 'Invalid field specified.');
+        }
+
+        $record = new CallSample;
+
+        if ($request->hasFile($field)) {
+            $filePath = $request->file($field)->store($fieldsStorage[$field], 'public');
+            $record->$field = $filePath;
+            $record->user_id = $user_id;
+            $record->save();
+        } else {
+            return redirect()->back()->with('error', 'No file provided.');
+        }
+
+        $user = 'It';
+
+        return redirect()->route('admin.users.index', [
+                            'display' => $displayIncompleteUsers,
+                            'sortByFirstname' => $sortByFirstname,
+                            'sortByLastname' => $sortByLastname,
+                            'sortByDateSubmitted' => $sortByDateSubmitted,
+                            'page' => $page,
+                            'search' => $search,
+                        ])->with('success', "{$user}'s {$field} file has been updated successfully.");
+    }
+
     public function updateFile(Request $request, $id, $field)
     {
         $displayIncompleteUsers = $request->input('display');
