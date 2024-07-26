@@ -15,7 +15,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 //! ADMIN
 Route::prefix('administrator')
-    ->middleware(['auth', 'is_admin'])
+    ->middleware(['auth', 'is.admin'])
     ->group(function () {
 
         // Admin Dashboard Route
@@ -71,11 +71,14 @@ Route::middleware('auth')
         Route::get('user/dashboard', [App\Http\Controllers\UserController::class, 'index'])->name('user.dashboard');
         Route::get('user/create', [App\Http\Controllers\UserController::class, 'create'])->name('user.create');
         Route::post('user/', [App\Http\Controllers\UserController::class, 'store'])->name('user.store');
-        Route::get('user/{user}', [App\Http\Controllers\UserController::class, 'show'])->name('user.show');
-        Route::get('user/{user}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
-        Route::put('user/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
         Route::post('user/experience', [App\Http\Controllers\UserController::class, 'experiences'])->name('user.experience');
         Route::post('user/uploadMockcall', [App\Http\Controllers\UserController::class, 'uploadMockcall'])->name('user.mockcall');
+});
+Route::middleware(['auth', 'check.user.id'])
+    ->group(function () {
+        Route::get('user/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('user.show');
+        Route::get('user/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
+        Route::put('user/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
         Route::delete('user/experiences/{id}', [App\Http\Controllers\UserController::class, 'destroyExperience'])->name('user.experienceDelete');
 });
 

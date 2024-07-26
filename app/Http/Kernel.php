@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         //additional route middleware
         'role.redirect' => \App\Http\Middleware\RedirectBasedOnRoleId::class,
-        'is_admin' => \App\Http\Middleware\IsAdminMiddleware::class,
+        'is.admin' => \App\Http\Middleware\IsAdminMiddleware::class,
+        'check.user.id' => \App\Http\Middleware\CheckUserId::class,
     ];
 }
