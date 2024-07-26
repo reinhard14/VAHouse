@@ -384,14 +384,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="photo_id"><span class="text-danger">*</span> Two Valid IDs: <strong>(Attach PDF)</strong> </label>
+                                    <label for="photo_id"><span class="text-danger">*</span> Two Valid IDs: <strong>(Attach PDF - 64MB limit)</strong> </label>
 
                                     <input name="photo_id" type="file" accept=".jpeg, .jpg, .png, .pdf" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="photo_formal"><span class="text-danger">*</span> Formal Photo</label>
+                                    <label for="photo_formal"><span class="text-danger">*</span> Formal Photo <strong>(64MB limit)</strong></label>
 
                                     <input name="photo_formal" type="file" accept=".jpeg, .jpg, .png" class="form-control" required>
                                 </div>
@@ -401,7 +401,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="resume"><span class="text-danger">*</span> Attach resume/CV here: <strong>(PDF file only)</strong></label>
+                                    <label for="resume"><span class="text-danger">*</span> Attach resume/CV here: <strong>(PDF file only - 32MB limit)</strong></label>
 
                                     <input name="resume" type="file" accept="application/pdf" class="form-control" required>
                                 </div>
@@ -409,7 +409,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="disc_results"><span class="text-danger">*</span> DISC Result: <strong>(PDF file only)</strong></label>
+                                    <label for="disc_results"><span class="text-danger">*</span> DISC Result: <strong>(PDF file only - 32MB limit)</strong></label>
 
                                     <input name="disc_results" type="file" accept="application/pdf" class="form-control" required>
                                 </div>
@@ -420,7 +420,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="portfolio"><span class="text-danger">*</span> Portfolio: </label>
+                                    <label for="portfolio"><span class="text-danger">*</span> Portfolio: <strong>(PDF file only - 64MB limit)</strong></label>
 
                                     <input name="portfolio" id="portfolio" type="file" class="form-control" required>
                                 </div>
@@ -428,7 +428,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="videolink"><span class="text-danger">*</span> Upload video introduction: <strong>(100 MB limit)</strong> </label>
+                                    <label for="videolink"><span class="text-danger">*</span> Upload video introduction: <strong>(128MB limit)</strong> </label>
 
                                     <input name="videolink" type="file" accept=".mp4, .avi, .mkv, .mov, .wmv, .flv, .webm, .mpeg" class="form-control" required>
                                 </div>
