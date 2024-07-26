@@ -113,7 +113,7 @@
                                             ];
                     @endphp
                     @if(!isset($user->mockcalls))
-                        <h5 class="text-center">Applicant don't have mockcall files, upload below</h5> {{ $user->id }}
+                        <h5 class="text-center">Applicant don't have mockcall files, upload below</h5>
                         @foreach ($callSamplesFields as $field)
                             <div class="row pb-3">
                                 <label class="form-label px-3">{{ $callSampleLabels[$field] }}</label>
