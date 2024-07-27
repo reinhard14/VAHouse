@@ -314,8 +314,9 @@ class UserController extends Controller
     {
         $experience = Experience::find($id);
         $experience->delete();
+        $userId = Auth::id();
 
-        return redirect()->route('user.show', Auth::id());
+        return redirect()->route('user.show', $userId);
     }
 
 }

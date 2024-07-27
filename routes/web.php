@@ -74,13 +74,13 @@ Route::middleware('auth')
         Route::post('user/', [App\Http\Controllers\UserController::class, 'store'])->name('user.store');
         Route::post('user/experience', [App\Http\Controllers\UserController::class, 'experiences'])->name('user.experience');
         Route::post('user/uploadMockcall', [App\Http\Controllers\UserController::class, 'uploadMockcall'])->name('user.mockcall');
+        Route::delete('user/experiences/{id}', [App\Http\Controllers\UserController::class, 'destroyExperience'])->name('user.experienceDelete');
 });
 Route::middleware(['auth', 'check.user.id'])
     ->group(function () {
         Route::get('user/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('user.show');
         Route::get('user/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
         Route::put('user/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
-        Route::delete('user/experiences/{id}', [App\Http\Controllers\UserController::class, 'destroyExperience'])->name('user.experienceDelete');
 });
 
 //! Public

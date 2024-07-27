@@ -11,16 +11,6 @@
 
                 <div class="card-body">
                     @include('includes.messages')
-                    {{--
-                    <div class="row p-2">
-                        <div class="col-md-6">
-                            @if (!isset($user->information->photo_id))
-                                N/A
-                            @else
-                                <img src="{{ asset('storage/' . $user->information->photo_formal) }}" alt="formal photo" height="250px" class="border border-primary">
-                            @endif
-                        </div>
-                    </div> --}}
 
                     <div class="row p-2">
                         <div class="col-md-3">Name:</div>

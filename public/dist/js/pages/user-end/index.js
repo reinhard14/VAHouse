@@ -107,4 +107,11 @@ $(document).ready(function() {
         placeholder: 'Select from list or type all of your soft skills, if not in the list manually type in the field and separate by "enter" or "tab".',
         // allowClear: true,
     });
+
+    $('.modal.long').on('shown.bs.modal', function () {
+        $(this).find('.modal-body').css({
+            'max-height': '400px',
+            'overflow-y': 'auto'
+        });
+    });
 });

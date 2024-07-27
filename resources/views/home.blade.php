@@ -302,9 +302,10 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col">
-                                            <label for="experience"><span class="text-danger">
-                                                *</span> Total years of experience: </label>
-                                                <strong>(Click to <a href="#create-details-modal" data-bs-toggle="modal" class="button">Expand</a>)</strong>
+                                            <label for="experience"><span class="text-danger">*</span>
+                                                Total years of experience:
+                                            </label>
+                                            <strong>(Click to <a href="#create-details-modal" data-bs-toggle="modal" class="button">Expand</a>)</strong>
                                         </div>
                                     </div>
 
@@ -435,9 +436,16 @@
                             </div>
                         </div>
 
+                        {{-- <div class="row">
+                            <div class="col-md-6">
+                                <label for="references"><span class="text-danger">*</span> <strong> Additional References:</strong> </label>
+                                <button class="btn btn-primary btn-sm d-block px-5 mx-3" data-bs-toggle="modal" data-bs-target="#create-references-modal">Click here</button>
+                            </div>
+                        </div> --}}
+
                         <hr>
 
-                        <div class="row mb-5 p-5">
+                        <div class="row mb-5 pb-5">
                             <h4 class="text-center mb-3">
                                 Position/s Applying For
                             </h4>
@@ -530,6 +538,7 @@
 
 
 <x-applicant.guidelines />
+{{-- <x-applicant.references /> --}}
 <x-applicant.details />
 <x-applicant.mock-call />
 
