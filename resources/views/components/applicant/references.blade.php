@@ -1,4 +1,5 @@
 <!-- Add references Modal -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <div class="modal fade long" id="create-references-modal" tabindex="-1">
     <div class="modal-dialog">
@@ -8,9 +9,9 @@
                 <button type="button" class="close" data-bs-dismiss="modal">x</button>
             </div>
 
-            {{-- <form method="POST" action="#">
+            <form method="POST" action="{{ route('user.references.store') }}">
                 @csrf
-                <input type="hidden" name="user_id" id="user_id" value="{{ Auth::id(); }}"> --}}
+                <input type="hidden" name="user_id" id="user_id" value="{{ Auth::id(); }}">
                 <div class="modal-body">
                     <div class="row mb-3">
                         <div class="col">
@@ -45,18 +46,20 @@
                     <div class="row mb-4">
                         <div class="col">
                             <label class="form-label" for="referral">How did you learn about the job opening?</label>
-                            <select class="form-control">
+                            <select class="form-control" name="referral">
                                 <option value="Facebook">Facebook</option>
                                 <option value="Referral">Referral</option>
                                 <option value="Onlinejobs.com">Onlinejobs.com</option>
+                                <option value="LinkedIn">LinkedIn</option>
+                                <option value="Others">Others</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="row mb-4">
                         <div class="col">
-                            <label class="form-label" for="preffered_shift">Preferred shift</label>
-                            <select class="form-control">
+                            <label class="form-label" for="preferred_shift">Preferred shift</label>
+                            <select class="form-control" name="preferred_shift">
                                 <option value="Night Shift">Night Shift</option>
                                 <option value="Day Shift">Day Shift</option>
                             </select>
@@ -66,7 +69,7 @@
                     <div class="row mb-4">
                         <div class="col">
                             <label class="form-label" for="work_status">Work Status</label>
-                            <select class="form-control">
+                            <select class="form-control" name="work_status">
                                 <option value="Part-time">Part-time</option>
                                 <option value="Full-time">Full-time</option>
                                 <option value="Hybrid">Hybrid (Both full-time & part-time for multiple client)</option>
@@ -77,7 +80,7 @@
                     <div class="row mb-4">
                         <div class="col">
                             <label class="form-label" for="services_offered">Services Offered</label>
-                            <select id="services_offered" name="services_offered" class="form-control select2"  multiple="multiple" style="width: 100%;">
+                            <select id="services_offered" name="services_offered[]" class="form-control select2"  multiple="multiple" style="width: 100%;">
                                 <option value="General Virtual Assistant">General Virtual Assistant (Cold Calling, Email & Chat Support)</option>
                                 <option value="Social Media Management">Social Media Management</option>
                                 <option value="Accounting and bookkeeping">Accounting and bookkeeping</option>
@@ -95,14 +98,14 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-sm" id="saveButton">
+                    <button type="submit" class="btn btn-primary btn-sm">
                         <i class="bi bi-plus-square mr-1"></i> Add
                     </button>
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
                         <i class="bi bi-file-x"></i> Close
                     </button>
                 </div>
-            {{-- </form> --}}
+            </form>
         </div>
     </div>
 </div>
@@ -110,7 +113,7 @@
 <script>
     $(document).ready(function(){
         $('#services_offered').select2({
-            placeholder: 'Please select services offered.'
+            placeholder: 'Please select services offered.',
         });
     });
 </script>

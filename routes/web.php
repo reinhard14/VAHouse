@@ -74,6 +74,7 @@ Route::middleware('auth')
         Route::post('user/', [App\Http\Controllers\UserController::class, 'store'])->name('user.store');
         Route::post('user/experience', [App\Http\Controllers\UserController::class, 'experiences'])->name('user.experience');
         Route::post('user/uploadMockcall', [App\Http\Controllers\UserController::class, 'uploadMockcall'])->name('user.mockcall');
+        Route::post('user/references', [UserController::class, 'storeReferences'])->name('user.references.store');
         Route::delete('user/experiences/{id}', [App\Http\Controllers\UserController::class, 'destroyExperience'])->name('user.experienceDelete');
 });
 Route::middleware(['auth', 'check.user.id'])

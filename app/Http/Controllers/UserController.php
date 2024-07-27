@@ -7,6 +7,7 @@ use App\Models\ApplicantInformation;
 use App\Models\CallSample;
 use App\Models\User;
 use App\Models\Experience;
+use App\Models\Reference;
 // use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -271,7 +272,7 @@ class UserController extends Controller
 
     public function uploadMockcall(Request $request) {
         // Log the entire request data
-        Log::info('Request data:', $request->all());
+        // Log::info('Request data:', $request->all());
 
         $this->validate($request, [
             'inbound_call' => 'required|mimes:mp4,avi,mov,wmv,mp3,wav,aac,flac,ogg,wma|max:32000',
@@ -308,6 +309,40 @@ class UserController extends Controller
             'mockcalls' => $callSample,
 
         ]);
+    }
+
+    public function storeReferences(Request $request)
+    {
+        $this->validate($request, [
+            'emergency_person' => 'required',
+            'emergency_relationship' => 'required',
+            'emergency_number' => 'required',
+            'start_date' => 'required',
+            'department' => 'required',
+            'team_leader' => 'required',
+            'referral' => 'required',
+            'preferred_shift' => 'required',
+            'work_status' => 'required',
+            'services_offered' => 'required|array',
+        ]);
+
+        $userId = Auth::id();
+        $id = ['user_id' => $userId];
+        $reference = Reference::firstOrNew($id);
+        $reference->emergency_person = $request->input('emergency_person');
+        $reference->emergency_relationship = $request->input('emergency_relationship');
+        $reference->emergency_number = $request->input('emergency_number');
+        $reference->start_date = $request->input('start_date');
+        $reference->department = $request->input('department');
+        $reference->team_leader = $request->input('team_leader');
+        $reference->referral = $request->input('referral');
+        $reference->preferred_shift = $request->input('preferred_shift');
+        $reference->work_status = $request->input('work_status');
+        $reference->services_offered = $request->input('services_offered');
+        $reference->user_id = $userId;
+        $reference->save();
+
+        return redirect()->route('user.dashboard')->with('success', 'Additional references has been saved.');
     }
 
     public function destroyExperience($id)

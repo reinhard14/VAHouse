@@ -436,12 +436,12 @@
                             </div>
                         </div>
 
-                        {{-- <div class="row">
+                        <div class="row">
                             <div class="col-md-6">
                                 <label for="references"><span class="text-danger">*</span> <strong> Additional References:</strong> </label>
                                 <button class="btn btn-primary btn-sm d-block px-5 mx-3" data-bs-toggle="modal" data-bs-target="#create-references-modal">Click here</button>
                             </div>
-                        </div> --}}
+                        </div>
 
                         <hr>
 
@@ -538,7 +538,7 @@
 
 
 <x-applicant.guidelines />
-{{-- <x-applicant.references /> --}}
+<x-applicant.references />
 <x-applicant.details />
 <x-applicant.mock-call />
 
