@@ -54,33 +54,36 @@
                                     $applicantPositions = json_decode($user->information->positions, true);
                                 }
                             @endphp
+                            @if(is_null($user->information->positions) || !isset($user->information->positions))
+                                <h5>Not available</h5>
+                            @else
+                                <select class="form-control select2 positions" name="positions[]" multiple="multiple">
+                                    @php
+                                        $dynamicPositions = $applicantPositions;
 
-                            <select class="form-control select2 positions" name="positions[]" multiple="multiple">
-                                @php
-                                    $dynamicPositions = $applicantPositions;
+                                        $staticPositions = [
+                                            'General Virtual Assistant',
+                                            'Social Media Manager',
+                                            'Callers',
+                                            'Web Developers',
+                                            'Tech VAs',
+                                            'Project Manager',
+                                        ];
 
-                                    $staticPositions = [
-                                        'General Virtual Assistant',
-                                        'Social Media Manager',
-                                        'Callers',
-                                        'Web Developers',
-                                        'Tech VAs',
-                                        'Project Manager',
-                                    ];
+                                        $allPositions = array_unique(array_merge($dynamicPositions, $staticPositions));
+                                    @endphp
 
-                                    $allPositions = array_unique(array_merge($dynamicPositions, $staticPositions));
-                                @endphp
-
-                                @if (!empty($applicantPositions) && is_array($applicantPositions))
-                                    @foreach ($allPositions as $position)
-                                        <option value="{{ $position }}" {{ in_array($position, $applicantPositions) ? 'selected' : '' }}>{{ $position }}</option>
-                                    @endforeach
-                                @else
-                                    @foreach ($allPositions as $position)
-                                        <option value="{{ $position }}">{{ $position }}</option>
-                                    @endforeach
-                                @endif
-                            </select>
+                                    @if (!empty($applicantPositions) && is_array($applicantPositions))
+                                        @foreach ($allPositions as $position)
+                                            <option value="{{ $position }}" {{ in_array($position, $applicantPositions) ? 'selected' : '' }}>{{ $position }}</option>
+                                        @endforeach
+                                    @else
+                                        @foreach ($allPositions as $position)
+                                            <option value="{{ $position }}">{{ $position }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            @endif
                         </div>
                     </div>
 
