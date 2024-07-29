@@ -12,3 +12,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 });
+
+
+$(document).ready(function() {
+    $('.modal.long').on('shown.bs.modal', function () {
+        $(this).find('.modal-body').css({
+            'max-height': '400px',
+            'overflow-y': 'auto'
+        });
+    });
+});

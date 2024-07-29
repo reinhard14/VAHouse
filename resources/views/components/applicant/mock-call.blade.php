@@ -1,7 +1,7 @@
 <!-- Add mock call modal -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-<div class="modal fade" id="mock-call-modal" tabindex="-1">
+<div id="mock-call-modal" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -15,24 +15,24 @@
             </div>
             <form id="callsForm" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="user_id" id="user_id" value="{{ Auth::id(); }}">
+                <input type="hidden" id="user_id" name="user_id" value="{{ Auth::id(); }}">
                 <div class="modal-body">
                     <div class="row p-3">
                         <div class="col">
-                            <label class="form-label" for="inbound_call">Inbound recorded mock call <strong>(32MB limit)</strong></label>
-                            <input id="inbound_call" name="inbound_call" type="file" class="form-control">
+                            <label for="inbound_call" class="form-label">Inbound recorded mock call <strong>(32MB limit)</strong></label>
+                            <input type="file" id="inbound_call" name="inbound_call" class="form-control">
                         </div>
                     </div>
                     <div class="row p-3">
                         <div class="col">
-                            <label class="form-label" for="outbound_call">Outbound recorded mock call <strong>(32MB limit)</strong></label>
-                            <input id="outbound_call" name="outbound_call" type="file" class="form-control">
+                            <label for="outbound_call" class="form-label">Outbound recorded mock call <strong>(32MB limit)</strong></label>
+                            <input type="file" id="outbound_call" name="outbound_call" class="form-control">
                         </div>
                     </div>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-sm" id="saveMockCall">
+                    <button type="submit" id="saveMockCall" class="btn btn-primary btn-sm">
                         <i class="bi bi-plus-square mr-1"></i> Add
                     </button>
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">

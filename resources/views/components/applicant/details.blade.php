@@ -1,7 +1,7 @@
 <!-- Add details Modal -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-<div class="modal fade" id="create-details-modal" tabindex="-1">
+<div id="create-details-modal" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -15,18 +15,18 @@
             </div>
             <form id="experienceForm">
                 @csrf
-                <input type="hidden" name="user_id" id="user_id" value="{{ Auth::id(); }}">
+                <input type="hidden" id="user_id" name="user_id" value="{{ Auth::id(); }}">
                 <div class="modal-body">
-                    <label class="form-label" for="title">Job Experience</label>
-                    <input class="form-control mb-2" type="text" id="title" name="title">
+                    <label for="title" class="form-label">Job Experience</label>
+                    <input type="text" id="title" name="title" class="form-control mb-2">
 
-                    <label class="form-label" for="duration">Duration of experience</label>
-                    <input class="form-control mb-2" type="text" id="duration" name="duration">
+                    <label for="duration" class="form-label">Duration of experience</label>
+                    <input type="text" id="duration" name="duration" class="form-control mb-2" >
                     <small>ex. 1 year 6 months</small>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-sm" id="saveButton">
+                    <button type="submit" id="saveButton" class="btn btn-primary btn-sm">
                         <i class="bi bi-plus-square mr-1"></i> Add
                     </button>
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
@@ -40,6 +40,7 @@
 
 <script>
     $(document).ready(function(){
+
         $('#saveButton').on('click', function(e){
             e.preventDefault();
 
@@ -60,6 +61,7 @@
                     handleExperienceFormSubmission();
                     $('#experienceForm')[0].reset();
                     $('#noExperiencePlaceholder').remove();
+
                     const hasExperiences = response.exists;
 
                     if (!hasExperiences) {
@@ -95,10 +97,20 @@
                     }
 
                     $('#create-details-modal').modal('hide');
-
                 },
-                error: function(response) {
-                    alert('Please fill the fields with a correct data.');
+                error: function(jqXHR) {
+                    try {
+                        var responseJson = JSON.parse(jqXHR.responseText);
+                        var errorResponse = responseJson.errors
+                            ? Object.values(responseJson.errors).flat()
+                            : 'No errors found in the response';
+
+                        formattedResponse = JSON.stringify(errorResponse);
+                        console.log(formattedResponse);
+                        handleReferencesWithMissingField(formattedResponse);
+                    } catch (e) {
+                        alert('Invalid JSON response: ' + jqXHR.responseText);
+                    }
                 }
             });
         });

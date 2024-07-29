@@ -1,7 +1,7 @@
 <!-- Add references Modal -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-<div class="modal fade long" id="create-references-modal" tabindex="-1">
+<div id="create-references-modal" class="modal fade long" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,44 +9,44 @@
                 <button type="button" class="close" data-bs-dismiss="modal">x</button>
             </div>
 
-            <form method="POST" action="{{ route('user.references.store') }}">
+            <form>
                 @csrf
-                <input type="hidden" name="user_id" id="user_id" value="{{ Auth::id(); }}">
+                <input type="hidden" id="user_id" name="user_id" value="{{ Auth::id(); }}">
                 <div class="modal-body">
                     <div class="row mb-3">
                         <div class="col">
                             <label class="form-label">Incase of Emergency</label>
-                            <input class="form-control mb-2" type="text" name="emergency_person" placeholder="Name of person" required>
-                            <input class="form-control mb-2" type="text" name="emergency_relationship" placeholder="Relationship with the person" required>
-                            <input class="form-control mb-2" type="text" name="emergency_number" placeholder="Contact number of person" required>
+                            <input type="text" id="emergency_person" name="emergency_person" class="form-control mb-2" placeholder="Name of person">
+                            <input type="text" id="emergency_relationship" name="emergency_relationship" class="form-control mb-2" placeholder="Relationship with the person">
+                            <input type="text" id="emergency_number" name="emergency_number" class="form-control mb-2" placeholder="Contact number of person">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col">
-                            <label class="form-label" for="start_date">Date of Commencement</label>
-                            <input class="form-control mb-2" type="date" name="start_date" required>
+                            <label for="start_date" class="form-label">Date of Commencement</label>
+                            <input type="date" id="start_date" name="start_date" class="form-control mb-2">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col">
-                            <label class="form-label" for="start_date">Department / Direct Client Name</label>
-                            <input class="form-control mb-2" type="text" name="department" placeholder="Enter department/client name here" required>
+                            <label for="department" class="form-label">Department / Direct Client Name</label>
+                            <input type="text" id="department" name="department" class="form-control mb-2" placeholder="Enter department/client name here">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col">
-                            <label class="form-label" for="start_date">Team Leader / Direct Client Name</label>
-                            <input class="form-control mb-2" type="text" name="team_leader" placeholder="Enter Team leader/client name here" required>
+                            <label for="team_leader" class="form-label">Team Leader / Direct Client Name</label>
+                            <input type="text" id="team_leader" name="team_leader" class="form-control mb-2" placeholder="Enter Team leader/client name here">
                         </div>
                     </div>
 
                     <div class="row mb-4">
                         <div class="col">
-                            <label class="form-label" for="referral">How did you learn about the job opening?</label>
-                            <select class="form-control" name="referral">
+                            <label for="referral" class="form-label">How did you learn about the job opening?</label>
+                            <select id="referral" name="referral" class="form-control">
                                 <option value="Facebook">Facebook</option>
                                 <option value="Referral">Referral</option>
                                 <option value="Onlinejobs.com">Onlinejobs.com</option>
@@ -59,7 +59,7 @@
                     <div class="row mb-4">
                         <div class="col">
                             <label class="form-label" for="preferred_shift">Preferred shift</label>
-                            <select class="form-control" name="preferred_shift">
+                            <select id="preferred_shift" name="preferred_shift" class="form-control">
                                 <option value="Night Shift">Night Shift</option>
                                 <option value="Day Shift">Day Shift</option>
                             </select>
@@ -68,8 +68,8 @@
 
                     <div class="row mb-4">
                         <div class="col">
-                            <label class="form-label" for="work_status">Work Status</label>
-                            <select class="form-control" name="work_status">
+                            <label for="work_status" class="form-label">Work Status</label>
+                            <select id="work_status" name="work_status" class="form-control">
                                 <option value="Part-time">Part-time</option>
                                 <option value="Full-time">Full-time</option>
                                 <option value="Hybrid">Hybrid (Both full-time & part-time for multiple client)</option>
@@ -79,8 +79,8 @@
 
                     <div class="row mb-4">
                         <div class="col">
-                            <label class="form-label" for="services_offered">Services Offered</label>
-                            <select id="services_offered" name="services_offered[]" class="form-control select2"  multiple="multiple" style="width: 100%;">
+                            <label for="services_offered" class="form-label">Services Offered</label>
+                            <select id="services_offered" name="services_offered[]" class="form-control select2" multiple="multiple" style="width: 100%;">
                                 <option value="General Virtual Assistant">General Virtual Assistant (Cold Calling, Email & Chat Support)</option>
                                 <option value="Social Media Management">Social Media Management</option>
                                 <option value="Accounting and bookkeeping">Accounting and bookkeeping</option>
@@ -98,7 +98,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-sm">
+                    <button type="submit" id="saveReferencesButton" class="btn btn-primary btn-sm">
                         <i class="bi bi-plus-square mr-1"></i> Add
                     </button>
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
@@ -115,5 +115,58 @@
         $('#services_offered').select2({
             placeholder: 'Please select services offered.',
         });
+    });
+
+    $('#saveReferencesButton').on('click', function(e){
+        e.preventDefault();
+        $(this).attr('disabled', true);
+
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        var formData = {
+            emergency_person: $('#emergency_person').val(),
+            emergency_relationship: $('#emergency_relationship').val(),
+            emergency_number: $('#emergency_number').val(),
+            emergency_person: $('#emergency_person').val(),
+            start_date: $('#start_date').val(),
+            department: $('#department').val(),
+            team_leader: $('#team_leader').val(),
+            referral: $('#referral').val(),
+            preferred_shift: $('#preferred_shift').val(),
+            work_status: $('#work_status').val(),
+            services_offered: $('#services_offered').val(),
+            user_id: $('#user_id').val(),
+            _token: csrfToken,
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '{{ route("user.references.store") }}' ,
+            data: formData,
+
+            success: function(response) {
+                handleReferencesFormSubmission();
+                $('#create-references-modal').modal('hide');
+            },
+
+            error: function(jqXHR) {
+                try {
+                    var responseJson = JSON.parse(jqXHR.responseText);
+                    var errorResponse = responseJson.errors
+                        ? Object.values(responseJson.errors).flat()
+                        : 'No errors found in the response';
+
+                    formattedResponse = JSON.stringify(errorResponse);
+                    console.log(formattedResponse);
+                    handleReferencesWithMissingField(formattedResponse);
+                } catch (e) {
+                    alert('Invalid JSON response: ' + jqXHR.responseText);
+                }
+            },
+        });
+
+        setTimeout(() => {
+                        $(this).removeAttr('disabled');
+                    }, 10000);
     });
 </script>

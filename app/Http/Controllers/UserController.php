@@ -324,6 +324,17 @@ class UserController extends Controller
             'preferred_shift' => 'required',
             'work_status' => 'required',
             'services_offered' => 'required|array',
+        ], [
+            'emergency_person.required' => 'Please enter the name of emergency person.',
+            'emergency_relationship.required' => 'Please enter the relationship with the person.',
+            'emergency_number.required' => 'Please enter the number of the person.',
+            'start_date.required' => 'Kindly select a date of commencement.',
+            'department.required' => 'Please add the department/client you belong.',
+            'team_leader.required' => 'Please add the team leader/client you belong.',
+            'referral.required' => 'Please select where you heard from us.',
+            'preferred_shift.required' => 'Please select preferred working shift.',
+            'work_status.required' => 'Select work status.',
+            'services_offered.required' => 'Please select services offered from the choices.',
         ]);
 
         $userId = Auth::id();

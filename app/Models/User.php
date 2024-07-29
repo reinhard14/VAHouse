@@ -14,6 +14,7 @@ use App\Models\Status;
 use App\Models\Tier;
 use App\Models\ApplicantInformation;
 use App\Models\CallSample;
+use App\Models\Reference;
 
 
 class User extends Authenticatable
@@ -91,5 +92,9 @@ class User extends Authenticatable
 
     public function mockcalls() {
         return $this->hasOne(CallSample::class);
+    }
+
+    public function references() {
+        return $this->hasOne(Reference::class);
     }
 }

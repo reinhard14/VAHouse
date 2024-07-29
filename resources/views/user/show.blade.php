@@ -143,6 +143,8 @@
                         <div class="col-md-3">{{ $user->created_at->diffForHumans() }}</div>
                     </div>
 
+                    <hr>
+
                     @if (isset($user->mockcalls))
                         <div class="row p-2">
                             <div class="col-md-3">
@@ -151,21 +153,32 @@
                             <div class="col-md-3">
                                 <a href="#mock-call-modal" class="btn btn-outline-primary btn-sm px-5" data-bs-toggle="modal">Edit</a>
                             </div>
-                        </div>
 
-                        <div class="row p-2" id="callersRow">
                             <div class="col-md-3" id="inboundLabel">
                                 <label> Inbound: </label>
                             </div>
                             <div class="col-md-3" id="inboundLink">
                                 <a href="{{ route('view.pdf', $user->mockcalls->inbound_call ?? '') }}" target="_blank">Open</a>
                             </div>
+                        </div>
 
+                        <div id="callersRow" class="row p-2 justify-content-end">
                             <div class="col-md-3" id="outboundLabel">
                                 <label> Outbound: </label>
                             </div>
                             <div class="col-md-3" id="outboundLink">
                                 <a href="{{ route('view.pdf', $user->mockcalls->outbound_call ?? '') }}" target="_blank">Open</a>
+                            </div>
+                        </div>
+                    @endif
+
+                    @if (isset($user->references))
+                        <div class="row p-2">
+                            <div class="col-md-3">
+                                <strong>References:</strong>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="#view-references-modal-{{ Auth::id() }}" class="btn btn-outline-primary btn-sm px-5" data-bs-toggle="modal">View</a>
                             </div>
                         </div>
                     @endif
@@ -298,6 +311,8 @@
 
 
 <x-applicant.details />
+<x-applicant.view-references :user="$user"  />
 <x-applicant.mock-call />
+
 <script src="{{ asset('dist/js/pages/user-end/show.js') }}"> </script>
 @endsection

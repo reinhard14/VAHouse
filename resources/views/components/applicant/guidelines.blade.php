@@ -1,5 +1,5 @@
 <!-- Guidelines Modal Component -->
-<div class="modal fade" id="guidelinesModal" tabindex="-1">
+<div id="guidelinesModal" class="modal fade" tabindex="-1">
     <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
