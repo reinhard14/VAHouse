@@ -252,8 +252,10 @@ class UserController extends Controller
             'title' => 'required',
             'duration' => 'required',
             'user_id' => 'required',
+        ], [
+            'title.required' => 'Job title is a required field.',
+            'duration.required' => 'Duration of work a is required field.',
         ]);
-
         $exists = Experience::where('user_id', $request->input('user_id'))->exists();
 
         $experience = new Experience();
