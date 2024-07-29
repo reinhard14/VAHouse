@@ -54,7 +54,7 @@
                                     $applicantPositions = json_decode($user->information->positions, true);
                                 }
                             @endphp
-                            @if(is_null($user->information->positions) || !isset($user->information->positions))
+                            @if(is_null($user->information) || is_null($user->information->positions) || !isset($user->information->positions))
                                 <h5>Not available</h5>
                             @else
                                 <select class="form-control select2 positions" name="positions[]" multiple="multiple">
