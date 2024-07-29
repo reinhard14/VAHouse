@@ -81,6 +81,7 @@
                                         $mergedPositions = array_merge($filteredDynamicPositions, $filteredStaticPositions);
                                         $allPositions = array_unique($mergedPositions);
                                     @endphp
+
                                     @if(empty($allPositions))
                                         <h5>Not available</h5>
                                     @else

@@ -39,7 +39,7 @@
                         <div class="row p-2">
                             <div class="col-md-3">Suffix:</div>
                             <div class="col-md-9">
-                                <input type="text" name="suffix" class="form-control" value="{{ $user->suffix}}">
+                                <input type="text" name="suffix" class="form-control" value="{{ $user->suffix}}" placeholder="Leave suffix blank if none..">
                             </div>
                         </div>
 
