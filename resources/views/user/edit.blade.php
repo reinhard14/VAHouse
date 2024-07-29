@@ -18,21 +18,35 @@
                         <div class="row p-2">
                             <div class="col-md-3">First Name:</div>
                             <div class="col-md-9">
-                                <input name="name" type="text" value="{{ $user->name}}" class="form-control">
+                                <input type="text" name="name" class="form-control" value="{{ $user->name}}">
                             </div>
                         </div>
 
                         <div class="row p-2">
                             <div class="col-md-3">Last Name:</div>
                             <div class="col-md-9">
-                                <input name="lastname" type="text" value="{{ $user->lastname}}" class="form-control">
+                                <input type="text" name="lastname" class="form-control" value="{{ $user->lastname}}">
+                            </div>
+                        </div>
+
+                        <div class="row p-2">
+                            <div class="col-md-3">Middle Name:</div>
+                            <div class="col-md-9">
+                                <input type="text" name="middlename" class="form-control" value="{{ $user->middlename}}">
+                            </div>
+                        </div>
+
+                        <div class="row p-2">
+                            <div class="col-md-3">Suffix:</div>
+                            <div class="col-md-9">
+                                <input type="text" name="suffix" class="form-control" value="{{ $user->suffix}}">
                             </div>
                         </div>
 
                         <div class="row p-2">
                             <div class="col-md-3">Age:</div>
                             <div class="col-md-9">
-                                <input name="age" type="number" value="{{ $user->age}}" class="form-control">
+                                <input type="number" name="age" class="form-control" min="18" value="{{ $user->age}}">
                             </div>
                         </div>
 
@@ -70,28 +84,28 @@
                         <div class="row p-2">
                             <div class="col-md-3">Contact Number:</div>
                             <div class="col-md-9">
-                                <input name="contactnumber" type="text" value="{{ $user->contactnumber}}" class="form-control">
+                                <input type="text" name="contactnumber" class="form-control" value="{{ $user->contactnumber}}">
                             </div>
                         </div>
 
                         <div class="row p-2">
                             <div class="col-md-3">Address:</div>
                             <div class="col-md-9">
-                                <input name="address" type="text" value="{{ $user->address}}" class="form-control">
+                                <input type="text" name="address" class="form-control" value="{{ $user->address}}">
                             </div>
                         </div>
 
                         <div class="row p-2">
                             <div class="col-md-3">Email:</div>
                             <div class="col-md-9">
-                                <input name="email" type="email" value="{{ $user->email}}" class="form-control">
+                                <input type="email" name="email" class="form-control" value="{{ $user->email}}">
                             </div>
                         </div>
 
                         <div class="row p-2 mb-5">
                             <div class="col-md-3">Password:</div>
                             <div class="col-md-9">
-                                <input name="password" type="password" class="form-control" data-toggle="password" required>
+                                <input type="password" name="password" class="form-control" data-toggle="password" required>
                             </div>
                         </div>
 

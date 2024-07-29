@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const experience = document.getElementById('experience');
 
-    experience.addEventListener('keyup', () => {
+    experience.addEventListener('blur', () => {
         remindExpandExperience();
     });
 

@@ -235,6 +235,8 @@ class UserController extends Controller
 
         $user->name = $request->input('name');
         $user->lastname = $request->input('lastname');
+        $user->middlename = $request->input('middlename');
+        $user->suffix = $request->input('suffix');
         $user->contactnumber = $request->input('contactnumber');
         $user->email = $request->input('email');
         $user->age = $request->input('age');

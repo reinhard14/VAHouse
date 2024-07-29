@@ -305,7 +305,9 @@
                                             <label for="experience"><span class="text-danger">*</span>
                                                 Total years of experience:
                                             </label>
-                                            <strong>(Click to <a href="#create-details-modal" data-bs-toggle="modal" class="button">Expand</a>)</strong>
+                                        </div>
+                                        <div class="col text-right">
+                                            <button href="#create-details-modal" data-bs-toggle="modal" class="btn btn-primary btn-sm">Expand</button>
                                         </div>
                                     </div>
 

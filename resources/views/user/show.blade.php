@@ -17,7 +17,7 @@
                         <div class="col-md-3">{{ $user->name}} {{ $user->lastname }}</div>
 
                         <div class="col-md-6 text-right">
-                            @if (!isset($user->information->photo_id))
+                            @if (!isset($user->information->photo_id) || is_null($user->information->photo_id))
                                 N/A
                             @else
                                 <img src="{{ asset('storage/' . $user->information->photo_formal) }}" alt="formal photo" height="250px" class="border border-primary">
@@ -76,7 +76,7 @@
                     <div class="row p-2">
                         <div class="col-md-3">ID Attachments:</div>
 
-                        @if (!isset($user->information->photo_id) && is_null($user->information->photo_id))
+                        @if (!isset($user->information->photo_id) || is_null($user->information->photo_id))
                             <div class="col-md-3"><a href="#">N/A</a></div>
                         @else
                             <div class="col-md-3"><a href="{{ route('view.pdf', $user->information->photo_id) }}" target="_blank">Open File</a></div>
@@ -84,7 +84,7 @@
 
                         <div class="col-md-3">Formal Photos</div>
 
-                        @if (!isset($user->information->photo_formal) && is_null($user->information->photo_formal))
+                        @if (!isset($user->information->photo_formal) || is_null($user->information->photo_formal))
                             <div class="col-md-3"><a href="#">N/A</a></div>
                         @else
                             <div class="col-md-3"><a href="{{ route('view.pdf', $user->information->photo_formal) }}" target="_blank">Open File</a></div>
@@ -94,7 +94,7 @@
                     <div class="row p-2">
                         <div class="col-md-3">DISC Results Attachment:</div>
 
-                        @if (!isset($user->information->disc_results) && is_null($user->information->disc_results))
+                        @if (!isset($user->information->disc_results) || is_null($user->information->disc_results))
                             <div class="col-md-3"><a href="#">N/A</a></div>
                         @else
                             <div class="col-md-3"><a href="{{ route('view.pdf', $user->information->disc_results) }}" target="_blank">Open File</a></div>
@@ -102,7 +102,7 @@
 
                         <div class="col-md-3">Resume Attachment:</div>
 
-                        @if (!isset($user->information->resume) && is_null($user->information->resume))
+                        @if (!isset($user->information->resume) || is_null($user->information->resume))
                             <div class="col-md-3"><a href="#">N/A</a></div>
                         @else
                             <div class="col-md-3"><a href="{{ route('view.pdf', $user->information->resume) }}" target="_blank">Open File</a></div>
@@ -112,7 +112,7 @@
                     <div class="row p-2">
                         <div class="col-md-3">Video Introduction:</div>
 
-                        @if (!isset($user->information->videolink) && is_null($user->information->videolink))
+                        @if (!isset($user->information->videolink) || is_null($user->information->videolink))
                             <div class="col-md-3"><a href="#">N/A</a></div>
                         @else
                             <div class="col-md-3"><a href="{{ route('view.pdf', $user->information->videolink) }}" target="_blank">Open File</a></div>
@@ -120,7 +120,7 @@
 
                         <div class="col-md-3">Portfolio:</div>
 
-                        @if (!isset($user->information->portfolio) && is_null($user->information->portfolio))
+                        @if (!isset($user->information->portfolio) || is_null($user->information->portfolio))
                             <div class="col-md-3"><a href="#">N/A</a></div>
                         @else
                             <div class="col-md-3"><a href="{{ route('view.pdf', $user->information->portfolio) }}" target="_blank">Open File</a></div>
@@ -311,7 +311,7 @@
 
 
 <x-applicant.details />
-<x-applicant.view-references :user="$user"  />
+<x-applicant.view-references :user="$user" />
 <x-applicant.mock-call />
 
 <script src="{{ asset('dist/js/pages/user-end/show.js') }}"> </script>
