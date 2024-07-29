@@ -59,7 +59,7 @@
                             @else
                                 <select class="form-control select2 positions" name="positions[]" multiple="multiple">
                                     @php
-                                        $dynamicPositions = $applicantPositions;
+                                        $dynamicPositions = $applicantPositions ?? [];
 
                                         $staticPositions = [
                                             'General Virtual Assistant',
@@ -68,7 +68,7 @@
                                             'Web Developers',
                                             'Tech VAs',
                                             'Project Manager',
-                                        ];
+                                        ]  ?? [];
 
                                         $filteredDynamicPositions = array_filter($dynamicPositions, function($value) {
                                             return !is_null($value);
