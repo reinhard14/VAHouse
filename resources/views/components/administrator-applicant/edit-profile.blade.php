@@ -81,15 +81,18 @@
                                         $mergedPositions = array_merge($filteredDynamicPositions, $filteredStaticPositions);
                                         $allPositions = array_unique($mergedPositions);
                                     @endphp
-
-                                    @if (!empty($applicantPositions) && is_array($applicantPositions))
-                                        @foreach ($allPositions as $position)
-                                            <option value="{{ $position }}" {{ in_array($position, $applicantPositions) ? 'selected' : '' }}>{{ $position }}</option>
-                                        @endforeach
+                                    @if(empty($allPositions))
+                                        <h5>Not available</h5>
                                     @else
-                                        @foreach ($allPositions as $position)
-                                            <option value="{{ $position }}">{{ $position }}</option>
-                                        @endforeach
+                                        @if (!empty($applicantPositions) || is_array($applicantPositions))
+                                            @foreach ($allPositions as $position)
+                                                <option value="{{ $position }}" {{ in_array($position, $applicantPositions) ? 'selected' : '' }}>{{ $position }}</option>
+                                            @endforeach
+                                        @else
+                                            @foreach ($allPositions as $position)
+                                                <option value="{{ $position }}">{{ $position }}</option>
+                                            @endforeach
+                                        @endif
                                     @endif
                                 </select>
                             @endif
