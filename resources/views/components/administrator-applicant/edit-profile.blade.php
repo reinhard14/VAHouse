@@ -70,7 +70,16 @@
                                             'Project Manager',
                                         ];
 
-                                        $allPositions = array_unique(array_merge($dynamicPositions, $staticPositions));
+                                        $filteredDynamicPositions = array_filter($dynamicPositions, function($value) {
+                                            return !is_null($value);
+                                        });
+
+                                        $filteredStaticPositions = array_filter($staticPositions, function($value) {
+                                            return !is_null($value);
+                                        });
+
+                                        $mergedPositions = array_merge($filteredDynamicPositions, $filteredStaticPositions);
+                                        $allPositions = array_unique($mergedPositions);
                                     @endphp
 
                                     @if (!empty($applicantPositions) && is_array($applicantPositions))
