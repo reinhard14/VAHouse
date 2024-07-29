@@ -33,7 +33,7 @@
                         </div>
                     </div>
 
-                    <form method="post" action="{{ route('user.store') }}" id="scoresForm" enctype="multipart/form-data">
+                    <form id="scoresForm" method="post" action="{{ route('user.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">
@@ -276,7 +276,7 @@
                                 <div class="form-group">
                                     <label for="skype"><span class="text-danger">*</span> Skype ID</label>
 
-                                    <input id="skype" name="skype" type="text" class="form-control" placeholder="Skype id here.." required>
+                                    <input type="text" id="skype" name="skype" class="form-control" placeholder="Skype id here.." required>
                                 </div>
                             </div>
 
@@ -284,7 +284,7 @@
                                 <div class="form-group">
                                     <label for="niche"><span class="text-danger">*</span> Niche</label>
 
-                                    <input name="niche" type="text" class="form-control" placeholder="Input niche here.." required>
+                                    <input type="text" name="niche" class="form-control" placeholder="Input niche here.." required>
                                 </div>
                             </div>
                         </div>
@@ -294,7 +294,7 @@
                                 <div class="form-group">
                                     <label for="rate"><span class="text-danger">*</span> Happy rate: <strong>(In pesos)</strong> </label>
 
-                                    <input name="rate" type="number" class="form-control" placeholder="Enter monthly rate.." required>
+                                    <input type="number" name="rate" class="form-control" placeholder="Enter monthly rate.." required>
                                 </div>
                             </div>
 
@@ -309,13 +309,13 @@
                                         </div>
                                     </div>
 
-                                    <input id="experience" name="experience" type="number" min="0" class="form-control" placeholder="Please enter a number here first, then click expand." required>
+                                    <input type="number" id="experience" name="experience" min="0" class="form-control" placeholder="Please enter a number here first, then click expand." required>
                                 </div>
                             </div>
                         </div>
 
                         @if($user->experiences->count() < 1)
-                            <div class="row my-3 p-3 border rounded border-line border-secondary" id="noExperiencePlaceholder">
+                            <div id="noExperiencePlaceholder" class="row my-3 p-3 border rounded border-line border-secondary">
                                 <div class="col">
                                     <div class="text-center">
                                         <h6>No <span class="text-danger">Experiences</span> added yet.</h6>
@@ -328,7 +328,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="table-responsive" id="showExperiencesTable">
+                            <div id="showExperiencesTable" class="table-responsive">
                             </div>
                         @else
                             <div class="row my-2">
@@ -369,7 +369,7 @@
                                 <div class="form-group">
                                     <label for="ub_account"><span class="text-danger">*</span> Union Bank Account Holder Name</label>
 
-                                    <input name="ub_account" type="text" class="form-control" placeholder="Enter your bank account name.." required>
+                                    <input type="text" name="ub_account" class="form-control" placeholder="Enter your bank account name.." required>
                                 </div>
                             </div>
 
@@ -377,7 +377,7 @@
                                 <div class="form-group">
                                     <label for="ub_number"><span class="text-danger">*</span> Union Bank Account Number</label>
 
-                                    <input name="ub_number" type="text" class="form-control" placeholder="Enter bank account number.." required>
+                                    <input type="text" name="ub_number" class="form-control" placeholder="Enter bank account number.." required>
                                 </div>
                             </div>
                         </div>
@@ -387,14 +387,14 @@
                                 <div class="form-group">
                                     <label for="photo_id"><span class="text-danger">*</span> Two Valid IDs: <strong>(Attach PDF - 64MB limit)</strong> </label>
 
-                                    <input name="photo_id" type="file" accept=".jpeg, .jpg, .png, .pdf" class="form-control" required>
+                                    <input type="file" name="photo_id" class="form-control" accept=".jpeg, .jpg, .png, .pdf" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="photo_formal"><span class="text-danger">*</span> Formal Photo <strong>(64MB limit)</strong></label>
 
-                                    <input name="photo_formal" type="file" accept=".jpeg, .jpg, .png" class="form-control" required>
+                                    <input type="file" name="photo_formal" class="form-control" accept=".jpeg, .jpg, .png" required>
                                 </div>
                             </div>
                         </div>
@@ -404,7 +404,7 @@
                                 <div class="form-group">
                                     <label for="resume"><span class="text-danger">*</span> Attach resume/CV here: <strong>(PDF file only - 32MB limit)</strong></label>
 
-                                    <input name="resume" type="file" accept="application/pdf" class="form-control" required>
+                                    <input type="file" name="resume" class="form-control" accept="application/pdf" required>
                                 </div>
                             </div>
 
@@ -412,7 +412,7 @@
                                 <div class="form-group">
                                     <label for="disc_results"><span class="text-danger">*</span> DISC Result: <strong>(PDF file only - 32MB limit)</strong></label>
 
-                                    <input name="disc_results" type="file" accept="application/pdf" class="form-control" required>
+                                    <input type="file" name="disc_results" class="form-control" accept="application/pdf" required>
                                 </div>
                             </div>
                         </div>
@@ -423,7 +423,7 @@
                                 <div class="form-group">
                                     <label for="portfolio"><span class="text-danger">*</span> Portfolio: <strong>(PDF file only - 64MB limit)</strong></label>
 
-                                    <input name="portfolio" id="portfolio" type="file" class="form-control" required>
+                                    <input type="file" id="portfolio" name="portfolio" class="form-control" required>
                                 </div>
                             </div>
 
@@ -431,7 +431,7 @@
                                 <div class="form-group">
                                     <label for="videolink"><span class="text-danger">*</span> Upload video introduction: <strong>(128MB limit)</strong> </label>
 
-                                    <input name="videolink" type="file" accept=".mp4, .avi, .mkv, .mov, .wmv, .flv, .webm, .mpeg" class="form-control" required>
+                                    <input type="file" name="videolink" class="form-control" accept=".mp4, .avi, .mkv, .mov, .wmv, .flv, .webm, .mpeg" required>
                                 </div>
                             </div>
                         </div>
@@ -452,7 +452,7 @@
                             <div class="col">
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" id="position1" name="positions[]" value="General Virtual Assistant" class="formCheckInput">
+                                        <input type="checkbox" id="position1" name="positions[]" class="formCheckInput" value="General Virtual Assistant">
                                         <label for="position1"> General Virtual Assistant: </label>
 
                                         <p class="fst-italic">
@@ -462,7 +462,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" id="position2" name="positions[]" value="Social Media Manager" class="formCheckInput">
+                                        <input type="checkbox" id="position2" name="positions[]" class="formCheckInput" value="Social Media Manager">
                                         <label for="position2"> Social Media Manager: </label>
 
                                         <p class="fst-italic">
@@ -472,7 +472,7 @@
                                 </div>
                                 <div class="row" id="callersRow">
                                     <div class="col">
-                                        <input type="checkbox" id="position3" name="positions[]" value="Callers" class="formCheckInput">
+                                        <input type="checkbox" id="position3" name="positions[]" class="formCheckInput" value="Callers">
                                         <label for="position3"> Callers: </label>
                                         <span class="fst-italic">
                                             (upload sample <a href="#mock-call-modal" data-bs-toggle="modal" class="button"><strong>Mock calls</strong></a> here)
@@ -483,11 +483,11 @@
                                         </p>
                                     </div>
                                     @if (isset($user->mockcalls) && !is_null($user->mockcalls))
-                                        <div class="col-md-3" id="inboundShow">
+                                        <div id="inboundShow" class="col-md-3">
                                             <label for="position3"> Inbound: </label>
                                             <a href="{{ route('view.pdf', $user->mockcalls->inbound_call ?? '') }}" target="_blank">Open</a>
                                         </div>
-                                        <div class="col-md-3" id="outboundShow">
+                                        <div id="outboundShow" class="col-md-3">
                                             <label for="position3"> Outbound: </label>
                                             <a href="{{ route('view.pdf', $user->mockcalls->outbound_call ?? '') }}" target="_blank">Open</a>
                                         </div>
@@ -496,7 +496,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" id="position4" name="positions[]" value="Web Developers" class="formCheckInput">
+                                        <input type="checkbox" id="position4" name="positions[]" class="formCheckInput" value="Web Developers">
                                         <label for="position4"> Web Developers:</label>
 
                                         <p class="fst-italic">
@@ -506,7 +506,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" id="position5" name="positions[]" value="Tech VAs" class="formCheckInput">
+                                        <input type="checkbox" id="position5" name="positions[]" class="formCheckInput" value="Tech VAs">
                                         <label for="position5"> Tech VAs:</label>
 
                                         <p class="fst-italic">
@@ -516,7 +516,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="checkbox" id="position6" name="positions[]" value="Project Manager" class="formCheckInput">
+                                        <input type="checkbox" id="position6" name="positions[]" class="formCheckInput" value="Project Manager">
                                         <label for="position6"> Project Manager</label>
                                     </div>
                                 </div>
@@ -524,12 +524,10 @@
                         </div>
 
                         <div class="d-flex justify-content-center">
-                            <button id="formSubmit" type="submit" class="btn btn-primary mr-2"><i class="bi bi-file-arrow-down me-1"></i>Submit</button>
+                            <button type="submit" id="formSubmit" class="btn btn-primary mr-2"><i class="bi bi-file-arrow-down me-1"></i>Submit</button>
                             <a href="#" id="resetFieldButton" class="btn btn-outline-danger mr-2"><i class="bi bi-arrow-counterclockwise me-1"></i>Reset Field</a>
                         </div>
-
                     </form>
-
                 </div>
             </div>
         </div>

@@ -154,19 +154,19 @@
                                 <a href="#mock-call-modal" class="btn btn-outline-primary btn-sm px-5" data-bs-toggle="modal">Edit</a>
                             </div>
 
-                            <div class="col-md-3" id="inboundLabel">
+                            <div id="inboundLabel" class="col-md-3">
                                 <label> Inbound: </label>
                             </div>
-                            <div class="col-md-3" id="inboundLink">
+                            <div id="inboundLink" class="col-md-3">
                                 <a href="{{ route('view.pdf', $user->mockcalls->inbound_call ?? '') }}" target="_blank">Open</a>
                             </div>
                         </div>
 
                         <div id="callersRow" class="row p-2 justify-content-end">
-                            <div class="col-md-3" id="outboundLabel">
+                            <div id="outboundLabel" class="col-md-3">
                                 <label> Outbound: </label>
                             </div>
-                            <div class="col-md-3" id="outboundLink">
+                            <div id="outboundLink" class="col-md-3">
                                 <a href="{{ route('view.pdf', $user->mockcalls->outbound_call ?? '') }}" target="_blank">Open</a>
                             </div>
                         </div>
