@@ -9,7 +9,7 @@
             </div>
 
             <div class="modal-body">
-                <strong>{{ Str::title($user->name) }} {{ Str::title($user->lastname) }} </strong>
+                <strong>{{ Str::title($user->name) }} {{ Str::title($user->middlename) }} {{ Str::title($user->lastname) }} {{ Str::title($user->suffix) }}</strong>
                 <ul>
                     @foreach ($user->experiences as $experience)
                         <li>{{ Str::title($experience->duration) }} - {{ Str::title($experience->title) }}</li>

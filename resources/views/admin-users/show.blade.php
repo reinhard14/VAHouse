@@ -39,12 +39,16 @@
                             <p> {{ $user->name }} </p>
                         </div>
                         <div class="col">
+                            <label>Middle Name</label>
+                            <p> {{ $user->middlename ?? ''}} </p>
+                        </div>
+                        <div class="col">
                             <label>Last Name</label>
                             <p> {{ $user->lastname }} </p>
                         </div>
                         <div class="col">
-                            <label>Email</label>
-                            <p> {{ $user->email }} </p>
+                            <label>Suffix</label>
+                            <p> {{ $user->suffix ?? 'n/a'}} </p>
                         </div>
                     </div>
 
@@ -54,8 +58,12 @@
                             <p> {{ $user->age }} - {{ $user->gender }}</p>
                         </div>
                         <div class="col">
-                            <label>Highest Educational Attainment</label>
-                            <p> {{ $user->education }} </p>
+                            <label>Contact Number</label>
+                            <p> {{ $user->contactnumber }} </p>
+                        </div>
+                        <div class="col">
+                            <label>Email</label>
+                            <p> {{ $user->email }} </p>
                         </div>
                         <div class="col">
                             <label>Address</label>
@@ -65,12 +73,16 @@
 
                     <div class="row mb-3">
                         <div class="col">
-                            <label>Contact Number</label>
-                            <p> {{ $user->contactnumber }} </p>
+                            <label>Union Bank</label>
+                            <p> {{ $user->information->ub_account ?? 'N/A'}} - {{ $user->information->ub_number ?? 'N/A'}} </p>
                         </div>
                         <div class="col">
                             <label>Years Experience</label>
                             <p> {{ $user->information->experience ?? 'N/A'}} </p>
+                        </div>
+                        <div class="col">
+                            <label>Happy rate</label>
+                            <p> {{ $user->information->rate ?? 'N/A' }} </p>
                         </div>
                         <div class="col">
                             <label>Registered</label>
@@ -80,8 +92,8 @@
 
                     <div class="row mb-3">
                         <div class="col">
-                            <label>Happy rate</label>
-                            <p> {{ $user->information->rate ?? 'N/A' }} </p>
+                            <label>Highest Educational Attainment</label>
+                            <p> {{ $user->education }} </p>
                         </div>
                         <div class="col">
                             <label>Niche</label>
@@ -91,70 +103,7 @@
                             <label>Skype</label>
                             <p> {{ $user->information->skype ?? 'N/A' }} </p>
                         </div>
-                    </div>
-
-                    <div class="row mb-3">
                         <div class="col">
-                            <label>Union Bank</label>
-                            <p> {{ $user->information->ub_account ?? 'N/A'}} - {{ $user->information->ub_number ?? 'N/A'}} </p>
-                        </div>
-                        <div class="col">
-                            <label>Portfolio</label>
-                            <p>
-                                @if(!isset($user->information->portfolio))
-                                    N/A
-                                @else
-                                    <a href="{{ route('view.pdf', $user->information->portfolio) }}" target="_blank">Open</a>
-                                @endif
-                            </p>
-                        </div>
-                        <div class="col">
-                            <label>Resume Attachment</label>
-                            <p>
-                                @if (!isset($user->information->resume))
-                                    N/A
-                                @else
-                                    <a href="{{ route('view.pdf', $user->information->resume) }}" target="_blank">Open</a>
-                                @endif
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-md-4">
-                            <label>ID Attachments</label>
-                            <p>
-                                @if(!isset($user->information->photo_id))
-                                    N/A
-                                @else
-                                    <a href="{{ route('view.pdf', $user->information->photo_id) }}" target="_blank">Open</a>
-                                @endif
-                            </p>
-                        </div>
-                        <div class="col-md-4">
-                            <label>Formal Photo</label>
-                            <p>
-                                @if(!isset($user->information->photo_formal))
-                                    N/A
-                                @else
-                                    <a href="{{ route('view.pdf', $user->information->photo_formal) }}" target="_blank">Open</a>
-                                @endif
-                            </p>
-                        </div>
-                        <div class="col-md-4">
-                            <label>DISC Results</label>
-                            <p>
-                                @if(!isset($user->information->disc_results))
-                                    N/A
-                                @else
-                                    <a href="{{ route('view.pdf', $user->information->disc_results) }}" target="_blank">Open</a>
-                                @endif
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3 d-flex justify-content-start">
-                        <div class="col-md-4">
                             <label>LMS Status</label>
                             <p>
                                 @if(!isset($user->status->lesson))
@@ -181,10 +130,70 @@
                                 @endif
                             </p>
                         </div>
+                    </div>
 
-                        @if (isset($user->mockcalls->inbound_call))
-                            <div class="col-md-4">
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label>Portfolio</label>
+                            <p>
+                                @if(!isset($user->information->portfolio) || is_null($user->information->portfolio))
+                                    N/A
+                                @else
+                                    <a href="{{ route('view.pdf', $user->information->portfolio) }}" target="_blank">Open</a>
+                                @endif
+                            </p>
+                        </div>
+                        <div class="col">
+                            <label>Resume Attachment</label>
+                            <p>
+                                @if (!isset($user->information->resume) || is_null($user->information->resume))
+                                    N/A
+                                @else
+                                    <a href="{{ route('view.pdf', $user->information->resume) }}" target="_blank">Open</a>
+                                @endif
+                            </p>
+                        </div>
+                        <div class="col">
+                            <label>ID Attachments</label>
+                            <p>
+                                @if(!isset($user->information->photo_id) || is_null($user->information->photo_id))
+                                    N/A
+                                @else
+                                    <a href="{{ route('view.pdf', $user->information->photo_id) }}" target="_blank">Open</a>
+                                @endif
+                            </p>
+                        </div>
+                        <div class="col">
+                            <label>Formal Photo</label>
+                            <p>
+                                @if(!isset($user->information->photo_formal) || is_null($user->information->photo_formal))
+                                    N/A
+                                @else
+                                    <a href="{{ route('view.pdf', $user->information->photo_formal) }}" target="_blank">Open</a>
+                                @endif
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+
+                        <div class="col-md-6">
+                            <label>DISC Results</label>
+                            <p>
+                                @if(!isset($user->information->disc_results) || is_null($user->information->disc_results))
+                                    N/A
+                                @else
+                                    <a href="{{ route('view.pdf', $user->information->disc_results) }}" target="_blank">Open</a>
+                                @endif
+                            </p>
+                        </div>
+                        @if (!isset($user->mockcalls->inbound_call) || is_null($user->mockcalls->inbound_call))
+                            <h5>No Mock Call files available.</h5>
+                        @else
+                            <div class="col">
                                 <label>Mock Calls</label>
+                            </div>
+                            <div class="col">
 
                                 <p>Inbound: <a href="{{ route('view.pdf', $user->mockcalls->inbound_call) }}" target="_blank">Open</a> </p>
                                 <p>Outbound: <a href="{{ route('view.pdf', $user->mockcalls->outbound_call) }}" target="_blank">Open</a> </p>
@@ -192,7 +201,9 @@
                         @endif
                     </div>
 
-                    <div class="row mb-3">
+                    <hr>
+
+                    <div class="row my-4">
                         <div class="col-md-3">Applied positions: </div>
                         <div class="col-md-9">
                             @php
@@ -282,7 +293,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="row mb-5">
+                    <div class="row mb-4">
                         <div class="col-md-3">Soft skills: </div>
                         <div class="col-md-9">
                             @php
@@ -305,7 +316,9 @@
                         </div>
                     </div>
 
-                    <div class="row mb-2">
+                    <hr>
+
+                    <div class="row my-4">
                         <div class="col-md-3"><strong>Notes:</strong> </div>
                         <div class="col-md-6">{{ $user->review->notes ?? 'N/A'  }} </div>
                         <div class="col-md-3">

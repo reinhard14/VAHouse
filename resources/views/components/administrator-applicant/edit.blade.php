@@ -28,15 +28,22 @@
 
                     <div class="row">
                         <div class="col">
-                            <label class="form-label" for="name">First Name </label>
-                            <input class="form-control mb-2" type="text" name="name" value="{{ $user->name }}" required>
+                            <label for="name" class="form-label">First Name </label>
+                            <input type="text" name="name" class="form-control mb-2" value="{{ $user->name }}" required>
 
-                            <label class="form-label" for="lastname">Last Name </label>
-                            <input class="form-control mb-2" type="text" name="lastname" value="{{ $user->lastname }}" required>
-                            <label class="form-label" for="age">Age </label>
-                            <input class="form-control mb-2" type="number" name="age" value="{{ $user->age }}" required>
+                            <label for="middlename" class="form-label">Middle Name </label>
+                            <input type="text" name="middlename" class="form-control mb-2" value="{{ $user->middlename }}" required>
 
-                            <label class="form-label" for="gender">Gender </label>
+                            <label for="lastname" class="form-label">Last Name </label>
+                            <input type="text" name="lastname" class="form-control mb-2" value="{{ $user->lastname }}" required>
+
+                            <label for="suffix" class="form-label">Suffix </label>
+                            <input type="text" name="suffix" class="form-control mb-2" value="{{ $user->suffix }}" required>
+
+                            <label for="age" class="form-label">Age </label>
+                            <input type="number" name="age" class="form-control mb-2" value="{{ $user->age }}" required>
+
+                            <label for="gender" class="form-label">Gender </label>
                             <select name="gender" class="form-control mb-2">
                                 <option value="Male" {{ old('gender', $user->gender ?? '') == 'Male' ? 'selected' : '' }}>Male</option>
                                 <option value="Female" {{ old('gender', $user->gender ?? '') == 'Female' ? 'selected' : '' }}>Female</option>
@@ -45,7 +52,7 @@
                                 <option value="Prefer not to respond" {{ old('gender', $user->gender ?? '') == 'Prefer not to respond' ? 'selected' : '' }}>Prefer not to respond</option>
                             </select>
 
-                            <label class="form-label" for="education">Highest Educational Attainment </label>
+                            <label for="education" class="form-label">Highest Educational Attainment </label>
                             <select name="education" class="form-control mb-2">
                                 <option value="High School" {{ old('education', $user->education ?? '') == 'High School' ? 'selected' : '' }}>High School</option>
                                 <option value="Senior High School" {{ old('education', $user->education ?? '') == 'Senior High School' ? 'selected' : '' }}>Senior High School</option>
@@ -57,14 +64,14 @@
                                 <option value="Vocational" {{ old('education', $user->education ?? '') == 'Vocational' ? 'selected' : '' }}>Vocational</option>
                             </select>
 
-                            <label class="form-label" for="email">Email Address </label>
-                            <input class="form-control mb-2" type="email" name="email" value="{{ $user->email }}" required>
+                            <label for="email" class="form-label">Email Address </label>
+                            <input type="email" name="email" class="form-control mb-2" value="{{ $user->email }}" required>
 
-                            <label class="form-label" for="address">Address</label>
-                            <input class="form-control mb-2" type="text" name="address" value="{{ $user->address }}" required>
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" name="address" class="form-control mb-2" value="{{ $user->address }}" required>
 
-                            <label class="form-label" for="contactnumber">Contact Number</label>
-                            <input class="form-control mb-2" type="number" value="{{ $user->contactnumber }}" name="contactnumber" required>
+                            <label for="contactnumber" class="form-label">Contact Number</label>
+                            <input type="number" name="contactnumber" class="form-control mb-2" value="{{ $user->contactnumber }}" required>
                         </div>
                     </div>
 
