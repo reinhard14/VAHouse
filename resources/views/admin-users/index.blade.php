@@ -301,6 +301,7 @@
                                                                         'Incomplete' => 'badge-warning',
                                                                         'Final-Failed' => 'badge-danger',
                                                                         'For Review' => 'badge-secondary',
+                                                                        'Not Qualified' => 'badge-warning',
                                                                         'Ready for shortlisting' => 'badge-info',
                                                                         'Onboarded' => 'badge-info',
                                                                         'Hired' => 'badge-primary',

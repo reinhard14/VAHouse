@@ -26,6 +26,7 @@
                                 <option value="Incomplete" {{ old('status', $user->status->status ?? '') == 'Incomplete' ? 'selected' : '' }}>Incomplete</option>
                                 <option value="Final-Failed" {{ old('status', $user->status->status ?? '') == 'Final-Failed' ? 'selected' : '' }}>Final - Failed</option>
                                 <option value="For Review" {{ old('status', $user->status->status ?? '') == 'For Review' ? 'selected' : '' }}>For Review</option>
+                                <option value="Not Qualified" {{ old('status', $user->status->status ?? '') == 'Not Qualified' ? 'selected' : '' }}>Not Qualified</option>
                                 <option value="Ready for shortlisting" {{ old('status', $user->status->status ?? '') == 'Ready for shortlisting' ? 'selected' : '' }}>Ready for shortlisting</option>
                                 <option value="Onboarded" {{ old('status', $user->status->status ?? '') == 'Onboarded' ? 'selected' : '' }}>Onboarded</option>
                                 <option value="Hired" {{ old('status', $user->status->status ?? '') == 'Hired' ? 'selected' : '' }}>Hired</option>
