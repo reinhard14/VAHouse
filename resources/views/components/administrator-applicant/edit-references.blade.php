@@ -38,7 +38,7 @@
                             <input type="text" name="emergency_number" class="form-control mb-2" value="{{ $user->references->emergency_number ?? '' }}" required>
 
                             <label for="start_date" class="form-label">Start Date </label>
-                            <input type="text" name="start_date" class="form-control mb-2" value="{{ $user->references->start_date ?? '' }}" required>
+                            <input type="date" name="start_date" class="form-control mb-2" value="{{ $user->references->start_date ?? '' }}" required>
 
                             <label for="department" class="form-label">Department </label>
                             <input type="text" name="department" class="form-control mb-2" value="{{ $user->references->department ?? '' }}" required>
