@@ -1,6 +1,6 @@
-<!--Edit Profile Modal -->
+<!--Edit References Modal -->
 
-<div class="modal fade long" id="edit-user-references-modal-{{ $user->id }}" tabindex="-1">
+<div id="edit-user-references-modal-{{ $user->id }}" class="modal fade long" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,10 +8,9 @@
                 <button type="button" class="close" data-bs-dismiss="modal">x</button>
             </div>
 
-            <form class="editUserForm" method="POST" action="{{ route('update.user.profile', $user->id) }}">
+            <form method="POST" action="{{ route('update.user.references', $user->id) }}" class="editUserForm">
                 @csrf
                 @method('PUT')
-
                 <div class="modal-body">
                     <div class="row text-center mb-5">
                         <div class="col">
@@ -47,20 +46,20 @@
                             <label for="team_leader" class="form-label">Team Leader </label>
                             <input type="text" name="team_leader" class="form-control mb-2" value="{{ $user->references->team_leader ?? '' }}" required>
 
-                            <label for="ub_number" class="form-label">Referral </label>
-                            <input type="text" name="ub_number" class="form-control mb-2" value="{{ $user->references->referral ?? '' }}" required>
+                            <label for="referral" class="form-label">Referral </label>
+                            <input type="text" name="referral" class="form-control mb-2" value="{{ $user->references->referral ?? '' }}" required>
 
-                            <label for="ub_number" class="form-label">Preferred Shift </label>
-                            <input type="text" name="ub_number" class="form-control mb-2" value="{{ $user->references->preferred_shift ?? '' }}" required>
+                            <label for="preferred_shift" class="form-label">Preferred Shift </label>
+                            <input type="text" name="preferred_shift" class="form-control mb-2" value="{{ $user->references->preferred_shift ?? '' }}" required>
 
-                            <label for="ub_number" class="form-label">Work Status </label>
-                            <input type="text" name="ub_number" class="form-control mb-2" value="{{ $user->references->work_status ?? '' }}" required>
+                            <label for="work_status" class="form-label">Work Status </label>
+                            <input type="text" name="work_status" class="form-control mb-2" value="{{ $user->references->work_status ?? '' }}" required>
 
-                            <label for="positions" class="form-label">Services Offered</label>
+                            <label for="services_offered" class="form-label">Services Offered</label>
                             @if(is_null($user->references))
                                 <h5>Not available</h5>
                             @else
-                                <select name="positions[]" class="form-control select2 positions" multiple="multiple">
+                                <select id="services_offered" name="services_offered[]" class="form-control select2 positions" multiple="multiple">
                                     @php
                                         $applicantPositions = $user->references->services_offered;
                                         $dynamicPositions = $applicantPositions ?? [];
@@ -104,9 +103,9 @@
                 </small>
 
                 <div class="modal-footer">
-                    {{-- <button type="submit" class="btn btn-primary btn-sm">
+                    <button type="submit" class="btn btn-primary btn-sm">
                         <i class="bi bi-arrow-clockwise"></i> Update
-                    </button> --}}
+                    </button>
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"><i class="bi bi-arrow-return-right mr-1"></i>Close</button>
                 </div>
             </form>
