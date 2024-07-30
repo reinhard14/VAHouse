@@ -238,7 +238,7 @@ $(document).ready(function() {
     });
 
     //for edit applicant's references modal
-    $('.select2.services').select2({
+    $('.services').select2({
         tokenSeparators: ',',
         placeholder: 'Please select from choices..',
         width: '100%',

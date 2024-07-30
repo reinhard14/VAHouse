@@ -72,7 +72,7 @@
                     <div class="row mb-2">
                         <div class="col">
                             <label for="referral" class="form-label">Referral </label>
-                            <select id="referral" name="referral" class="form-control">
+                            <select name="referral" class="form-control">
                                 <option value="Facebook" {{ old('referral', $user->references->referral ?? '') == 'Facebook' ? 'selected' : '' }}>Facebook</option>
                                 <option value="Referral" {{ old('referral', $user->references->referral ?? '') == 'Referral' ? 'selected' : '' }}>Referral</option>
                                 <option value="Onlinejobs.com" {{ old('referral', $user->references->referral ?? '') == 'Onlinejobs.com' ? 'selected' : '' }}>Onlinejobs.com</option>
@@ -85,7 +85,7 @@
                     <div class="row mb-2">
                         <div class="col">
                             <label for="preferred_shift" class="form-label">Preferred Shift </label>
-                            <select id="preferred_shift" name="preferred_shift" class="form-control">
+                            <select name="preferred_shift" class="form-control">
                                 <option value="Night Shift" {{ old('referral', $user->references->preferred_shift ?? '') == 'Night Shift' ? 'selected' : '' }}>Night Shift</option>
                                 <option value="Day Shift" {{ old('referral', $user->references->preferred_shift ?? '') == 'Day Shift' ? 'selected' : '' }}>Day Shift</option>
                             </select>
@@ -95,7 +95,7 @@
                     <div class="row mb-2">
                         <div class="col">
                             <label for="work_status" class="form-label">Work Status </label>
-                            <select id="work_status" name="work_status" class="form-control">
+                            <select name="work_status" class="form-control">
                                 <option value="Part-time" {{ old('referral', $user->references->work_status ?? '') == 'Part-time' ? 'selected' : '' }}>Part-time</option>
                                 <option value="Full-time" {{ old('referral', $user->references->work_status ?? '') == 'Full-time' ? 'selected' : '' }}>Full-time</option>
                                 <option value="Hybrid" {{ old('referral', $user->references->work_status ?? '') == 'Hybrid' ? 'selected' : '' }}>Hybrid (Both full-time & part-time for multiple client)</option>
