@@ -47,13 +47,26 @@
                             <input type="text" name="team_leader" class="form-control mb-2" value="{{ $user->references->team_leader ?? '' }}" required>
 
                             <label for="referral" class="form-label">Referral </label>
-                            <input type="text" name="referral" class="form-control mb-2" value="{{ $user->references->referral ?? '' }}" required>
+                            <select id="referral" name="referral" class="form-control">
+                                <option value="Facebook" {{ old('referral', $user->references->referral ?? '') == 'Facebook' ? 'selected' : '' }}>Facebook</option>
+                                <option value="Referral" {{ old('referral', $user->references->referral ?? '') == 'Referral' ? 'selected' : '' }}>Referral</option>
+                                <option value="Onlinejobs.com" {{ old('referral', $user->references->referral ?? '') == 'Onlinejobs.com' ? 'selected' : '' }}>Onlinejobs.com</option>
+                                <option value="LinkedIn" {{ old('referral', $user->references->referral ?? '') == 'LinkedIn' ? 'selected' : '' }}>LinkedIn</option>
+                                <option value="Others" {{ old('referral', $user->references->referral ?? '') == 'Others' ? 'selected' : '' }}>Others</option>
+                            </select>
 
                             <label for="preferred_shift" class="form-label">Preferred Shift </label>
-                            <input type="text" name="preferred_shift" class="form-control mb-2" value="{{ $user->references->preferred_shift ?? '' }}" required>
+                            <select id="preferred_shift" name="preferred_shift" class="form-control">
+                                <option value="Night Shift" {{ old('referral', $user->references->preferred_shift ?? '') == 'Night Shift' ? 'selected' : '' }}>Night Shift</option>
+                                <option value="Day Shift" {{ old('referral', $user->references->preferred_shift ?? '') == 'Day Shift' ? 'selected' : '' }}>Day Shift</option>
+                            </select>
 
                             <label for="work_status" class="form-label">Work Status </label>
-                            <input type="text" name="work_status" class="form-control mb-2" value="{{ $user->references->work_status ?? '' }}" required>
+                            <select id="work_status" name="work_status" class="form-control">
+                                <option value="Part-time" {{ old('referral', $user->references->work_status ?? '') == 'Part-time' ? 'selected' : '' }}>Part-time</option>
+                                <option value="Full-time" {{ old('referral', $user->references->work_status ?? '') == 'Full-time' ? 'selected' : '' }}>Full-time</option>
+                                <option value="Hybrid" {{ old('referral', $user->references->work_status ?? '') == 'Hybrid' ? 'selected' : '' }}>Hybrid (Both full-time & part-time for multiple client)</option>
+                            </select>
 
                             <label for="services_offered" class="form-label">Services Offered</label>
                             @if(is_null($user->references))
