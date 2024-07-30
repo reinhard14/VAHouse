@@ -237,6 +237,13 @@ $(document).ready(function() {
         width: '100%',
     });
 
+    //for edit applicant's references modal
+    $('.select2.services').select2({
+        tokenSeparators: ',',
+        placeholder: 'Please select from choices..',
+        width: '100%',
+    });
+
     $('.modal.long').on('shown.bs.modal', function () {
         $(this).find('.modal-body').css({
             'max-height': '400px',
