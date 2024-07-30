@@ -29,38 +29,38 @@
 
                     <div class="row">
                         <div class="col">
-                            <label class="form-label" for="rate">Emergency Person Name </label>
-                            <input class="form-control mb-2" type="text" name="rate" value="{{ $user->references->emergency_person ?? '' }}" required>
+                            <label for="emergency_person" class="form-label">Emergency Person Name </label>
+                            <input type="text" name="emergency_person" class="form-control mb-2" value="{{ $user->references->emergency_person ?? '' }}" required>
 
-                            <label class="form-label" for="experience">Emergency Person Relationship  </label>
-                            <input class="form-control mb-2" type="number" name="experience" value="{{ $user->references->emergency_relationship ?? '' }}" required>
+                            <label for="emergency_relationship" class="form-label">Emergency Person Relationship  </label>
+                            <input type="text" name="emergency_relationship" class="form-control mb-2" value="{{ $user->references->emergency_relationship ?? '' }}" required>
 
-                            <label class="form-label" for="skype">Emergency Person Number </label>
-                            <input class="form-control mb-2" type="text" name="skype" value="{{ $user->references->emergency_number ?? '' }}" required>
+                            <label for="emergency_number" class="form-label">Emergency Person Number </label>
+                            <input type="text" name="emergency_number" class="form-control mb-2" value="{{ $user->references->emergency_number ?? '' }}" required>
 
-                            <label class="form-label" for="niche">Start Date </label>
-                            <input class="form-control mb-2" type="text" name="niche" value="{{ $user->references->start_date ?? '' }}" required>
+                            <label for="start_date" class="form-label">Start Date </label>
+                            <input type="text" name="start_date" class="form-control mb-2" value="{{ $user->references->start_date ?? '' }}" required>
 
-                            <label class="form-label" for="ub_account">Department </label>
-                            <input class="form-control mb-2" type="text" name="ub_account" value="{{ $user->references->department ?? '' }}" required>
+                            <label for="department" class="form-label">Department </label>
+                            <input type="text" name="department" class="form-control mb-2" value="{{ $user->references->department ?? '' }}" required>
 
-                            <label class="form-label" for="ub_number">Team Leader </label>
-                            <input class="form-control mb-2" type="text" name="ub_number" value="{{ $user->references->team_leader ?? '' }}" required>
+                            <label for="team_leader" class="form-label">Team Leader </label>
+                            <input type="text" name="team_leader" class="form-control mb-2" value="{{ $user->references->team_leader ?? '' }}" required>
 
-                            <label class="form-label" for="ub_number">Referral </label>
-                            <input class="form-control mb-2" type="text" name="ub_number" value="{{ $user->references->referral ?? '' }}" required>
+                            <label for="ub_number" class="form-label">Referral </label>
+                            <input type="text" name="ub_number" class="form-control mb-2" value="{{ $user->references->referral ?? '' }}" required>
 
-                            <label class="form-label" for="ub_number">Preferred Shift </label>
-                            <input class="form-control mb-2" type="text" name="ub_number" value="{{ $user->references->preferred_shift ?? '' }}" required>
+                            <label for="ub_number" class="form-label">Preferred Shift </label>
+                            <input type="text" name="ub_number" class="form-control mb-2" value="{{ $user->references->preferred_shift ?? '' }}" required>
 
-                            <label class="form-label" for="ub_number">Work Status </label>
-                            <input class="form-control mb-2" type="text" name="ub_number" value="{{ $user->references->work_status ?? '' }}" required>
+                            <label for="ub_number" class="form-label">Work Status </label>
+                            <input type="text" name="ub_number" class="form-control mb-2" value="{{ $user->references->work_status ?? '' }}" required>
 
-                            <label class="form-label" for="positions">Services Offered</label>
+                            <label for="positions" class="form-label">Services Offered</label>
                             @if(is_null($user->references))
                                 <h5>Not available</h5>
                             @else
-                                <select class="form-control select2 positions" name="positions[]" multiple="multiple">
+                                <select name="positions[]" class="form-control select2 positions" multiple="multiple">
                                     @php
                                         $applicantPositions = $user->references->services_offered;
                                         $dynamicPositions = $applicantPositions ?? [];
