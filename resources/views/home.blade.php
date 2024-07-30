@@ -35,7 +35,6 @@
 
                     <form id="scoresForm" method="post" action="{{ route('user.store') }}" enctype="multipart/form-data">
                         @csrf
-
                         <div class="form-group">
                             <label for="websites"><span class="text-danger">*</span> List of <span class="text-primary">websites</span> used:</label>
 
@@ -433,7 +432,7 @@
                                 <div class="form-group">
                                     <label for="videolink"><span class="text-danger">*</span> Upload video introduction: <strong>(128MB limit)</strong> </label>
 
-                                    <input type="file" name="videolink" class="form-control" accept=".mp4, .avi, .mkv, .mov, .wmv, .flv, .webm, .mpeg" required>
+                                    <input type="file" name="videolink" class="form-control" accept=".mp4, .avi, .mkv, .wmv, .flv, .webm, .mpeg" required>
                                 </div>
                             </div>
                         </div>

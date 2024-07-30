@@ -54,7 +54,7 @@ class UserController extends Controller
             'resume' => 'required|mimes:pdf|max:32000',
             'disc_results' => 'required|mimes:pdf|max:32000',
             //files
-            'videolink' => 'required|mimes:mp4,avi,mov,wmv|max:128000',
+            'videolink' => 'required|mimes:mp4,avi,wmv|max:128000',
             'photo_id' => 'required|max:64000',
             'photo_formal' => 'required|max:64000',
             //applicant info
@@ -279,8 +279,8 @@ class UserController extends Controller
         // Log::info('Request data:', $request->all());
 
         $this->validate($request, [
-            'inbound_call' => 'required|mimes:mp4,avi,mov,wmv,mp3,wav,aac,flac,ogg,wma|max:32000',
-            'outbound_call' => 'required|mimes:mp4,avi,mov,wmv,mp3,wav,aac,flac,ogg,wma|max:32000',
+            'inbound_call' => 'required|mimes:mp4,avi,wmv,mp3,wav,aac,flac,ogg,wma|max:32000',
+            'outbound_call' => 'required|mimes:mp4,avi,wmv,mp3,wav,aac,flac,ogg,wma|max:32000',
             'user_id' => 'required',
         ], [
             'inbound_call.required' => 'Inbound call file is missing.',
