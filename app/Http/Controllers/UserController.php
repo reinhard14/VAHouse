@@ -146,7 +146,7 @@ class UserController extends Controller
             }
         }
 
-        return back()->with('success', 'Form has been successfully filled-up! you can view your answers on by clicking "View account".');
+        return redirect()->route('user.dashboard')->with('success', 'Form has been successfully filled-up! you can view your answers on by clicking "View account".');
 
     }
 
