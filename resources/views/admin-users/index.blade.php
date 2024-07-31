@@ -376,6 +376,7 @@
 {{--* Modal components here --}}
 <x-administrator-applicant.create />
 
+
 @foreach ($users as $user)
     <x-administrator-applicant.edit :user="$user" :skills="$uniqueSkills" :websites="$uniqueWebsites" :tools="$uniqueTools" :softskills="$uniqueSoftskills" />
     <x-administrator-applicant.add-notes :user="$user" />

@@ -316,6 +316,13 @@ class AdminUserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $displayIncompleteUsers = $request->input('display');
+        $sortByFirstname = $request->input('sortByFirstname');
+        $sortByLastname = $request->input('sortByLastname');
+        $sortByDateSubmitted = $request->input('sortByDateSubmitted');
+        $page = $request->input('page');
+        $search = $request->input('search');
+
         $this->validate($request, [
             'age' => 'required|gte:18|lte:60',
         ]);
@@ -333,7 +340,14 @@ class AdminUserController extends Controller
         // $user->password = bcrypt($request->input('password'));
         $user->save();
 
-        return redirect()->route('admin.users.index')->with('success', "{$user->name} {$user->lastname}'s information has been updated!");
+        return redirect()->route('admin.users.index', [
+                            'display' => $displayIncompleteUsers,
+                            'sortByFirstname' => $sortByFirstname,
+                            'sortByLastname' => $sortByLastname,
+                            'sortByDateSubmitted' => $sortByDateSubmitted,
+                            'page' => $page,
+                            'search' => $search,
+                        ])->with('success', "{$user->name} {$user->lastname}'s information has been updated!");
     }
 
     /**
@@ -467,6 +481,13 @@ class AdminUserController extends Controller
 
     public function addNotes(Request $request) {
 
+        $displayIncompleteUsers = $request->input('display');
+        $sortByFirstname = $request->input('sortByFirstname');
+        $sortByLastname = $request->input('sortByLastname');
+        $sortByDateSubmitted = $request->input('sortByDateSubmitted');
+        $page = $request->input('page');
+        $search = $request->input('search');
+
         $this->validate($request, [
             'notes' => 'required',
             'user_id' => 'required',
@@ -481,7 +502,14 @@ class AdminUserController extends Controller
         $review->review_status = $request->input('review_status');
         $review->save();
 
-        return back()->with('success', 'Successfully added a note.');
+        return redirect()->route('admin.users.index', [
+            'display' => $displayIncompleteUsers,
+            'sortByFirstname' => $sortByFirstname,
+            'sortByLastname' => $sortByLastname,
+            'sortByDateSubmitted' => $sortByDateSubmitted,
+            'page' => $page,
+            'search' => $search,
+        ])->with('success', "Note has been added successfully.");
     }
 
     public function updateStatus(Request $request, $id) {

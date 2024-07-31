@@ -11,6 +11,8 @@
             <form class="editApplicantStatus" method="POST" action="{{ route('update.applicant.status', $user->id) }}">
                 @csrf
                 @method('put')
+                <x-parameters-applicants.index />
+
                 <input type="hidden" name="user_id" value="{{ $user->id }}">
                 <input type="hidden" name="updated_by" value="{{ Auth::user()->name }}">
 

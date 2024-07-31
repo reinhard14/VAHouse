@@ -10,6 +10,13 @@
 
             <form method="POST" action="{{ route('add.notes') }}">
                 @csrf
+                <input type="hidden" name="display" value="{{ request('display') }}">
+                <input type="hidden" name="sortByFirstname" value="{{ request('sortByFirstname') }}">
+                <input type="hidden" name="sortByLastname" value="{{ request('sortByLastname') }}">
+                <input type="hidden" name="sortByDateSubmitted" value="{{ request('sortByDateSubmitted') }}">
+                <input type="hidden" name="page" value="{{ request('page') }}">
+                <input type="hidden" name="search" value="{{ request('search') }}">
+
                 <input type="hidden" name="user_id" value="{{ $user->id }}">
                 <input type="hidden" name="reviewed_by" value="{{ Auth::user()->name }}">
                 <input type="hidden" name="review_status" value="updated">
