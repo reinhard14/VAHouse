@@ -22,7 +22,7 @@
                 <input type="hidden" name="review_status" value="updated">
                 <div class="modal-body">
                     <label class="form-label" for="notes">Note: </label>
-                    <input class="form-control mb-2" type="text" name="notes" required>
+                    <input class="form-control mb-2" type="text" name="notes" value="{{ $user->review->notes ?? '' }}" required>
                 </div>
 
                 <div class="modal-footer">
