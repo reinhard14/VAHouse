@@ -33,13 +33,13 @@
                             <input type="text" name="name" class="form-control mb-2" value="{{ $user->name }}" required>
 
                             <label for="middlename" class="form-label">Middle Name </label>
-                            <input type="text" name="middlename" class="form-control mb-2" value="{{ $user->middlename }}" required>
+                            <input type="text" name="middlename" class="form-control mb-2" value="{{ $user->middlename }}">
 
                             <label for="lastname" class="form-label">Last Name </label>
                             <input type="text" name="lastname" class="form-control mb-2" value="{{ $user->lastname }}" required>
 
                             <label for="suffix" class="form-label">Suffix </label>
-                            <input type="text" name="suffix" class="form-control mb-2" value="{{ $user->suffix }}" required>
+                            <input type="text" name="suffix" class="form-control mb-2" value="{{ $user->suffix }}">
 
                             <label for="age" class="form-label">Age </label>
                             <input type="number" name="age" class="form-control mb-2" value="{{ $user->age }}" required>
