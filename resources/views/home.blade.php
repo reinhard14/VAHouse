@@ -293,7 +293,7 @@
                                 <div class="form-group">
                                     <label for="rate"><span class="text-danger">*</span> Happy rate: <strong>(In pesos)</strong> </label>
 
-                                    <input type="number" name="rate" class="form-control" placeholder="Enter monthly rate.." required>
+                                    <input type="number" name="rate" class="form-control" min="1000" placeholder="Enter monthly rate.." required>
                                 </div>
                             </div>
 
@@ -440,7 +440,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="references"><span class="text-danger">*</span> <strong> Additional References:</strong> </label>
-                                <button class="btn btn-primary btn-sm d-block px-5 mx-3" data-bs-toggle="modal" data-bs-target="#create-references-modal">Click here</button>
+                                <a href="#create-references-modal" class="btn btn-primary btn-sm d-block px-5 mx-3" data-bs-toggle="modal">Click here</a>
                             </div>
                         </div>
 

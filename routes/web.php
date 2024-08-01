@@ -72,7 +72,7 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('user/dashboard', [App\Http\Controllers\UserController::class, 'index'])->name('user.dashboard');
         Route::get('user/create', [App\Http\Controllers\UserController::class, 'create'])->name('user.create');
-        Route::post('user/dashboard', [App\Http\Controllers\UserController::class, 'store'])->name('user.store');
+        Route::post('user/store', [App\Http\Controllers\UserController::class, 'store'])->name('user.store');
         Route::post('user/experience', [App\Http\Controllers\UserController::class, 'experiences'])->name('user.experience');
         Route::post('user/uploadMockcall', [App\Http\Controllers\UserController::class, 'uploadMockcall'])->name('user.mockcall');
         Route::post('user/references', [UserController::class, 'storeReferences'])->name('user.references.store');
