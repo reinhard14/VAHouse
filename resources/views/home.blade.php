@@ -291,7 +291,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="rate"><span class="text-danger">*</span> Happy rate: <strong>(In pesos)</strong> </label>
+                                    <label for="rate"><span class="text-danger">*</span> Happy rate: <strong>(In a month - In pesos)</strong> </label>
 
                                     <input type="number" name="rate" class="form-control" min="1000" placeholder="Enter monthly rate.." required>
                                 </div>
