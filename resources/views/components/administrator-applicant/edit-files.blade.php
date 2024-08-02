@@ -113,7 +113,7 @@
                                             'inbound_call' => 'Inbound Call',
                                             'outbound_call' => 'Outbound Call',
                                             ];
-                        $appliedPosition = $user->information->positions ?? [];
+                        $appliedPosition = $user->information->positions ?? '';
                         $cleanPositions = str_replace(['[', ']'], '', $appliedPosition);
                         $notRequired = " not required.";
                         $required = " required.";
