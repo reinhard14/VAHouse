@@ -20,9 +20,22 @@
                 <input type="hidden" name="user_id" value="{{ $user->id }}">
                 <input type="hidden" name="reviewed_by" value="{{ Auth::user()->name }}">
                 <input type="hidden" name="review_status" value="updated">
+
                 <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
                     <label class="form-label" for="notes">Note: </label>
                     <input class="form-control mb-2" type="text" name="notes" value="{{ $user->review->notes ?? '' }}" required>
+                        </div>
+                    </div>
+
+                    @if ($user->review)
+                        <div class="row mt-3">
+                            <div class="col">
+                                <strong>Updated by: </strong> {{ $user->review->reviewed_by ?? '' }}
+                            </div>
+                        </div>
+                    @endif
                 </div>
 
                 <div class="modal-footer">
