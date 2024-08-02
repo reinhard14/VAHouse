@@ -69,6 +69,13 @@
                         </div>
                     </div>
 
+                    @if($user->status)
+                        <div class="row mt-4">
+                            <div class="col">
+                                <strong>Updated by: </strong> {{ $user->status->updated_by ?? ''}}
+                            </div>
+                        </div>
+                    @endif
                 </div>
 
                 <div class="modal-footer">
