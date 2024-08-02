@@ -35,6 +35,7 @@
                                 <option value="Not Qualified" {{ old('status', $user->status->status ?? '') == 'Not Qualified' ? 'selected' : '' }}>Not Qualified</option>
                                 <option value="Ready for shortlisting" {{ old('status', $user->status->status ?? '') == 'Ready for shortlisting' ? 'selected' : '' }}>Ready for shortlisting</option>
                                 <option value="Onboarded" {{ old('status', $user->status->status ?? '') == 'Onboarded' ? 'selected' : '' }}>Onboarded</option>
+                                <option value="Inactive" {{ old('status', $user->status->status ?? '') == 'Inactive' ? 'selected' : '' }}>Inactive</option>
                                 <option value="Hired" {{ old('status', $user->status->status ?? '') == 'Hired' ? 'selected' : '' }}>Hired</option>
                                 <option value="Floating" {{ old('status', $user->status->status ?? '') == 'Floating' ? 'selected' : '' }}>Floating</option>
                                 <option value="Terminated" {{ old('status', $user->status->status ?? '') == 'Terminated' ? 'selected' : '' }}>Terminated</option>

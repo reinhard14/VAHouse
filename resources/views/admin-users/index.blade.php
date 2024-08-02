@@ -314,6 +314,7 @@
                                                                         'Not Qualified' => 'badge-danger',
                                                                         'Ready for shortlisting' => 'badge-info',
                                                                         'Onboarded' => 'badge-info',
+                                                                        'Inactive' => 'badge-warning',
                                                                         'Hired' => 'badge-primary',
                                                                         'Floating' => 'badge-warning',
                                                                         'Terminated' => 'badge-danger'
