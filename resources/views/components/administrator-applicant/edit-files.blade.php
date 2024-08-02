@@ -105,6 +105,7 @@
                     @endforeach
 
                     <hr>
+
                     @php
                         $callSamplesFields = ['inbound_call', 'outbound_call'];
 
@@ -112,9 +113,20 @@
                                             'inbound_call' => 'Inbound Call',
                                             'outbound_call' => 'Outbound Call',
                                             ];
+                        $appliedPosition = $user->information->positions ?? [];
+                        $cleanPositions = str_replace(['[', ']'], '', $appliedPosition);
+                        $notRequired = " not required.";
+                        $required = " required.";
                     @endphp
                     @if(!isset($user->mockcalls))
-                        <h5 class="text-center">Applicant don't have mockcall files, upload below</h5>
+                        <h6 class="text-center mb-3">Applicant has no mockcall files, upload below</h6>
+                        <p>Applied positions: {{ $cleanPositions }}
+                            @if(strpos($cleanPositions, "Callers") !== false)
+                            <strong> {{ $required }} </strong>
+                            @else
+                                {{ $notRequired }}
+                            @endif
+                        </p>
                         @foreach ($callSamplesFields as $field)
                             <div class="row pb-3">
                                 <label class="form-label px-3">{{ $callSampleLabels[$field] }}</label>
@@ -133,8 +145,14 @@
                             </div>
                         @endforeach
                     @else
-                        <h5 class="form-label">Mock Calls:</h5>
-
+                        <h6 class="form-label">Mock Calls:</h6>
+                        <p>Applied positions: {{ $cleanPositions }}
+                            @if(strpos($cleanPositions, "Callers") !== false)
+                                <strong> {{ $required }} </strong>
+                            @else
+                                {{ $notRequired }}
+                            @endif
+                        </p>
                         @foreach ($callSamplesFields as $field)
                             <div class="row pb-3">
                                 <div class="col">

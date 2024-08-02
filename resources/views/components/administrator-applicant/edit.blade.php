@@ -95,8 +95,8 @@
 
 
 <x-administrator-applicant.edit-skillsets :user="$user" :skills="$skills" :websites="$websites" :tools="$tools" :softskills="$softskills" />
-<x-administrator-applicant.edit-files :user="$user"/>
-<x-administrator-applicant.edit-profile :user="$user" :skills="$skills"/>
-<x-administrator-applicant.edit-references :user="$user" :skills="$skills"/>
-<x-administrator-applicant.edit-experience :user="$user"/>
-<x-administrator-applicant.edit-password :user="$user"/>
+<x-administrator-applicant.edit-files :user="$user" :skills="$skills" />
+<x-administrator-applicant.edit-profile :user="$user" :skills="$skills" />
+<x-administrator-applicant.edit-references :user="$user" :skills="$skills" />
+<x-administrator-applicant.edit-experience :user="$user" />
+<x-administrator-applicant.edit-password :user="$user" />
