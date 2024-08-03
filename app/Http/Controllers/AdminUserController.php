@@ -511,7 +511,7 @@ class AdminUserController extends Controller
             'sortByDateSubmitted' => $sortByDateSubmitted,
             'page' => $page,
             'search' => $search,
-        ])->with('success', "Note has been added successfully.");
+        ])->with('success', "{$review->user->name} {$review->user->lastname}'s note has been modified.");
     }
 
     public function updateStatus(Request $request, $id) {
