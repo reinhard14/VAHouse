@@ -122,9 +122,9 @@
                         <h6 class="text-center mb-3">Applicant has no mockcall files, upload below</h6>
                         <p>Applied positions: {{ $cleanPositions }}
                             @if(strpos($cleanPositions, "Callers") !== false)
-                            <strong> {{ $required }} </strong>
+                                <span class="badge badge-danger"> {{ $required }} </span>
                             @else
-                                {{ $notRequired }}
+                                <span class="badge badge-info"> {{ $notRequired }}
                             @endif
                         </p>
                         @foreach ($callSamplesFields as $field)
@@ -145,13 +145,15 @@
                             </div>
                         @endforeach
                     @else
-                        <h6 class="form-label">Mock Calls:</h6>
-                        <p>Applied positions: {{ $cleanPositions }}
+                        <h6 class="form-label">Mock Calls:
                             @if(strpos($cleanPositions, "Callers") !== false)
-                                <strong> {{ $required }} </strong>
+                                <span class="badge badge-danger"> {{ $required }} </span>
                             @else
-                                {{ $notRequired }}
+                                <span class="badge badge-info"> {{ $notRequired }} </span>
                             @endif
+                        </h6>
+                        <p>Applied positions: {{ $cleanPositions }}
+
                         </p>
                         @foreach ($callSamplesFields as $field)
                             <div class="row pb-3">
