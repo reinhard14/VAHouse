@@ -79,7 +79,7 @@
                                     I. Is recorded in landscape video format
                                 </p>
                                 <p>
-                                    J. Is uploaded to your Google Drive using the filename format: INTROVIDEO_LAST NAME.FIRST NAME
+                                    J. Upload the file with the file name format: INTROVIDEO_LAST NAME.FIRST NAME
                                 </p>
                                 <p>
                                     You may consider the following guiding questions while creating your Introduction Video:
@@ -140,7 +140,7 @@
                                     H. LENGTH OF CV - If you have a four-year experience as VA/EA/CSR/SMM, etc., make your CV two pages or more to thoroughly justify your previous working experience.
                                 </p>
                                 <p>
-                                    I. SAVE IN PDF FORMAT - Save your revised CV in Portable Document Format (PDF) and upload it to your Google Drive using the filename format: CV_LAST NAME.FIRST NAME.
+                                    I. SAVE IN PDF FORMAT - Save your revised CV in Portable Document Format (PDF) and upload it using the filename format: CV_LAST NAME.FIRST NAME.
                                 </p>
                             </div>
                         </div>
@@ -270,8 +270,8 @@
                             <div class="col">
                                 <p>
                                     A. For the positions of Customer Service Representative,
-                                    Appointment Setter, Chat Support, and Voice Account, please provide a Google Drive link containing your two recorded mock calls: one
-                                    inbound recorded mock call and one outbound recorded mock call. You may use your own scripts for both the inbound and outbound calls.
+                                    Appointment Setter, Chat Support, and Voice Account, please provide your two recorded mock calls:
+                                    one inbound recorded mock call and one outbound recorded mock call. You may use your own scripts for both the inbound and outbound calls.
                                 </p>
                                 <p>
                                     B. For roles such as Social Media Marketer, Executive Assistant, Logistics Coordinator, Bookkeeper, Technical Support, Real Estate
@@ -299,8 +299,10 @@
                                     <strong>IMPORTANT REMINDERS:</strong>
                                 </p>
                                 <p>
-                                    Ensure that all your Google Drive links are accessible to the HR DEPARTMENT. Share them with everyone and not just specific individuals.
-                                    You must comply with all the instructions provided above. Failure to do so means you cannot proceed to the next step of your application at VA House.
+                                    Ensure that all your files are accessible to the HR DEPARTMENT.
+                                    Share them with everyone and not just specific individuals.
+                                    You must comply with all the instructions provided above.
+                                    Failure to do so means you cannot proceed to the next step of your application at VA House.
                                 </p>
                                 <p>
                                     The HR Department is unavailable on Saturdays and Sundays. Updates will be provided only from Monday to Friday. Please take note of this schedule.
