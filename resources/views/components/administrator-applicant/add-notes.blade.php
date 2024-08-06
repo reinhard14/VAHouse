@@ -29,7 +29,7 @@
                         </div>
                     </div>
 
-                    @if ($user->review)
+                    @if (isset($user->review->reviewed_by))
                         <div class="row mt-3">
                             <div class="col">
                                 <strong>Updated by: </strong> {{ $user->review->reviewed_by ?? '' }}
