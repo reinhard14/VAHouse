@@ -290,7 +290,7 @@ class UserController extends Controller
             'outbound_call.required' => 'Outbound call file is missing.',
             'outbound_call.mimes' => 'Outbound call file type is incorrect.',
             'outbound_call.max' => 'Outbound call file size exceed the 32000 MB limit!',
-            ]);
+        ]);
 
         $user_id = ['user_id' => Auth::id()];
         $callSample = CallSample::firstOrNew($user_id);
