@@ -367,8 +367,15 @@ class AdminUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        $sortByDateSubmitted = $request->input('sortByDateSubmitted');
+        $sortByLastname = $request->input('sortByLastname');
+        $sortByFirstname = $request->input('sortByFirstname');
+        $displayIncompleteUsers = $request->input('display');
+        $page = $request->input('page');
+        $search = $request->input('search');
+
         $user = User::find($id);
         $user_id = $user->id;
         $userApplicantInformation = ApplicantInformation::where('user_id', $user_id);
@@ -415,7 +422,14 @@ class AdminUserController extends Controller
 
         }
 
-        return redirect()->route('admin.users.index')->with('success', "{$user->name} {$user->lastname}'s record has been deleted!");
+        return redirect()->route('admin.users.index', [
+                                'display' => $displayIncompleteUsers,
+                                'sortByFirstname' => $sortByFirstname,
+                                'sortByLastname' => $sortByLastname,
+                                'sortByDateSubmitted' => $sortByDateSubmitted,
+                                'page' => $page,
+                                'search' => $search,
+                        ])->with('success', "{$user->name} {$user->lastname}'s record has been deleted!");
 
     }
 

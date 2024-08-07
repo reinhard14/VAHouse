@@ -169,6 +169,7 @@
                                         <li>{{ $user->name }} -> {{ $user->skillsets->skill ?? 'na' }}</li>
                                     @endforeach
                                 </ul> --}}
+                                {{-- {{ $page }} --}}
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
@@ -276,7 +277,15 @@
                                                             <a href="#edit-user-modal-{{ $user->id }}" data-bs-toggle="modal" class="px-2">
                                                                 <i class="bi bi-person-gear"></i> Edit
                                                             </a>
-                                                            <form method="post" action="{{ route('admin.users.destroy', $user->id) }}" class="deleteItemPrompt">
+                                                            <form method="post" action="{{ route('admin.users.destroy', [
+                                                                                'user' => $user->id,
+                                                                                'sortByDateSubmitted' => $sortByDateSubmitted,
+                                                                                'sortByLastname' => $sortByLastname,
+                                                                                'sortByFirstname' => $sortByFirstname,
+                                                                                'display' => $displayIncompleteApplicants,
+                                                                                'page' => request()->query('page') ?? 1,
+                                                                                'search' => $search ?? ''
+                                                                                ]) }}" class="deleteItemPrompt">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit" class="btn text-danger"> <i class="bi bi-person-x"></i> Delete </button>
