@@ -176,7 +176,6 @@
                     </div>
 
                     <div class="row mb-3">
-
                         <div class="col-md-6">
                             <label>DISC Results</label>
                             <p>
@@ -187,17 +186,38 @@
                                 @endif
                             </p>
                         </div>
-                        @if (!isset($user->mockcalls->inbound_call) || is_null($user->mockcalls->inbound_call))
-                            <h5>No Mock Call files available.</h5>
+                        @if (!isset($user->mockcalls) || is_null($user->mockcalls))
+                            <div class="col-md-3">
+                                <h5>No Mock Call files available.</h5>
+                            </div>
                         @else
-                            <div class="col">
-                                <label>Mock Calls</label>
-                            </div>
-                            <div class="col">
+                            @php
+                                $inboundCall = isset($user->mockcalls->inbound_call) ? $user->mockcalls->inbound_call : null;
+                                $outboundCall = isset($user->mockcalls->outbound_call) ? $user->mockcalls->outbound_call : null;
+                            @endphp
 
-                                <p>Inbound: <a href="{{ route('view.pdf', $user->mockcalls->inbound_call) }}" target="_blank">Open</a> </p>
-                                <p>Outbound: <a href="{{ route('view.pdf', $user->mockcalls->outbound_call) }}" target="_blank">Open</a> </p>
-                            </div>
+                            @if (!is_null($inboundCall) || !is_null($outboundCall))
+                                <div class="col-md-3">
+                                    <label>Mock Calls</label>
+                                </div>
+                                <div class="col-md-3">
+                                    @if (is_null($inboundCall))
+                                        <h6>Inbound file not available.</h6>
+                                    @elseif (!is_null($inboundCall))
+                                        <p>Inbound: <a href="{{ route('view.pdf', $inboundCall) }}" target="_blank">Open</a></p>
+                                    @endif
+
+                                    @if (is_null($outboundCall))
+                                        <h6>Outbound file not available.</h6>
+                                    @elseif (!is_null($outboundCall))
+                                        <p>Outbound: <a href="{{ route('view.pdf', $outboundCall) }}" target="_blank">Open</a></p>
+                                    @endif
+                                </div>
+                            @else
+                                <div class="col-md-3">
+                                    <h5>No Mock Call files available.</h5>
+                                </div>
+                            @endif
                         @endif
                     </div>
 
