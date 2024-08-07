@@ -219,6 +219,16 @@ $(document).ready(function() {
         placeholder: 'Select status..',
     });
 
+    $('#tiers').select2({
+        // maximumSelectionLength: 5,
+        placeholder: 'Select tiers..',
+    });
+
+    $('#LMS').select2({
+        // maximumSelectionLength: 5,
+        placeholder: 'Select LMS status..',
+    });
+
     $('#collapseOne').collapse('show');
     $('.sidebar-mini').addClass('sidebar-collapse')
 

@@ -97,6 +97,8 @@
                                                                     'softskills',
                                                                     'experiences',
                                                                     'statuses',
+                                                                    'tiers',
+                                                                    'LMS',
                                                     ];
                                                         $count = 0;
                                                     @endphp
@@ -130,7 +132,6 @@
                                                                 <input type="checkbox" name="display" id="display" value="checked" {{ $displayIncompleteApplicants === null ? '' : 'checked' }}>
                                                                 Display incomplete accounts?
                                                             </label>
-
                                                         </div>
                                                         <div class="col-md-4" id="view_col">
                                                             <p> <label> Current view - </label>

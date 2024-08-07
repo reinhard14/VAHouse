@@ -99,7 +99,8 @@ class AdminUserController extends Controller
                             ->leftJoin('statuses', 'users.id', '=', 'statuses.user_id')
                             ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
                             ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
-                            ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title')
+                            ->leftJoin('tiers', 'users.id', '=', 'tiers.user_id')
+                            ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title', 'tiers.*')
                             //distinct causes pagination error. find another way, try use groupby.
                             ->distinct()
                             ->orderBy($sortByColumn, $sortOrder);
@@ -109,7 +110,8 @@ class AdminUserController extends Controller
                             ->leftJoin('statuses', 'users.id', '=', 'statuses.user_id')
                             ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
                             ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
-                            ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title')
+                            ->leftJoin('tiers', 'users.id', '=', 'tiers.user_id')
+                            ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title', 'tiers.*')
                             //distinct causes pagination error. find another way, try use groupby.
                             ->distinct()
                             ->orderBy($sortByColumn, $sortOrder);
@@ -133,6 +135,8 @@ class AdminUserController extends Controller
             'softskills' => 'skillsets.softskill',
             'experiences' => 'applicant_information.experience',
             'statuses' => 'status',
+            'tiers' => 'tier',
+            'LMS' => 'lesson',
         ];
 
         // Apply tag filters
@@ -173,6 +177,9 @@ class AdminUserController extends Controller
         $uniqueStatuses = Status::groupBy('status')->pluck('status');
         $uniqueExperiences = ApplicantInformation::groupBy('experience')->pluck('experience');
         $uniqueTitles = Experience::groupBy('title')->pluck('title');
+        $uniqueTiers = Tier::groupBy('tier')->pluck('tier');
+        $uniqueLMS = Status::groupBy('lesson')->pluck('lesson');
+
         //tranform titles to uppercase first letter.
         $getUniqueTitles = array_map('ucfirst', $uniqueTitles->toArray());
         //Combine the collection and array, this is for skills, also display the title.
@@ -193,6 +200,8 @@ class AdminUserController extends Controller
             'uniqueSkills',
             'uniqueSoftskills',
             'uniqueStatuses',
+            'uniqueTiers',
+            'uniqueLMS',
             'displayIncompleteApplicants',
         ));
 
