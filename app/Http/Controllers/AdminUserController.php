@@ -513,14 +513,27 @@ class AdminUserController extends Controller
         $review->review_status = $request->input('review_status');
         $review->save();
 
-        return redirect()->route('admin.users.index', [
-            'display' => $displayIncompleteUsers,
-            'sortByFirstname' => $sortByFirstname,
-            'sortByLastname' => $sortByLastname,
-            'sortByDateSubmitted' => $sortByDateSubmitted,
-            'page' => $page,
-            'search' => $search,
-        ])->with('success', "{$review->user->name} {$review->user->lastname}'s note has been modified.");
+        return response()->json([
+            'success' => true,
+            'review'=> $review,
+            'data' => [
+                'displayIncompleteUsers' => $displayIncompleteUsers,
+                'sortByFirstname' => $sortByFirstname,
+                'sortByLastname' => $sortByLastname,
+                'sortByDateSubmitted' => $sortByDateSubmitted,
+                'page' => $page,
+                'search' => $search,
+            ]
+        ]);
+
+        // return redirect()->route('admin.users.index', [
+        //     'display' => $displayIncompleteUsers,
+        //     'sortByFirstname' => $sortByFirstname,
+        //     'sortByLastname' => $sortByLastname,
+        //     'sortByDateSubmitted' => $sortByDateSubmitted,
+        //     'page' => $page,
+        //     'search' => $search,
+        // ])->with('success', "{$review->user->name} {$review->user->lastname}'s note has been modified.");
     }
 
     public function updateStatus(Request $request, $id) {

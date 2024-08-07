@@ -1,5 +1,34 @@
 //TODO Admin's side - Applicants Alerts
 //Administrator actions for Applicant's Saving prompt.
+
+function handleAddNotesForm(response) {
+    const review = response.review.notes;
+
+    if(response.success) {
+        Swal.fire({
+            icon: 'success',
+            title: `Note Updated!`,
+            text: `note has been set to "${review}".`,
+            showConfirmButton: false,
+            timer: 2500,
+        });
+    } else {
+        let notesError = response.responseJSON.errors.notes;
+
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            html:`
+                <p>${response.responseJSON.message}</p>
+                <p><strong>Inbound:</strong> ${notesError}</p>
+                `,
+            showConfirmButton: false,
+            timer: 3000
+        });
+    }
+
+}
+
 function handleApplicantFormSubmission(form) {
 
     Swal.fire({

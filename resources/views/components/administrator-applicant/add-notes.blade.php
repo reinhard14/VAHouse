@@ -8,7 +8,7 @@
                 <button type="button" class="close" data-bs-dismiss="modal">x</button>
             </div>
 
-            <form method="POST" action="{{ route('add.notes') }}">
+            <form id="add-notes-form-{{ $user->id }}" data-user-id="{{ $user->id }}">
                 @csrf
                 <input type="hidden" name="display" value="{{ request('display') }}">
                 <input type="hidden" name="sortByFirstname" value="{{ request('sortByFirstname') }}">
@@ -24,8 +24,8 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col">
-                    <label class="form-label" for="notes">Note: </label>
-                    <input class="form-control mb-2" type="text" name="notes" value="{{ $user->review->notes ?? '' }}" required>
+                            <label class="form-label" for="notes">Note: </label>
+                            <input class="form-control mb-2" type="text" name="notes" value="{{ $user->review->notes ?? '' }}" required>
                         </div>
                     </div>
 
@@ -42,9 +42,15 @@
                     <button type="submit" class="btn btn-primary btn-sm">
                         <i class="bi bi-pen mr-1"></i> Add
                     </button>
-                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"><i class="bi bi-file-x  mr-1"></i>Close</button>
+                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">
+                        <i class="bi bi-file-x mr-1"></i>Close
+                    </button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    var addNotesRoute = '{{ route("add.notes") }}';
+</script>

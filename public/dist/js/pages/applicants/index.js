@@ -260,5 +260,4 @@ $(document).ready(function() {
             'overflow-y': 'auto'
         });
     });
-
 });
