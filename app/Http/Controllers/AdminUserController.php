@@ -557,14 +557,16 @@ class AdminUserController extends Controller
             'updated_by' => 'required',
         ]);
 
-        $status = Status::where('user_id', $id)->firstOrFail();
+        $attributes = ['user_id' => $id];
+
+        $status = Status::firstOrNew($attributes);
         $status->status = $request->input('status');
         $status->lesson = $request->input('lesson');
         $status->updated_by = $request->input('updated_by');
         $status->user_id = $id;
         $status->save();
 
-        $tier = Tier::where('user_id', $id)->firstOrFail();
+        $tier = Tier::firstOrNew($attributes);
         $tier->tier = $request->input('tier');
         $tier->user_id = $id;
         $tier->save();
