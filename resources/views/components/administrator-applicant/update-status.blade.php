@@ -8,15 +8,9 @@
                 <button type="button" class="close" data-bs-dismiss="modal">x</button>
             </div>
 
-            <form class="editApplicantStatus" method="POST" action="{{ route('update.applicant.status', $user->id) }}">
+            <form id="update-status-form-{{ $user->id }}" data-user-id="{{ $user->id }}">
                 @csrf
                 @method('put')
-                <input type="hidden" name="display" value="{{ request('display') }}">
-                <input type="hidden" name="sortByFirstname" value="{{ request('sortByFirstname') }}">
-                <input type="hidden" name="sortByLastname" value="{{ request('sortByLastname') }}">
-                <input type="hidden" name="sortByDateSubmitted" value="{{ request('sortByDateSubmitted') }}">
-                <input type="hidden" name="page" value="{{ request('page') }}">
-                <input type="hidden" name="search" value="{{ request('search') }}">
                 <input type="hidden" name="user_id" value="{{ $user->id }}">
                 <input type="hidden" name="updated_by" value="{{ Auth::user()->name }}">
 
@@ -90,3 +84,7 @@
         </div>
     </div>
 </div>
+
+<script>
+    var updateStatusRoute = '{{ route("update.applicant.status", $user->id) }}';
+</script>

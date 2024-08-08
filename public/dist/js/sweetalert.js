@@ -20,10 +20,23 @@ function handleAddNotesForm(response) {
             title: 'Error!',
             html:`
                 <p>${response.responseJSON.message}</p>
-                <p><strong>Inbound:</strong> ${notesError}</p>
+                <p><strong>Notes:</strong> ${notesError}</p>
                 `,
             showConfirmButton: false,
             timer: 3000
+        });
+    }
+}
+
+function handleUpdateStatusForm(response) {
+
+    if(response.success) {
+        Swal.fire({
+            icon: 'success',
+            title: `Status Updated!`,
+            text: `Status has been saved accordingly.`,
+            showConfirmButton: false,
+            timer: 2500,
         });
     }
 

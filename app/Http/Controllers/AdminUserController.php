@@ -539,21 +539,13 @@ class AdminUserController extends Controller
                 'search' => $search,
             ]
         ]);
-
-        // return redirect()->route('admin.users.index', [
-        //     'display' => $displayIncompleteUsers,
-        //     'sortByFirstname' => $sortByFirstname,
-        //     'sortByLastname' => $sortByLastname,
-        //     'sortByDateSubmitted' => $sortByDateSubmitted,
-        //     'page' => $page,
-        //     'search' => $search,
-        // ])->with('success', "{$review->user->name} {$review->user->lastname}'s note has been modified.");
     }
 
     public function updateStatus(Request $request, $id) {
 
         $this->validate($request, [
             'status' => 'required',
+            'tier' => 'required',
             'updated_by' => 'required',
         ]);
 
@@ -571,7 +563,11 @@ class AdminUserController extends Controller
         $tier->user_id = $id;
         $tier->save();
 
-        return back()->with('success', 'Successfully updated applicant\'s status.');
+        return response()->json([
+            'success' => true,
+            'status'=> $status,
+            'tier'=> $tier,
+        ]);
     }
 
     public function updatePassword(Request $request, $id)

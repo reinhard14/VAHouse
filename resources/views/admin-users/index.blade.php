@@ -409,6 +409,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="{{ asset('dist/js/pages/applicants/index.js') }}"></script>
 <script src="{{ asset('dist/js/pages/applicants/add-notes.js') }}"></script>
+<script src="{{ asset('dist/js/pages/applicants/update-status.js') }}"></script>
 
 {{-- container end --}}
 @endsection
