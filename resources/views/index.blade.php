@@ -76,7 +76,7 @@
                 </div>
             </div>
 
-            {{-- <div class="row">
+            <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="table-responsive">
@@ -114,13 +114,13 @@
                                 </tbody>
                             </table>
                         </div>
-
+                        SAMPLE ONLY FOR NOW.
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <!-- /.row -->
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-8">
                     <div class="card">
                         <div class="table-responsive">
@@ -152,7 +152,7 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Yearly Targets</h3>
+                            <h3 class="card-title">KPI</h3>
                         </div>
 
                         <div class="card-body p-0">
@@ -184,7 +184,7 @@
                         <!-- /.card-footer -->
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- /.row -->
         </div>
         <!-- /.container-fluid -->
