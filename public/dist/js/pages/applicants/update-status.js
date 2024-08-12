@@ -6,14 +6,16 @@ $(document).ready(function() {
         var form = $('#update-status-form-' + userId);
         var formData = form.serialize();
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        var url = '/administrator/users/' + userId + '/status';
 
         $.ajax({
             type: 'POST',
-            url: updateStatusRoute,
+            url: url,
             data: formData,
             headers: {
                 'X-CSRF-TOKEN': csrfToken
             },
+
             success: function(response) {
                 handleUpdateStatusForm(response);
             },
