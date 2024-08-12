@@ -29,6 +29,17 @@ function handleAddNotesForm(response) {
 }
 
 function handleUpdateStatusForm(response) {
+    if(response.success) {
+        Swal.fire({
+            icon: 'success',
+            title: `Status Updated!`,
+            text: `Status has been saved accordingly.`,
+            showConfirmButton: false,
+            timer: 2500,
+        });
+    }
+}
+
 
     if(response.success) {
         Swal.fire({

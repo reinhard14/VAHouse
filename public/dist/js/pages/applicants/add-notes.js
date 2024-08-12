@@ -16,7 +16,6 @@ $(document).ready(function() {
             },
             success: function(response) {
                 handleAddNotesForm(response);
-                // console.log('Additional data:', response.data);
             },
             error: function(jqXHR) {
                 try {

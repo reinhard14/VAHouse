@@ -1,14 +1,15 @@
-<!-- Add Notes Modal -->
+<!-- Update Status Modal -->
 
 <div class="modal fade" id="update-status-{{ $user->id }}" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Set status for this applicant</h5>
-                <button type="button" class="close" data-bs-dismiss="modal">x</button>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">x</button>
             </div>
 
             <form id="update-status-form-{{ $user->id }}" data-user-id="{{ $user->id }}">
+
                 @csrf
                 @method('put')
                 <input type="hidden" name="user_id" value="{{ $user->id }}">
