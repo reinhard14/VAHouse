@@ -59,6 +59,7 @@ Route::prefix('administrator')
         Route::put('users/{id}/profile', [AdminUserController::class, 'updateProfile'])->name('update.user.profile');
         Route::put('users/{id}/skillset', [AdminUserController::class, 'updateSkillsets'])->name('update.user.skillsets');
         Route::put('users/{id}/references', [AdminUserController::class, 'updateReferences'])->name('update.user.references');
+        Route::put('users/{id}/files', [AdminUserController::class, 'updateFiles'])->name('update.user.files');
         Route::put('users/{id}/password', [AdminUserController::class, 'updatePassword'])->name('update.user.password');
         Route::post('users/files/upload/{field}', [AdminUserController::class, 'storeFile'])->name('update.user.storeFile');
         Route::put('users/files/{id}/update/{field}', [AdminUserController::class, 'updateFile'])->name('update.user.updateFile');

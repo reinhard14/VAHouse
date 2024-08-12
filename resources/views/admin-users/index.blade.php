@@ -410,8 +410,6 @@
 <script src="{{ asset('dist/js/pages/applicants/index.js') }}"></script>
 <script src="{{ asset('dist/js/pages/applicants/add-notes.js') }}"></script>
 <script src="{{ asset('dist/js/pages/applicants/update-status.js') }}"></script>
-<script src="{{ asset('dist/js/pages/applicants/edit-profile.js') }}"></script>
-{{-- <script src="{{ asset('dist/js/pages/applicants/edit-files.js') }}"></script>
 
 {{-- container end --}}
 @endsection

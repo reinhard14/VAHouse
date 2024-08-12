@@ -615,10 +615,7 @@ class AdminUserController extends Controller
         $information->positions = json_encode($request->input('positions'));
         $information->save();
 
-        return response()->json([
-            'success' => true,
-        ]);
-
+        return redirect()->route('admin.users.index')->with('success', "{$information->user->name} {$information->user->lastname}'s VA profile has been updated!");
     }
 
     public function updateSkillsets(Request $request, $id)
