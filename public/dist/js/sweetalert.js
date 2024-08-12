@@ -41,6 +41,7 @@ function handleUpdateStatusForm(response) {
 }
 
 
+function handleProfileForm(response) {
     if(response.success) {
         Swal.fire({
             icon: 'success',
@@ -50,7 +51,18 @@ function handleUpdateStatusForm(response) {
             timer: 2500,
         });
     }
+}
 
+function handleEditFileForm(response) {
+    if(response.success) {
+        Swal.fire({
+            icon: 'success',
+            title: `File Updated!`,
+            text: `File has been saved accordingly.`,
+            showConfirmButton: false,
+            timer: 2500,
+        });
+    }
 }
 
 function handleApplicantFormSubmission(form) {
