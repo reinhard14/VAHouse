@@ -5,10 +5,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Edit Applicant's VA Profile</h5>
-                <button type="button" class="close" data-bs-dismiss="modal">x</button>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">x</button>
             </div>
 
-            <form class="editUserForm" method="POST" action="{{ route('update.user.profile', $user->id) }}">
+            <form id="edit-profile-form-{{ $user->id }}" data-user-id="{{ $user->id }}">
                 @csrf
                 @method('PUT')
 
@@ -121,3 +121,6 @@
     </div>
 </div>
 
+{{-- <script>
+    var editProfile = '{{ route("update.user.profile", $user->id) }}';
+</script> --}}
