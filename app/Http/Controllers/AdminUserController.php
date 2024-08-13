@@ -334,6 +334,7 @@ class AdminUserController extends Controller
 
         $this->validate($request, [
             'age' => 'required|gte:18|lte:60',
+            'email' => 'required|unique:users',
         ]);
 
         $user = User::findOrFail($id);
