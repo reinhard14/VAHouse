@@ -65,7 +65,8 @@
                         <div class="row mb-4">
                             <div class="col-md-6" id="search_col">
                                 <form method="GET" action="#" class="form-inline row">
-                                    <div class="col-md-8">
+                                    <input type="hidden" id="display" name="display" value="{{ request('display') }}">
+                                     <div class="col-md-8">
                                         <input type="text" name="search" placeholder="Enter search here" class="form-control w-100">
                                     </div>
                                     <div class="col-md-4 text-right p-1">
@@ -128,10 +129,8 @@
 
                                                     <div class="form-group col-md-12 mb-3 d-flex justify-content-around">
                                                         <div class="col-md-4">
-                                                            <label for="display">
-                                                                <input type="checkbox" name="display" id="display" value="checked" {{ $displayIncompleteApplicants === null ? '' : 'checked' }}>
-                                                                Display incomplete accounts?
-                                                            </label>
+                                                            <input type="checkbox" id="display" name="display" value="checked" {{ $displayIncompleteApplicants === null ? '' : 'checked' }}>
+                                                            <label for="display">Display incomplete accounts?</label>
                                                         </div>
                                                         <div class="col-md-4" id="view_col">
                                                             <p> <label> Current view - </label>

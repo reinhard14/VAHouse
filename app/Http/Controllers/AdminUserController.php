@@ -125,6 +125,11 @@ class AdminUserController extends Controller
                             ->orWhere('skillsets.skill', 'like', '%' . $search . '%')
                             ->orWhere('experiences.title', 'like', '%' . $search . '%');
             });
+            // $sortByLastname = $request->query('sortByLastname');
+            // $sortByFirstname = $request->query('sortByFirstname');
+            // $sortByDateSubmitted = $request->query('sortByDateSubmitted');
+            $displayIncompleteApplicants = $request->query('display');
+
         }
 
         // Get the selected tags from the request
