@@ -11,6 +11,7 @@ use App\Models\Skillset;
 use App\Models\Status;
 use App\Models\Tier;
 use App\Models\User;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password as RulesPassword;
@@ -339,7 +340,10 @@ class AdminUserController extends Controller
 
         $this->validate($request, [
             'age' => 'required|gte:18|lte:60',
-            'email' => 'required|unique:users',
+            'email' => [
+                'required',
+                Rule::unique('users')->ignore($id)
+            ],
         ]);
 
         $user = User::findOrFail($id);
