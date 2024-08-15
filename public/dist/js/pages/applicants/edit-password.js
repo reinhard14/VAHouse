@@ -16,7 +16,7 @@ $(document).ready(function() {
                 'X-CSRF-TOKEN': csrfToken
             },
             success: function(response) {
-                handleUpdateStatusForm(response);
+                handleUpdatePasswordForm(response);
             },
             error: function(jqXHR) {
                 try {

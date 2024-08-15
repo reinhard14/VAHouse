@@ -88,7 +88,7 @@ function handleReferencesForm(response) {
     }
 }
 
-function handlePasswordForm(response) {
+function handleUpdatePasswordForm(response) {
     if(response.success) {
         Swal.fire({
             icon: 'success',
