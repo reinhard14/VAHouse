@@ -8,7 +8,9 @@
                 <button type="button" class="close" data-bs-dismiss="modal">x</button>
             </div>
 
-            <form class="editUserForm" method="POST" action="{{ route('update.user.profile', $user->id) }}">
+            {{-- <form class="editUserForm" method="POST" action="{{ route('update.user.profile', $user->id) }}"> --}}
+            <form id="edit-profile-form-{{ $user->id }}" data-user-id="{{ $user->id }}">
+
                 @csrf
                 @method('PUT')
 

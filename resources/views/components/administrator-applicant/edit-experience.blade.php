@@ -5,10 +5,12 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Edit Applicant's Experiences</h5>
-                <button type="button" class="close" data-bs-dismiss="modal">x</button>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">x</button>
             </div>
 
-            <form class="editUserForm" method="POST" action="{{ route('update.user.profile', $user->id) }}">
+            {{-- <form class="editUserForm" method="POST" action="{{ route('update.user.profile', $user->id) }}"> --}}
+            <form id="edit-experience-form-{{ $user->id }}" data-user-id="{{ $user->id }}">
+
                 @csrf
                 @method('PUT')
 
@@ -72,9 +74,9 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-sm">
+                    {{-- <button type="submit" class="btn btn-primary btn-sm">
                         <i class="bi bi-arrow-clockwise"></i> Update
-                    </button>
+                    </button> --}}
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"><i class="bi bi-arrow-return-right mr-1"></i>Close</button>
                 </div>
             </form>

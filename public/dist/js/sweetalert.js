@@ -40,13 +40,60 @@ function handleUpdateStatusForm(response) {
     }
 }
 
+function handleEditApplicantForm(response) {
+    if(response.success) {
+        Swal.fire({
+            icon: 'success',
+            title: `VA Information updated!`,
+            text: `Information has been updated successfully.`,
+            showConfirmButton: false,
+            timer: 2500,
+        });
+    }
+}
 
 function handleProfileForm(response) {
     if(response.success) {
         Swal.fire({
             icon: 'success',
-            title: `Status Updated!`,
-            text: `Status has been saved accordingly.`,
+            title: `VA profile Updated!`,
+            text: `Profile has been saved accordingly.`,
+            showConfirmButton: false,
+            timer: 2500,
+        });
+    }
+}
+
+function handleSkillsetForm(response) {
+    if(response.success) {
+        Swal.fire({
+            icon: 'success',
+            title: `VA skillsets Updated!`,
+            text: `Skillsets has been saved accordingly.`,
+            showConfirmButton: false,
+            timer: 2500,
+        });
+    }
+}
+
+function handleReferencesForm(response) {
+    if(response.success) {
+        Swal.fire({
+            icon: 'success',
+            title: `VA references Updated!`,
+            text: `References has been saved accordingly.`,
+            showConfirmButton: false,
+            timer: 2500,
+        });
+    }
+}
+
+function handlePasswordForm(response) {
+    if(response.success) {
+        Swal.fire({
+            icon: 'success',
+            title: `VA password Updated!`,
+            text: `Password has been updated accordingly.`,
             showConfirmButton: false,
             timer: 2500,
         });
@@ -152,6 +199,28 @@ function handleReferencesFormSubmission() {
         icon: 'success',
         title: 'Saving references...',
         text: 'Adding references, kindly wait a moment.',
+        showConfirmButton: false,
+        timer: 2000,
+    });
+}
+function handleFormWithMissingField(formattedResponse) {
+    let cleanBracketResponses = formattedResponse.replace(/^\[|\]$/g, '');
+    let newlineResponses = cleanBracketResponses.replace(/,\s*/g, ',\n');
+    let itemizeResponses = newlineResponses.split(',');
+
+    let errorMessages = itemizeResponses.map(message => `<li>${message.trim()}</li>`).join('');
+
+    Swal.fire({
+        icon: 'error',
+        title: 'Incomplete answers...',
+        html: `
+            <p><strong>'Please answer all of the question in the form.'</strong></p>
+            <p class="mt-4">
+                <ul class="text-left">
+                    ${errorMessages}
+                </ul>
+            </p>
+            `,
         showConfirmButton: false,
         timer: 2000,
     });

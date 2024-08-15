@@ -5,10 +5,12 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Reset Applicant's Password</h5>
-                <button type="button" class="close" data-bs-dismiss="modal">x</button>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">x</button>
             </div>
 
-            <form class="editUserForm" method="POST" action="{{ route('update.user.password', $user->id) }}">
+            {{-- <form class="editUserForm" method="POST" action="{{ route('update.user.password', $user->id) }}"> --}}
+            <form id="edit-password-form-{{ $user->id }}" data-user-id="{{ $user->id }}">
+
                 @csrf
                 @method('PUT')
 
@@ -31,7 +33,7 @@
                         <div class="col">
                             <label class="form-label" for="password">New Password </label>
                             <div class="input-group mb-2">
-                                <input class="form-control editPassword" type="password" name="password" required>
+                                <input type="password" name="password" class="form-control editPassword" required>
                                 <div class="input-group-append">
                                     <button type="button" class="btn btn-outline-secondary editTogglePassword">
                                         <i class="bi bi-eye-slash editToggleIcon"></i>

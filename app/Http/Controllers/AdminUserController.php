@@ -361,14 +361,9 @@ class AdminUserController extends Controller
         // $user->password = bcrypt($request->input('password'));
         $user->save();
 
-        return redirect()->route('admin.users.index', [
-                            'display' => $displayIncompleteUsers,
-                            'sortByFirstname' => $sortByFirstname,
-                            'sortByLastname' => $sortByLastname,
-                            'sortByDateSubmitted' => $sortByDateSubmitted,
-                            'page' => $page,
-                            'search' => $search,
-                        ])->with('success', "{$user->name} {$user->lastname}'s information has been updated!");
+        return response()->json([
+            'success' => true,
+        ]);
     }
 
     /**
@@ -596,7 +591,9 @@ class AdminUserController extends Controller
         $user->password = bcrypt($request->input('password'));
         $user->save();
 
-        return redirect()->route('admin.users.index')->with('success', "{$user->name} {$user->lastname}'s password has been updated!");
+        return response()->json([
+            'success' => true,
+        ]);
     }
 
     public function updateProfile(Request $request, $id)
@@ -625,7 +622,10 @@ class AdminUserController extends Controller
         $information->positions = json_encode($request->input('positions'));
         $information->save();
 
-        return redirect()->route('admin.users.index')->with('success', "{$information->user->name} {$information->user->lastname}'s VA profile has been updated!");
+        return response()->json([
+            'success' => true,
+        ]);
+
     }
 
     public function updateSkillsets(Request $request, $id)
@@ -651,7 +651,10 @@ class AdminUserController extends Controller
         $skillset->user_id = $id;
         $skillset->save();
 
-        return redirect()->route('admin.users.index')->with('success', "{$skillset->user->name} {$skillset->user->lastname}'s skillset has been updated!");
+        return response()->json([
+            'success' => true,
+        ]);
+
     }
 
     public function updateReferences(Request $request, $id)
@@ -696,7 +699,10 @@ class AdminUserController extends Controller
         $reference->user_id = $userId;
         $reference->save();
 
-        return redirect()->route('admin.users.index')->with('success', "{$reference->user->name} {$reference->user->lastname}'s VA references has been updated!");
+        return response()->json([
+            'success' => true,
+        ]);
+
     }
 
     public function deleteFile(Request $request, $id, $field)

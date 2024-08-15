@@ -5,10 +5,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Edit Applicant's Information</h5>
-                <button type="button" class="close" data-bs-dismiss="modal">x</button>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">x</button>
             </div>
 
-            <form class="editUserForm" method="POST" action="{{ route('admin.users.update', $user->id) }}">
+            {{-- <form class="editUserForm" method="POST" action="{{ route('admin.users.update', $user->id) }}"> --}}
+            <form id="edit-form-{{ $user->id }}" data-user-id="{{ $user->id }}">
                 @csrf
                 @method('PUT')
 
@@ -93,10 +94,11 @@
     </div>
 </div>
 
-
 <x-administrator-applicant.edit-skillsets :user="$user" :skills="$skills" :websites="$websites" :tools="$tools" :softskills="$softskills" />
 <x-administrator-applicant.edit-files :user="$user" :skills="$skills" />
 <x-administrator-applicant.edit-profile :user="$user" :skills="$skills" />
 <x-administrator-applicant.edit-references :user="$user" :skills="$skills" />
 <x-administrator-applicant.edit-experience :user="$user" />
 <x-administrator-applicant.edit-password :user="$user" />
+
+

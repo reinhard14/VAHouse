@@ -27,7 +27,7 @@ $(document).ready(function() {
                         : 'No errors found in the response';
 
                     var formattedResponse = JSON.stringify(errorResponse);
-                    handleReferencesWithMissingField(formattedResponse);
+                    handleFormWithMissingField(formattedResponse);
                 } catch (e) {
                     alert('Invalid JSON response: ' + jqXHR.responseText);
                 }

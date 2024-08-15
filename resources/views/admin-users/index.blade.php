@@ -66,7 +66,7 @@
                             <div class="col-md-6" id="search_col">
                                 <form method="GET" action="#" class="form-inline row">
                                     <input type="hidden" id="display" name="display" value="{{ request('display') }}">
-                                     <div class="col-md-8">
+                                    <div class="col-md-8">
                                         <input type="text" name="search" placeholder="Enter search here" class="form-control w-100">
                                     </div>
                                     <div class="col-md-4 text-right p-1">
@@ -409,6 +409,14 @@
 <script src="{{ asset('dist/js/pages/applicants/index.js') }}"></script>
 <script src="{{ asset('dist/js/pages/applicants/add-notes.js') }}"></script>
 <script src="{{ asset('dist/js/pages/applicants/update-status.js') }}"></script>
+<script src="{{ asset('dist/js/pages/applicants/edit.js') }}"></script>
+<script src="{{ asset('dist/js/pages/applicants/edit-profile.js') }}"></script>
+<script src="{{ asset('dist/js/pages/applicants/edit-experience.js') }}"></script>
+<script src="{{ asset('dist/js/pages/applicants/edit-files.js') }}"></script>
+<script src="{{ asset('dist/js/pages/applicants/edit-password.js') }}"></script>
+<script src="{{ asset('dist/js/pages/applicants/edit-references.js') }}"></script>
+<script src="{{ asset('dist/js/pages/applicants/edit-skillset.js') }}"></script>
+
 
 {{-- container end --}}
 @endsection

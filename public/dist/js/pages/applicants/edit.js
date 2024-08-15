@@ -1,21 +1,25 @@
 $(document).ready(function() {
-    $(document).on('submit', 'form[id^="add-notes-form-"]', function(e) {
+    $(document).on('submit', 'form[id^="edit-form-"]', function(e) {
         e.preventDefault();
 
         var userId = $(this).data('user-id');
-        var form = $('#add-notes-form-' + userId);
+        var form = $('#edit-form-' + userId);
         var formData = form.serialize();
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        var url = '/administrator/users/' + userId;
+
+        console.log(userId);
 
         $.ajax({
             type: 'POST',
-            url: addNotesRoute,
+            url: url,
             data: formData,
             headers: {
                 'X-CSRF-TOKEN': csrfToken
             },
+
             success: function(response) {
-                handleAddNotesForm(response);
+                handleEditApplicantForm(response);
             },
             error: function(jqXHR) {
                 try {
