@@ -1,22 +1,25 @@
 $(document).ready(function() {
-    $(document).on('submit', 'form[id^="edit-experience-form-"]', function(e) {
+    $(document).on('submit', 'form[id^="delete-experience-form-"]', function(e) {
         e.preventDefault();
+        console.log('Form submitted'); // Check if this logs
 
-        var userId = $(this).data('user-id');
-        var form = $('#edit-experience-form-' + userId);
+        var experienceId = $(this).data('experience-id');
+        var form = $('#delete-experience-form-' + experienceId);
         var formData = form.serialize();
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
-        var url = '/administrator/users/' + userId + '/profile';
-
+        var url = '/administrator/users/experiences/' + experienceId + '/delete';
+        console.log(experienceId);
         $.ajax({
-            type: 'POST',
+            type: 'DELETE',
             url: url,
             data: formData,
             headers: {
                 'X-CSRF-TOKEN': csrfToken
             },
+
             success: function(response) {
-                handleUpdateStatusForm(response);
+                $('#tr_' + experienceId).remove();
+                deleteExperienceForm(response);
             },
             error: function(jqXHR) {
                 try {

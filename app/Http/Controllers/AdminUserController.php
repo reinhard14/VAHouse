@@ -868,28 +868,32 @@ class AdminUserController extends Controller
                         ])->with('success', "{$user}'s {$field} file has been updated successfully.");
     }
 
-    public function deleteExperience(Request $request, $id)
+    // public function deleteExperience(Request $request, $id)
+    public function deleteExperience($id)
     {
-        $displayIncompleteUsers = $request->input('display');
-        $sortByFirstname = $request->input('sortByFirstname');
-        $sortByLastname = $request->input('sortByLastname');
-        $sortByDateSubmitted = $request->input('sortByDateSubmitted');
-        $page = $request->input('page');
-        $search = $request->input('search');
+        // $displayIncompleteUsers = $request->input('display');
+        // $sortByFirstname = $request->input('sortByFirstname');
+        // $sortByLastname = $request->input('sortByLastname');
+        // $sortByDateSubmitted = $request->input('sortByDateSubmitted');
+        // $page = $request->input('page');
+        // $search = $request->input('search');
 
         $experience = Experience::findOrFail($id);
         $experience->delete();
 
-        $user = $experience->user->name;
+        return response()->json([
+            'success' => true,
+            'tr' => 'tr_'.$id,
+        ]);
 
-        return redirect()->route('admin.users.index', [
-            'display' => $displayIncompleteUsers,
-            'sortByFirstname' => $sortByFirstname,
-            'sortByLastname' => $sortByLastname,
-            'sortByDateSubmitted' => $sortByDateSubmitted,
-            'page' => $page,
-            'search' => $search,
-        ])->with('success', "{$user}'s experience data has been deleted successfully.");
+        // return redirect()->route('admin.users.index', [
+        //     'display' => $displayIncompleteUsers,
+        //     'sortByFirstname' => $sortByFirstname,
+        //     'sortByLastname' => $sortByLastname,
+        //     'sortByDateSubmitted' => $sortByDateSubmitted,
+        //     'page' => $page,
+        //     'search' => $search,
+        // ])->with('success', "{$user}'s experience data has been deleted successfully.");
     }
 
 }

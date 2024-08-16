@@ -100,6 +100,18 @@ function handleUpdatePasswordForm(response) {
     }
 }
 
+function deleteExperienceForm(response) {
+    // if(response.success) {
+        Swal.fire({
+            icon: 'success',
+            title: `VA Experience Deleted!`,
+            text: `Experience has been removed.`,
+            showConfirmButton: false,
+            timer: 2500,
+        });
+    // }
+}
+
 function handleEditFileForm(response) {
     if(response.success) {
         Swal.fire({

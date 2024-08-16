@@ -41,20 +41,21 @@
                                     </thead>
                                     @forelse ($user->experiences as $experience)
                                         <tbody>
-                                            <tr>
+                                            <tr id="tr_{{ $experience->id }}">
                                                 <td>{{ $experience->title }}</td>
                                                 <td>{{ $experience->duration }}</td>
                                                 <td>{{ $experience->updated_at->shortRelativeDiffForHumans() }}</td>
                                                 <td class="text-right">
                                                     <form method="POST" action="{{ route('update.user.deleteExperience', $experience->id) }}" class="deleteItemPrompt">
+                                                    {{-- <form id="delete-experience-form-{{ $experience->id }}" data-experience-id="{{ $experience->id }}"> --}}
                                                         @csrf
                                                         @method('delete')
-                                                        <input type="hidden" name="display" value="{{ request('display') }}">
+                                                        {{-- <input type="hidden" name="display" value="{{ request('display') }}">
                                                         <input type="hidden" name="sortByFirstname" value="{{ request('sortByFirstname') }}">
                                                         <input type="hidden" name="sortByLastname" value="{{ request('sortByLastname') }}">
                                                         <input type="hidden" name="sortByDateSubmitted" value="{{ request('sortByDateSubmitted') }}">
                                                         <input type="hidden" name="page" value="{{ request('page') }}">
-                                                        <input type="hidden" name="search" value="{{ request('search') }}">
+                                                        <input type="hidden" name="search" value="{{ request('search') }}"> --}}
                                                         <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash mr-1"></i></button>
                                                     </form>
                                                 </td>
