@@ -101,7 +101,7 @@ function handleUpdatePasswordForm(response) {
 }
 
 function deleteExperienceForm(response) {
-    // if(response.success) {
+    if(response.success) {
         Swal.fire({
             icon: 'success',
             title: `VA Experience Deleted!`,
@@ -109,7 +109,7 @@ function deleteExperienceForm(response) {
             showConfirmButton: false,
             timer: 2500,
         });
-    // }
+    }
 }
 
 function handleEditFileForm(response) {

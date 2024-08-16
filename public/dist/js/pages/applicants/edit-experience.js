@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $(document).on('submit', 'form[id^="delete-experience-form-"]', function(e) {
         e.preventDefault();
-        console.log('Form submitted'); // Check if this logs
+        console.log('Form submitted');
 
         var experienceId = $(this).data('experience-id');
         var form = $('#delete-experience-form-' + experienceId);
