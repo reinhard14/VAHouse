@@ -126,9 +126,6 @@ class AdminUserController extends Controller
                             ->orWhere('skillsets.skill', 'like', '%' . $search . '%')
                             ->orWhere('experiences.title', 'like', '%' . $search . '%');
             });
-            // $sortByLastname = $request->query('sortByLastname');
-            // $sortByFirstname = $request->query('sortByFirstname');
-            // $sortByDateSubmitted = $request->query('sortByDateSubmitted');
             $displayIncompleteApplicants = $request->query('display');
 
         }
@@ -331,13 +328,6 @@ class AdminUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $displayIncompleteUsers = $request->input('display');
-        $sortByFirstname = $request->input('sortByFirstname');
-        $sortByLastname = $request->input('sortByLastname');
-        $sortByDateSubmitted = $request->input('sortByDateSubmitted');
-        $page = $request->input('page');
-        $search = $request->input('search');
-
         $this->validate($request, [
             'age' => 'required|gte:18|lte:60',
             'email' => [
@@ -358,7 +348,6 @@ class AdminUserController extends Controller
         $user->gender = $request->input('gender');
         $user->education = $request->input('education');
         $user->address = $request->input('address');
-        // $user->password = bcrypt($request->input('password'));
         $user->save();
 
         return response()->json([
@@ -868,15 +857,8 @@ class AdminUserController extends Controller
                         ])->with('success', "{$user}'s {$field} file has been updated successfully.");
     }
 
-    // public function deleteExperience(Request $request, $id)
     public function deleteExperience($id)
     {
-        // $displayIncompleteUsers = $request->input('display');
-        // $sortByFirstname = $request->input('sortByFirstname');
-        // $sortByLastname = $request->input('sortByLastname');
-        // $sortByDateSubmitted = $request->input('sortByDateSubmitted');
-        // $page = $request->input('page');
-        // $search = $request->input('search');
 
         $experience = Experience::findOrFail($id);
         $experience->delete();
@@ -885,15 +867,6 @@ class AdminUserController extends Controller
             'success' => true,
             'tr' => 'tr_'.$id,
         ]);
-
-        // return redirect()->route('admin.users.index', [
-        //     'display' => $displayIncompleteUsers,
-        //     'sortByFirstname' => $sortByFirstname,
-        //     'sortByLastname' => $sortByLastname,
-        //     'sortByDateSubmitted' => $sortByDateSubmitted,
-        //     'page' => $page,
-        //     'search' => $search,
-        // ])->with('success', "{$user}'s experience data has been deleted successfully.");
     }
 
 }
