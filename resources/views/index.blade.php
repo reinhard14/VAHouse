@@ -93,28 +93,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
-                                        <tr>
-                                            <td>New</td>
-                                            <td>13</td>
-                                            <td>13</td>
-                                            <td>7/13</td>
-                                            <td>6/13</td>
-                                            <td>1/13</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Hired</td>
-                                            <td>13</td>
-                                            <td>13</td>
-                                            <td>7/13</td>
-                                            <td>6/13</td>
-                                            <td>1/13</td>
-                                        </tr>
-
+                                    <tr>
+                                        <td>New</td>
+                                        <td>13</td>
+                                        <td>13</td>
+                                        <td>7/13</td>
+                                        <td>6/13</td>
+                                        <td>1/13</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hired</td>
+                                        <td>13</td>
+                                        <td>13</td>
+                                        <td>7/13</td>
+                                        <td>6/13</td>
+                                        <td>1/13</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
-                        SAMPLE ONLY FOR NOW.
                     </div>
                 </div>
             </div>
