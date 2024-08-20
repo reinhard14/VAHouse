@@ -1,6 +1,6 @@
 <!-- Add Notes Modal -->
 
-<div class="modal fade" id="add-notes-modal-{{ $user->id }}" tabindex="-1">
+<div class="modal fade long" id="add-notes-modal-{{ $user->id }}" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -10,32 +10,42 @@
 
             <form id="add-notes-form-{{ $user->id }}" data-user-id="{{ $user->id }}">
                 @csrf
-                <input type="hidden" name="display" value="{{ request('display') }}">
-                <input type="hidden" name="sortByFirstname" value="{{ request('sortByFirstname') }}">
-                <input type="hidden" name="sortByLastname" value="{{ request('sortByLastname') }}">
-                <input type="hidden" name="sortByDateSubmitted" value="{{ request('sortByDateSubmitted') }}">
-                <input type="hidden" name="page" value="{{ request('page') }}">
-                <input type="hidden" name="search" value="{{ request('search') }}">
-
-                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                 <input type="hidden" name="user_id" value="{{ $user->id }}">
                 <input type="hidden" name="reviewed_by" value="{{ Auth::user()->name }}">
                 <input type="hidden" name="review_status" value="updated">
 
                 <div class="modal-body">
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col">
                             <label class="form-label" for="notes">Note: </label>
-                            <input class="form-control mb-2" type="text" name="notes" value="{{ $user->review->notes ?? '' }}" required>
+                            <input class="form-control mb-2" type="text" name="notes" required>
                         </div>
                     </div>
-
-                    @if (isset($user->review->reviewed_by))
-                        <div class="row mt-3">
-                            <div class="col">
-                                <strong>Updated by: </strong> {{ $user->review->reviewed_by ?? '' }}
+                    <div id="notesShowCard">
+                        @forelse ($user->reviews()->latest()->get() as $review)
+                            <div class="row mt-3 px-3">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            Note: {{ $review->created_at->diffForHumans() }}
+                                        </div>
+                                        <div class="card-body">
+                                            {{ $review->notes ?? '' }}
+                                        </div>
+                                        <div class="card-footer">
+                                            <strong>Updated by: </strong> {{ $review->reviewed_by ?? '' }}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    @endif
+                        @empty
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="text-center">Notes unavailable.</h5>
+                                </div>
+                            </div>
+                        @endforelse
+                    </div>
                 </div>
 
                 <div class="modal-footer">

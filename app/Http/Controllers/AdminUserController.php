@@ -500,21 +500,15 @@ class AdminUserController extends Controller
 
     public function addNotes(Request $request) {
 
-        $displayIncompleteUsers = $request->input('display');
-        $sortByFirstname = $request->input('sortByFirstname');
-        $sortByLastname = $request->input('sortByLastname');
-        $sortByDateSubmitted = $request->input('sortByDateSubmitted');
-        $page = $request->input('page');
-        $search = $request->input('search');
-
         $this->validate($request, [
             'notes' => 'required',
             'user_id' => 'required',
         ]);
 
-        $attributes = ['user_id' => $request->input('user_id')];
+        // $attributes = ['user_id' => $request->input('user_id')];
 
-        $review = Review::firstOrNew($attributes);
+        // $review = Review::firstOrNew($attributes);
+        $review = new Review;
         $review->notes = $request->input('notes');
         $review->user_id = $request->input('user_id');
         $review->reviewed_by = $request->input('reviewed_by');
@@ -523,15 +517,7 @@ class AdminUserController extends Controller
 
         return response()->json([
             'success' => true,
-            'review'=> $review,
-            'data' => [
-                'displayIncompleteUsers' => $displayIncompleteUsers,
-                'sortByFirstname' => $sortByFirstname,
-                'sortByLastname' => $sortByLastname,
-                'sortByDateSubmitted' => $sortByDateSubmitted,
-                'page' => $page,
-                'search' => $search,
-            ]
+            'review' => $review,
         ]);
     }
 

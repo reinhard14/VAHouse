@@ -16,6 +16,24 @@ $(document).ready(function() {
             },
             success: function(response) {
                 handleAddNotesForm(response);
+                const notesShowCard = `
+                                    <div class="row mt-3 px-3">
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    Note: Just now
+                                                </div>
+                                                <div class="card-body">
+                                                    ` + response.review.notes + `
+                                                </div>
+                                                <div class="card-footer">
+                                                    <strong>Updated by: </strong> ` + response.review.reviewed_by + `
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    `;
+                $('#notesShowCard').prepend(notesShowCard);
             },
             error: function(jqXHR) {
                 try {
