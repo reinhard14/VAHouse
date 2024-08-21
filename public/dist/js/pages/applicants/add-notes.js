@@ -35,7 +35,8 @@ $(document).ready(function() {
                                     </div>
                                     `;
 
-                $('#notesShowCard-'+userId).prepend(notesShowCard);
+                $('#notesShowCard-' + userId).prepend(notesShowCard);
+                $('#rowNotesUnavailable-' + userId).hide();
 
             },
             error: function(jqXHR) {

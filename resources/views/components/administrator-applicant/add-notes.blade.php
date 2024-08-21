@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                         @empty
-                            <div class="row">
+                            <div id="rowNotesUnavailable-{{ $user->id }}" class="row">
                                 <div class="col">
                                     <h5 class="text-center">Notes unavailable.</h5>
                                 </div>
