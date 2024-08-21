@@ -24,16 +24,17 @@ $(document).ready(function() {
                                                     Note: Just now
                                                 </div>
                                                 <div class="card-body">
-                                                    ` + response.review.notes + `
+                                                    ${response.review.notes}
                                                 </div>
                                                 <div class="card-footer">
-                                                    <strong>Updated by: </strong> ` + response.review.reviewed_by + `
+                                                    <strong>Updated by: </strong> ${response.review.reviewed_by}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     `;
-                $('#notesShowCard').prepend(notesShowCard);
+                $('#notesShowCard-'+userId).prepend(notesShowCard);
+                console.log('Prepend operation completed'); // Check if this line is reached without errors
             },
             error: function(jqXHR) {
                 try {

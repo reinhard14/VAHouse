@@ -21,7 +21,7 @@
                             <input class="form-control mb-2" type="text" name="notes" required>
                         </div>
                     </div>
-                    <div id="notesShowCard">
+                    <div id="notesShowCard-{{ $user->id }}">
                         @forelse ($user->reviews()->latest()->get() as $review)
                             <div class="row mt-3 px-3">
                                 <div class="col">
