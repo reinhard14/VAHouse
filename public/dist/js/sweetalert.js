@@ -7,8 +7,8 @@ function handleAddNotesForm(response) {
     if(response.success) {
         Swal.fire({
             icon: 'success',
-            title: `Note Updated!`,
-            text: `note has been set to "${review}".`,
+            title: `Note has been saved!`,
+            text: `"${review}" has been added on the VA\'s note.`,
             showConfirmButton: false,
             timer: 2500,
         });

@@ -16,6 +16,7 @@ $(document).ready(function() {
             },
             success: function(response) {
                 handleAddNotesForm(response);
+
                 const notesShowCard = `
                                     <div class="row mt-3 px-3">
                                         <div class="col">
@@ -33,8 +34,9 @@ $(document).ready(function() {
                                         </div>
                                     </div>
                                     `;
+
                 $('#notesShowCard-'+userId).prepend(notesShowCard);
-                console.log('Prepend operation completed'); // Check if this line is reached without errors
+
             },
             error: function(jqXHR) {
                 try {
@@ -51,4 +53,5 @@ $(document).ready(function() {
             }
         });
     });
+
 });
