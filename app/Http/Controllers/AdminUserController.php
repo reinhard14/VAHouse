@@ -33,6 +33,15 @@ class AdminUserController extends Controller
         $sortByFirstname = $request->query('sortByFirstname');
         $sortByDateSubmitted = $request->query('sortByDateSubmitted');
         $displayIncompleteApplicants = $request->query('display');
+        //filters parameters for pagination
+        $param_websites = $request->query('websites');
+        $param_tools = $request->query('tools');
+        $param_skills = $request->query('skills');
+        $param_softskills = $request->query('softskills');
+        $param_experiences = $request->query('experiences');
+        $param_statuses = $request->query('statuses');
+        $param_tiers = $request->query('tiers');
+        $param_lms = $request->query('LMS');
 
         $sortByColumn = 'lastname';
         $sortOrder = 'asc';
@@ -161,12 +170,25 @@ class AdminUserController extends Controller
         }
 
         // Get the results with pagination.
-        $users = $usersQuery->select('users.*')->paginate(12);
+        $users = $usersQuery->select('users.*')->paginate(2);
 
-        // Append parameters to pagination links.
-        $users->appends(['sortByLastname' => $sortByLastname, 'sortByFirstname' => $sortByFirstname,
-                         'sortByDateSubmitted' => $sortByDateSubmitted,'display' => $displayIncompleteApplicants,
-                         'searchResult' => $search]);
+        $appendParams = array_filter([
+            'websites' => $param_websites ?? null,
+            'tools' => $param_tools ?? null,
+            'skills' => $param_skills ?? null,
+            'softskills' => $param_softskills ?? null,
+            'experiences' => $param_experiences ?? null,
+            'statuses' => $param_statuses ?? null,
+            'tiers' => $param_tiers ?? null,
+            'LMS' => $param_lms ?? null,
+            //default
+            'sortByLastname' => $sortByLastname ?? null,
+            'sortByFirstname' => $sortByFirstname ?? null,
+            'display' => $displayIncompleteApplicants ?? null,
+            'searchResult' => $search ?? null,
+        ]);
+
+        $users->appends($appendParams);
 
         // get data of skillset to display on select filters.
         $skillsets = Skillset::all();
