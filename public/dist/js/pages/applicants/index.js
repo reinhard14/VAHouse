@@ -186,74 +186,29 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-//Jquery
+//JQuery
 $(document).ready(function() {
-    $('#websites').select2({
-        maximumSelectionLength: 10,
-        placeholder: 'Select websites..',
+    // select2
+    $('#websites, #tools, #skills, #softskills, #experiences, #statuses, #tiers, #LMS').select2({
+        maximumSelectionLength: 15,
+        placeholder: function() {
+            return $(this).data('placeholder');
+        },
     });
 
-    $('#tools').select2({
-        maximumSelectionLength: 10,
-        placeholder: 'Select tools..',
-    });
-
-    $('#skills').select2({
-        maximumSelectionLength: 10,
-        placeholder: 'Select skills..',
-    });
-
-    $('#softskills').select2({
-        maximumSelectionLength: 10,
-        placeholder: 'Select softskills..',
-        // allowClear: true,
-    });
-
-    $('#experiences').select2({
-        maximumSelectionLength: 20,
-        placeholder: 'Select Experience..',
-    });
-
-    $('#statuses').select2({
-        // maximumSelectionLength: 5,
-        placeholder: 'Select status..',
-    });
-
-    $('#tiers').select2({
-        // maximumSelectionLength: 5,
-        placeholder: 'Select tiers..',
-    });
-
-    $('#LMS').select2({
-        // maximumSelectionLength: 5,
-        placeholder: 'Select LMS status..',
-    });
-
+    //Default - Show the filters and hide sidebar
     $('#collapseOne').collapse('show');
     $('.sidebar-mini').addClass('sidebar-collapse')
 
     //for edit applicants module
-    $('.skillsets').select2({
+    $('.skillsets, .positions, .services').select2({
         tags: true,
         tokenSeparators: ',',
         placeholder: 'Please select from choices..',
         width: '100%',
     });
 
-    //for edit applicant's position modal
-    $('.positions').select2({
-        tokenSeparators: ',',
-        placeholder: 'Please select from choices..',
-        width: '100%',
-    });
-
-    //for edit applicant's references modal
-    $('.services').select2({
-        tokenSeparators: ',',
-        placeholder: 'Please select from choices..',
-        width: '100%',
-    });
-
+    //auto resize long modals
     $('.modal.long').on('shown.bs.modal', function () {
         $(this).find('.modal-body').css({
             'max-height': '400px',

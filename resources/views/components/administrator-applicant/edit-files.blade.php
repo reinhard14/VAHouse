@@ -64,14 +64,15 @@
                                             @if(isset($user->information->$field) && !is_null($user->information->$field))
                                                 <div class="col-md-4 text-right">
                                                     <form method="post" action="{{ route('update.user.deleteFile', ['id' => $user->information->id, 'field' => $field]) }}" class="deleteItemPrompt">
+                                                    {{-- <form id="delete-files-form-{{ $user->id }}" data-user-id="{{ $user->id }}">   --}}
                                                         @csrf
                                                         @method('PUT')
-                                                        <input type="hidden" name="display" value="{{ request('display') }}">
+                                                        {{-- <input type="hidden" name="display" value="{{ request('display') }}">
                                                         <input type="hidden" name="sortByFirstname" value="{{ request('sortByFirstname') }}">
                                                         <input type="hidden" name="sortByLastname" value="{{ request('sortByLastname') }}">
                                                         <input type="hidden" name="sortByDateSubmitted" value="{{ request('sortByDateSubmitted') }}">
                                                         <input type="hidden" name="page" value="{{ request('page') }}">
-                                                        <input type="hidden" name="search" value="{{ request('search') }}">
+                                                        <input type="hidden" name="search" value="{{ request('search') }}"> --}}
                                                         <button type="submit" class="btn text-danger" class="p-1 text-danger">
                                                             Delete <i class="bi bi-trash"></i>
                                                         </button>

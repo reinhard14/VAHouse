@@ -76,7 +76,7 @@
                                 </form>
                             </div>
                             <div class="col-md-6 text-right">
-                                <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                <button type="button" id="filterButton" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseOne">
                                     Show/Hide Filters
                                 </button>
                             </div>
@@ -100,7 +100,7 @@
                                                                     'statuses',
                                                                     'tiers',
                                                                     'LMS',
-                                                    ];
+                                                                ];
                                                         $count = 0;
                                                     @endphp
 
@@ -117,9 +117,11 @@
                                                                 <label for="{{ $field }}" class="d-block">{{ ucfirst($field) }}:</label>
                                                             @endif
 
-                                                            <select id="{{ $field }}" class="form-control select2"  name="{{ $field }}[]" multiple="multiple">
+                                                            <select id="{{ $field }}" name="{{ $field }}[]" class="form-control select2" data-placeholder="Select {{ $field }}" multiple="multiple">
                                                                 @foreach (${"unique" . ucfirst($field)} as $item)
-                                                                    <option value="{{ $item }}">{{ $item }}</option>
+                                                                    <option value="{{ $item }}" {{ in_array($item, request()->query($field, [])) ? 'selected' : '' }}>
+                                                                        {{ $item }}
+                                                                    </option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
