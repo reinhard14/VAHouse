@@ -170,7 +170,7 @@ class AdminUserController extends Controller
         }
 
         // Get the results with pagination.
-        $users = $usersQuery->select('users.*')->paginate(2);
+        $users = $usersQuery->select('users.*')->paginate(5);
 
         $appendParams = array_filter([
             'websites' => $param_websites ?? null,
