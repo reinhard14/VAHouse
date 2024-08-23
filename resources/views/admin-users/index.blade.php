@@ -233,14 +233,14 @@
                                                     <td>
                                                         @if(isset($user->information->experience) && !empty($user->information->experience))
                                                             @if ($user->information->experience <= 2)
-                                                                Beginner
+                                                                <span class="badge badge-success"> Beginner </span>
                                                             @elseif ($user->information->experience >= 3 && $user->information->experience <= 5)
-                                                                Intermediate
+                                                                <span class="badge badge-info"> Intermediate </span>
                                                             @else
-                                                                Seasoned
+                                                                <span class="badge badge-primary"> Seasoned </span>
                                                             @endif
                                                         @else
-                                                            <p>Not available.</p>
+                                                            <span class="badge badge-warning"> Not available </span>
                                                         @endif
                                                     </td>
                                                     <td>

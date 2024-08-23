@@ -60,9 +60,8 @@ class AdminUserController extends Controller
         $toggleSortFirstname = $this->sortOrder($sortByFirstname);
         $sortByDateSubmitted = $this->sortOrder($sortByDateSubmitted);
 
-        $applicant = 3;
-
         //!disable for now
+        // $applicant = 3;
         // //default, display is null -> show with skills only
         // if(is_null($displayIncompleteApplicants)) {
         //     $usersQuery = User::where('role_id', $applicant)

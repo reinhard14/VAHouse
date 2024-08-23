@@ -43,7 +43,6 @@ class AdministratorController extends Controller
         // Query users created exactly one week ago
         $recentUsers = User::whereBetween('created_at', [$startOfLastWeek, $endOfLastWeek])->get();
 
-
         return view('index', compact('departments',
                                     'users',
                                     'admins',
