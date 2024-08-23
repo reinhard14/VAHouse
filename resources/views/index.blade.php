@@ -86,8 +86,9 @@
                             <table class="table m-0">
                                 <thead>
                                     <tr>
-                                        <th><span>Level</span></th>
+                                        <th><span></span></th>
                                         <th><span>Form completed</span></th>
+                                        <th><span>Level</span></th>
                                         <th><span>Status</span></th>
                                         <th><span>Tier</span></th>
                                         <th><span>Incomplete</span></th>
@@ -105,7 +106,7 @@
                                         <td>1/13</td>
                                     </tr>
                                     <tr>
-                                        <td>New</td>
+                                        <td>Intermediate</td>
                                         <td>Hired</td>
                                         <td>13</td>
                                         <td>13</td>
@@ -114,7 +115,16 @@
                                         <td>1/13</td>
                                     </tr>
                                     <tr>
-                                        <td>New</td>
+                                        <td>Seasoned</td>
+                                        <td>Hired</td>
+                                        <td>13</td>
+                                        <td>13</td>
+                                        <td>7/13</td>
+                                        <td>6/13</td>
+                                        <td>1/13</td>
+                                    </tr>
+                                    <tr>
+                                        <td>All</td>
                                         <td>Hired</td>
                                         <td>13</td>
                                         <td>13</td>
