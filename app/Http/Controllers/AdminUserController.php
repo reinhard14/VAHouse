@@ -797,15 +797,16 @@ class AdminUserController extends Controller
 
     public function updateFile(Request $request, $id, $field)
     {
+
         $this->validate($request, [
-            'inbound_call' => 'mimes:mp4,avi,wmv,mp3,wav,aac,flac,ogg,wma|max:32000',
-            'outbound_call' => 'mimes:mp4,avi,wmv,mp3,wav,aac,flac,ogg,wma|max:32000',
+            'inbound_call' => 'mimes:mp4,avi,wmv,mp3,wav,aac,flac,ogg,wma,m4a,audio/x-m4a,audio/mp4|max:32000',
+            'outbound_call' => 'mimes:mp4,avi,wmv,mp3,wav,aac,flac,ogg,wma,m4a,audio/x-m4a,audio/mp4|max:32000',
         ], [
             'inbound_call.mimes' => 'Inbound call file type is incorrect.',
-            'inbound_call.max' => 'Inbound call file size exceed the 32000 MB limit!',
+            'inbound_call.max' => 'Inbound call file size exceeds the 32000 MB limit!',
 
             'outbound_call.mimes' => 'Outbound call file type is incorrect.',
-            'outbound_call.max' => 'Outbound call file size exceed the 32000 MB limit!',
+            'outbound_call.max' => 'Outbound call file size exceeds the 32000 MB limit!',
         ]);
 
         $displayIncompleteUsers = $request->input('display');
