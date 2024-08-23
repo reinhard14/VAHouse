@@ -317,6 +317,7 @@
                                                                 @php
                                                                     $statusClasses = [
                                                                         'New' => 'badge-success',
+                                                                        'For Initial Interview' => 'badge-secondary',
                                                                         'Initial-Failed' => 'badge-danger',
                                                                         'Initial-Passed' => 'badge-secondary',
                                                                         'Incomplete' => 'badge-warning',

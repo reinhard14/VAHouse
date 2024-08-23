@@ -22,6 +22,7 @@
 
                             <select name="status" class="form-control" required>
                                 <option value="New" {{ old('status', $user->status->status ?? '') == 'New' ? 'selected' : '' }}>New</option>
+                                <option value="For Initial Interview" {{ old('status', $user->status->status ?? '') == 'For Initial Interview' ? 'selected' : '' }}>For Initial Interview</option>
                                 <option value="Initial-Failed" {{ old('status', $user->status->status ?? '') == 'Initial-Failed' ? 'selected' : '' }}>Initial - Failed</option>
                                 <option value="Initial-Passed" {{ old('status', $user->status->status ?? '') == 'Initial-Passed' ? 'selected' : '' }}>Initial - Passed</option>
                                 <option value="Incomplete" {{ old('status', $user->status->status ?? '') == 'Incomplete' ? 'selected' : '' }}>Incomplete</option>
