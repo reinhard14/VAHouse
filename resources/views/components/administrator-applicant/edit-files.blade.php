@@ -135,7 +135,7 @@
                                     @csrf
                                     <input type="hidden" name="user_id" value="{{ $user->id }}">
                                     <div class="col-md-8">
-                                        <input name="{{ $field }}" type="file" accept=".mp4, .avi, .mkv, .mov, .wmv, .flv, .webm, .mpeg, .mp3, .wav, .aac, .flac, .ogg, .wma" class="form-control" required>
+                                        <input name="{{ $field }}" type="file" accept=".mp4, .avi, .mkv, .mov, .wmv, .flv, .webm, .mpeg, .mp3, .wav, .aac, .flac, .ogg, .wma, .audio/x-m4a, .audio/mp4, .m4a" class="form-control" required>
                                     </div>
                                     <div class="col-md-4 text-right">
                                         <button type="submit" class="btn btn-outline-primary btn-sm" class="p-1 text-danger">
@@ -190,7 +190,7 @@
                                             @csrf
                                             @method('PUT')
                                             <div class="col-md-8">
-                                                <input name="{{ $field }}" type="file" accept=".mp4, .avi, .mkv, .mov, .wmv, .flv, .webm, .mpeg, .mp3, .wav, .aac, .flac, .ogg, .wma" class="form-control" required>
+                                                <input name="{{ $field }}" type="file" accept=".mp4, .avi, .mkv, .mov, .wmv, .flv, .webm, .mpeg, .mp3, .wav, .aac, .flac, .ogg, .wma, .wma , .audio/x-m4a, .audio/mp4, .m4a" class="form-control" required>
                                             </div>
                                             <div class="col-md-4 text-right">
                                                 <button type="submit" class="btn btn-outline-primary btn-sm" class="p-1 text-danger">
