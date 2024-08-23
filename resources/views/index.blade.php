@@ -76,7 +76,7 @@
                 </div>
             </div>
 
-            <div class="row mt-4">
+            {{-- <div class="row mt-4">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
@@ -95,9 +95,7 @@
                                         <th><span>LMS</span></th>
                                     </tr>
                                 </thead>
-                                {{-- @foreach ($agentsByExperience as $agentByExp)
-                                    {{ $agentByExp }}
-                                @endforeach --}}
+
                                 @foreach ($levels as $label => $value)
                                     <tbody>
                                         <tr>
@@ -115,7 +113,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- /.row -->
 
             {{-- FILTERS ROW --}}
