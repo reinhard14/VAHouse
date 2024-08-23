@@ -76,7 +76,7 @@
                 </div>
             </div>
 
-            <div class="row mt-4">
+            {{-- <div class="row mt-4">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
@@ -137,7 +137,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- /.row -->
 
             {{-- FILTERS ROW --}}

@@ -36,6 +36,8 @@ class AdministratorController extends Controller
         $admins =  $users->where('role_id', $ADMIN);
         $agents =  $users->where('role_id', $AGENTS);
 
+        $agentsBeginner =  $agents->where('gender', 'male');
+
         // Calculate the start and end dates of one week ago
         $startOfLastWeek = Carbon::now()->subWeek()->startOfWeek();
         $endOfLastWeek = Carbon::now();
@@ -47,7 +49,8 @@ class AdministratorController extends Controller
                                     'users',
                                     'admins',
                                     'agents',
-                                    'recentUsers'));
+                                    'recentUsers',
+                                    'agentsBeginner'));
     }
     /**
      * Display a listing of the resource.
