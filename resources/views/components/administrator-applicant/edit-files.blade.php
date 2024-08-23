@@ -67,12 +67,12 @@
                                                     {{-- <form id="delete-files-form-{{ $user->id }}" data-user-id="{{ $user->id }}">   --}}
                                                         @csrf
                                                         @method('PUT')
-                                                        {{-- <input type="hidden" name="display" value="{{ request('display') }}">
+                                                        <input type="hidden" name="display" value="{{ request('display') }}">
                                                         <input type="hidden" name="sortByFirstname" value="{{ request('sortByFirstname') }}">
                                                         <input type="hidden" name="sortByLastname" value="{{ request('sortByLastname') }}">
                                                         <input type="hidden" name="sortByDateSubmitted" value="{{ request('sortByDateSubmitted') }}">
                                                         <input type="hidden" name="page" value="{{ request('page') }}">
-                                                        <input type="hidden" name="search" value="{{ request('search') }}"> --}}
+                                                        <input type="hidden" name="search" value="{{ request('search') }}">
                                                         <button type="submit" class="btn text-danger" class="p-1 text-danger">
                                                             Delete <i class="bi bi-trash"></i>
                                                         </button>
@@ -133,6 +133,12 @@
                                 <label class="form-label px-3">{{ $callSampleLabels[$field] }}</label>
                                 <form method="post" action="{{ route('update.user.storeFile', ['field' => $field]) }}" enctype="multipart/form-data" class="form-inline filesUpdate">
                                     @csrf
+                                    <input type="hidden" name="display" value="{{ request('display') }}">
+                                    <input type="hidden" name="sortByFirstname" value="{{ request('sortByFirstname') }}">
+                                    <input type="hidden" name="sortByLastname" value="{{ request('sortByLastname') }}">
+                                    <input type="hidden" name="sortByDateSubmitted" value="{{ request('sortByDateSubmitted') }}">
+                                    <input type="hidden" name="page" value="{{ request('page') }}">
+                                    <input type="hidden" name="search" value="{{ request('search') }}">
                                     <input type="hidden" name="user_id" value="{{ $user->id }}">
                                     <div class="col-md-8">
                                         <input name="{{ $field }}" type="file" accept=".mp4, .avi, .mkv, .mov, .wmv, .flv, .webm, .mpeg, .mp3, .wav, .aac, .flac, .ogg, .wma, .audio/x-m4a, .audio/mp4, .m4a" class="form-control" required>
@@ -177,6 +183,12 @@
                                                         <form method="post" action="{{ route('update.user.deleteFile', ['id' => $user->mockcalls->id, 'field' => $field]) }}" class="deleteAdminForm filesDelete">
                                                             @csrf
                                                             @method('PUT')
+                                                            <input type="hidden" name="display" value="{{ request('display') }}">
+                                                            <input type="hidden" name="sortByFirstname" value="{{ request('sortByFirstname') }}">
+                                                            <input type="hidden" name="sortByLastname" value="{{ request('sortByLastname') }}">
+                                                            <input type="hidden" name="sortByDateSubmitted" value="{{ request('sortByDateSubmitted') }}">
+                                                            <input type="hidden" name="page" value="{{ request('page') }}">
+                                                            <input type="hidden" name="search" value="{{ request('search') }}">
                                                             <button type="submit" class="btn text-danger" class="p-1 text-danger">
                                                                 Delete <i class="bi bi-trash"></i>
                                                             </button>
@@ -189,6 +201,12 @@
                                         <form method="post" action="{{ route('update.user.updateFile', ['id' => $user->mockcalls->id, 'field' => $field]) }}" enctype="multipart/form-data" class="form-inline filesUpdate">
                                             @csrf
                                             @method('PUT')
+                                            <input type="hidden" name="display" value="{{ request('display') }}">
+                                            <input type="hidden" name="sortByFirstname" value="{{ request('sortByFirstname') }}">
+                                            <input type="hidden" name="sortByLastname" value="{{ request('sortByLastname') }}">
+                                            <input type="hidden" name="sortByDateSubmitted" value="{{ request('sortByDateSubmitted') }}">
+                                            <input type="hidden" name="page" value="{{ request('page') }}">
+                                            <input type="hidden" name="search" value="{{ request('search') }}">
                                             <div class="col-md-8">
                                                 <input name="{{ $field }}" type="file" accept=".mp4, .avi, .mkv, .mov, .wmv, .flv, .webm, .mpeg, .mp3, .wav, .aac, .flac, .ogg, .wma, .wma , .audio/x-m4a, .audio/mp4, .m4a" class="form-control" required>
                                             </div>

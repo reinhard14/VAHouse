@@ -36,7 +36,19 @@ class AdministratorController extends Controller
         $admins =  $users->where('role_id', $ADMIN);
         $agents =  $users->where('role_id', $AGENTS);
 
-        $agentsBeginner =  $agents->where('gender', 'male');
+        $levels = [
+            'Beginner' => 2,
+            'Intermediate' => 5,
+            'Seasoned' => 6,
+            'All' => 0,
+        ];
+
+        // $agentsByExperience = $agents->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
+        //                             ->select('users.*', 'applicant_information.experience')
+        //                             ->get();
+        // $agentsLevel = User::where('role_id', $AGENTS)
+        //                 ->with('information:experience')
+        //                 ->get();
 
         // Calculate the start and end dates of one week ago
         $startOfLastWeek = Carbon::now()->subWeek()->startOfWeek();
@@ -50,7 +62,9 @@ class AdministratorController extends Controller
                                     'admins',
                                     'agents',
                                     'recentUsers',
-                                    'agentsBeginner'));
+                                    'levels',
+                                    // 'agentsByExperience',
+                                ));
     }
     /**
      * Display a listing of the resource.

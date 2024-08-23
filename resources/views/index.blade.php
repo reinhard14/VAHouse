@@ -76,7 +76,7 @@
                 </div>
             </div>
 
-            {{-- <div class="row mt-4">
+            <div class="row mt-4">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
@@ -87,7 +87,7 @@
                                 <thead>
                                     <tr>
                                         <th><span></span></th>
-                                        <th><span>Form completed</span></th>
+                                        <th><span>Count</span></th>
                                         <th><span>Level</span></th>
                                         <th><span>Status</span></th>
                                         <th><span>Tier</span></th>
@@ -95,49 +95,27 @@
                                         <th><span>LMS</span></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Beginner</td>
-                                        <td>New</td>
-                                        <td>13</td>
-                                        <td>13</td>
-                                        <td>7/13</td>
-                                        <td>6/13</td>
-                                        <td>1/13</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Intermediate</td>
-                                        <td>Hired</td>
-                                        <td>13</td>
-                                        <td>13</td>
-                                        <td>7/13</td>
-                                        <td>6/13</td>
-                                        <td>1/13</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Seasoned</td>
-                                        <td>Hired</td>
-                                        <td>13</td>
-                                        <td>13</td>
-                                        <td>7/13</td>
-                                        <td>6/13</td>
-                                        <td>1/13</td>
-                                    </tr>
-                                    <tr>
-                                        <td>All</td>
-                                        <td>Hired</td>
-                                        <td>13</td>
-                                        <td>13</td>
-                                        <td>7/13</td>
-                                        <td>6/13</td>
-                                        <td>1/13</td>
-                                    </tr>
-                                </tbody>
+                                {{-- @foreach ($agentsByExperience as $agentByExp)
+                                    {{ $agentByExp }}
+                                @endforeach --}}
+                                @foreach ($levels as $label => $value)
+                                    <tbody>
+                                        <tr>
+                                            <td>{{ $label }}</td>
+                                            <td>12</td>
+                                            <td>13</td>
+                                            <td>13</td>
+                                            <td>7/13</td>
+                                            <td>6/13</td>
+                                            <td>1/13</td>
+                                        </tr>
+                                    </tbody>
+                                @endforeach
                             </table>
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <!-- /.row -->
 
             {{-- FILTERS ROW --}}

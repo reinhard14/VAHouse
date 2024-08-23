@@ -816,7 +816,7 @@ class AdminUserController extends Controller
         $page = $request->input('page');
         $search = $request->input('search');
         // \Log::info('Request data: ', $request->all());
-        // dd($request->input('display'));
+        // dd($request->input('page'));
         $validFields = ['videolink', 'resume', 'portfolio', 'photo_id',
                         'photo_formal', 'disc_results'];
         $mockValidFields = ['inbound_call', 'outbound_call'];
