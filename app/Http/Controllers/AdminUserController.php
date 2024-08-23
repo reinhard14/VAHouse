@@ -129,14 +129,19 @@ class AdminUserController extends Controller
         // Searching
         if ($search = $request->query('search')) {
             $usersQuery->where(function ($query) use ($search) {
-                        $query->where('users.name', 'like', '%' . $search . '%')
-                            ->orWhere('users.lastname', 'like', '%' . $search . '%')
-                            ->orWhere('skillsets.skill', 'like', '%' . $search . '%')
-                            ->orWhere('experiences.title', 'like', '%' . $search . '%');
+                // Check for combined name and lastname match
+                $query->whereRaw("CONCAT(users.name, ' ', users.lastname) LIKE ?", ["%{$search}%"])
+                    // Check for individual name or lastname matches
+                    ->orWhere('users.name', 'like', '%' . $search . '%')
+                    ->orWhere('users.lastname', 'like', '%' . $search . '%')
+                    // Check for skillsets or experiences match
+                    ->orWhere('skillsets.skill', 'like', '%' . $search . '%')
+                    ->orWhere('experiences.title', 'like', '%' . $search . '%');
             });
-            $displayIncompleteApplicants = $request->query('display');
 
+            $displayIncompleteApplicants = $request->query('display');
         }
+
 
         // Get the selected tags from the request
         $filters = [
