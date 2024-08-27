@@ -11,7 +11,6 @@ use App\Models\Skillset;
 use App\Models\Status;
 use App\Models\Tier;
 use App\Models\User;
-use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
