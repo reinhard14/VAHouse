@@ -14,11 +14,6 @@ use Illuminate\Validation\Rules\Password as RulesPassword;
 class AdministratorController extends Controller
 {
 
-    // public function __construct()
-    // {
-    //     $this->middleware('is_admin');
-    // }
-
     /**
      * Display the dashboard for administrator's account.
      *
@@ -191,13 +186,18 @@ class AdministratorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = Administrator::find($id);
         $this->validate($request, [
             'name' => 'required',
             'lastname' => 'required',
             'contactnumber' => 'required',
             'age' => 'required|gte:18|lte:60',
             'gender' => 'required',
-            'email' => ['required', 'email'],
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->ignore($user->user_id),
+            ],
             'department' => 'required',
             'password' => ['required',
                         RulesPassword::min(8)
@@ -205,7 +205,8 @@ class AdministratorController extends Controller
                         ->mixedCase()
                         ->numbers()
                         ->symbols()
-                        ->uncompromised()]
+                        ->uncompromised()
+                    ]
         ]);
 
         $administrator = Administrator::find($id);
@@ -224,7 +225,10 @@ class AdministratorController extends Controller
         $user->gender = $request->input('gender');
         $user->education = $request->input('education');
         $user->address = $request->input('address');
-        $user->password = bcrypt($request->input('password'));
+        if ($request->filled('password')) {
+            $user->password = bcrypt($request->input('password'));
+        }
+        // $user->password = bcrypt($request->input('password'));
         $user->save();
 
         if($request->input('saving_option') === 'save_and_exit') {

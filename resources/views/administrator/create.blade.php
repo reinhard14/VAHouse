@@ -38,17 +38,17 @@
 
                             <div class="form-group">
                                 <label for="name">First Name</label>
-                                <input type="text" class="form-control" placeholder="First name.." name="name" value="{{ old('name') }}" required>
+                                <input type="text" name="name" class="form-control" placeholder="First name.." value="{{ old('name') }}" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="lastname">Last Name</label>
-                                <input type="text" class="form-control" placeholder="Last name.." name="lastname" value="{{ old('lastname') }}" required>
+                                <input type="text" name="lastname" class="form-control" placeholder="Last name.." value="{{ old('lastname') }}" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="age">Age</label>
-                                <input type="number" class="form-control" name="age" min="18" value="{{ old('age') }}" required>
+                                <input type="number" name="age" class="form-control" min="18" value="{{ old('age') }}" required>
                             </div>
 
                             <div class="form-group">
@@ -69,7 +69,7 @@
                                     <option value="Senior High School">Senior High School</option>
                                     <option value="College Undergrad">College Undergrad</option>
                                     <option value="College Degree">College Degree</option>
-                                    <option value="Master\'s Degree">Master's Degree</option>
+                                    <option value="Master's Degree">Master's Degree</option>
                                     <option value="Professional Degree">Professional Degree</option>
                                     <option value="Doctorate Degree">Doctorate Degree</option>
                                     <option value="Vocational">Vocational</option>
@@ -132,7 +132,8 @@
 </div>
 
 <!-- Administrator JS -->
-<script src="{{ asset('dist/js/pages/administrator.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="{{ asset('dist/js/pages/administrator/create.js') }}"></script>
 
 {{-- container end --}}
 @endsection
