@@ -7,6 +7,7 @@ use App\Models\Administrator;
 use App\Models\Department;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password as RulesPassword;
 
 
@@ -107,7 +108,7 @@ class AdministratorController extends Controller
             'gender' => 'required',
             'education' => 'required',
             'address' => 'required',
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email', 'unique:users'],
             'department' => 'required',
             'password' => ['required',
                         RulesPassword::min(8)

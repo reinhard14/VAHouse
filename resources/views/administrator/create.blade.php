@@ -78,7 +78,7 @@
 
                             <div class="form-group">
                                 <label for="contactnumber">Contact Number</label>
-                                <input type="number" class="form-control" placeholder="Contact number.." name="contactnumber" value="{{ old('contactnumber') }}" required>
+                                <input type="number" class="form-control" placeholder="Contact number.." name="contactnumber" min="09" value="{{ old('contactnumber') }}" required>
                             </div>
 
                             <div class="form-group">
