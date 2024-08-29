@@ -56,6 +56,12 @@
                                     <p> {{ $administrator->user->address }} </p>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Education</label>
+                                    <p> {{  $administrator->user->education }} </p>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="row">
@@ -93,12 +99,6 @@
                                 <div class="form-group">
                                     <label>Position</label>
                                     <p> {{ $administrator->position }} </p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Education</label>
-                                    <p> {{  $administrator->user->education }} </p>
                                 </div>
                             </div>
                         </div>
