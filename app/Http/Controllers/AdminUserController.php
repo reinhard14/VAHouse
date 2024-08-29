@@ -20,11 +20,6 @@ use Illuminate\Validation\Rules\Password as RulesPassword;
 class AdminUserController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
 
@@ -48,7 +43,9 @@ class AdminUserController extends Controller
 
         if ($sortByFirstname) {
             $sortByColumn = 'name';
-        } elseif ($sortByDateSubmitted) {
+        }
+
+        if ($sortByDateSubmitted) {
             $sortByColumn = 'created_at';
         }
         // Determine sorting order based on the parameter (asc or desc)
@@ -145,7 +142,6 @@ class AdminUserController extends Controller
             $displayIncompleteApplicants = $request->query('display');
         }
 
-
         // Get the selected tags from the request
         $filters = [
             'websites' => 'skillsets.website',
@@ -191,10 +187,11 @@ class AdminUserController extends Controller
             //default
             'sortByLastname' => $sortByLastname ?? null,
             'sortByFirstname' => $sortByFirstname ?? null,
+            // 'sortByDateSubmitted' => $sortByDateSubmitted ?? null,
             'display' => $displayIncompleteApplicants ?? null,
             'searchResult' => $search ?? null,
         ]);
-
+        // var_dump($appendParams);
         $users->appends($appendParams);
 
         // get data of skillset to display on select filters.
@@ -254,22 +251,11 @@ class AdminUserController extends Controller
         return ($sortBy === 'desc') ? 'desc' : 'asc';
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //used modal component.
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -314,12 +300,6 @@ class AdminUserController extends Controller
         return redirect()->route('admin.users.index')->with('success', 'Applicant has been successfully added!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $user = User::findOrFail($id);
@@ -333,14 +313,6 @@ class AdminUserController extends Controller
                                         ));
     }
 
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
     public function edit($id)
     {
         $user = User::findOrFail($id);
@@ -348,13 +320,6 @@ class AdminUserController extends Controller
         return view('admin-users.edit', compact('user', 'forms'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -384,12 +349,6 @@ class AdminUserController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Request $request, $id)
     {
         $sortByDateSubmitted = $request->input('sortByDateSubmitted');
@@ -534,9 +493,6 @@ class AdminUserController extends Controller
             'user_id' => 'required',
         ]);
 
-        // $attributes = ['user_id' => $request->input('user_id')];
-
-        // $review = Review::firstOrNew($attributes);
         $review = new Review;
         $review->notes = $request->input('notes');
         $review->user_id = $request->input('user_id');
@@ -823,8 +779,6 @@ class AdminUserController extends Controller
         $sortByDateSubmitted = $request->input('sortByDateSubmitted');
         $page = $request->input('page');
         $search = $request->input('search');
-        // \Log::info('Request data: ', $request->all());
-        // dd($request->input('page'));
         $validFields = ['videolink', 'resume', 'portfolio', 'photo_id',
                         'photo_formal', 'disc_results'];
         $mockValidFields = ['inbound_call', 'outbound_call'];
