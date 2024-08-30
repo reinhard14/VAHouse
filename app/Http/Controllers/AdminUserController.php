@@ -48,6 +48,7 @@ class AdminUserController extends Controller
         if ($sortByDateSubmitted) {
             $sortByColumn = 'created_at';
         }
+
         // Determine sorting order based on the parameter (asc or desc)
         $sortOrder = ($sortByLastname === 'desc' ||
                      $sortByFirstname === 'desc' ||
@@ -55,7 +56,7 @@ class AdminUserController extends Controller
 
         $toggleSortLastname = $this->sortOrder($sortByLastname);
         $toggleSortFirstname = $this->sortOrder($sortByFirstname);
-        $sortByDateSubmitted = $this->sortOrder($sortByDateSubmitted);
+        $toggleSortByDateSubmitted = $this->sortOrder($sortByDateSubmitted);
 
         //!disable for now
         // $applicant = 3;
@@ -187,11 +188,11 @@ class AdminUserController extends Controller
             //default
             'sortByLastname' => $sortByLastname ?? null,
             'sortByFirstname' => $sortByFirstname ?? null,
-            // 'sortByDateSubmitted' => $sortByDateSubmitted ?? null,
+            'sortByDateSubmitted' => $sortByDateSubmitted ?? null,
             'display' => $displayIncompleteApplicants ?? null,
             'searchResult' => $search ?? null,
         ]);
-        // var_dump($appendParams);
+
         $users->appends($appendParams);
 
         // get data of skillset to display on select filters.
@@ -222,6 +223,7 @@ class AdminUserController extends Controller
             'sortByFirstname',
             'toggleSortLastname',
             'toggleSortFirstname',
+            'toggleSortByDateSubmitted',
             'sortByDateSubmitted',
             'uniqueWebsites',
             'uniqueExperiences',

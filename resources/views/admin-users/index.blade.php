@@ -207,7 +207,7 @@
                                                 <th class="text-center">Status</th>
                                                 <th class="text-center">Tier</th>
                                                 <th>
-                                                    @if ($sortByDateSubmitted === 'desc')
+                                                    @if ($toggleSortByDateSubmitted === 'desc')
                                                         <a href="{{ route('admin.users.index', ['sortByDateSubmitted' => 'asc', 'sortByLastname' => $sortByLastname,
                                                                                                 'sortByFirstname' => $sortByFirstname, 'display' => $displayIncompleteApplicants, 'searchResult' => $search ?? '']) }}"
                                                             type="submit" class="btn text-primary" data-toggle="tooltip" title="Click to descend submitted date.">
