@@ -375,7 +375,12 @@
                                                     </td>
                                                     <td>
                                                         <div class="text-center">
-                                                            {{ $user->created_at->diffForHumans(['parts' => 1]) }}
+                                                            <p>
+                                                                {{ $user->created_at->diffForHumans(['parts' => 1]) }}
+                                                            </p>
+                                                            <span class="badge badge-light">
+                                                                {{ $user->created_at->format('d-m-Y') }}
+                                                            </span>
                                                         </div>
                                                     </td>
                                                     <td class="text-right">
