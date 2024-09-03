@@ -129,11 +129,29 @@
 
                                                     @php $count++; @endphp
 
-                                                    <div class="form-group col-md-12 mb-3 d-flex justify-content-around">
+                                                    <div class="form-group col-md-12 mb-5 d-flex justify-content-around">
                                                         <div class="col-md-4">
-                                                            <input type="checkbox" id="display" name="display" value="checked" {{ $displayIncompleteApplicants === null ? '' : 'checked' }}>
-                                                            <label for="display">Display incomplete accounts?</label>
+                                                            <h6>Display:</h6>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="display" id="flexRadioDefault2" value="" {{ request('display') == '' ? 'checked' : '' }}>
+                                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                                    Complete Forms Only
+                                                                </label>
+                                                              </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="display" id="flexRadioDefault1" value="optionIncomplete" {{ request('display') == 'optionIncomplete' ? 'checked' : '' }}>
+                                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                                    Incomplete Forms Only
+                                                                </label>
+                                                              </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="display" id="incompleteRadio" value="optionMixed" {{ request('display') == 'optionMixed' ? 'checked' : '' }}>
+                                                                <label class="form-check-label" for="incompleteRadio">
+                                                                    All Forms
+                                                                </label>
+                                                              </div>
                                                         </div>
+
                                                         <div class="col-md-4" id="view_col">
                                                             <p> <label> Current view - </label>
                                                                 @if ($sortByLastname)

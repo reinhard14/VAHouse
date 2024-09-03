@@ -98,6 +98,8 @@ class AdminUserController extends Controller
         //     });
         // }
         //! end
+        // var_dump($displayIncompleteApplicants);
+
         $applicant = 3;
         if(is_null($displayIncompleteApplicants)) {
             $usersQuery = User::where('role_id', $applicant)
@@ -111,7 +113,19 @@ class AdminUserController extends Controller
                             //distinct causes pagination error. find another way, try use groupby.
                             ->distinct()
                             ->orderBy($sortByColumn, $sortOrder);
-        } else {
+        } else if ($displayIncompleteApplicants == 'optionIncomplete') {
+            $usersQuery = User::where('role_id', $applicant)
+                            ->whereNull('skillsets.id')
+                            ->leftJoin('skillsets', 'users.id', '=', 'skillsets.user_id')
+                            ->leftJoin('statuses', 'users.id', '=', 'statuses.user_id')
+                            ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
+                            ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
+                            ->leftJoin('tiers', 'users.id', '=', 'tiers.user_id')
+                            ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title', 'tiers.*')
+                            //distinct causes pagination error. find another way, try use groupby.
+                            ->distinct()
+                            ->orderBy($sortByColumn, $sortOrder);
+        } else if ($displayIncompleteApplicants == 'optionMixed') {
             $usersQuery = User::where('role_id', $applicant)
                             ->leftJoin('skillsets', 'users.id', '=', 'skillsets.user_id')
                             ->leftJoin('statuses', 'users.id', '=', 'statuses.user_id')
@@ -172,6 +186,7 @@ class AdminUserController extends Controller
                 });
             }
         }
+
 
         // Get the results with pagination.
         $users = $usersQuery->select('users.*')->paginate(5);
