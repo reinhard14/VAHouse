@@ -25,6 +25,19 @@
 
                 <div class="row">
                     <div class="col">
+                        <div class="text-right mb-3">
+                            <button type="submit" id="addExperienceButton-{{ $user->id }}" class="btn btn-outline-primary btn-sm" data-user-id="{{ $user->id }}">Add Experience</button>
+                        </div>
+
+                        <form id="add-experience-form-{{ $user->id }}" data-user-id="{{ $user->id }}">
+                            @csrf
+                            @method('POST')
+                            <input type="hidden" id="user_id" name="user_id" value="{{ $user->id }}">
+
+                            <div id="modalContent-{{ $user->id }}" class="mb-4">
+                            </div>
+                        </form>
+
                         <div class="table-responsive">
                             <table class="table table-hover border">
                                 <thead>
@@ -34,7 +47,7 @@
                                     <th>Delete ?</th>
                                 </thead>
                                 @forelse ($user->experiences as $experience)
-                                    <tbody>
+                                    <tbody id="experienceRow-{{ $user->id }}">
                                         <tr id="tr_{{ $experience->id }}">
                                             <td>{{ $experience->title }}</td>
                                             <td>{{ $experience->duration }}</td>
@@ -49,11 +62,13 @@
                                         </tr>
                                     </tbody>
                                 @empty
-                                    <tr>
-                                        <td colspan="4">
-                                            <h5 class="text-center p-3">No data available.</h5>
-                                        </td>
-                                    </tr>
+                                    <tbody id="experienceRow-{{ $user->id }}">
+                                        <tr id="tr_null_{{ $user->id }}">
+                                            <td colspan="4">
+                                                <h5 class="text-center p-3">No data available.</h5>
+                                            </td>
+                                        </tr>
+                                    </tbody>
                                 @endforelse
                             </table>
                         </div>

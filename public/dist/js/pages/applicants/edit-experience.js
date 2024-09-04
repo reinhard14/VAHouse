@@ -1,7 +1,6 @@
 $(document).ready(function() {
     $(document).on('submit', 'form[id^="delete-experience-form-"]', function(e) {
         e.preventDefault();
-        console.log('Form submitted');
 
         var experienceId = $(this).data('experience-id');
         var form = $('#delete-experience-form-' + experienceId);
@@ -39,5 +38,98 @@ $(document).ready(function() {
                 }
             });
         }
+    });
+
+    // $('#addExperienceButton').on('click', function(){
+    $(document).on('click', '[id^="addExperienceButton-"]', function() {
+        var userId = $(this).data('user-id');
+        console.log('Clicked button with user ID:', userId);
+        // Add a new element to the open modal
+        $(`#modalContent-${userId}`).append(`
+            <div class="form-group">
+                <label for="title">Job Experience</label>
+                <input type="text" id="title" name="title" class="form-control mb-3" placeholder="Enter new experience">
+
+                <label for="duration">Duration</label>
+                <input type="text" id="duration" name="duration" class="form-control" placeholder="Enter duration of experience">
+
+                <div class="text-right mt-3">
+                    <button type="submit" id="addNewExperience" class="btn btn-outline-info btn-sm">Add Entry</button>
+                    <button type="button" id="removeExperience-${userId}" class="btn btn-outline-danger btn-sm" data-user-id="${userId}">Hide</button>
+                </div>
+            </div>
+        `);
+
+        // Optional: Scroll to the new element or highlight it
+        $('#title').focus().css('background-color', '#f0f8ff');
+        $('#duration').focus().css('background-color', '#f0f8ff');
+
+        // console.log($('#modalContent-'+userId));
+
+        if ($('#modalContent-' + userId).length >= 1) {
+            $('#addExperienceButton-' + userId).prop('disabled', true);
+        }
+    });
+
+    // Event listener to handle the removal of the latest experience group
+    $(document).on('click', '[id^="removeExperience-"]', function(){
+        var userId = $(this).data('user-id');
+
+        // Remove the form group containing this button
+        $(this).closest('.form-group').remove();
+        console.log(userId);
+        $('#addExperienceButton-' + userId).prop('disabled', false);
+    });
+
+
+    $(document).on('submit', 'form[id^="add-experience-form-"]', function(e) {
+        e.preventDefault();
+
+        var userId = $(this).data('user-id');
+        var form = $('#add-experience-form-' + userId);
+        var formData = form.serialize();
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        var url = '/administrator/users/experiences/' + userId;
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            },
+
+            success: function(response) {
+                $(`#tr_null_${userId}`).remove();
+                handleAddExperienceForm(response);
+
+                const newRow = `
+                        <tr>
+                            <td>`
+                                + response.experience.title +
+                            `</td>` +
+                            `<td>`
+                                + response.experience.duration +
+                            `</td>
+                        </tr>
+                        `;
+                $(`#experienceRow-${userId}`).append(newRow);
+
+            },
+            error: function(jqXHR) {
+                try {
+                    var responseJson = JSON.parse(jqXHR.responseText);
+                    var errorResponse = responseJson.errors
+                        ? Object.values(responseJson.errors).flat()
+                        : 'No errors found in the response';
+
+                    formattedResponse = JSON.stringify(errorResponse);
+                    console.log(formattedResponse);
+                    handleReferencesWithMissingField(formattedResponse);
+                } catch (e) {
+                    alert('Invalid JSON response: ' + jqXHR.responseText);
+                }
+            }
+        });
     });
 });

@@ -9,7 +9,6 @@
             </div>
 
             <form id="update-status-form-{{ $user->id }}" data-user-id="{{ $user->id }}">
-
                 @csrf
                 @method('put')
                 <input type="hidden" name="user_id" value="{{ $user->id }}">

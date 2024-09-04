@@ -856,4 +856,29 @@ class AdminUserController extends Controller
         ]);
     }
 
+    public function addExperiences(Request $request) {
+
+        $this->validate($request, [
+            'title' => 'required',
+            'duration' => 'required',
+            'user_id' => 'required',
+        ], [
+            'title.required' => 'Job title is a required field.',
+            'duration.required' => 'Duration of work a is required field.',
+        ]);
+        // $exists = Experience::where('user_id', $request->input('user_id'))->exists();
+
+        $experience = new Experience();
+        $experience->title = $request->input('title');
+        $experience->duration = $request->input('duration');
+        $experience->user_id = $request->input('user_id');
+        $experience->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Experience has been saved successfully!',
+            'experience' => $experience,
+            // 'exists' => $exists,
+        ]);
+    }
 }

@@ -100,6 +100,18 @@ function handleUpdatePasswordForm(response) {
     }
 }
 
+function handleAddExperienceForm(response) {
+    if(response.success) {
+        Swal.fire({
+            icon: 'success',
+            title: `VA Experience!`,
+            text: `Experience has been added successfully.`,
+            showConfirmButton: false,
+            timer: 2500,
+        });
+    }
+}
+
 function deleteExperienceForm(response) {
     if(response.success) {
         Swal.fire({

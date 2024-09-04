@@ -64,6 +64,7 @@ Route::prefix('administrator')
         Route::post('users/files/upload/{field}', [AdminUserController::class, 'storeFile'])->name('update.user.storeFile');
         Route::put('users/files/{id}/update/{field}', [AdminUserController::class, 'updateFile'])->name('update.user.updateFile');
         Route::put('users/files/{id}/delete/{field}', [AdminUserController::class, 'deleteFile'])->name('update.user.deleteFile');
+        Route::post('users/experiences/{id}', [AdminUserController::class, 'addExperiences'])->name('update.user.experience');
         Route::delete('users/experiences/{id}/delete/', [AdminUserController::class, 'deleteExperience'])->name('update.user.deleteExperience');
     });
 
