@@ -111,6 +111,9 @@ $(document).ready(function() {
                             `<td>`
                                 + response.experience.duration +
                             `</td>
+                            <td>
+                                Just Now
+                            </td>
                         </tr>
                         `;
                 $(`#experienceRow-${userId}`).append(newRow);
