@@ -853,6 +853,7 @@ class AdminUserController extends Controller
         return response()->json([
             'success' => true,
             'tr' => 'tr_'.$id,
+            'experience' => $experience,
         ]);
     }
 

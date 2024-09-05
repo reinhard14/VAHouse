@@ -105,7 +105,7 @@ function handleAddExperienceForm(response) {
         Swal.fire({
             icon: 'success',
             title: `VA Experience!`,
-            text: `Experience has been added successfully.`,
+            text: `${response.experience.title} has been added successfully.`,
             showConfirmButton: false,
             timer: 2500,
         });
@@ -117,7 +117,7 @@ function deleteExperienceForm(response) {
         Swal.fire({
             icon: 'success',
             title: `VA Experience Deleted!`,
-            text: `Experience has been removed.`,
+            text: `${response.experience.title} has been deleted.`,
             showConfirmButton: false,
             timer: 2500,
         });
