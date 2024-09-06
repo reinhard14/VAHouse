@@ -29,11 +29,22 @@ function handleAddNotesForm(response) {
 }
 
 function handleUpdateStatusForm(response) {
+    const status = response.status.status;
+    const LMS = response.status.lesson;
+    const tier = response.tier.tier;
+
     if(response.success) {
         Swal.fire({
             icon: 'success',
             title: `Status Updated!`,
-            text: `Status has been saved accordingly.`,
+            html:`
+                <ul class="text-left">
+                    <ol><strong>Status:</strong> ${status}</ol>
+                    <ol><strong>LMS:</strong> ${LMS}</ol>
+                    <ol><strong>Notes:</strong> ${tier}</ol>
+                </ul>
+                <p>Has been set successfully.</p>
+            `,
             showConfirmButton: false,
             timer: 2500,
         });
