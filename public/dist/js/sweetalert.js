@@ -55,7 +55,7 @@ function handleEditApplicantForm(response) {
     if(response.success) {
         Swal.fire({
             icon: 'success',
-            title: `VA Information updated!`,
+            title: `VA information updated!`,
             text: `Information has been updated successfully.`,
             showConfirmButton: false,
             timer: 2500,
@@ -67,7 +67,7 @@ function handleProfileForm(response) {
     if(response.success) {
         Swal.fire({
             icon: 'success',
-            title: `VA profile Updated!`,
+            title: `VA profile updated!`,
             text: `Profile has been saved accordingly.`,
             showConfirmButton: false,
             timer: 2500,
@@ -79,7 +79,7 @@ function handleSkillsetForm(response) {
     if(response.success) {
         Swal.fire({
             icon: 'success',
-            title: `VA skillsets Updated!`,
+            title: `VA skillsets updated!`,
             text: `Skillsets has been saved accordingly.`,
             showConfirmButton: false,
             timer: 2500,
@@ -91,7 +91,7 @@ function handleReferencesForm(response) {
     if(response.success) {
         Swal.fire({
             icon: 'success',
-            title: `VA references Updated!`,
+            title: `VA references updated!`,
             text: `References has been saved accordingly.`,
             showConfirmButton: false,
             timer: 2500,
@@ -103,7 +103,7 @@ function handleUpdatePasswordForm(response) {
     if(response.success) {
         Swal.fire({
             icon: 'success',
-            title: `VA password Updated!`,
+            title: `VA password updated!`,
             text: `Password has been updated accordingly.`,
             showConfirmButton: false,
             timer: 2500,
@@ -115,7 +115,7 @@ function handleAddExperienceForm(response) {
     if(response.success) {
         Swal.fire({
             icon: 'success',
-            title: `VA Experience!`,
+            title: `VA Experience added!`,
             text: `${response.experience.title} has been added successfully.`,
             showConfirmButton: false,
             timer: 2500,
@@ -127,7 +127,7 @@ function deleteExperienceForm(response) {
     if(response.success) {
         Swal.fire({
             icon: 'success',
-            title: `VA Experience Deleted!`,
+            title: `VA Experience deleted!`,
             text: `${response.experience.title} has been deleted.`,
             showConfirmButton: false,
             timer: 2500,
