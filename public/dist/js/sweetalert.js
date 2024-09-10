@@ -648,7 +648,7 @@ function invalidSkype() {
 function remindExpandExperience() {
     Swal.fire({
         icon: 'info',
-        title: 'Expand',
+        title: 'Click "Expand" Button',
         html: `
             <p>Please don\'t forget to click <strong>"Expand"</strong> in order to provide detail with experience. </p>
             <p>Make sure that total years of experience is equal to the experience's details</p>
