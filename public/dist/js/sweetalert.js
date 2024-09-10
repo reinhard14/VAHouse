@@ -641,6 +641,7 @@ function invalidSkype() {
             `,
         showConfirmButton: false,
         allowOutsideClick: false,
+        timerProgressBar: true,
         timer: 5000,
     });
 }
@@ -656,6 +657,7 @@ function remindExpandExperience() {
             `,
         showConfirmButton: false,
         allowOutsideClick: false,
+        timerProgressBar: true,
         timer: 8000,
     });
 }
@@ -670,6 +672,7 @@ function reminderExpandReference() {
             `,
         showConfirmButton: false,
         allowOutsideClick: false,
+        timerProgressBar: true,
         timer: 8000,
 
     });
