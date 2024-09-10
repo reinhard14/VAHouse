@@ -432,14 +432,14 @@
                                 <div class="form-group">
                                     <label for="videolink"><span class="text-danger">*</span> Upload video introduction: <strong>(128MB limit)</strong> </label>
 
-                                    <input type="file" name="videolink" class="form-control" accept=".mp4, .avi, .mkv, .wmv, .flv, .webm, .mpeg" required>
+                                    <input type="file" id="videolink" name="videolink" class="form-control" accept=".mp4, .avi, .mkv, .wmv, .flv, .webm, .mpeg" required>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="references"><span class="text-danger">*</span> <strong> Additional References:</strong> </label>
+                                <label for="references"><span class="text-danger">*</span> Additional References: <strong>(Required)</strong> </label>
                                 <a href="#create-references-modal" class="btn btn-primary btn-sm d-block px-5 mx-3" data-bs-toggle="modal">Click here</a>
                             </div>
                         </div>

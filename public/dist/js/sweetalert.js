@@ -636,8 +636,11 @@ function invalidSkype() {
                     <p>- None</p>
                     <p>- NONE</p>
                 </div>
+
+            <p>Failure to do so, will result in a <strong><span class="text-danger">"FAILURE"</span></strong> of a submission by Human Resource.</p>
             `,
         showConfirmButton: false,
+        allowOutsideClick: false,
         timer: 5000,
     });
 }
@@ -649,8 +652,25 @@ function remindExpandExperience() {
         html: `
             <p>Please don\'t forget to click <strong>"Expand"</strong> in order to provide detail with experience. </p>
             <p>Make sure that total years of experience is equal to the experience's details</p>
+            <p>Failure to do so, will result in a <strong><span class="text-danger">"FAILURE"</span></strong> of a submission by Human Resource.</p>
             `,
         showConfirmButton: false,
-        timer: 5000,
+        allowOutsideClick: false,
+        timer: 8000,
+    });
+}
+//Expand References reminders.
+function reminderExpandReference() {
+    Swal.fire({
+        icon: 'info',
+        title: 'Additional References',
+        html: `
+            <p>Please don\'t forget to click <strong>"Additional References"</strong>. </p>
+            <p>Failure to do so, will result in a <strong><span class="text-danger">"FAILURE"</span></strong> of a submission by Human Resource.</p>
+            `,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        timer: 8000,
+
     });
 }

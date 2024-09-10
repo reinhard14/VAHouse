@@ -76,6 +76,11 @@ document.addEventListener("DOMContentLoaded", function() {
         remindExpandExperience();
     });
 
+    const references = document.getElementById('videolink');
+
+    references.addEventListener('input', () => {
+        reminderExpandReference();
+    });
 
 });
 
