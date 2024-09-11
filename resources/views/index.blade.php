@@ -76,46 +76,6 @@
                 </div>
             </div>
 
-            {{-- <div class="row mt-4">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="text-center">Virtual Assistants</h3>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table m-0">
-                                <thead>
-                                    <tr>
-                                        <th><span></span></th>
-                                        <th><span>Count</span></th>
-                                        <th><span>Level</span></th>
-                                        <th><span>Status</span></th>
-                                        <th><span>Tier</span></th>
-                                        <th><span>Incomplete</span></th>
-                                        <th><span>LMS</span></th>
-                                    </tr>
-                                </thead>
-
-                                @foreach ($levels as $label => $value)
-                                    <tbody>
-                                        <tr>
-                                            <td>{{ $label }}</td>
-                                            <td>12</td>
-                                            <td>13</td>
-                                            <td>13</td>
-                                            <td>7/13</td>
-                                            <td>6/13</td>
-                                            <td>1/13</td>
-                                        </tr>
-                                    </tbody>
-                                @endforeach
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-            <!-- /.row -->
-
             {{-- FILTERS ROW --}}
             {{-- <div class="row">
                 <div class="col">
@@ -125,71 +85,17 @@
                                 <form method="GET" action="#">
                                     @csrf
                                     <div class="form-row">
-                                        @php
-                                            $fields = ['websites',
-                                                        'tools',
-                                                        'skills',
-                                                        'softskills',
-                                                        'experiences',
-                                                        'statuses',
-                                                        'tiers',
-                                                        'LMS',
-                                                    ];
-                                            $count = 0;
-                                        @endphp
+                                        <div class="form-group col-md-4 mb-3">
+                                            <label for="lms" class="d-block">lms</label>
 
-                                        @foreach ($fields as $index => $field)
-                                            @if ($count % 2 == 0 && $count != 0)
-                                                </div>
-                                                <div class="form-row">
-                                            @endif
-
-                                            <div class="form-group col-md-4 mb-3">
-                                                @if ($field=='experience')
-                                                    <label for="{{ $field }}" class="d-block">Years of {{ ucfirst($field) }}s:</label>
-                                                @else
-                                                    <label for="{{ $field }}" class="d-block">{{ ucfirst($field) }}:</label>
-                                                @endif
-
-                                                <select id="{{ $field }}" name="{{ $field }}[]" class="form-control select2" data-placeholder="Select {{ $field }}" multiple="multiple">
-                                                    @foreach (${"unique" . ucfirst($field)} as $item)
-                                                        <option value="{{ $item }}" {{ in_array($item, request()->query($field, [])) ? 'selected' : '' }}>
-                                                            {{ $item }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        @endforeach
-
-                                        @php $count++; @endphp
-
-                                        <div class="form-group col-md-12 mb-3 d-flex justify-content-around">
-                                            <div class="col-md-4">
-                                                <input type="checkbox" id="display" name="display" value="checked" {{ $displayIncompleteApplicants === null ? '' : 'checked' }}>
-                                                <label for="display">Display incomplete accounts?</label>
-                                            </div>
-                                            <div class="col-md-4" id="view_col">
-                                                <p> <label> Current view - </label>
-                                                    @if ($sortByLastname)
-                                                        Last Name: <span class="badge badge-info"> {{ $sortByLastname }}</span>
-                                                    @elseif ($sortByFirstname)
-                                                        First Name: <span class="badge badge-info">{{ $sortByFirstname }}</span>
-                                                    @elseif ($sortByDateSubmitted)
-                                                        Date Submitted: <span class="badge badge-info"> {{ $sortByDateSubmitted }}</span>
-                                                    @else
-                                                        Default
-                                                    @endif
-                                                </p>
-                                            </div>
-                                            <div class="col-md-4 text-right">
-                                                <button type="submit" class="btn btn-primary btn-sm px-5">
-                                                    <i class="bi bi-search"></i> Filter
-                                                </button>
-                                            </div>
+                                            <select id="lms" name="lms" class="form-control select2" multiple="multiple">
+                                                <option value="lms">
+                                                    lms
+                                                </option>
+                                            </select>
                                         </div>
                                     </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>
