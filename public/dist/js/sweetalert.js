@@ -169,7 +169,8 @@ function handleMockcallFormSubmission(response) {
             title: 'Saved!',
             text: 'Added mock call successfully... This will overwrite existing mock call files.',
             showConfirmButton: false,
-            timer: 2000
+            timerProgressBar: true,
+            timer: 3000
         });
     } else {
         let inboundError = response.responseJSON.errors.inbound_call ? response.responseJSON.errors.inbound_call : 'Correct File.';
@@ -184,6 +185,7 @@ function handleMockcallFormSubmission(response) {
                 <p><strong>Outbound:</strong> ${outboundError}</p>
                 `,
             showConfirmButton: false,
+            timerProgressBar: true,
             timer: 3000
         });
     }
