@@ -204,7 +204,7 @@
                             <select id="skills" name="skills[]" class="select2" multiple="multiple" style="width: 100%;" required>
                                 <option value="Content Creation">Content Creation</option>
                                 <option value="Quality Control">Quality Control</option>
-                                <option value="Design">Design</option>
+                                {{-- <option value="Design">Design</option> --}}
                                 <option value="Innovation and Trends">Innovation and Trends</option>
                                 <option value="Website Design and Development">Website Design and Development</option>
                                 <option value="Project Management">Project Management</option>
@@ -228,19 +228,19 @@
                                 <option value="Bookkeeping">Bookkeeping</option>
                                 <option value="Data entry">Data entry</option>
                                 <option value="Financial analysis">Financial analysis</option>
-                                <option value="Strong interpersonal abilities">Strong interpersonal abilities</option>
+                                {{-- <option value="Strong interpersonal abilities">Strong interpersonal abilities</option> --}}
                                 {{-- <option value="Active listening skills">Active listening skills</option> --}}
                                 {{-- <option value="Multi-tasking abilities">Multi-tasking abilities</option> --}}
                                 {{-- <option value="Empathy and patience">Empathy and patience</option>
                                 <option value="Conflict resolution skills">Conflict resolution skills</option> --}}
-                                <option value="Adaptability and flexibility">Adaptability and flexibility</option>
+                                {{-- <option value="Adaptability and flexibility">Adaptability and flexibility</option> --}}
                                 <option value="Content creation and curation">Content creation and curation</option>
                                 <option value="Community engagement">Community engagement</option>
                                 <option value="Analytics and reporting">Analytics and reporting</option>
                                 <option value="Copywriting ">Copywriting </option>
                                 <option value="Graphic design">Graphic design</option>
                                 <option value="Customer service">Customer service</option>
-                                <option value="Accuracy">Accuracy</option>
+                                {{-- <option value="Accuracy">Accuracy</option> --}}
                                 <option value="Social media management skills">Social media management skills</option>
                                 <option value="Basic accounting knowledge">Basic accounting knowledge</option>
                                 <option value="Order Processing">Order Processing</option>
