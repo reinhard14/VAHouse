@@ -225,7 +225,7 @@ class AdminUserController extends Controller
         $uniqueSkillsFilter = array_unique(array_merge($getUniqueSkills_UCWords, $getUniqueTitles_UCWords));
         //get unique values only in the array.
         $uniqueSkills = array_unique($uniqueSkillsFilter);
-        dd($getUniqueSkills);
+
         return view('admin-users.index', compact(
             'users',
             'sortByLastname',
