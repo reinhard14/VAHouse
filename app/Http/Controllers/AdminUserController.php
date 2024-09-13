@@ -117,9 +117,9 @@ class AdminUserController extends Controller
                                         'tiers.*'
                             )
                             ->groupBy(
-                                'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.lastname',
+                                'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix',
-                                'applicant_information.experience',
+                                'applicant_information.experience', 'users.created_at', 'users.updated_at',
                                 'tiers.id',
                                 'tiers.tier'
                             )  // Add necessary fields to GROUP BY
@@ -144,12 +144,12 @@ class AdminUserController extends Controller
                                         'tiers.*'
                             )
                             ->groupBy(
-                                'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.lastname',
+                                'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix',
-                                'applicant_information.experience',
+                                'applicant_information.experience', 'users.created_at', 'users.updated_at',
                                 'tiers.id',
                                 'tiers.tier'
-                            )  // Add necessary fields to GROUP BY
+                            )   // Add necessary fields to GROUP BY
                             // ->groupBy('users.id')  // Group by user ID to ensure distinct users
                             //!test
                             // //distinct causes pagination error. find another way, try use groupby.
@@ -171,12 +171,12 @@ class AdminUserController extends Controller
                                         'tiers.*'
                             )
                             ->groupBy(
-                                'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.lastname',
+                                'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix',
-                                'applicant_information.experience',
+                                'applicant_information.experience', 'users.created_at', 'users.updated_at',
                                 'tiers.id',
                                 'tiers.tier'
-                            )  // Add necessary fields to GROUP BY
+                            )   // Add necessary fields to GROUP BY
                             // ->groupBy('users.id')  // Group by user ID to ensure distinct users
                             //!test
                             // //distinct causes pagination error. find another way, try use groupby.
