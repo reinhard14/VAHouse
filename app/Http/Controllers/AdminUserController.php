@@ -274,16 +274,11 @@ class AdminUserController extends Controller
         $uniqueTitles = Experience::groupBy('title')->pluck('title');
         $uniqueTiers = Tier::groupBy('tier')->pluck('tier');
         $uniqueLMS = Status::groupBy('lesson')->pluck('lesson');
-
         //tranform titles to uppercase first letter.
-        $getUniqueTitles = array_map('ucfirst', $uniqueTitles->toArray());
+        $getUniqueSkills_UCWords = array_map('ucwords', $getUniqueSkills);
+        $getUniqueTitles_UCWords = array_map('ucwords', $uniqueTitles->toArray());
         //Combine the collection and array, this is for skills, also display the title.
-        $uniqueSkillsFilter = array_unique(array_merge($getUniqueSkills, $getUniqueTitles));
-        // $uniqueSkillsFilter = array_merge($getUniqueSkills, $getUniqueTitles);
-
-        // var_dump($getUniqueSkills);
-        // var_dump($getUniqueTitles);
-        // var_dump($uniqueSkillsFilter);
+        $uniqueSkillsFilter = array_unique(array_merge($getUniqueSkills_UCWords, $getUniqueTitles_UCWords));
         //get unique values only in the array.
         $uniqueSkills = array_unique($uniqueSkillsFilter);
 
