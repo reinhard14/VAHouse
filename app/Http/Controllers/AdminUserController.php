@@ -281,8 +281,8 @@ class AdminUserController extends Controller
         $uniqueSkillsFilter = array_unique(array_merge($getUniqueSkills, $getUniqueTitles));
         // $uniqueSkillsFilter = array_merge($getUniqueSkills, $getUniqueTitles);
 
-        var_dump($getUniqueSkills);
-        var_dump($getUniqueTitles);
+        // var_dump($getUniqueSkills);
+        // var_dump($getUniqueTitles);
         // var_dump($uniqueSkillsFilter);
         //get unique values only in the array.
         $uniqueSkills = array_unique($uniqueSkillsFilter);
