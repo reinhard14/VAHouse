@@ -119,7 +119,7 @@ class AdminUserController extends Controller
                             ->groupBy(
                                 'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
-                                'applicant_information.experience', 'users.created_at', 'users.updated_at', 'users.remember_token',
+                                'applicant_information.experience', 'users.created_at', 'users.updated_at', 'users.remember_token', 'users.user_id',
                                 'tiers.id',
                                 'tiers.tier'
                             )  // Add necessary fields to GROUP BY
@@ -146,7 +146,7 @@ class AdminUserController extends Controller
                             ->groupBy(
                                 'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
-                                'applicant_information.experience', 'users.created_at', 'users.updated_at', 'users.remember_token',
+                                'applicant_information.experience', 'users.created_at', 'users.updated_at', 'users.remember_token', 'users.user_id',
                                 'tiers.id',
                                 'tiers.tier'
                             )   // Add necessary fields to GROUP BY
@@ -173,7 +173,7 @@ class AdminUserController extends Controller
                             ->groupBy(
                                 'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
-                                'applicant_information.experience', 'users.created_at', 'users.updated_at', 'users.remember_token',
+                                'applicant_information.experience', 'users.created_at', 'users.updated_at', 'users.remember_token', 'users.user_id',
                                 'tiers.id',
                                 'tiers.tier'
                             )   // Add necessary fields to GROUP BY
