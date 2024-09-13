@@ -109,9 +109,18 @@ class AdminUserController extends Controller
                             ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
                             ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
                             ->leftJoin('tiers', 'users.id', '=', 'tiers.user_id')
-                            ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title', 'tiers.*')
-                            //distinct causes pagination error. find another way, try use groupby.
-                            ->distinct()
+                            ->select('users.*',
+                                        \DB::raw('GROUP_CONCAT(DISTINCT skillsets.skill SEPARATOR ", ") as skills'),
+                                        \DB::raw('GROUP_CONCAT(DISTINCT statuses.status SEPARATOR ", ") as status'),
+                                        'applicant_information.experience',
+                                        \DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
+                                        'tiers.*'
+                            )
+                            ->groupBy('users.id')  // Group by user ID to ensure distinct users
+                            //!test
+                            // //distinct causes pagination error. find another way, try use groupby.
+                            // ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title', 'tiers.*')
+                            // ->distinct()
                             ->orderBy($sortByColumn, $sortOrder);
         } else if ($displayIncompleteApplicants == 'optionIncomplete') {
             $usersQuery = User::where('role_id', $applicant)
@@ -121,9 +130,18 @@ class AdminUserController extends Controller
                             ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
                             ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
                             ->leftJoin('tiers', 'users.id', '=', 'tiers.user_id')
-                            ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title', 'tiers.*')
-                            //distinct causes pagination error. find another way, try use groupby.
-                            ->distinct()
+                            ->select('users.*',
+                                        \DB::raw('GROUP_CONCAT(DISTINCT skillsets.skill SEPARATOR ", ") as skills'),
+                                        \DB::raw('GROUP_CONCAT(DISTINCT statuses.status SEPARATOR ", ") as status'),
+                                        'applicant_information.experience',
+                                        \DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
+                                        'tiers.*'
+                            )
+                            ->groupBy('users.id')  // Group by user ID to ensure distinct users
+                            //!test
+                            // //distinct causes pagination error. find another way, try use groupby.
+                            // ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title', 'tiers.*')
+                            // ->distinct()
                             ->orderBy($sortByColumn, $sortOrder);
         } else if ($displayIncompleteApplicants == 'optionMixed') {
             $usersQuery = User::where('role_id', $applicant)
@@ -132,9 +150,18 @@ class AdminUserController extends Controller
                             ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
                             ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
                             ->leftJoin('tiers', 'users.id', '=', 'tiers.user_id')
-                            ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title', 'tiers.*')
-                            //distinct causes pagination error. find another way, try use groupby.
-                            ->distinct()
+                            ->select('users.*',
+                                        \DB::raw('GROUP_CONCAT(DISTINCT skillsets.skill SEPARATOR ", ") as skills'),
+                                        \DB::raw('GROUP_CONCAT(DISTINCT statuses.status SEPARATOR ", ") as status'),
+                                        'applicant_information.experience',
+                                        \DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
+                                        'tiers.*'
+                            )
+                            ->groupBy('users.id')  // Group by user ID to ensure distinct users
+                            //!test
+                            // //distinct causes pagination error. find another way, try use groupby.
+                            // ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title', 'tiers.*')
+                            // ->distinct()
                             ->orderBy($sortByColumn, $sortOrder);
         }
 
