@@ -116,7 +116,7 @@ class AdminUserController extends Controller
                                         \DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
                                         'tiers.*'
                             )
-                            ->groupBy('users.id')  // Group by user ID to ensure distinct users
+                            ->groupBy('users.id', 'users.name', 'users.lastname', 'applicant_information.experience', 'tiers.id', 'tiers.tier')  // Add necessary fields to GROUP BY
                             //!test
                             // //distinct causes pagination error. find another way, try use groupby.
                             // ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title', 'tiers.*')
@@ -137,7 +137,8 @@ class AdminUserController extends Controller
                                         \DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
                                         'tiers.*'
                             )
-                            ->groupBy('users.id')  // Group by user ID to ensure distinct users
+                            ->groupBy('users.id', 'users.name', 'users.lastname', 'applicant_information.experience', 'tiers.id', 'tiers.tier')  // Add necessary fields to GROUP BY
+                            // ->groupBy('users.id')  // Group by user ID to ensure distinct users
                             //!test
                             // //distinct causes pagination error. find another way, try use groupby.
                             // ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title', 'tiers.*')
@@ -157,7 +158,8 @@ class AdminUserController extends Controller
                                         \DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
                                         'tiers.*'
                             )
-                            ->groupBy('users.id')  // Group by user ID to ensure distinct users
+                            ->groupBy('users.id', 'users.name', 'users.lastname', 'applicant_information.experience', 'tiers.id', 'tiers.tier')  // Add necessary fields to GROUP BY
+                            // ->groupBy('users.id')  // Group by user ID to ensure distinct users
                             //!test
                             // //distinct causes pagination error. find another way, try use groupby.
                             // ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title', 'tiers.*')
