@@ -118,7 +118,7 @@ class AdminUserController extends Controller
                             )
                             ->groupBy(
                                 'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
-                                'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix',
+                                'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
                                 'applicant_information.experience', 'users.created_at', 'users.updated_at',
                                 'tiers.id',
                                 'tiers.tier'
@@ -145,7 +145,7 @@ class AdminUserController extends Controller
                             )
                             ->groupBy(
                                 'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
-                                'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix',
+                                'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
                                 'applicant_information.experience', 'users.created_at', 'users.updated_at',
                                 'tiers.id',
                                 'tiers.tier'
@@ -172,7 +172,7 @@ class AdminUserController extends Controller
                             )
                             ->groupBy(
                                 'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
-                                'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix',
+                                'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
                                 'applicant_information.experience', 'users.created_at', 'users.updated_at',
                                 'tiers.id',
                                 'tiers.tier'
