@@ -278,7 +278,12 @@ class AdminUserController extends Controller
         //tranform titles to uppercase first letter.
         $getUniqueTitles = array_map('ucfirst', $uniqueTitles->toArray());
         //Combine the collection and array, this is for skills, also display the title.
-        $uniqueSkillsFilter = array_merge($getUniqueSkills, $getUniqueTitles);
+        $uniqueSkillsFilter = array_unique(array_merge($getUniqueSkills, $getUniqueTitles));
+        // $uniqueSkillsFilter = array_merge($getUniqueSkills, $getUniqueTitles);
+
+        var_dump($getUniqueSkills);
+        var_dump($getUniqueTitles);
+        // var_dump($uniqueSkillsFilter);
         //get unique values only in the array.
         $uniqueSkills = array_unique($uniqueSkillsFilter);
 
