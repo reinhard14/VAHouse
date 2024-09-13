@@ -58,49 +58,8 @@ class AdminUserController extends Controller
         $toggleSortFirstname = $this->sortOrder($sortByFirstname);
         $toggleSortByDateSubmitted = $this->sortOrder($sortByDateSubmitted);
 
-        //!disable for now
-        // $applicant = 3;
-        // //default, display is null -> show with skills only
-        // if(is_null($displayIncompleteApplicants)) {
-        //     $usersQuery = User::where('role_id', $applicant)
-        //                         ->whereHas('skillsets', function($query) {
-        //                             $query->whereNotNull('skill');
-        //                         })
-        //                         ->with(['skillsets', 'status', 'information', 'experiences'])
-        //                         ->orderBy($sortByColumn, $sortOrder);
-        // } else {
-        //     $usersQuery = User::where('role_id', $applicant)
-        //                         ->with(['skillsets', 'status', 'information', 'experiences'])
-        //                         ->orderBy($sortByColumn, $sortOrder);
-        //     }
-
-        // // Searching
-        // if ($search = $request->query('search')) {
-        //     $usersQuery->where(function($query) use ($search) {
-        //         $query->where('name', 'LIKE', '%' . $search . '%')
-        //             ->orWhere('lastname', 'LIKE', '%' . $search . '%')
-        //             ->orWhereHas('skillsets', function($query) use ($search) {
-        //                 $query->where('skill', 'LIKE', '%' . $search . '%');
-        //             })
-        //             ->orWhereHas('experiences', function($query) use ($search) {
-        //                 $query->where('title', 'LIKE', '%' . $search . '%');
-        //             });
-        //     });
-        // }
-
-        // if ($skills = $request->query('skills')) {
-        //     $skillsArray = explode(',', $skills);
-
-        //     $usersQuery->whereHas('skillsets', function($query) use ($skillsArray) {
-        //         if (is_array($skillsArray)) {
-        //             $query->whereIn('skill', $skills);
-        //         }
-        //     });
-        // }
-        //! end
-        // var_dump($displayIncompleteApplicants);
-
         $applicant = 3;
+
         if(is_null($displayIncompleteApplicants)) {
             $usersQuery = User::where('role_id', $applicant)
                             ->whereNotNull('skillsets.id')
@@ -123,11 +82,7 @@ class AdminUserController extends Controller
                                 'applicant_information.experience',
                                 'tiers.id',
                                 'tiers.tier'
-                            )  // Add necessary fields to GROUP BY
-                            //!test
-                            // //distinct causes pagination error. find another way, try use groupby.
-                            // ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title', 'tiers.*')
-                            // ->distinct()
+                            )
                             ->orderBy($sortByColumn, $sortOrder);
         } else if ($displayIncompleteApplicants == 'optionIncomplete') {
             $usersQuery = User::where('role_id', $applicant)
@@ -151,12 +106,7 @@ class AdminUserController extends Controller
                                 'applicant_information.experience',
                                 'tiers.id',
                                 'tiers.tier'
-                            )  // Add necessary fields to GROUP BY
-                            // ->groupBy('users.id')  // Group by user ID to ensure distinct users
-                            //!test
-                            // //distinct causes pagination error. find another way, try use groupby.
-                            // ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title', 'tiers.*')
-                            // ->distinct()
+                            )
                             ->orderBy($sortByColumn, $sortOrder);
         } else if ($displayIncompleteApplicants == 'optionMixed') {
             $usersQuery = User::where('role_id', $applicant)
@@ -179,12 +129,7 @@ class AdminUserController extends Controller
                                 'applicant_information.experience',
                                 'tiers.id',
                                 'tiers.tier'
-                            )  // Add necessary fields to GROUP BY
-                            // ->groupBy('users.id')  // Group by user ID to ensure distinct users
-                            //!test
-                            // //distinct causes pagination error. find another way, try use groupby.
-                            // ->select('users.*', 'skillsets.*', 'statuses.*', 'applicant_information.experience', 'experiences.title', 'tiers.*')
-                            // ->distinct()
+                            )
                             ->orderBy($sortByColumn, $sortOrder);
         }
 
@@ -237,7 +182,6 @@ class AdminUserController extends Controller
             }
         }
 
-
         // Get the results with pagination.
         $users = $usersQuery->select('users.*')->paginate(5);
 
@@ -281,7 +225,9 @@ class AdminUserController extends Controller
         $uniqueSkillsFilter = array_unique(array_merge($getUniqueSkills_UCWords, $getUniqueTitles_UCWords));
         //get unique values only in the array.
         $uniqueSkills = array_unique($uniqueSkillsFilter);
-
+        var_dump($getUniqueSkills_UCWords);
+        var_dump($getUniqueTitles_UCWords);
+        var_dump($uniqueSkillsFilter);
         return view('admin-users.index', compact(
             'users',
             'sortByLastname',
