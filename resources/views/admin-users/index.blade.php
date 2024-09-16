@@ -397,8 +397,13 @@
                                                                 {{ $user->created_at->diffForHumans(['parts' => 1]) }}
                                                             </p>
                                                             <span class="badge badge-light">
-                                                                {{ $user->created_at->format('d-m-Y') }}
+                                                                {{ $user->created_at->format('h:i A') }}
                                                             </span>
+                                                            <p>
+                                                                <span class="badge badge-light">
+                                                                    {{ $user->created_at->format('d-m-Y') }}
+                                                                </span>
+                                                            </p>
                                                         </div>
                                                     </td>
                                                     <td class="text-right">
