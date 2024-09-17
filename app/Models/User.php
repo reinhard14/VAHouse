@@ -15,6 +15,8 @@ use App\Models\Tier;
 use App\Models\ApplicantInformation;
 use App\Models\CallSample;
 use App\Models\Reference;
+use App\Models\UserFormCompletion;
+
 
 
 class User extends Authenticatable
@@ -98,5 +100,9 @@ class User extends Authenticatable
 
     public function references() {
         return $this->hasOne(Reference::class);
+    }
+
+    public function formCompleted() {
+        return $this->hasOne(UserFormCompletion::class);
     }
 }

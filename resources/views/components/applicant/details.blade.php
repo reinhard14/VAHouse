@@ -16,6 +16,8 @@
             <form id="experienceForm">
                 @csrf
                 <input type="hidden" id="user_id" name="user_id" value="{{ Auth::id(); }}">
+                <input type="hidden" id="is_experience_completed" name="is_experience_completed" value="1">
+
                 <div class="modal-body">
                     <label for="title" class="form-label">Job Experience</label>
                     <input type="text" id="title" name="title" class="form-control mb-2">
@@ -50,6 +52,7 @@
                 title: $('#title').val(),
                 duration: $('#duration').val(),
                 user_id: $('#user_id').val(),
+                is_experience_completed: $('#is_experience_completed').val(),
                 _token: csrfToken,
             };
 
@@ -57,7 +60,9 @@
                 type: 'POST',
                 url: '{{ route("user.experience") }}',
                 data: formData,
+
                 success: function(response) {
+
                     handleExperienceFormSubmission();
                     $('#experienceForm')[0].reset();
                     $('#noExperiencePlaceholder').remove();
@@ -99,6 +104,7 @@
                     $('#create-details-modal').modal('hide');
                 },
                 error: function(jqXHR) {
+
                     try {
                         var responseJson = JSON.parse(jqXHR.responseText);
                         var errorResponse = responseJson.errors
@@ -106,7 +112,7 @@
                             : 'No errors found in the response';
 
                         formattedResponse = JSON.stringify(errorResponse);
-                        console.log(formattedResponse);
+
                         handleReferencesWithMissingField(formattedResponse);
                     } catch (e) {
                         alert('Invalid JSON response: ' + jqXHR.responseText);

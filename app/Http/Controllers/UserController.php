@@ -8,6 +8,7 @@ use App\Models\CallSample;
 use App\Models\User;
 use App\Models\Experience;
 use App\Models\Reference;
+use App\Models\UserFormCompletion;
 // use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +26,7 @@ class UserController extends Controller
     public function index()
     {
         $user = User::findOrFail(Auth::id());
+        // $userForm = UserFormCompletion::findOrFail('user_id', $user);
 
         return view('home', compact('user'));
     }
@@ -64,6 +66,8 @@ class UserController extends Controller
             'ub_number' => 'required',
             'positions' => 'sometimes|array|min:1',
             'positions.*' => 'string',
+            'is_experience_completed' => 'required',
+            'is_reference_completed' => 'required',
         ],  [
             'videolink.required' => 'Video file is missing.',
             'videolink.mimes' => 'Video Introduction file type must be MP4.',
@@ -198,7 +202,6 @@ class UserController extends Controller
     }
 
 
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -250,6 +253,7 @@ class UserController extends Controller
     }
 
     public function experiences(Request $request) {
+
         $this->validate($request, [
             'title' => 'required',
             'duration' => 'required',
@@ -258,6 +262,10 @@ class UserController extends Controller
             'title.required' => 'Job title is a required field.',
             'duration.required' => 'Duration of work a is required field.',
         ]);
+        // dd($request->all()); // This will output the request data and stop execution
+        // \Log::info($request->all());
+
+        //ajax showing
         $exists = Experience::where('user_id', $request->input('user_id'))->exists();
 
         $experience = new Experience();
@@ -265,6 +273,11 @@ class UserController extends Controller
         $experience->duration = $request->input('duration');
         $experience->user_id = $request->input('user_id');
         $experience->save();
+
+        $attribute = ['user_id' => $request->input('user_id')];
+        $formCompletion = UserFormCompletion::firstOrNew($attribute);
+        $formCompletion->is_experience_completed = $request->input('is_experience_completed');
+        $formCompletion->save();
 
         return response()->json([
             'success' => true,
@@ -275,8 +288,6 @@ class UserController extends Controller
     }
 
     public function uploadMockcall(Request $request) {
-        // Log the entire request data
-        // Log::info('Request data:', $request->all());
 
         $this->validate($request, [
             'inbound_call' => 'required|mimes:mp4,avi,wmv,mp3,wav,aac,flac,ogg,wma|max:32000',
@@ -328,6 +339,7 @@ class UserController extends Controller
             'preferred_shift' => 'required',
             'work_status' => 'required',
             'services_offered' => 'required|array',
+            'user_id' => 'required',
         ], [
             'emergency_person.required' => 'Please enter the name of emergency person.',
             'emergency_relationship.required' => 'Please enter the relationship with the person.',
@@ -356,6 +368,12 @@ class UserController extends Controller
         $reference->services_offered = $request->input('services_offered');
         $reference->user_id = $userId;
         $reference->save();
+
+        // $attribute = ['user_id' => $id];
+        $attribute = ['user_id' => $request->input('user_id')];
+        $formCompletion = UserFormCompletion::firstOrNew($attribute);
+        $formCompletion->is_reference_completed = $request->input('is_reference_completed');
+        $formCompletion->save();
 
         return redirect()->route('user.dashboard')->with('success', 'Additional references has been saved.');
     }

@@ -12,6 +12,8 @@
             <form>
                 @csrf
                 <input type="hidden" id="user_id" name="user_id" value="{{ Auth::id(); }}">
+                <input type="hidden" id="is_reference_completed" name="is_reference_completed" value="1">
+
                 <div class="modal-body">
                     <div class="row mb-3">
                         <div class="col">
@@ -135,6 +137,7 @@
             preferred_shift: $('#preferred_shift').val(),
             work_status: $('#work_status').val(),
             services_offered: $('#services_offered').val(),
+            is_reference_completed: $('#is_reference_completed').val(),
             user_id: $('#user_id').val(),
             _token: csrfToken,
         };
