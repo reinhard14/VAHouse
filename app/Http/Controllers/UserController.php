@@ -66,8 +66,6 @@ class UserController extends Controller
             'ub_number' => 'required',
             'positions' => 'sometimes|array|min:1',
             'positions.*' => 'string',
-            'is_experience_completed' => 'required',
-            'is_reference_completed' => 'required',
         ],  [
             'videolink.required' => 'Video file is missing.',
             'videolink.mimes' => 'Video Introduction file type must be MP4.',
@@ -90,7 +88,22 @@ class UserController extends Controller
             'disc_results.max' => 'DISC results file size exceed the 32 MB limit!',
             ]);
 
-        $attributes = ['user_id' => Auth::id()];
+        $user_id = Auth::id();
+        $attributes = ['user_id' => $user_id];
+
+        $userFormCompletion = UserFormCompletion::where('user_id', $user_id)->first();
+
+        // Check if the hidden fields are not 1 (true/complete), non-existent or null.
+        if (!isset($userFormCompletion->is_experience_completed, $userFormCompletion->is_reference_completed) ||
+            $userFormCompletion->is_experience_completed != 1 ||
+            $userFormCompletion->is_reference_completed != 1) {
+
+            return redirect()->back()->withErrors([
+                'message' => 'Both the experience and reference sections must be completed before saving.
+                                Click "Expand" for adding experiences and "Click here" for references.',
+            ]);
+
+        }
 
         // Handle PDF file upload
         if ($request->hasFile('portfolio')) {

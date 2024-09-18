@@ -35,11 +35,6 @@
 
                     <form id="scoresForm" method="post" action="{{ route('user.store') }}" enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" id="is_reference_completed" name="is_reference_completed" value="{{ isset($user->formCompleted->is_reference_completed) ? $user->formCompleted->is_reference_completed : '' }}">
-                        <input type="hidden" id="is_experience_completed" name="is_experience_completed" value="{{ isset($user->formCompleted->is_experience_completed) ? $user->formCompleted->is_experience_completed : '' }}">
-                        {{ isset($user->formCompleted->is_reference_completed) ? $user->formCompleted->is_reference_completed : '' }}
-                        {{ isset($user->formCompleted->is_experience_completed) ? $user->formCompleted->is_experience_completed : '' }}
-
                         <div class="form-group">
                             <label for="websites"><span class="text-danger">*</span> List of <span class="text-primary">websites</span> used:</label>
 
