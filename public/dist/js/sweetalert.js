@@ -170,6 +170,7 @@ function handleMockcallFormSubmission(response) {
             text: 'Added mock call successfully... This will overwrite existing mock call files.',
             showConfirmButton: false,
             timerProgressBar: true,
+            allowOutsideClick: false,
             timer: 3000
         });
     } else {
@@ -206,6 +207,7 @@ function handleExperienceFormSubmission() {
         denyButtonText: 'Add another experience',
         confirmButtonColor: '#007afe',
         denyButtonColor: '#3ec2ee',
+        allowOutsideClick: false,
     }).then((result) => {
         if (result.isConfirmed) {
         Swal.fire({
@@ -240,6 +242,7 @@ function handleReferencesFormSubmission() {
         timer: 2000,
     });
 }
+
 function handleFormWithMissingField(formattedResponse) {
     let cleanBracketResponses = formattedResponse.replace(/^\[|\]$/g, '');
     let newlineResponses = cleanBracketResponses.replace(/,\s*/g, ',\n');
@@ -259,6 +262,7 @@ function handleFormWithMissingField(formattedResponse) {
             </p>
             `,
         showConfirmButton: false,
+        allowOutsideClick: false,
         timer: 2000,
     });
 }
@@ -282,6 +286,7 @@ function handleReferencesWithMissingField(formattedResponse) {
             </p>
             `,
         showConfirmButton: false,
+        allowOutsideClick: false,
         timer: 2000,
     });
 }
@@ -564,7 +569,8 @@ function handleDashboardFormSubmission(form) {
         showCancelButton: true,
         confirmButtonColor: '#007afe',
         cancelButtonColor: '#6d747d',
-        confirmButtonText: 'Yes, Submit!'
+        confirmButtonText: 'Yes, Submit!',
+        allowOutsideClick: false,
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
@@ -572,6 +578,7 @@ function handleDashboardFormSubmission(form) {
             title: 'Applicant Information!',
             text: 'Information being saved, please wait a moment! this will overwrite previous responses if there are any.',
             showConfirmButton: false,
+            allowOutsideClick: false,
         })
             setTimeout(() => {
                 form.submit()
@@ -609,6 +616,8 @@ function handleClearFields() {
                 text: 'Reset of field confirmed',
                 icon: 'success',
                 timer: 2000,
+                allowOutsideClick: false,
+
             });
 
         } else {
@@ -617,6 +626,8 @@ function handleClearFields() {
             timer: 2000,
             icon: 'error',
             showConfirmButton: false,
+            allowOutsideClick: false,
+
             });
         }
     });
