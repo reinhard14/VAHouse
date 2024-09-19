@@ -187,6 +187,7 @@ function handleMockcallFormSubmission(response) {
                 `,
             showConfirmButton: false,
             timerProgressBar: true,
+            allowOutsideClick: false,
             timer: 3000
         });
     }
@@ -215,6 +216,7 @@ function handleExperienceFormSubmission() {
             title: 'Records saved!',
             text: 'Finished adding experience(s), closing this modal...',
             showConfirmButton: false,
+            allowOutsideClick: false,
             timer: 2000
             });
         } else if (result.isDenied) {
@@ -223,6 +225,7 @@ function handleExperienceFormSubmission() {
             title: 'Saved!',
             text: 'Adding experience successful, re-opening modal...',
             showConfirmButton: false,
+            allowOutsideClick: false,
             timer: 2000
             });
 
@@ -239,6 +242,7 @@ function handleReferencesFormSubmission() {
         title: 'Saving references...',
         text: 'Adding references, kindly wait a moment.',
         showConfirmButton: false,
+        allowOutsideClick: false,
         timer: 2000,
     });
 }
