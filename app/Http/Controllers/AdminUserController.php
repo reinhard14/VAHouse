@@ -357,6 +357,7 @@ class AdminUserController extends Controller
 
         return response()->json([
             'success' => true,
+            'user' => $user,
         ]);
     }
 
@@ -593,8 +594,11 @@ class AdminUserController extends Controller
         $information->positions = json_encode($request->input('positions'));
         $information->save();
 
+        $user = $information->user;
+
         return response()->json([
             'success' => true,
+            'user' => $user,
         ]);
 
     }
@@ -622,8 +626,11 @@ class AdminUserController extends Controller
         $skillset->user_id = $id;
         $skillset->save();
 
+        $user = $skillset->user;
         return response()->json([
             'success' => true,
+            'skillsets' => $skillset,
+            'user' => $user,
         ]);
 
     }

@@ -53,11 +53,15 @@ function handleUpdateStatusForm(response) {
 
 function handleEditApplicantForm(response) {
     if(response.success) {
+        const user = response.user.name;
+
         Swal.fire({
             icon: 'success',
-            title: `VA information updated!`,
+            title: `${user}'s information updated!`,
             text: `Information has been updated successfully.`,
             showConfirmButton: false,
+            timerProgressBar: true,
+            allowOutsideClick: false,
             timer: 2500,
         });
     }
@@ -65,11 +69,15 @@ function handleEditApplicantForm(response) {
 
 function handleProfileForm(response) {
     if(response.success) {
+        const user = response.user.name;
+
         Swal.fire({
             icon: 'success',
-            title: `VA profile updated!`,
-            text: `Profile has been saved accordingly.`,
+            title: `${user}'s profile updated!`,
+            text: `Profile changes has been saved accordingly.`,
             showConfirmButton: false,
+            timerProgressBar: true,
+            allowOutsideClick: false,
             timer: 2500,
         });
     }
@@ -77,11 +85,27 @@ function handleProfileForm(response) {
 
 function handleSkillsetForm(response) {
     if(response.success) {
+        const skillset = response.skillsets;
+        const skill = skillset.skill;
+        const tool = skillset.tool;
+        const website = skillset.website;
+        const softskill = skillset.softskill;
+        const user = response.user.name;
+
         Swal.fire({
             icon: 'success',
-            title: `VA skillsets updated!`,
-            text: `Skillsets has been saved accordingly.`,
+            title: `${user} skillsets are updated!`,
+            html:`
+            <p><strong>Skill:</strong> ${skill}</p>
+            <p><strong>Tool:</strong> ${tool}</p>
+            <p><strong>Website:</strong> ${website}</p>
+            <p><strong>Softskill:</strong> ${softskill}</p>
+
+            <p>Skillsets has been saved accordingly.</p>
+            `,
             showConfirmButton: false,
+            timerProgressBar: true,
+            allowOutsideClick: false,
             timer: 2500,
         });
     }

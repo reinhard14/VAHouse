@@ -8,8 +8,6 @@ $(document).ready(function() {
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
         var url = '/administrator/users/' + userId;
 
-        console.log(userId);
-
         $.ajax({
             type: 'POST',
             url: url,
