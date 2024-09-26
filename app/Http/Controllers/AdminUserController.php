@@ -220,9 +220,14 @@ class AdminUserController extends Controller
         $uniqueLMS = Status::groupBy('lesson')->pluck('lesson');
         //tranform titles to uppercase first letter.
         $getUniqueSkills_UCWords = array_map('ucwords', $getUniqueSkills);
-        $getUniqueTitles_UCWords = array_map('ucwords', $uniqueTitles->toArray());
-        //Combine the collection and array, this is for skills, also display the title.
-        $uniqueSkillsFilter = array_unique(array_merge($getUniqueSkills_UCWords, $getUniqueTitles_UCWords));
+
+        //!todo temporary disable for now.
+        // $getUniqueTitles_UCWords = array_map('ucwords', $uniqueTitles->toArray());
+        // //Combine the collection and array, this is for skills, also display the title.
+        // $uniqueSkillsFilter = array_unique(array_merge($getUniqueSkills_UCWords, $getUniqueTitles_UCWords));
+        //!todo temporary disable for now.
+
+        $uniqueSkillsFilter = array_unique($getUniqueSkills_UCWords);
         //get unique values only in the array.
         $uniqueSkills = array_unique($uniqueSkillsFilter);
 
