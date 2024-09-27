@@ -173,7 +173,12 @@ class AdminUserController extends Controller
                             $query->orWhere($dbField, '=', $tag);
                         } else if ($dbField=='skillsets.skill') {
                             $query->orWhere($dbField, 'like', '%' . $tag . '%')
-                                  ->orWhere('experiences.title', 'like', '%' . $tag . '%');
+                                    ->orWhere(function ($q) use ($tag) {
+                                        $words = explode(' ', $tag); // Split the tag into words
+                                        foreach ($words as $word) {
+                                            $q->orWhere('experiences.title', 'like', '%' . $word . '%');
+                                        }
+                                    });
                         } else {
                             $query->orWhere($dbField, 'like', '%' . $tag . '%');
                         }
