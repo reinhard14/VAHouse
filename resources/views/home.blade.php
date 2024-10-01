@@ -306,7 +306,7 @@
                                             </label>
                                         </div>
                                         <div class="col text-right">
-                                            <button href="#create-details-modal" data-bs-toggle="modal" class="btn btn-primary btn-sm">Expand</button>
+                                            <button type="button" data-bs-toggle="modal" data-bs-target="#create-details-modal" class="btn btn-primary btn-sm">Expand</button>
                                         </div>
                                     </div>
 
@@ -337,7 +337,7 @@
                                     <h5>Years of experience details</h5>
                                 </div>
                                 <div class="col d-flex justify-content-end">
-                                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#create-details-modal">Add Experience</button>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#create-details-modal" class="btn btn-primary btn-sm">Expand</button>
                                 </div>
 
                                 <div class="table-responsive mt-2">
