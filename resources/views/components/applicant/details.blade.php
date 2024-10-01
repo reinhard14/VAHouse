@@ -68,6 +68,8 @@
                     $('#noExperiencePlaceholder').remove();
 
                     const hasExperiences = response.exists;
+                    const title = response.experience.title;
+                    const duration = response.experience.duration;
 
                     if (!hasExperiences) {
                         const newTable = `
@@ -89,8 +91,8 @@
                                     </thead>
                                     <tbody id="experienceRow">
                                         <tr>
-                                            <td>` + response.experience.title + `</td>` +
-                                            `<td>` + response.experience.duration + `</td>
+                                            <td> ${title} </td>
+                                            <td> ${duration} </td>
                                         </tr>
                                     </tbody>
                                 </table>`;

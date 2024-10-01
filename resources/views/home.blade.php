@@ -329,7 +329,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="showExperiencesTable" class="table-responsive">
+                            <div id="showExperiencesTable">
                             </div>
                         @else
                             <div class="row my-2">
