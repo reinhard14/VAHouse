@@ -71,6 +71,15 @@
 
                     if (!hasExperiences) {
                         const newTable = `
+                                <div class="row my-2">
+                                    <div class="col">
+                                        <h5>Years of experience details</h5>
+                                    </div>
+                                    <div class="col d-flex justify-content-end">
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#create-details-modal" class="btn btn-primary btn-sm">Expand</button>
+                                    </div>
+                                </div>
+
                                 <table class="table table-hover border">
                                     <thead>
                                         <tr>
