@@ -187,6 +187,13 @@ class AdminUserController extends Controller
             }
         }
 
+        // Retrieve the experience titles directly from the existing usersQuery
+        $userTitles = $usersQuery->with('experiences')
+                                ->get()
+                                ->filter();
+            // $userTitles->load('references');
+        // dd($distinctTitles);
+
         // Get the results with pagination.
         $users = $usersQuery->select('users.*')->paginate(5);
 
@@ -238,6 +245,7 @@ class AdminUserController extends Controller
 
         return view('admin-users.index', compact(
             'users',
+            'userTitles',
             'sortByLastname',
             'sortByFirstname',
             'toggleSortLastname',

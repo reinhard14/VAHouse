@@ -129,7 +129,7 @@
 
                                                     @php $count++; @endphp
 
-                                                    <div class="form-group col-md-12 mb-5 d-flex justify-content-around">
+                                                    <div class="form-group col-md-12 d-flex justify-content-around">
                                                         <div class="col-md-4">
                                                             <h6>Display:</h6>
                                                             <div class="form-check">
@@ -179,6 +179,54 @@
                                 </div>
                             </div>
                         </div>
+
+                        {{-- TALLY ROW --}}
+                        <div class="row mb-4">
+                            <div class="col-md-12 text-right">
+                                <button type="button" id="filterButton" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseTitles">
+                                    Show/Hide VA Jobs Details
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="accordion">
+                                    <div id="collapseTitles" class="collapse show">
+                                        <div class="accordion-body">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover table-borderless table-sm">
+                                                            <thead>
+                                                                <tr>
+                                                                    {{-- <th>Services Offered</th> --}}
+                                                                    <th>Previous Job Title</th>
+                                                                    <th>VA Name</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach ($userTitles as $userJob)
+                                                                    <tr>
+                                                                        {{-- {{ dd($userJob) }} --}}
+                                                                        @if(!is_null($userJob->experiences))
+                                                                            {{-- <td>{{ $userJob->references ?? 'na' }}</td> --}}
+                                                                            <td>{{ $userJob->experiences }}</td>
+                                                                            <td>{{ $userJob->name }}</td>
+                                                                        @endif
+                                                                    </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- END TALLY ROW HERE --}}
 
                         {{-- DISPLAYING ROW --}}
                         <div class="row">
