@@ -80,8 +80,7 @@ class AdminUserController extends Controller
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
                                 'users.created_at', 'users.updated_at', 'users.remember_token', 'users.role_id', 'users.gender',
                                 'applicant_information.experience',
-                                'tiers.id',
-                                'tiers.tier'
+                                'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id',
                             )
                             ->orderBy($sortByColumn, $sortOrder);
         } else if ($displayIncompleteApplicants == 'optionIncomplete') {
@@ -104,8 +103,7 @@ class AdminUserController extends Controller
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
                                 'users.created_at', 'users.updated_at', 'users.remember_token', 'users.role_id', 'users.gender',
                                 'applicant_information.experience',
-                                'tiers.id',
-                                'tiers.tier'
+                                'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id',
                             )
                             ->orderBy($sortByColumn, $sortOrder);
         } else if ($displayIncompleteApplicants == 'optionMixed') {
@@ -127,8 +125,7 @@ class AdminUserController extends Controller
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
                                 'users.created_at', 'users.updated_at', 'users.remember_token', 'users.role_id', 'users.gender',
                                 'applicant_information.experience',
-                                'tiers.id',
-                                'tiers.tier'
+                                'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id',
                             )
                             ->orderBy($sortByColumn, $sortOrder);
         }
