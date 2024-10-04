@@ -39,6 +39,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        // Log the form data submission
+        Log::info('Form submitted', [
+            'user_id' => auth()->id(), // If user is authenticated
+            'data' => $request->all(), // Logs all the form inputs
+            'submitted_at' => now(), // Logs the time of submission
+        ]);
 
         $this->validate($request, [
             'websites' => 'required|array',
