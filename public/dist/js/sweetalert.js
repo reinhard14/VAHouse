@@ -708,13 +708,33 @@ function reminderExpandReference() {
         icon: 'info',
         title: 'Additional References',
         html: `
-            <p>Please don\'t forget to click <strong>"Additional References"</strong>. </p>
+            <br>
+            <p>Your video is added for submission!</p>
+            <p>Please don\'t forget to click the button for <strong>"Additional References"</strong>. </p>
             <p>Failure to do so, will result in a <strong><span class="text-danger">"FAILURE"</span></strong> of a submission by Human Resource.</p>
             `,
         showConfirmButton: false,
         allowOutsideClick: false,
         timerProgressBar: true,
         timer: 8000,
+
+    });
+}
+//Exceeding video file size reminders.
+function reminderExceedingVideoSize(fileSizeMB) {
+    const toFloatFileSizeMB = parseInt(fileSizeMB);
+    Swal.fire({
+        icon: 'warning',
+        title: 'Video Size Exceeds Limit!',
+        html: `
+            <p>Please make sure that the video is below the <strong>maximum</strong> limit set! Please compress your video.</p>
+            <br>
+            <p>Your current video input is <strong> ${toFloatFileSizeMB}MB</strong>!</p>
+            `,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        timerProgressBar: true,
+        timer: 6000,
 
     });
 }

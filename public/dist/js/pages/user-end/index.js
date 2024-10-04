@@ -82,6 +82,19 @@ document.addEventListener("DOMContentLoaded", function() {
         reminderExpandReference();
     });
 
+    const videoInput = document.getElementById('videolink');
+
+    videoInput.addEventListener('input', () => {
+        const file = videoInput.files[0]; // Get the first file
+        if (file) {
+            const fileSizeMB = file.size / (1024 * 1024); // Convert from bytes to MB
+            if (fileSizeMB > 120) {
+                reminderExceedingVideoSize(fileSizeMB);
+                videoInput.value = '';
+            }
+        }
+    });
+
 });
 
 
