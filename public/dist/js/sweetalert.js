@@ -738,3 +738,22 @@ function reminderExceedingVideoSize(fileSizeMB) {
 
     });
 }
+
+//Exceeding file size reminders.
+function reminderExceedingFileSize(fileSizeMB) {
+    const toFloatFileSizeMB = parseInt(fileSizeMB);
+    Swal.fire({
+        icon: 'warning',
+        title: 'File Size Exceeds Limit!',
+        html: `
+            <p>Please make sure that the file is below the <strong>maximum</strong> limit set! Please try again.</p>
+            <br>
+            <p>Your current file is <strong> ${toFloatFileSizeMB}MB</strong>!</p>
+            `,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        timerProgressBar: true,
+        timer: 6000,
+
+    });
+}

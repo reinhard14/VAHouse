@@ -291,6 +291,24 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label for="ub_account"><span class="text-danger">*</span> Union Bank Account Holder Name</label>
+
+                                    <input type="text" name="ub_account" class="form-control" placeholder="Enter your bank account name.." required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="ub_number"><span class="text-danger">*</span> Union Bank Account Number</label>
+
+                                    <input type="text" name="ub_number" class="form-control" placeholder="Enter bank account number.." required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <label for="rate"><span class="text-danger">*</span> Happy rate: <strong>(In a month - In pesos)</strong> </label>
 
                                     <input type="number" name="rate" class="form-control" min="1000" placeholder="Enter monthly rate.." required>
@@ -368,34 +386,16 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="ub_account"><span class="text-danger">*</span> Union Bank Account Holder Name</label>
-
-                                    <input type="text" name="ub_account" class="form-control" placeholder="Enter your bank account name.." required>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="ub_number"><span class="text-danger">*</span> Union Bank Account Number</label>
-
-                                    <input type="text" name="ub_number" class="form-control" placeholder="Enter bank account number.." required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
                                     <label for="photo_id"><span class="text-danger">*</span> Two Valid IDs: <strong>(Attach PDF - 64MB limit)</strong> </label>
 
-                                    <input type="file" name="photo_id" class="form-control" accept=".jpeg, .jpg, .png, .pdf" required>
+                                    <input type="file" id="photo_id" name="photo_id" class="form-control" accept=".jpeg, .jpg, .png, .pdf" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="photo_formal"><span class="text-danger">*</span> Formal Photo <strong>(64MB limit)</strong></label>
 
-                                    <input type="file" name="photo_formal" class="form-control" accept=".jpeg, .jpg, .png" required>
+                                    <input type="file" id="photo_formal" name="photo_formal" class="form-control" accept=".jpeg, .jpg, .png" required>
                                 </div>
                             </div>
                         </div>
@@ -405,7 +405,7 @@
                                 <div class="form-group">
                                     <label for="resume"><span class="text-danger">*</span> Attach resume/CV here: <strong>(PDF file only - 32MB limit)</strong></label>
 
-                                    <input type="file" name="resume" class="form-control" accept="application/pdf" required>
+                                    <input type="file" id="resume" name="resume" class="form-control" accept="application/pdf" required>
                                 </div>
                             </div>
 
@@ -413,7 +413,7 @@
                                 <div class="form-group">
                                     <label for="disc_results"><span class="text-danger">*</span> DISC Result: <strong>(PDF file only - 32MB limit)</strong></label>
 
-                                    <input type="file" name="disc_results" class="form-control" accept="application/pdf" required>
+                                    <input type="file" id="disc_results" name="disc_results" class="form-control" accept="application/pdf" required>
                                 </div>
                             </div>
                         </div>
@@ -424,7 +424,7 @@
                                 <div class="form-group">
                                     <label for="portfolio"><span class="text-danger">*</span> Portfolio: <strong>(PDF file only - 64MB limit)</strong></label>
 
-                                    <input type="file" id="portfolio" name="portfolio" class="form-control" required>
+                                    <input type="file" id="portfolio" name="portfolio" class="form-control" accept="application/pdf" required>
                                 </div>
                             </div>
 

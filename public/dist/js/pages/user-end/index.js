@@ -82,18 +82,78 @@ document.addEventListener("DOMContentLoaded", function() {
         reminderExpandReference();
     });
 
+    //128MB
     const videoInput = document.getElementById('videolink');
 
     videoInput.addEventListener('input', () => {
         const file = videoInput.files[0]; // Get the first file
+
+        checkFileSize(file, videoInput);
+    });
+
+    //64MB
+    const photoIdInput = document.getElementById('photo_id');
+
+    photoIdInput.addEventListener('input', () => {
+        const file = photoIdInput.files[0];
+
+        checkFileSize(file, photoIdInput);
+    });
+
+    //64MB
+    const photoFormalInput = document.getElementById('photo_formal');
+
+    photoFormalInput.addEventListener('input', () => {
+        const file = photoFormalInput.files[0];
+
+        checkFileSize(file, photoFormalInput);
+    });
+    //64MB
+    const portfolioInput = document.getElementById('portfolio');
+
+    portfolioInput.addEventListener('input', () => {
+        const file = portfolioInput.files[0];
+
+        checkFileSize(file, portfolioInput);
+    });
+
+    //32MB
+    const resumeInput = document.getElementById('resume');
+
+    resumeInput.addEventListener('input', () => {
+        const file = resumeInput.files[0];
+
+        checkFileSize(file, resumeInput);
+    });
+
+    //32MB
+    const discResultsInput = document.getElementById('disc_results');
+
+    discResultsInput.addEventListener('input', () => {
+        const file = discResultsInput.files[0];
+
+        checkFileSize(file, discResultsInput);
+    });
+
+    //Check files and remove on field.
+    function checkFileSize(file, fileInput) {
+        // console.log(fileInput.name);
         if (file) {
-            const fileSizeMB = file.size / (1024 * 1024); // Convert from bytes to MB
-            if (fileSizeMB > 120) {
-                reminderExceedingVideoSize(fileSizeMB);
-                videoInput.value = '';
+            const fileSizeMB = file.size / (1024 * 1024);
+            const fileSizeLimits = {
+                resume: 32,
+                disc_results: 32,
+                videolink: 128,
+            };
+
+            const maxFileSizeMB = fileSizeLimits[fileInput.name] || 64;
+
+            if (fileSizeMB > maxFileSizeMB) {
+                reminderExceedingFileSize(fileSizeMB);
+                fileInput.value = '';
             }
         }
-    });
+    }
 
 });
 
