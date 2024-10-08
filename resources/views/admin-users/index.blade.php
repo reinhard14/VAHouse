@@ -200,19 +200,25 @@
                                                         <table class="table table-hover table-borderless table-sm">
                                                             <thead>
                                                                 <tr>
-                                                                    {{-- <th>Services Offered</th> --}}
-                                                                    <th>Previous Job Title</th>
+                                                                    <th>Services Offered</th>
                                                                     <th>VA Name</th>
+                                                                    <th>Previous Job Title</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach ($userTitles as $userJob)
+                                                                @foreach ($userJobs as $userJob)
+                                                                    {{-- @dump($userJob) --}}
                                                                     <tr>
-                                                                        {{-- {{ dd($userJob) }} --}}
-                                                                        @if(!is_null($userJob->experiences))
-                                                                            {{-- <td>{{ $userJob->references ?? 'na' }}</td> --}}
-                                                                            <td>{{ $userJob->experiences }}</td>
-                                                                            <td>{{ $userJob->name }}</td>
+                                                                        @if(isset($userJob))
+                                                                            <td>
+                                                                                {{ str_replace(['[', ']', '"'], ' ', $userJob->services_offered) }}
+                                                                            </td>
+                                                                            <td>
+                                                                                {{ $userJob->name }} {{ $userJob->lastname }}
+                                                                            </td>
+                                                                            <td>
+                                                                                {{ $userJob->experiences }}
+                                                                            </td>
                                                                         @endif
                                                                     </tr>
                                                                 @endforeach

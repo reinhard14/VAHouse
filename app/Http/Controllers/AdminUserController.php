@@ -68,19 +68,21 @@ class AdminUserController extends Controller
                             ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
                             ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
                             ->leftJoin('tiers', 'users.id', '=', 'tiers.user_id')
+                            ->leftJoin('references', 'users.id', '=', 'references.user_id')
                             ->select('users.*',
                                         \DB::raw('GROUP_CONCAT(DISTINCT skillsets.skill SEPARATOR ", ") as skills'),
                                         \DB::raw('GROUP_CONCAT(DISTINCT statuses.status SEPARATOR ", ") as status'),
                                         'applicant_information.experience',
                                         \DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
-                                        'tiers.*'
+                                        'tiers.*',
+                                        'references.services_offered'
                             )
                             ->groupBy(
                                 'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
                                 'users.created_at', 'users.updated_at', 'users.remember_token', 'users.role_id', 'users.gender',
                                 'applicant_information.experience',
-                                'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id',
+                                'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id', 'references.services_offered'
                             )
                             ->orderBy($sortByColumn, $sortOrder);
         } else if ($displayIncompleteApplicants == 'optionIncomplete') {
@@ -91,19 +93,21 @@ class AdminUserController extends Controller
                             ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
                             ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
                             ->leftJoin('tiers', 'users.id', '=', 'tiers.user_id')
+                            ->leftJoin('references', 'users.id', '=', 'references.user_id')
                             ->select('users.*',
                                         \DB::raw('GROUP_CONCAT(DISTINCT skillsets.skill SEPARATOR ", ") as skills'),
                                         \DB::raw('GROUP_CONCAT(DISTINCT statuses.status SEPARATOR ", ") as status'),
                                         'applicant_information.experience',
                                         \DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
-                                        'tiers.*'
+                                        'tiers.*',
+                                        'references.services_offered'
                             )
                             ->groupBy(
                                 'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
                                 'users.created_at', 'users.updated_at', 'users.remember_token', 'users.role_id', 'users.gender',
                                 'applicant_information.experience',
-                                'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id',
+                                'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id', 'references.services_offered'
                             )
                             ->orderBy($sortByColumn, $sortOrder);
         } else if ($displayIncompleteApplicants == 'optionMixed') {
@@ -113,19 +117,21 @@ class AdminUserController extends Controller
                             ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
                             ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
                             ->leftJoin('tiers', 'users.id', '=', 'tiers.user_id')
+                            ->leftJoin('references', 'users.id', '=', 'references.user_id')
                             ->select('users.*',
                                         \DB::raw('GROUP_CONCAT(DISTINCT skillsets.skill SEPARATOR ", ") as skills'),
                                         \DB::raw('GROUP_CONCAT(DISTINCT statuses.status SEPARATOR ", ") as status'),
                                         'applicant_information.experience',
                                         \DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
-                                        'tiers.*'
+                                        'tiers.*',
+                                        'references.services_offered'
                             )
                             ->groupBy(
                                 'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
                                 'users.created_at', 'users.updated_at', 'users.remember_token', 'users.role_id', 'users.gender',
                                 'applicant_information.experience',
-                                'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id',
+                                'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id', 'references.services_offered'
                             )
                             ->orderBy($sortByColumn, $sortOrder);
         }
@@ -185,12 +191,11 @@ class AdminUserController extends Controller
         }
 
         // Retrieve the experience titles directly from the existing usersQuery
-        $userTitles = $usersQuery->with('experiences')
-                                ->get()
-                                ->filter();
-            // $userTitles->load('references');
-        // dd($distinctTitles);
+        $userJobs = $usersQuery->get();
+        // $userJobs->load('references');
 
+        // $userTest = $userTitles->with('references');
+        // $userTest = User::with('references')->get();
         // Get the results with pagination.
         $users = $usersQuery->select('users.*')->paginate(5);
 
@@ -242,7 +247,7 @@ class AdminUserController extends Controller
 
         return view('admin-users.index', compact(
             'users',
-            'userTitles',
+            'userJobs',
             'sortByLastname',
             'sortByFirstname',
             'toggleSortLastname',
