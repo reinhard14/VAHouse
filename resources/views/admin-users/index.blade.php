@@ -55,7 +55,7 @@
                                     <h3>No <span class="text-danger">applicants</span> found.</h3>
                                     <div> <strong>Tips:</strong> Try reducing the <span class="text-primary">tags</span> used to expect better results,</div>
                                     <div class="mb-5"> or filter using a specific skillset.</div>
-                                    <a href="{{ route('admin.users.index') }}" class="btn btn-secondary" role="button"><i class="bi bi-arrow-return-right mr-1"></i>Back</a>
+                                    <a href="{{ url()->previous() }}" class="btn btn-secondary" role="button"><i class="bi bi-arrow-return-right mr-1"></i>Back</a>
                                 </div>
                             </div>
                         </div>
