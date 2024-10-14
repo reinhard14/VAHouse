@@ -183,6 +183,75 @@
                         {{-- TALLY ROW --}}
                         <div class="row mb-4">
                             <div class="col-md-12 text-right">
+                                <button type="button" id="filterButton" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseTitlesTitle">
+                                    Show/Hide Tally
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="accordion">
+                                    <div id="collapseTitlesTitle" class="collapse show">
+                                        <div class="accordion-body">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover table-borderless table-sm">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Position</th>
+                                                                    <th>VA Name</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @php
+                                                                    $allServices = [];
+                                                                @endphp
+
+                                                                @foreach ($userJobs as $userJob)
+                                                                {{-- {{ $userJob->services_offered }} --}}
+                                                                    @php
+                                                                        $arrayServices = is_array($userJob->services_offered) ? $userJob->services_offered : [];
+
+                                                                        $allServices = array_merge($allServices, $arrayServices);
+                                                                    @endphp
+
+                                                                    <tr>
+                                                                        @if(isset($userJob))
+                                                                            <td>
+                                                                                {{-- {{ $arrayServices }} --}}
+                                                                                {{-- {{ implode(', ', $arrayServices) }} --}}
+                                                                            </td>
+                                                                            <td>
+                                                                                {{-- {{ count($arrayServices) }} --}}
+                                                                            </td>
+                                                                        @endif
+                                                                    </tr>
+                                                                @endforeach
+                                                                {{-- Now $allServices contains the services from all users --}}
+                                                                    @php
+                                                                    // Optionally, handle the combined services (e.g., removing duplicates)
+                                                                    $uniqueServices = $allServices;
+
+                                                                    // Display the combined and unique services as a comma-separated string
+                                                                    echo implode(', ', $uniqueServices);
+                                                                    @endphp
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- END TALLY ROW HERE --}}
+
+                        {{-- Details ROW --}}
+                        <div class="row mb-4">
+                            <div class="col-md-12 text-right">
                                 <button type="button" id="filterButton" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseTitles">
                                     Show/Hide VA Jobs Details
                                 </button>
