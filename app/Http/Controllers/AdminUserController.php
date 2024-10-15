@@ -192,6 +192,7 @@ class AdminUserController extends Controller
 
         // Retrieve the experience titles directly from the existing usersQuery
         $userJobs = $usersQuery->get();
+        $userCount = $usersQuery->get()->count();
         // $userJobs->load('references');
         // $userTest = $userTitles->with('references');
         // $userTest = User::with('references')->get();
@@ -261,6 +262,7 @@ class AdminUserController extends Controller
             'uniqueStatuses',
             'uniqueTiers',
             'uniqueLMS',
+            'userCount',
             'displayIncompleteApplicants',
         ));
 

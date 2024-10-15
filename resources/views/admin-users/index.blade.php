@@ -223,8 +223,8 @@
                                                         <table class="table table-hover table-borderless table-sm">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Position</th>
-                                                                    <th>VA Name</th>
+                                                                    <th>Services Offered</th>
+                                                                    <th>Count</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -234,6 +234,12 @@
                                                                         <td>{{ $count }}</td>
                                                                     </tr>
                                                                 @endforeach
+
+                                                                <tr class="border-top">
+                                                                    <td><strong>Total VA results</strong></td>
+                                                                    <td><strong>{{ $userCount }}</strong></td>
+                                                                </tr>
+
                                                             </tbody>
                                                         </table>
                                                     </div>
