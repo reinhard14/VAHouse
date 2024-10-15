@@ -320,10 +320,10 @@
                                     <div class="row">
                                         <div class="col">
                                             <label for="experience"><span class="text-danger">*</span>
-                                                Total years of experience:
+                                                Total years of VA experience:
                                             </label>
                                         </div>
-                                        <div class="col text-right">
+                                        <div class="col-md-3 text-right">
                                             <button type="button" data-bs-toggle="modal" data-bs-target="#create-details-modal" class="btn btn-primary btn-sm">Expand</button>
                                         </div>
                                     </div>
@@ -332,6 +332,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <hr>
 
                         @if($user->experiences->count() < 1)
                             <div id="noExperiencePlaceholder" class="row my-3 p-3 border rounded border-line border-secondary">
@@ -382,6 +384,8 @@
                                 </div>
                             </div>
                         @endif
+
+                        <hr>
 
                         <div class="row">
                             <div class="col-md-6">
@@ -450,6 +454,9 @@
                             <h4 class="text-center mb-3">
                                 Position/s Applying For
                             </h4>
+
+                            <hr>
+
                             <div class="col">
                                 <div class="row">
                                     <div class="col">
