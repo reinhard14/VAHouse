@@ -193,7 +193,6 @@ class AdminUserController extends Controller
         // Retrieve the experience titles directly from the existing usersQuery
         $userJobs = $usersQuery->get();
         // $userJobs->load('references');
-
         // $userTest = $userTitles->with('references');
         // $userTest = User::with('references')->get();
         // Get the results with pagination.

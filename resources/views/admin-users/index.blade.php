@@ -183,7 +183,7 @@
                         {{-- TALLY ROW --}}
                         <div class="row mb-4">
                             <div class="col-md-12 text-right">
-                                <button type="button" id="filterButton" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseTitlesTitle">
+                                <button type="button" id="filterButton" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseServicesOffered">
                                     Show/Hide Tally
                                 </button>
                             </div>
@@ -192,11 +192,34 @@
                         <div class="row">
                             <div class="col">
                                 <div class="accordion">
-                                    <div id="collapseTitlesTitle" class="collapse show">
+                                    <div id="collapseServicesOffered" class="collapse show">
                                         <div class="accordion-body">
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="table-responsive">
+                                                        @php
+                                                            // Initialize an empty array to store all services
+                                                            $allServices = [];
+
+                                                            // Loop through each user job
+                                                            foreach ($userJobs as $userJob) {
+                                                                // Check if services_offered is set and not null
+                                                                if (isset($userJob->services_offered)) {
+                                                                    // Remove brackets and convert to array
+                                                                    $cleanedServices = str_replace(['[', ']', '"'], '', $userJob->services_offered);
+                                                                    $arrayServices = explode(',', $cleanedServices);
+
+                                                                    // Trim and remove empty values
+                                                                    $arrayServices = array_map('trim', $arrayServices);
+                                                                    $arrayServices = array_filter($arrayServices);
+
+                                                                    // Merge with the main array
+                                                                    $allServices = array_merge($allServices, $arrayServices);
+                                                                }
+                                                            }
+
+                                                            $serviceCounts = array_count_values($allServices);
+                                                        @endphp
                                                         <table class="table table-hover table-borderless table-sm">
                                                             <thead>
                                                                 <tr>
@@ -205,38 +228,12 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @php
-                                                                    $allServices = [];
-                                                                @endphp
-
-                                                                @foreach ($userJobs as $userJob)
-                                                                {{-- {{ $userJob->services_offered }} --}}
-                                                                    @php
-                                                                        $arrayServices = is_array($userJob->services_offered) ? $userJob->services_offered : [];
-
-                                                                        $allServices = array_merge($allServices, $arrayServices);
-                                                                    @endphp
-
+                                                                @foreach ($serviceCounts as $service => $count)
                                                                     <tr>
-                                                                        @if(isset($userJob))
-                                                                            <td>
-                                                                                {{-- {{ $arrayServices }} --}}
-                                                                                {{-- {{ implode(', ', $arrayServices) }} --}}
-                                                                            </td>
-                                                                            <td>
-                                                                                {{-- {{ count($arrayServices) }} --}}
-                                                                            </td>
-                                                                        @endif
+                                                                        <td>{{ $service }}</td>
+                                                                        <td>{{ $count }}</td>
                                                                     </tr>
                                                                 @endforeach
-                                                                {{-- Now $allServices contains the services from all users --}}
-                                                                    @php
-                                                                    // Optionally, handle the combined services (e.g., removing duplicates)
-                                                                    $uniqueServices = $allServices;
-
-                                                                    // Display the combined and unique services as a comma-separated string
-                                                                    echo implode(', ', $uniqueServices);
-                                                                    @endphp
                                                             </tbody>
                                                         </table>
                                                     </div>

@@ -198,7 +198,10 @@ $(document).ready(function() {
 
     //Default - Show the filters and hide sidebar
     $('#collapseOne').collapse('show');
+
+    $('#collapseServicesOffered').collapse('show');
     $('#collapseTitles').collapse('hide');
+
     $('.sidebar-mini').addClass('sidebar-collapse')
 
     //for edit applicants module
