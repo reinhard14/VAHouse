@@ -227,7 +227,7 @@
                                                         <table class="table table-hover table-borderless table-sm">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Services Offered</th>
+                                                                    <th>Positions Applied</th>
                                                                     <th>Count</th>
                                                                 </tr>
                                                             </thead>
