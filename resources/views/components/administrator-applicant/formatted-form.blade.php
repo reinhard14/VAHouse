@@ -29,7 +29,7 @@
                         @endforeach
 
                     @else
-                        <li>No skills available.</li>
+                        <li>Skills unavailable.</li>
                     @endif
                 </ul>
 
@@ -54,7 +54,7 @@
                         @endforeach
 
                     @else
-                        <li>No tools used.</li>
+                        <li>Tools unavailable.</li>
                     @endif
 
                     @if (!empty($websites) && is_array($websites))
@@ -63,41 +63,41 @@
                         @endforeach
 
                     @else
-                        <li>No websites used.</li>
+                        <li>Websites unavailable.</li>
                     @endif
 
                 </ul>
 
                 <div>
                     <small><strong>Intro Video Link:</strong></small>
-                    <small class="d-block">{{ isset($user->information->videolink) ? route('view.pdf', $user->information->videolink) : 'N/A' }}</small>
+                    <small class="d-block">{{ isset($user->information->videolink) ? route('view.pdf', $user->information->videolink) : 'unavailable' }}</small>
                 </div>
 
                 <div>
                     <small><strong>CV Link:</strong></small>
-                    <small class="d-block">{{ isset($user->information->resume) ? route('view.pdf', $user->information->resume) : 'N/A' }}</small></small>
+                    <small class="d-block">{{ isset($user->information->resume) ? route('view.pdf', $user->information->resume) : 'unavailable' }}</small></small>
                 </div>
 
                 <div>
                     <small><strong>Portfolio Link:</strong></small>
-                    <small class="d-block">{{ isset($user->information->portfolio) ? route('view.pdf', $user->information->portfolio) : 'N/A' }}</small></small>
+                    <small class="d-block">{{ isset($user->information->portfolio) ? route('view.pdf', $user->information->portfolio) : 'unavailable' }}</small></small>
                 </div>
 
                 <div>
                     <small><strong>DISC Results:</strong></small>
-                    <small class="d-block">{{ isset($user->information->disc_results) ? route('view.pdf', $user->information->disc_results) : 'N/A' }}</small></small>
+                    <small class="d-block">{{ isset($user->information->disc_results) ? route('view.pdf', $user->information->disc_results) : 'unavailable' }}</small></small>
                 </div>
 
                 <div>
                     <small><strong>Formal Photo:</strong></small>
-                    <small class="d-block">{{ isset($user->information->photo_formal) ? route('view.pdf', $user->information->photo_formal) : 'N/A' }}</small></small>
+                    <small class="d-block">{{ isset($user->information->photo_formal) ? route('view.pdf', $user->information->photo_formal) : 'unavailable' }}</small></small>
                 </div>
 
                 @if (isset($user->mockcalls->inbound_call))
                     <div>
                         <small><strong>Mock Calls:</strong></small>
-                        <small class="d-block">Inbound: {{ isset($user->mockcalls->inbound_call) ? route('view.pdf', $user->mockcalls->inbound_call) : 'N/A' }}</small></small>
-                        <small class="d-block">Outbound: {{ isset($user->mockcalls->outbound_call) ? route('view.pdf', $user->mockcalls->outbound_call) : 'N/A' }}</small></small>
+                        <small class="d-block">Inbound: {{ isset($user->mockcalls->inbound_call) ? route('view.pdf', $user->mockcalls->inbound_call) : 'unavailable' }}</small></small>
+                        <small class="d-block">Outbound: {{ isset($user->mockcalls->outbound_call) ? route('view.pdf', $user->mockcalls->outbound_call) : 'unavailable' }}</small></small>
                     </div>
                 @endif
 
