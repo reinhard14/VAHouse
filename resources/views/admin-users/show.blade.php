@@ -130,32 +130,33 @@
                         <div class="tab-content">
                             <div class="active tab-pane" id="information">
                                 <div class="row">
-                                    <b class="col-sm-4"> LMS Status </b>
+                                    <b class="col-sm-4">Age</b>
                                     <div class="col-sm-8">
-                                        <p>
-                                            @if(!isset($user->status->lesson))
-                                                <span class="badge badge-default">unavailable</span>
-                                            @else
-                                                @php
-                                                    $statusClasses = [
-                                                        'Incomplete' => 'badge-danger',
-                                                        'In Progress' => 'badge-warning',
-                                                        'Completed' => 'badge-success',
-                                                    ];
-
-                                                    $lessonStatus = $user->status->lesson;
-                                                    $badgeClass = $statusClasses[$lessonStatus] ?? 'badge-default';
-                                                @endphp
-
-                                                @if (isset($lessonStatus))
-                                                    <span class="badge {{ $badgeClass }}" data-toggle="tooltip"
-                                                        title="Last updated by: {{ $user->status->updated_by ?? 'unavailable' }}
-                                                        Updated on: {{ $user->status->updated_at->diffForHumans(['parts'=>1]) ?? 'unavailable' }}">
-                                                        {{ $lessonStatus }}
-                                                    </span>
-                                                @endif
-                                            @endif
-                                        </p>
+                                        <p> {{ $user->age ?? 'unavailable' }} </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <b class="col-sm-4">Gender</b>
+                                    <div class="col-sm-8">
+                                        <p> {{ $user->gender ?? 'unavailable' }} </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <b class="col-sm-4">Email</b>
+                                    <div class="col-sm-8">
+                                        <p> {{ $user->email ?? 'unavailable' }} </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <b class="col-sm-4">Contact Number</b>
+                                    <div class="col-sm-8">
+                                        <p> {{ $user->contactnumber ?? 'unavailable' }} </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <b class="col-sm-4">Skype</b>
+                                    <div class="col-sm-8">
+                                        <p> {{ $user->information->skype ?? 'unavailable' }} </p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -168,12 +169,6 @@
                                     <b class="col-sm-4">Location</b>
                                     <div class="col-sm-8">
                                         <p> {{ $user->address ?? 'unavailable' }} </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <b class="col-sm-4">Skype</b>
-                                    <div class="col-sm-8">
-                                        <p> {{ $user->information->skype ?? 'unavailable' }} </p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -210,6 +205,35 @@
                                     <b class="col-sm-4">Registered</b>
                                     <div class="col-sm-8">
                                         <p> {{ $user->created_at->format('M. d, Y') }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <b class="col-sm-4"> LMS Status </b>
+                                    <div class="col-sm-8">
+                                        <p>
+                                            @if(!isset($user->status->lesson))
+                                                <span class="badge badge-default">unavailable</span>
+                                            @else
+                                                @php
+                                                    $statusClasses = [
+                                                        'Incomplete' => 'badge-danger',
+                                                        'In Progress' => 'badge-warning',
+                                                        'Completed' => 'badge-success',
+                                                    ];
+
+                                                    $lessonStatus = $user->status->lesson;
+                                                    $badgeClass = $statusClasses[$lessonStatus] ?? 'badge-default';
+                                                @endphp
+
+                                                @if (isset($lessonStatus))
+                                                    <span class="badge {{ $badgeClass }}" data-toggle="tooltip"
+                                                        title="Last updated by: {{ $user->status->updated_by ?? 'unavailable' }}
+                                                        Updated on: {{ $user->status->updated_at->diffForHumans(['parts'=>1]) ?? 'unavailable' }}">
+                                                        {{ $lessonStatus }}
+                                                    </span>
+                                                @endif
+                                            @endif
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="col d-flex justify-content-center mt-5">
