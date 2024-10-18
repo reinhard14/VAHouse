@@ -172,7 +172,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <b class="col-sm-4">Happy rates</b>
+                                    <b class="col-sm-4">Happy rate</b>
                                     <div class="col-sm-8">
                                         <p> {{ $user->information->rate ?? 'unavailable' }} </p>
                                     </div>
@@ -193,12 +193,6 @@
                                     <b class="col-sm-4">VA experience</b>
                                     <div class="col-sm-8">
                                         <p> {{ $user->information->experience ?? 'unavailable'}}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <b class="col-sm-4">Happy rates</b>
-                                    <div class="col-sm-8">
-                                        <p> {{ $user->information->rate ?? 'unavailable' }} </p>
                                     </div>
                                 </div>
                                 <div class="row">
