@@ -370,7 +370,7 @@
                             <!-- /.tab-pane attachments-->
 
                             <div class="tab-pane" id="attachments">
-                                <div class="row">
+                                <div class="row mb-2">
                                     <b class="col-sm-4">Portfolio</b>
                                     <div class="col-sm-8">
                                         @if(!isset($user->information->portfolio) || is_null($user->information->portfolio))
@@ -380,7 +380,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mb-2">
                                     <b class="col-sm-4">Resume Attachment</b>
                                     <div class="col-sm-8">
                                         @if(!isset($user->information->resume) || is_null($user->information->resume))
@@ -390,7 +390,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mb-2">
                                     <b class="col-sm-4">ID Attachments</b>
                                     <div class="col-sm-8">
                                         @if(!isset($user->information->photo_id) || is_null($user->information->photo_id))
@@ -400,7 +400,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mb-2">
                                     <b class="col-sm-4">Formal Photo</b>
                                     <div class="col-sm-8">
                                         @if(!isset($user->information->photo_formal) || is_null($user->information->photo_formal))
@@ -410,7 +410,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mb-2">
                                     <b class="col-sm-4">DISC Results</b>
                                     <div class="col-sm-8">
                                         @if(!isset($user->information->disc_results) || is_null($user->information->disc_results))
