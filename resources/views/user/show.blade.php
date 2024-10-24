@@ -21,7 +21,7 @@
                             @if (!isset($user->information->photo_id) || is_null($user->information->photo_id))
                                 <img class="img-fluid rounded-circle" src="{{ asset('dist/img/user_default.png') }}" alt="default photo" style="height: 225px; width: 225px;">
                             @else
-                                <img class="img-fluid rounded-circle" src="{{ asset('storage/' . $user->information->photo_formal) }}" alt="formal photo" style="height: 225px; width: 225px;">
+                                <img class="img-fluid rounded-circle" src="{{ asset('storage/' . $user->information->photo_formal) }}" alt="formal photo" style="height: auto; width: 225px;">
                             @endif
                             {{-- </div> --}}
 
