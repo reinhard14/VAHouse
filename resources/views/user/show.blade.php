@@ -17,11 +17,19 @@
                         <div class="col-md-3">{{ $user->name}} {{ $user->lastname }}</div>
 
                         <div class="col-md-6 text-right">
+                            {{-- <div class="text-center"> --}}
                             @if (!isset($user->information->photo_id) || is_null($user->information->photo_id))
+                                <img class="profile-user-img img-fluid img-circle" src="{{ asset('dist/img/user_default.png') }}" alt="default photo" style="height: 225px; width: 225px;">
+                            @else
+                                <img class="profile-user-img img-fluid img-circle" src="{{ asset('storage/' . $user->information->photo_formal) }}" alt="formal photo" style="height: 225px; width: 225px;">
+                            @endif
+                            {{-- </div> --}}
+
+                            {{-- @if (!isset($user->information->photo_id) || is_null($user->information->photo_id))
                                 N/A
                             @else
                                 <img src="{{ asset('storage/' . $user->information->photo_formal) }}" alt="formal photo" height="250px" class="border border-primary">
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
                     <div class="row p-2">
