@@ -36,6 +36,9 @@
                             </div>
                         </div>
                     </div>
+
+                    <hr>
+
                     <div class="row p-2">
                         <div class="col-md-3">Gender:</div>
                         <div class="col-md-3">{{ $user->gender }}</div>
@@ -82,6 +85,9 @@
                             {{ $user->information->ub_account ?? 'N/A' }} -
                             {{ $user->information->ub_number ?? 'N/A' }}
                         </div>
+
+                        <div class="col-md-3">Registered:</div>
+                        <div class="col-md-3">{{ $user->created_at->format('M d, Y') }}</div>
                     </div>
                     <hr>
 
@@ -139,22 +145,6 @@
                         @endif
                     </div>
 
-                    <div class="row p-2">
-                        <div class="col-md-3">Applying as: </div>
-                        <div class="col-md-3">
-                            @if(is_null($aPositionsApplied))
-                                N/A
-                            @else
-                                @foreach($aPositionsApplied as $index => $position)
-                                    {{ $position }} </br>
-                                @endforeach
-                            @endif
-                        </div>
-
-                        <div class="col-md-3">Registered:</div>
-                        <div class="col-md-3">{{ $user->created_at->diffForHumans() }}</div>
-                    </div>
-
                     <hr>
 
                     @if (isset($user->mockcalls))
@@ -186,6 +176,21 @@
 
                     @if (isset($user->references))
                         <div class="row p-2">
+                            <div class="col-md-3">
+                                <strong>
+                                    Applying as:
+                                </strong>
+                            </div>
+                            <div class="col-md-3">
+                                @if(is_null($aPositionsApplied))
+                                    N/A
+                                @else
+                                    @foreach($aPositionsApplied as $index => $position)
+                                        {{ $position }} </br>
+                                    @endforeach
+                                @endif
+                            </div>
+
                             <div class="col-md-3">
                                 <strong>References:</strong>
                             </div>
