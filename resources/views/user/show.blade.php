@@ -202,117 +202,150 @@
 
                     <hr>
 
-                    @if(is_null($aWebsites))
-                        <div class="row my-4 p-4 border rounded border-line border-secondary">
-                            <div class="text-center">
-                                <h5>No <span class="text-danger">Skillsets</span> added yet.</h5>
-                            </div>
-                        </div>
-                    @else
-                        <div class="row mt-4 p-3">
-                            <div class="col">
-                                <h5>Skillset Details</h5>
-                            </div>
+                    <div class="card">
+                        <div class="card-header p-2">
+                            <ul class="nav nav-pills">
+                                <li class="nav-item"><a class="nav-link active" href="#skillset" data-toggle="tab">Skillset</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#experience" data-toggle="tab">Experience</a></li>
+                            </ul>
+                        </div><!-- /.card-header -->
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <div class="active tab-pane" id="skillset">
+                                    @if(is_null($aWebsites))
+                                        <div class="row border rounded border-line border-secondary">
+                                            <div class="text-center">
+                                                <h5>No <span class="text-danger">Skillsets</span> added yet.</h5>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Skillset Details</h5>
+                                            </div>
 
-                            <div class="table-responsive mt-2">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                        <th scope="col">Websites</th>
-                                        <th scope="col">Tools</th>
-                                        <th scope="col">Skills</th>
-                                        <th scope="col">Soft skill</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td scope="row">
-                                                @foreach($aWebsites as $index => $scoreData)
-                                                    {{ $scoreData }} </br>
-                                                @endforeach
-                                            </td>
-                                            <td>
-                                                @foreach($aTools as $index => $scoreData)
-                                                    {{ $scoreData }} </br>
-                                                @endforeach
-                                            </td>
-                                            <td>
-                                                @foreach($aSkills as $index => $scoreData)
-                                                    {{ $scoreData }} </br>
-                                                @endforeach
-                                            </td>
-                                            <td>
-                                                @if(is_null($aSoftskills))
-                                                    No data available.
-                                                @else
-                                                    @foreach($aSoftskills as $index => $scoreData)
-                                                        {{ $scoreData }} </br>
-                                                    @endforeach
+                                            <div class="table-responsive mt-2">
+                                                <table class="table table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                        <th scope="col">Websites</th>
+                                                        <th scope="col">Tools</th>
+                                                        <th scope="col">Skills</th>
+                                                        <th scope="col">Soft skill</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td scope="row">
+                                                                @foreach($aWebsites as $index => $scoreData)
+                                                                    {{ $scoreData }} </br>
+                                                                @endforeach
+                                                            </td>
+                                                            <td>
+                                                                @foreach($aTools as $index => $scoreData)
+                                                                    {{ $scoreData }} </br>
+                                                                @endforeach
+                                                            </td>
+                                                            <td>
+                                                                @foreach($aSkills as $index => $scoreData)
+                                                                    {{ $scoreData }} </br>
+                                                                @endforeach
+                                                            </td>
+                                                            <td>
+                                                                @if(is_null($aSoftskills))
+                                                                    No data available.
+                                                                @else
+                                                                    @foreach($aSoftskills as $index => $scoreData)
+                                                                        {{ $scoreData }} </br>
+                                                                    @endforeach
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-end">
+                                            <small>
+                                                @if(isset($user->information))
+                                                    last updated last: {{ $user->information->updated_at->diffForHumans(); }}
                                                 @endif
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                                            </small>
+                                        </div>
+                                    @endif
+                                </div>
+                                <!-- /.tab-pane -->
 
-                    <div class="d-flex justify-content-end">
-                        <small>
-                            @if(isset($user->information))
-                                last updated last: {{ $user->information->updated_at->diffForHumans(); }}
-                            @endif
-                        </small>
+                                <div class="tab-pane" id="experience">
+                                    @if($user->experiences->count() < 1)
+                                        <div class="row border rounded border-line border-secondary">
+                                            <div class="text-center">
+                                                <h5>No <span class="text-danger">Experiences</span> added yet.</h5>
+                                                <p class="pt-3">Please fill up the fields on the <span class="text-info">"Dashboard"</span> page.</p>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="row">
+                                            <div class="col">
+                                                <h5>Years of experience details</h5>
+                                            </div>
+                                            <div class="col d-flex justify-content-end">
+                                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#create-details-modal">Add Experience</button>
+                                            </div>
+
+                                            <div class="table-responsive mt-2">
+                                                <table class="table table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                        <th scope="col">Job Experience</th>
+                                                        <th scope="col">Duration</th>
+                                                        <th scope="col" class="text-end">Delete</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="experienceRow">
+                                                        @foreach($user->experiences as $experience)
+                                                            <tr>
+                                                                <td>
+                                                                    {{ $experience->title }}
+                                                                </td>
+                                                                <td>
+                                                                    {{ $experience->duration }}
+                                                                </td>
+                                                                <td class="text-end">
+                                                                    <form method="post" action="{{ route('user.experienceDelete', $experience->id) }}" class="deleteExperienceForm">
+                                                                        @csrf
+                                                                        @method('delete')
+                                                                        <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash mr-1"></i>Delete</button>
+                                                                    </form>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end">
+                                            <small>
+                                                @if(isset($user->experiences))
+                                                    last updated last: {{ $user->experiences->last()->updated_at->diffForHumans(); }}
+                                                @endif
+                                            </small>
+                                        </div>
+                                    @endif
+                                </div>
+                                <!-- /.tab-pane attachments-->
+                            </div>
+                        <!-- /.tab-content -->
+                        </div><!-- /.card-body -->
                     </div>
-                    @endif
 
-                    @if($user->experiences->count() < 1)
-                        <div class="row my-4 p-4 border rounded border-line border-secondary">
-                            <div class="text-center">
-                                <h5>No <span class="text-danger">Experiences</span> added yet.</h5>
-                                <p class="pt-3">Please fill up the fields on the <span class="text-info">"Dashboard"</span> page.</p>
-                            </div>
-                        </div>
-                    @else
-                        <div class="row mt-4 p-3">
-                            <div class="col">
-                                <h5>Years of experience details</h5>
-                            </div>
-                            <div class="col d-flex justify-content-end">
-                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#create-details-modal">Add Experience</button>
-                            </div>
 
-                            <div class="table-responsive mt-2">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                        <th scope="col">Job Experience</th>
-                                        <th scope="col">Duration</th>
-                                        <th scope="col" class="text-end">Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="experienceRow">
-                                        @foreach($user->experiences as $experience)
-                                            <tr>
-                                                <td>
-                                                    {{ $experience->title }}
-                                                </td>
-                                                <td>
-                                                    {{ $experience->duration }}
-                                                </td>
-                                                <td class="text-end">
-                                                    <form method="post" action="{{ route('user.experienceDelete', $experience->id) }}" class="deleteExperienceForm">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash mr-1"></i>Delete</button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    @endif
+
+
+
+
+
 
                     <div class="row mt-5">
                         <div class="d-flex justify-content-center">
