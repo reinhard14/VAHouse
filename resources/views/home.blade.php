@@ -336,54 +336,81 @@
                         <hr>
 
                         @if($user->experiences->count() < 1)
-                            <div id="noExperiencePlaceholder" class="row my-3 p-3 border rounded border-line border-secondary">
-                                <div class="col">
-                                    <div class="text-center">
-                                        <h6>No <span class="text-danger">Experiences</span> added yet.</h6>
-                                        <p class="pt-3">Please click
-                                            <span class="text-info">
-                                                <strong><a href="#create-details-modal" data-bs-toggle="modal" class="button">Expand</a></strong>
-                                            </span> to add experiences.
-                                        </p>
-                                        <p class="fst-italic">This is a required field.</p>
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5>
+                                                Experiences
+                                            </h5>
+                                        </div>
+                                        <div class="col justify-content-end text-right">
+                                            <button type="button" data-bs-toggle="modal" data-bs-target="#create-details-modal" class="btn btn-primary btn-sm">Expand</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div id="noExperiencePlaceholder" class="row">
+                                        <div class="col">
+                                            <div class="text-center">
+                                                <h6>No <span class="text-danger">Experiences</span> added yet.</h6>
+                                                <p class="pt-3">Please click
+                                                    <span class="text-info">
+                                                        <strong><a href="#create-details-modal" data-bs-toggle="modal" class="button">Expand</a></strong>
+                                                    </span> to add experiences.
+                                                </p>
+                                                <p class="fst-italic">This is a required field.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="showExperiencesTable">
                                     </div>
                                 </div>
                             </div>
-                            <div id="showExperiencesTable">
-                            </div>
                         @else
-                            <div class="row my-2">
-                                <div class="col">
-                                    <h5>Years of experience details</h5>
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5>
+                                                Experiences
+                                            </h5>
+                                        </div>
+                                        <div class="col justify-content-end text-right">
+                                            <button type="button" data-bs-toggle="modal" data-bs-target="#create-details-modal" class="btn btn-primary btn-sm">Expand</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col d-flex justify-content-end">
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#create-details-modal" class="btn btn-primary btn-sm">Expand</button>
-                                </div>
-
-                                <div class="table-responsive mt-2">
-                                    <table class="table table-hover border">
-                                        <thead>
-                                            <tr>
-                                            <th scope="col">Job Experience</th>
-                                            <th scope="col">Duration</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="experienceRow">
-                                            @foreach($user->experiences as $experience)
-                                            <tr>
-                                                <td>
-                                                    {{ $experience->title }}
-                                                </td>
-                                                <td>
-                                                    {{ $experience->duration }}
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                <div class="card-body">
+                                    <div class="row my-2">
+                                        <div class="table-responsive mt-2">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Job Experience</th>
+                                                        <th scope="col">Duration</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="experienceRow">
+                                                    @foreach($user->experiences as $experience)
+                                                    <tr>
+                                                        <td>
+                                                            {{ $experience->title }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $experience->duration }}
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         @endif
+
 
                         <hr>
 
