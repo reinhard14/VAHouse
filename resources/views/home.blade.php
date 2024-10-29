@@ -323,9 +323,6 @@
                                                 Total years of VA experience:
                                             </label>
                                         </div>
-                                        <div class="col-md-3 text-right">
-                                            <button type="button" data-bs-toggle="modal" data-bs-target="#create-details-modal" class="btn btn-primary btn-sm">Expand</button>
-                                        </div>
                                     </div>
 
                                     <input type="number" id="experience" name="experience" min="0" class="form-control" placeholder="Please enter a number here first, then click expand." required>

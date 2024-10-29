@@ -86,25 +86,27 @@
                                         <td> ${duration} </td>
                                     </tr>
                                 </tbody>
-                            </table>`;
+                            </table>
+                            `;
 
                         $('#showExperiencesTable').append(newTable);
                     } else {
                         const newRow = `
-                                <tr>
-                                    <td>`
-                                        + response.experience.title +
-                                    `</td>` +
-                                    `<td>`
-                                        + response.experience.duration +
-                                    `</td>
-                                </tr>
-                                `;
+                            <tr>
+                                <td>
+                                    ${title}
+                                </td>
+                                <td>
+                                    ${duration}
+                                </td>
+                            </tr>
+                            `;
                         $('#experienceRow').append(newRow);
                     }
 
                     $('#create-details-modal').modal('hide');
                 },
+
                 error: function(jqXHR) {
 
                     try {
