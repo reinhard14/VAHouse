@@ -213,9 +213,10 @@
                             <div class="tab-content">
                                 <div class="active tab-pane" id="skillset">
                                     @if(is_null($aWebsites))
-                                        <div class="row border rounded border-line border-secondary">
+                                        <div class="row">
                                             <div class="text-center">
                                                 <h5>No <span class="text-danger">Skillsets</span> added yet.</h5>
+                                                <p class="pt-3">Please fill up the fields on the <span class="text-info">"Dashboard"</span> page.</p>
                                             </div>
                                         </div>
                                     @else
@@ -279,7 +280,7 @@
 
                                 <div class="tab-pane" id="experience">
                                     @if($user->experiences->count() < 1)
-                                        <div class="row border rounded border-line border-secondary">
+                                        <div class="row">
                                             <div class="text-center">
                                                 <h5>No <span class="text-danger">Experiences</span> added yet.</h5>
                                                 <p class="pt-3">Please fill up the fields on the <span class="text-info">"Dashboard"</span> page.</p>
