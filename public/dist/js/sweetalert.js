@@ -593,7 +593,10 @@ function handleDashboardFormSubmission(form) {
     Swal.fire({
         icon: 'info',
         title: 'Are you sure?',
-        text: 'Your answers will be evaluated by the management thoroughly, make sure everything is accurate and final.',
+        html: `
+            <p>Your answers will be evaluated by the management thoroughly...</p>
+            <p>Make sure everything is accurate and final.</p>
+        `,
         showCancelButton: true,
         confirmButtonColor: '#007afe',
         cancelButtonColor: '#6d747d',
@@ -602,16 +605,23 @@ function handleDashboardFormSubmission(form) {
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
-            icon: 'info',
-            title: 'Applicant Information!',
-            text: 'Information being saved, please wait a moment! this will overwrite previous responses if there are any.',
-            showConfirmButton: false,
-            allowOutsideClick: false,
-        })
-            setTimeout(() => {
-                form.submit()
-            }, 2000);
-        };
+                icon: 'info',
+                title: 'Saving your Information!',
+                html: `
+                    <p>Information is still saving, please wait a moment!</p>
+                    <p>This will overwrite previous responses if there are any.</p>
+                `,
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                timerProgressBar: true,
+                timer: 2000,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            }).then(() => {
+                form.submit();
+            });
+        }
     });
 }
 
