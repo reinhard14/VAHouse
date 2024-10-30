@@ -614,7 +614,7 @@ function handleDashboardFormSubmission(form) {
                 showConfirmButton: false,
                 allowOutsideClick: false,
                 timerProgressBar: true,
-                timer: 2000,
+                // timer: 2000,
                 didOpen: () => {
                     Swal.showLoading();
                 }
