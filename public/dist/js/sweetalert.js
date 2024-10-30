@@ -605,23 +605,19 @@ function handleDashboardFormSubmission(form) {
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
-                icon: 'info',
-                title: 'Saving your Information!',
-                html: `
-                    <p>Information is still saving, please wait a moment!</p>
-                    <p>This will overwrite previous responses if there are any.</p>
-                `,
-                showConfirmButton: false,
-                allowOutsideClick: false,
-                timerProgressBar: true,
-                // timer: 2000,
-                didOpen: () => {
-                    Swal.showLoading();
-                }
-            }).then(() => {
-                form.submit();
-            });
-        }
+            icon: 'info',
+            title: 'Saving your Information!',
+            html: `
+            <p> Information is still saving, please wait a moment!</p>
+            <p> This will overwrite previous responses if there are any.</p>
+            `,
+            showConfirmButton: false,
+            allowOutsideClick: false,
+        })
+            setTimeout(() => {
+                form.submit()
+            }, 2000);
+        };
     });
 }
 
