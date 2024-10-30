@@ -199,7 +199,7 @@ $(document).ready(function() {
     //Default - Show the filters and hide sidebar
     $('#collapseOne').collapse('show');
 
-    $('#collapseServicesOffered').collapse('show');
+    $('#collapseServicesOffered').collapse('hide');
     $('#collapseTitles').collapse('hide');
 
     $('.sidebar-mini').addClass('sidebar-collapse')

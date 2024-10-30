@@ -181,18 +181,18 @@
                         </div>
 
                         {{-- TALLY ROW --}}
-                        <div class="row mb-4">
+                        {{-- <div class="row mb-4">
                             <div class="col-md-12 text-right">
                                 <button type="button" id="filterButton" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseServicesOffered">
                                     Show/Hide Tally
                                 </button>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="row">
                             <div class="col">
                                 <div class="accordion">
-                                    <div id="collapseServicesOffered" class="collapse show">
+                                    <div id="collapseServicesOffered" class="collapse">
                                         <div class="accordion-body">
                                             <div class="card">
                                                 <div class="card-body">
