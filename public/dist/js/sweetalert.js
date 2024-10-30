@@ -609,7 +609,7 @@ function handleDashboardFormSubmission(form) {
             title: 'Saving your Information!',
             html: `
             <p> Information is still saving, please wait a moment!</p>
-            <p> This will overwrite previous responses if there are any.</p>
+            <p> This will overwrite previous responses if there are any. please refrain from pressing any keys.</p>
             `,
             showConfirmButton: false,
             allowOutsideClick: false,
