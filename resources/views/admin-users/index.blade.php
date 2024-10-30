@@ -180,8 +180,8 @@
                             </div>
                         </div>
 
-                        {{-- TALLY ROW --}}
-                        <div class="row mb-4">
+                        {{-- TALLY ROW - DISABLE ON PRODUCTION HAS ISSUES ON TALLY --}}
+                        {{-- <div class="row mb-4">
                             <div class="col-md-12 text-right">
                                 <button type="button" id="filterButton" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseServicesOffered">
                                     Show/Hide Tally
@@ -253,7 +253,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         {{-- END TALLY ROW HERE --}}
 
                         {{-- Details ROW --}}
