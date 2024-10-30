@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password as RulesPassword;
+use Illuminate\Support\Facades\DB;
+
 
 
 class AdminUserController extends Controller
@@ -68,21 +70,19 @@ class AdminUserController extends Controller
                             ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
                             ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
                             ->leftJoin('tiers', 'users.id', '=', 'tiers.user_id')
-                            ->leftJoin('references', 'users.id', '=', 'references.user_id')
                             ->select('users.*',
-                                        \DB::raw('GROUP_CONCAT(DISTINCT skillsets.skill SEPARATOR ", ") as skills'),
-                                        \DB::raw('GROUP_CONCAT(DISTINCT statuses.status SEPARATOR ", ") as status'),
+                                        DB::raw('GROUP_CONCAT(DISTINCT skillsets.skill SEPARATOR ", ") as skills'),
+                                        DB::raw('GROUP_CONCAT(DISTINCT statuses.status SEPARATOR ", ") as status'),
                                         'applicant_information.experience',
-                                        \DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
+                                        DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
                                         'tiers.*',
-                                        'references.services_offered'
                             )
                             ->groupBy(
                                 'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
                                 'users.created_at', 'users.updated_at', 'users.remember_token', 'users.role_id', 'users.gender',
                                 'applicant_information.experience',
-                                'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id', 'references.services_offered'
+                                'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id'
                             )
                             ->orderBy($sortByColumn, $sortOrder);
         } else if ($displayIncompleteApplicants == 'optionIncomplete') {
@@ -93,21 +93,19 @@ class AdminUserController extends Controller
                             ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
                             ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
                             ->leftJoin('tiers', 'users.id', '=', 'tiers.user_id')
-                            ->leftJoin('references', 'users.id', '=', 'references.user_id')
                             ->select('users.*',
-                                        \DB::raw('GROUP_CONCAT(DISTINCT skillsets.skill SEPARATOR ", ") as skills'),
-                                        \DB::raw('GROUP_CONCAT(DISTINCT statuses.status SEPARATOR ", ") as status'),
+                                        DB::raw('GROUP_CONCAT(DISTINCT skillsets.skill SEPARATOR ", ") as skills'),
+                                        DB::raw('GROUP_CONCAT(DISTINCT statuses.status SEPARATOR ", ") as status'),
                                         'applicant_information.experience',
-                                        \DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
+                                        DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
                                         'tiers.*',
-                                        'references.services_offered'
                             )
                             ->groupBy(
                                 'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
                                 'users.created_at', 'users.updated_at', 'users.remember_token', 'users.role_id', 'users.gender',
                                 'applicant_information.experience',
-                                'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id', 'references.services_offered'
+                                'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id'
                             )
                             ->orderBy($sortByColumn, $sortOrder);
         } else if ($displayIncompleteApplicants == 'optionMixed') {
@@ -117,21 +115,19 @@ class AdminUserController extends Controller
                             ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
                             ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
                             ->leftJoin('tiers', 'users.id', '=', 'tiers.user_id')
-                            ->leftJoin('references', 'users.id', '=', 'references.user_id')
                             ->select('users.*',
-                                        \DB::raw('GROUP_CONCAT(DISTINCT skillsets.skill SEPARATOR ", ") as skills'),
-                                        \DB::raw('GROUP_CONCAT(DISTINCT statuses.status SEPARATOR ", ") as status'),
+                                        DB::raw('GROUP_CONCAT(DISTINCT skillsets.skill SEPARATOR ", ") as skills'),
+                                        DB::raw('GROUP_CONCAT(DISTINCT statuses.status SEPARATOR ", ") as status'),
                                         'applicant_information.experience',
-                                        \DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
+                                        DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
                                         'tiers.*',
-                                        'references.services_offered'
                             )
                             ->groupBy(
                                 'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
                                 'users.created_at', 'users.updated_at', 'users.remember_token', 'users.role_id', 'users.gender',
                                 'applicant_information.experience',
-                                'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id', 'references.services_offered'
+                                'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id'
                             )
                             ->orderBy($sortByColumn, $sortOrder);
         }
@@ -175,13 +171,15 @@ class AdminUserController extends Controller
                         if (is_numeric($tag)) {
                             $query->orWhere($dbField, '=', $tag);
                         } else if ($dbField=='skillsets.skill') {
+                            // $query->orWhere($dbField, 'like', '%' . $tag . '%')
+                            //         ->orWhere(function ($q) use ($tag) {
+                            //             $words = explode(' ', $tag); // Split the tag into words
+                            //             foreach ($words as $word) {
+                            //                 $q->orWhere('experiences.title', 'like', '%' . $word . '%');
+                            //             }
+                            //         });
                             $query->orWhere($dbField, 'like', '%' . $tag . '%')
-                                    ->orWhere(function ($q) use ($tag) {
-                                        $words = explode(' ', $tag); // Split the tag into words
-                                        foreach ($words as $word) {
-                                            $q->orWhere('experiences.title', 'like', '%' . $word . '%');
-                                        }
-                                    });
+                                    ->orWhere('experiences.title', 'like', '%' . $tag . '%');
                         } else {
                             $query->orWhere($dbField, 'like', '%' . $tag . '%');
                         }
@@ -193,10 +191,6 @@ class AdminUserController extends Controller
         // Retrieve the experience titles directly from the existing usersQuery
         $userJobs = $usersQuery->get();
         $userCount = $usersQuery->get()->count();
-        // $userJobs->load('references');
-        // $userTest = $userTitles->with('references');
-        // $userTest = User::with('references')->get();
-        // Get the results with pagination.
         $users = $usersQuery->select('users.*')->paginate(5);
 
         $appendParams = array_filter([
