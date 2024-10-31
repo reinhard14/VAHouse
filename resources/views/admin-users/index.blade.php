@@ -67,7 +67,7 @@
                                 <form method="GET" action="#" class="form-inline row">
                                     <input type="hidden" id="display" name="display" value="{{ request('display') }}">
                                     <div class="col-md-8">
-                                        <input type="text" name="search" placeholder="Enter search here (name or previous job/position/tools/websites)" class="form-control w-100">
+                                        <input type="text" name="search" placeholder="Search here.. (name/previous jobs/skills/tools/websites)" class="form-control w-100">
                                     </div>
                                     <div class="col-md-4 text-right p-1">
                                         <button type="submit" class="btn btn-secondary btn-sm"><i class="bi bi-search mr-1"></i>Search</button>
