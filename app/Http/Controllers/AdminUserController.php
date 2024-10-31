@@ -144,6 +144,8 @@ class AdminUserController extends Controller
                 ->orWhere('users.name', 'like', '%' . $search . '%')
                 ->orWhere('users.lastname', 'like', '%' . $search . '%')
                 // Check for skillsets or experiences match
+                ->orWhere('skillsets.website', 'like', '%' . $search . '%')
+                ->orWhere('skillsets.tool', 'like', '%' . $search . '%')
                 ->orWhere('skillsets.skill', 'like', '%' . $search . '%')
                 ->orWhere('experiences.title', 'like', '%' . $search . '%');
             });
