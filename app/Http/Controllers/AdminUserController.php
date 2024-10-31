@@ -73,7 +73,7 @@ class AdminUserController extends Controller
                             ->select('users.*',
                                         DB::raw('GROUP_CONCAT(DISTINCT skillsets.skill SEPARATOR ", ") as skills'),
                                         DB::raw('GROUP_CONCAT(DISTINCT statuses.status SEPARATOR ", ") as status'),
-                                        'applicant_information.experience',
+                                        'applicant_information.experience', 'applicant_information.positions',
                                         DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
                                         'tiers.*',
                             )
@@ -81,7 +81,7 @@ class AdminUserController extends Controller
                                 'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
                                 'users.created_at', 'users.updated_at', 'users.remember_token', 'users.role_id', 'users.gender',
-                                'applicant_information.experience',
+                                'applicant_information.experience', 'applicant_information.positions',
                                 'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id'
                             )
                             ->orderBy($sortByColumn, $sortOrder);
@@ -96,7 +96,7 @@ class AdminUserController extends Controller
                             ->select('users.*',
                                         DB::raw('GROUP_CONCAT(DISTINCT skillsets.skill SEPARATOR ", ") as skills'),
                                         DB::raw('GROUP_CONCAT(DISTINCT statuses.status SEPARATOR ", ") as status'),
-                                        'applicant_information.experience',
+                                        'applicant_information.experience', 'applicant_information.positions',
                                         DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
                                         'tiers.*',
                             )
@@ -104,7 +104,7 @@ class AdminUserController extends Controller
                                 'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
                                 'users.created_at', 'users.updated_at', 'users.remember_token', 'users.role_id', 'users.gender',
-                                'applicant_information.experience',
+                                'applicant_information.experience', 'applicant_information.positions',
                                 'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id'
                             )
                             ->orderBy($sortByColumn, $sortOrder);
@@ -118,7 +118,7 @@ class AdminUserController extends Controller
                             ->select('users.*',
                                         DB::raw('GROUP_CONCAT(DISTINCT skillsets.skill SEPARATOR ", ") as skills'),
                                         DB::raw('GROUP_CONCAT(DISTINCT statuses.status SEPARATOR ", ") as status'),
-                                        'applicant_information.experience',
+                                        'applicant_information.experience', 'applicant_information.positions',
                                         DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
                                         'tiers.*',
                             )
@@ -126,7 +126,7 @@ class AdminUserController extends Controller
                                 'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
                                 'users.created_at', 'users.updated_at', 'users.remember_token', 'users.role_id', 'users.gender',
-                                'applicant_information.experience',
+                                'applicant_information.experience', 'applicant_information.positions',
                                 'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id'
                             )
                             ->orderBy($sortByColumn, $sortOrder);

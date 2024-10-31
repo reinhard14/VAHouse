@@ -181,13 +181,13 @@
                         </div>
 
                         {{-- TALLY ROW --}}
-                        {{-- <div class="row mb-4">
+                        <div class="row mb-4">
                             <div class="col-md-12 text-right">
                                 <button type="button" id="filterButton" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseServicesOffered">
                                     Show/Hide Tally
                                 </button>
                             </div>
-                        </div> --}}
+                        </div>
 
                         <div class="row">
                             <div class="col">
@@ -203,10 +203,11 @@
 
                                                             // Loop through each user job
                                                             foreach ($userJobs as $userJob) {
+                                                                // echo $userJob->positions . " ";
                                                                 // Check if services_offered is set and not null
-                                                                if (isset($userJob->information->positions)) {
+                                                                if (isset($userJob->positions)) {
                                                                     // Remove brackets and convert to array
-                                                                    $cleanedServices = str_replace(['[', ']', '"'], '', $userJob->information->positions);
+                                                                    $cleanedServices = str_replace(['[', ']', '"'], '', $userJob->positions);
                                                                     $arrayServices = explode(',', $cleanedServices);
 
                                                                     // Trim and remove empty values
@@ -220,10 +221,7 @@
 
                                                             $serviceCounts = array_count_values($allServices);
                                                         @endphp
-                                                        {{-- @foreach ($userJobs as $userJob)
-                                                            {{ $userJob->information->positions ?? 'na'}}
-                                                            {{ $userJob->services_offered ?? 'na'}}
-                                                        @endforeach --}}
+
                                                         <table class="table table-hover table-borderless table-sm">
                                                             <thead>
                                                                 <tr>
