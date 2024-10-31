@@ -274,9 +274,9 @@
                                                         <table class="table table-hover table-borderless table-sm">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Services Offered</th>
                                                                     <th>VA Name</th>
                                                                     <th>Previous Job Title</th>
+                                                                    <th>Services Offered</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -285,14 +285,14 @@
                                                                     <tr>
                                                                         @if(isset($userJob))
                                                                             <td>
-                                                                                {{ str_replace(['[', ']', '"'], ' ', $userJob->services_offered) }}
-                                                                            </td>
-                                                                            <td>
                                                                                 {{ $userJob->name }} {{ $userJob->lastname }}
                                                                             </td>
                                                                             <td>
                                                                                 {{ $userJob->experiences }}
                                                                             </td>
+                                                                               <td>
+                                                                                    {{ str_replace(['[', ']', '"'], ' ', $userJob->positions) }}
+                                                                                </td>
                                                                         @endif
                                                                     </tr>
                                                                 @endforeach
