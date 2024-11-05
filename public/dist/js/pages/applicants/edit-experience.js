@@ -104,21 +104,23 @@ $(document).ready(function() {
                 $(`#tr_null_${userId}`).remove();
                 handleAddExperienceForm(response);
 
-                // console.log('CSRF: ' + csrfToken);
+                const experience_id = response.experience.id;
+                const experience_title = response.experience.title;
+                const experience_duration = response.experience.duration;
 
                 const newRow = `
-                        <tr id="tr_${response.experience.id}">
-                            <td>`
-                                + response.experience.title +
-                            `</td>` +
-                            `<td>`
-                                + response.experience.duration +
-                            `</td>
+                        <tr id="tr_${experience_id}">
+                            <td>
+                                ${experience_title}
+                            </td>
+                            <td>
+                                ${experience_duration}
+                            </td>
                             <td>
                                 Just Now
                             </td>
                             <td class="text-right">
-                                <form id="delete-experience-form-${response.experience.id}" data-experience-id="${response.experience.id}">
+                                <form id="delete-experience-form-${experience_id}" data-experience-id="${experience_id}">
                                     <input type="hidden" name="_token" value="${csrfToken}">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash mr-1"></i></button>
