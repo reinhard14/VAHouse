@@ -43,7 +43,7 @@ $(document).ready(function() {
     // $('#addExperienceButton').on('click', function(){
     $(document).on('click', '[id^="addExperienceButton-"]', function() {
         var userId = $(this).data('user-id');
-        console.log('Clicked button with user ID:', userId);
+        // console.log('Clicked button with user ID:', userId);
         // Add a new element to the open modal
         $(`#modalContent-${userId}`).append(`
             <div class="form-group">
@@ -77,7 +77,7 @@ $(document).ready(function() {
 
         // Remove the form group containing this button
         $(this).closest('.form-group').remove();
-        console.log(userId);
+        // console.log(userId);
         $('#addExperienceButton-' + userId).prop('disabled', false);
     });
 
@@ -139,7 +139,7 @@ $(document).ready(function() {
                         : 'No errors found in the response';
 
                     formattedResponse = JSON.stringify(errorResponse);
-                    console.log(formattedResponse);
+                    // console.log(formattedResponse);
                     handleReferencesWithMissingField(formattedResponse);
                 } catch (e) {
                     alert('Invalid JSON response: ' + jqXHR.responseText);
