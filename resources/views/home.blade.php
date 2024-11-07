@@ -275,7 +275,7 @@
                                 <div class="form-group">
                                     <label for="skype"><span class="text-danger">*</span> Skype ID</label>
 
-                                    <input type="text" id="skype" name="skype" class="form-control" placeholder="Skype id here.." required>
+                                    <input type="text" id="skype" name="skype" class="form-control" placeholder="Skype id here... (Must have)" required>
                                 </div>
                             </div>
 

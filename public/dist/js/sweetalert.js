@@ -685,6 +685,7 @@ function invalidSkype() {
                     <p>- NONE</p>
                 </div>
 
+            <p class="fst-italic">If you don't have one, please create before proceeding.</p>
             <p>Failure to do so, will result in a <strong><span class="text-danger">"FAILURE"</span></strong> of a submission by Human Resource.</p>
             `,
         showConfirmButton: false,

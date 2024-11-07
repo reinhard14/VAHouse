@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const skype = document.getElementById('skype');
 
     skype.addEventListener('keyup', () => {
-        mappedWords = ['NA',  'N/A', 'n/a', 'na', 'none', 'None', 'NONE'];
+        mappedWords = ['NA',  'N/A', 'n/a', 'na', 'none', 'None', 'NONE', 'not applicable', 'Not applicable', 'NOT APPLICABLE'];
 
         for (var index = 0; index < mappedWords.length; index++) {
             if (skype.value === mappedWords[index]) {
