@@ -10,6 +10,7 @@ function handleAddNotesForm(response) {
             title: `Note has been saved!`,
             text: `"${review}" has been added on the VA\'s note.`,
             showConfirmButton: false,
+            allowOutsideClick: false,
             timer: 2500,
         });
     } else {
@@ -23,6 +24,7 @@ function handleAddNotesForm(response) {
                 <p><strong>Notes:</strong> ${notesError}</p>
                 `,
             showConfirmButton: false,
+            allowOutsideClick: false,
             timer: 3000
         });
     }
@@ -43,9 +45,10 @@ function handleUpdateStatusForm(response) {
                     <ol><strong>LMS:</strong> ${LMS}</ol>
                     <ol><strong>Notes:</strong> ${tier}</ol>
                 </ul>
-                <p>Has been set successfully.</p>
+                <p>Status set successfully.</p>
             `,
             showConfirmButton: false,
+            allowOutsideClick: false,
             timer: 2500,
         });
     }
@@ -118,6 +121,7 @@ function handleReferencesForm(response) {
             title: `VA references updated!`,
             text: `References has been saved accordingly.`,
             showConfirmButton: false,
+            allowOutsideClick: false,
             timer: 2500,
         });
     }
@@ -130,6 +134,7 @@ function handleUpdatePasswordForm(response) {
             title: `VA password updated!`,
             text: `Password has been updated accordingly.`,
             showConfirmButton: false,
+            allowOutsideClick: false,
             timer: 2500,
         });
     }
@@ -142,6 +147,7 @@ function handleAddExperienceForm(response) {
             title: `VA Experience added!`,
             text: `${response.experience.title} has been added successfully.`,
             showConfirmButton: false,
+            allowOutsideClick: false,
             timer: 2500,
         });
     }
@@ -154,6 +160,7 @@ function deleteExperienceForm(response) {
             title: `VA Experience deleted!`,
             text: `${response.experience.title} has been deleted.`,
             showConfirmButton: false,
+            allowOutsideClick: false,
             timer: 2500,
         });
     }
