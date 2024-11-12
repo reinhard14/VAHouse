@@ -11,6 +11,7 @@ function handleAddNotesForm(response) {
             text: `"${review}" has been added on the VA\'s note.`,
             showConfirmButton: false,
             allowOutsideClick: false,
+            timerProgressBar: true,
             timer: 2500,
         });
     } else {
@@ -25,6 +26,7 @@ function handleAddNotesForm(response) {
                 `,
             showConfirmButton: false,
             allowOutsideClick: false,
+            timerProgressBar: true,
             timer: 3000
         });
     }
@@ -49,6 +51,7 @@ function handleUpdateStatusForm(response) {
             `,
             showConfirmButton: false,
             allowOutsideClick: false,
+            timerProgressBar: true,
             timer: 2500,
         });
     }
