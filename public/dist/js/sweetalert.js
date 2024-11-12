@@ -167,6 +167,7 @@ function deleteExperienceForm(response) {
             text: `${response.experience.title} has been deleted.`,
             showConfirmButton: false,
             allowOutsideClick: false,
+            timerProgressBar: true,
             timer: 2500,
         });
     }
