@@ -122,6 +122,7 @@ function handleReferencesForm(response) {
             text: `References has been saved accordingly.`,
             showConfirmButton: false,
             allowOutsideClick: false,
+            timerProgressBar: true,
             timer: 2500,
         });
     }
@@ -135,6 +136,7 @@ function handleUpdatePasswordForm(response) {
             text: `Password has been updated accordingly.`,
             showConfirmButton: false,
             allowOutsideClick: false,
+            timerProgressBar: true,
             timer: 2500,
         });
     }
@@ -148,6 +150,7 @@ function handleAddExperienceForm(response) {
             text: `${response.experience.title} has been added successfully.`,
             showConfirmButton: false,
             allowOutsideClick: false,
+            timerProgressBar: true,
             timer: 2500,
         });
     }
@@ -274,6 +277,7 @@ function handleReferencesFormSubmission() {
         text: 'Adding references, kindly wait a moment.',
         showConfirmButton: false,
         allowOutsideClick: false,
+        timerProgressBar: true,
         timer: 2000,
     });
 }
