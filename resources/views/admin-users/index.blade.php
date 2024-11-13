@@ -181,6 +181,7 @@
                         </div>
 
                         {{-- TALLY ROW --}}
+                        {{--
                         <div class="row mb-4">
                             <div class="col-md-12 text-right">
                                 <button type="button" id="filterButton" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseServicesOffered">
@@ -188,6 +189,7 @@
                                 </button>
                             </div>
                         </div>
+                        --}}
 
                         <div class="row">
                             <div class="col">
