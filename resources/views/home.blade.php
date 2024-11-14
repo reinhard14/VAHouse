@@ -330,6 +330,19 @@
                             </div>
                         </div>
 
+                        <div class="row mt-1">
+                            <div class="col"></div>
+                            <div class="col-md-6 input-group d-flex justify-content-right">
+                                <span class="input-group-text">References</span>
+                                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#create-references-modal">Click Here</button>
+                            </div>
+
+                            {{-- <div class="col-md-6">
+                                <label for="references"><span class="text-danger">*</span> : <strong>(Required)</strong> </label>
+                                <a href="#create-references-modal" class="btn btn-primary btn-sm d-block px-5 mx-3" data-bs-toggle="modal">Click here</a>
+                            </div> --}}
+                        </div>
+
                         <hr>
 
                         @if($user->experiences->count() < 1)
@@ -436,7 +449,6 @@
                                     <input type="file" id="resume" name="resume" class="form-control" accept="application/pdf" required>
                                 </div>
                             </div>
-
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="disc_results"><span class="text-danger">*</span> DISC Result: <strong>(PDF file only - 32MB limit)</strong></label>
@@ -446,7 +458,6 @@
                             </div>
                         </div>
 
-
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -455,20 +466,12 @@
                                     <input type="file" id="portfolio" name="portfolio" class="form-control" accept="application/pdf" required>
                                 </div>
                             </div>
-
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="videolink"><span class="text-danger">*</span> Upload video introduction: <strong>(128MB limit)</strong> </label>
 
                                     <input type="file" id="videolink" name="videolink" class="form-control" accept=".mp4, .avi, .mkv, .wmv, .flv, .webm, .mpeg" required>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="references"><span class="text-danger">*</span> Additional References: <strong>(Required)</strong> </label>
-                                <a href="#create-references-modal" class="btn btn-primary btn-sm d-block px-5 mx-3" data-bs-toggle="modal">Click here</a>
                             </div>
                         </div>
 

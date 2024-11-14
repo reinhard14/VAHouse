@@ -733,7 +733,7 @@ function reminderExpandReference() {
         html: `
             <br>
             <p>Your video is added for submission!</p>
-            <p>Please don\'t forget to click the button for <strong>"Additional References"</strong>. </p>
+            <p>Please don\'t forget to click the button for <strong>"References"</strong>. </p>
             <p>Failure to do so, will result in a <strong><span class="text-danger">"FAILURE"</span></strong> of a submission by Human Resource.</p>
             `,
         showConfirmButton: false,
