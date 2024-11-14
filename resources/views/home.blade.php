@@ -334,7 +334,7 @@
                             <div class="col"></div>
                             <div class="col-md-6 input-group d-flex justify-content-right">
                                 <span class="input-group-text">References</span>
-                                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#create-references-modal">Click Here</button>
+                                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#create-references-modal">Additional Details Here</button>
                             </div>
 
                             {{-- <div class="col-md-6">
