@@ -330,19 +330,6 @@
                             </div>
                         </div>
 
-                        <div class="row mt-1">
-                            <div class="col"></div>
-                            <div class="col-md-6 input-group d-flex justify-content-right">
-                                <span class="input-group-text">References</span>
-                                <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#create-references-modal">Additional Details Here</button>
-                            </div>
-
-                            {{-- <div class="col-md-6">
-                                <label for="references"><span class="text-danger">*</span> : <strong>(Required)</strong> </label>
-                                <a href="#create-references-modal" class="btn btn-primary btn-sm d-block px-5 mx-3" data-bs-toggle="modal">Click here</a>
-                            </div> --}}
-                        </div>
-
                         <hr>
 
                         @if($user->experiences->count() < 1)
@@ -355,7 +342,7 @@
                                             </h5>
                                         </div>
                                         <div class="col justify-content-end text-right">
-                                            <button type="button" data-bs-toggle="modal" data-bs-target="#create-details-modal" class="btn btn-primary btn-sm">Expand</button>
+                                            <button type="button" data-bs-toggle="modal" data-bs-target="#create-details-modal" class="btn btn-primary btn-sm">Expand </button>
                                         </div>
                                     </div>
                                 </div>
@@ -421,7 +408,6 @@
                             </div>
                         @endif
 
-
                         <hr>
 
                         <div class="row">
@@ -472,6 +458,16 @@
 
                                     <input type="file" id="videolink" name="videolink" class="form-control" accept=".mp4, .avi, .mkv, .wmv, .flv, .webm, .mpeg" required>
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-md-6 d-flex justify-content-between ms-auto">
+                                <label><span class="text-danger">* </span>References: </label>
+
+                                <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#create-references-modal">
+                                    <i class="bi bi-plus-circle me-2"></i>Additional Details
+                                </button>
                             </div>
                         </div>
 
