@@ -12,7 +12,7 @@
                         Welcome to VA House Corporation
                     </div>
                     <div class="card-tools">
-                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#guidelinesModal">
+                        <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#guidelinesModal">
                             READ IMPORTANT GUIDELINES! CLICK HERE!
                         </button>
                     </div>
@@ -36,7 +36,7 @@
                     <form id="scoresForm" method="post" action="{{ route('user.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="websites"><span class="text-danger">*</span> List of <span class="text-primary">websites</span> used:</label>
+                            <label for="websites"><span class="text-danger">*</span> List of <span class="text-primary">websites</span>:</label>
 
                             <select id="websites" name="websites[]" class="select2" multiple="multiple" style="width: 100%;" required>
                                 <option value="Upwork">Upwork</option>
@@ -102,14 +102,10 @@
                                 <option value="EBSCO">EBSCO</option>
                                 <option value="JSTOR">JSTOR</option>
                             </select>
-
-                            <small class="d-flex justify-content-end">
-                                (Capitalize 1st Letter)
-                            </small>
                         </div>
 
                         <div class="form-group">
-                            <label for="tools"><span class="text-danger">*</span> List of <span class="text-primary">tools/applications</span> used:</label>
+                            <label for="tools"><span class="text-danger">*</span> List of <span class="text-primary">tools/applications</span>:</label>
 
                             <select id="tools" name="tools[]" class="select2" multiple="multiple" style="width: 100%;" required>
                                 <option value="Microsoft Office Suite">Microsoft Office Suite</option>
@@ -192,10 +188,6 @@
                                 <option value="BambooHR">BambooHR</option>
                                 <option value="Workday">Workday</option>
                             </select>
-
-                            <small class="d-flex justify-content-end">
-                                (Capitalize 1st Letter)
-                            </small>
                         </div>
 
                         <div class="form-group">
@@ -250,10 +242,6 @@
                                 <option value="Multitasking-Research skills">Multitasking-Research skill</option>
                                 <option value="Data analysis ">Data analysis</option>
                             </select>
-
-                            <small class="d-flex justify-content-end">
-                                (Capitalize 1st Letter)
-                            </small>
                         </div>
 
                         <div class="form-group">
@@ -262,10 +250,6 @@
                             <select id="softskills" name="softskills[]" class="select2" multiple="multiple" style="width: 100%;">
 
                             </select>
-
-                            <small class="d-flex justify-content-end">
-                                (Capitalize 1st Letter)
-                            </small>
                         </div>
 
                         <hr>
