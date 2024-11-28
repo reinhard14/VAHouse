@@ -21,14 +21,14 @@
                 <div class="card-body">
                     @include('includes.messages')
 
-                    <h4 class="text-center mt-3">
+                    {{-- <h4 class="text-center mt-3">
                         Separate the list by using a comma <span class="text-danger">","</span> <span class="text-danger">"tab"</span> or a <span class="text-danger">"enter"</span>.
-                    </h4>
+                    </h4> --}}
 
-                    <div class="row mb-5">
-                        <div class="d-flex justify-content-center">
+                    <div class="row mb-3">
+                        <div>
                             <small>
-                                Note: Field with "<span class="text-danger">*</span>" is a required field.
+                                <strong>Note:</strong> Fields with "<span class="text-danger">*</span>" is a required field.
                             </small>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
                             </select>
 
                             <small class="d-flex justify-content-end">
-                                (Capitalize 1st Letter Only)
+                                (Capitalize 1st Letter)
                             </small>
                         </div>
 
@@ -194,7 +194,7 @@
                             </select>
 
                             <small class="d-flex justify-content-end">
-                                (Capitalize 1st Letter Only)
+                                (Capitalize 1st Letter)
                             </small>
                         </div>
 
@@ -252,7 +252,7 @@
                             </select>
 
                             <small class="d-flex justify-content-end">
-                                (Capitalize 1st Letter Only)
+                                (Capitalize 1st Letter)
                             </small>
                         </div>
 
@@ -264,7 +264,7 @@
                             </select>
 
                             <small class="d-flex justify-content-end">
-                                (Capitalize 1st Letter Only)
+                                (Capitalize 1st Letter)
                             </small>
                         </div>
 
