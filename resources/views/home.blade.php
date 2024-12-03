@@ -29,6 +29,9 @@
                         <div>
                             <small>
                                 <strong>Note:</strong> Fields with "<span class="text-danger">*</span>" is a required field.
+                                <p class="ms-4">
+                                    Select from list or add manually, separate each entries by "enter" or "tab".
+                                </p>
                             </small>
                         </div>
                     </div>
@@ -244,7 +247,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-5">
                             <label for="softskills"> List of <span class="text-primary">soft skills</span> you possess:</label>
 
                             <select id="softskills" name="softskills[]" class="select2" multiple="multiple" style="width: 100%;">
@@ -314,10 +317,8 @@
                             </div>
                         </div>
 
-                        <hr>
-
                         @if($user->experiences->count() < 1)
-                            <div class="card">
+                            <div class="card mb-5">
                                 <div class="card-header">
                                     <div class="row">
                                         <div class="col">
@@ -350,7 +351,7 @@
                                 </div>
                             </div>
                         @else
-                            <div class="card">
+                            <div class="card mb-5">
                                 <div class="card-header">
                                     <div class="row">
                                         <div class="col">
@@ -445,7 +446,7 @@
                             </div>
                         </div>
 
-                        <div class="row mt-2">
+                        <div class="row mt-2 mb-5">
                             <div class="col-md-6 d-flex justify-content-between ms-auto">
                                 <label><span class="text-danger">* </span>References: </label>
 

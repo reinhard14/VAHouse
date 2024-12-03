@@ -163,26 +163,26 @@ $(document).ready(function() {
     $('#websites').select2({
         tags: true,
         tokenSeparators: [','],
-        placeholder: 'Select from list or manually add your websites used, separate each entries by "enter" or "tab".',
+        placeholder: '',
     });
 
     $('#tools').select2({
         tags: true,
         tokenSeparators: [','],
-        placeholder: 'Select from list or manually add the tools you have used, separate each entries by "enter" or "tab".',
+        placeholder: '',
     });
 
     $('#skills').select2({
         tags: true,
         tokenSeparators: [','],
-        placeholder: 'Select from list or manually add your skills, separate each entries by "enter" or "tab".',
+        placeholder: '',
     });
 
     $('#softskills').select2({
         tags: true,
         tokenSeparators: [','],
         // tokenSeparators: [',', ' '],
-        placeholder: 'Manually add your softskills, separate each entries by "enter" or "tab".',
+        placeholder: 'Manually add softskills.',
         // allowClear: true,
     });
 
