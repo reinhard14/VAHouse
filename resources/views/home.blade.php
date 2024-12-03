@@ -27,9 +27,9 @@
 
                     <div class="row mb-3">
                         <div>
-                            <small>
-                                <strong>Note:</strong> Fields with "<span class="text-danger">*</span>" is a required field.
-                                <p class="ms-4">
+                            <small class="text-muted">
+                                <strong class="text-body">Note:</strong> Fields with "<span class="text-danger">*</span>" is a required field.
+                                <p class="text-muted ms-4">
                                     Select from list or add manually, separate each entries by "enter" or "tab".
                                 </p>
                             </small>
@@ -39,7 +39,7 @@
                     <form id="scoresForm" method="post" action="{{ route('user.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="websites"><span class="text-danger">*</span> List of <span class="text-primary">websites</span>:</label>
+                            <label for="websites"><span class="text-danger">*</span> List of <strong>websites</strong>:</label>
 
                             <select id="websites" name="websites[]" class="select2" multiple="multiple" style="width: 100%;" required>
                                 <option value="Upwork">Upwork</option>
@@ -108,7 +108,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="tools"><span class="text-danger">*</span> List of <span class="text-primary">tools/applications</span>:</label>
+                            <label for="tools"><span class="text-danger">*</span> List of <strong>tools/applications</strong>:</label>
 
                             <select id="tools" name="tools[]" class="select2" multiple="multiple" style="width: 100%;" required>
                                 <option value="Microsoft Office Suite">Microsoft Office Suite</option>
@@ -194,7 +194,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="skills"><span class="text-danger">*</span> List of <span class="text-primary">technical skills</span> you possess: </label>
+                            <label for="skills"><span class="text-danger">*</span> List of <strong>technical skills</strong> you possess: </label>
 
                             <select id="skills" name="skills[]" class="select2" multiple="multiple" style="width: 100%;" required>
                                 <option value="Content Creation">Content Creation</option>
@@ -248,7 +248,7 @@
                         </div>
 
                         <div class="form-group mb-5">
-                            <label for="softskills"> List of <span class="text-primary">soft skills</span> you possess:</label>
+                            <label for="softskills"> List of <strong>soft skills</strong> you possess:</label>
 
                             <select id="softskills" name="softskills[]" class="select2" multiple="multiple" style="width: 100%;">
 
