@@ -459,9 +459,9 @@
                         <hr>
 
                         <div class="row mb-5 pb-5">
-                            <h4 class="text-center mb-3">
+                            <h6 class="text-center mb-3">
                                 Position/s Applying For
-                            </h4>
+                            </h6>
 
                             <hr>
 
