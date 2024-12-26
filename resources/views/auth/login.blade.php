@@ -12,9 +12,9 @@
             <div class="row my-5">
                 <div class="col">
                     <div class="card">
-                        <div class="card-header text-center">
+                        {{-- <div class="card-header text-center">
                             {{ __('Login') }}
-                        </div>
+                        </div> --}}
                         <div class="card-body">
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
