@@ -67,29 +67,28 @@
                             </thead>
                             <tbody>
                                 @foreach ($departments as $department)
-                                <tr>
-                                    <td>{{ $department->code }}</td>
-                                    <td>
+                                    <tr>
+                                        <td>{{ $department->code }}</td>
+                                        <td>
+                                            <p>{{ $department->name }}</p>
+                                        </td>
+                                        <td>{{ $department->description }}</td>
+                                        <td class="d-flex justify-content-center">
+                                            <a href="#edit-department-modal{{ $department->id }}" class="btn text-primary"
+                                                data-bs-toggle="modal">
+                                                <i class="bi bi-pencil"></i> Edit
+                                            </a>
 
-                                        <a href="{{ route('department.show', $department->id) }}" data-toggle="tooltip" title="Click to view department's form.">{{ $department->name }}</a>
-                                    </td>
-                                    <td>{{ $department->description }}</td>
-                                    <td class="d-flex justify-content-center">
-                                        <a href="#edit-department-modal{{ $department->id }}" class="btn text-primary"
-                                            data-bs-toggle="modal">
-                                            <i class="bi bi-pencil"></i> Edit
-                                        </a>
-
-                                        <form method="post" action="{{ route('department.destroy', $department->id) }}" class="deleteDepartmentForm">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn text-danger"> <i class="bi bi-x-square"></i> Delete</button>
-                                        </form>
-                                    </td>
-                                    <td class="text-right">
-                                        <input type="checkbox" class="deleteItemCheckboxes" data-department-id="{{ $department->id }}">
-                                    </td>
-                                </tr>
+                                            <form method="post" action="{{ route('department.destroy', $department->id) }}" class="deleteDepartmentForm">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn text-danger"> <i class="bi bi-x-square"></i> Delete</button>
+                                            </form>
+                                        </td>
+                                        <td class="text-right">
+                                            <input type="checkbox" class="deleteItemCheckboxes" data-department-id="{{ $department->id }}">
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
