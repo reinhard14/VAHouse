@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Formatted Form</h5>
+                <h5 class="modal-title">VA Form</h5>
 
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">x</button>
             </div>
