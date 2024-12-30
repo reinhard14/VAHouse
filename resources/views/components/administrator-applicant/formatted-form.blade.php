@@ -105,8 +105,12 @@
             </div>
 
             <div class="modal-footer">
+                <button type="button" id="copyModalButton" class="btn btn-outline-primary btn-sm">Copy</button>
                 <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"><i class="bi bi-file-x  mr-1"></i>Close</button>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Department JS -->
+<script src="{{ asset('dist/js/pages/applicants/formatted-form.js') }}"></script>
