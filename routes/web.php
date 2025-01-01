@@ -1,17 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CaptchaController;
+use App\Http\Controllers\HomeController;
 
 //! Public
 Auth::routes();
 
 // Route Users -- Redirect
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 //! ADMIN
 Route::prefix('administrator')
@@ -19,7 +21,7 @@ Route::prefix('administrator')
     ->group(function () {
 
         // Admin Dashboard Route
-        Route::get('dashboard', [App\Http\Controllers\AdministratorController::class, 'dashboard'])->name('admin.dashboard');
+        Route::get('dashboard', [AdministratorController::class, 'dashboard'])->name('admin.dashboard');
 
         // Route resources for administrators list in Admin side
         Route::resource('administrators', AdministratorController::class)->names([
@@ -45,11 +47,11 @@ Route::prefix('administrator')
         Route::resource('department', DepartmentController::class);
 
         // Additional routes for Administrator Users list.
-        Route::delete('users', [App\Http\Controllers\AdminUserController::class, 'destroySelected'])->name('admin.users.deleteSelected');
+        Route::delete('users', [AdminUserController::class, 'destroySelected'])->name('admin.users.deleteSelected');
         // Additional routes for Administrator
-        Route::delete('administrator/', [App\Http\Controllers\AdministratorController::class, 'destroySelected'])->name('administrator.deleteSelected');
+        Route::delete('administrator/', [AdministratorController::class, 'destroySelected'])->name('administrator.deleteSelected');
         // Additional routes for Department
-        Route::delete('department/', [App\Http\Controllers\DepartmentController::class, 'destroySelected'])->name('department.deleteSelected');
+        Route::delete('department/', [DepartmentController::class, 'destroySelected'])->name('department.deleteSelected');
 
         //administrator user's additional controller
         Route::post('users/notes', [AdminUserController::class, 'addNotes'])->name('add.notes');
@@ -71,19 +73,19 @@ Route::prefix('administrator')
 //! User dashboard
 Route::middleware('auth')
     ->group(function () {
-        Route::get('user/dashboard', [App\Http\Controllers\UserController::class, 'index'])->name('user.dashboard');
-        Route::get('user/create', [App\Http\Controllers\UserController::class, 'create'])->name('user.create');
-        Route::post('user/store', [App\Http\Controllers\UserController::class, 'store'])->name('user.store');
-        Route::post('user/experience', [App\Http\Controllers\UserController::class, 'experiences'])->name('user.experience');
-        Route::post('user/uploadMockcall', [App\Http\Controllers\UserController::class, 'uploadMockcall'])->name('user.mockcall');
+        Route::get('user/dashboard', [UserController::class, 'index'])->name('user.dashboard');
+        Route::get('user/create', [UserController::class, 'create'])->name('user.create');
+        Route::post('user/store', [UserController::class, 'store'])->name('user.store');
+        Route::post('user/experience', [UserController::class, 'experiences'])->name('user.experience');
+        Route::post('user/uploadMockcall', [UserController::class, 'uploadMockcall'])->name('user.mockcall');
         Route::post('user/references', [UserController::class, 'storeReferences'])->name('user.references.store');
-        Route::delete('user/experiences/{id}', [App\Http\Controllers\UserController::class, 'destroyExperience'])->name('user.experienceDelete');
+        Route::delete('user/experiences/{id}', [UserController::class, 'destroyExperience'])->name('user.experienceDelete');
 });
 Route::middleware(['auth', 'check.user.id'])
     ->group(function () {
-        Route::get('user/{id}', [App\Http\Controllers\UserController::class, 'show'])->name('user.show');
-        Route::get('user/{id}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
-        Route::put('user/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
+        Route::get('user/{id}', [UserController::class, 'show'])->name('user.show');
+        Route::get('user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+        Route::put('user/{id}', [UserController::class, 'update'])->name('user.update');
 });
 
 //! Public
