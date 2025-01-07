@@ -16,7 +16,7 @@
             @endif
 
             <div class="card">
-                <div class="card-header">Register personal information</div>
+                <div class="card-header">Register Personal Information</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
