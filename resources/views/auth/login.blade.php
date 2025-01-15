@@ -60,7 +60,7 @@
 
                                     <div class="row">
                                         <div class="col text-center">
-                                            <small>or</small>
+                                            <small class="text-muted">or</small>
                                         </div>
                                     </div>
 
