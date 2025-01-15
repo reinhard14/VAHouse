@@ -27,3 +27,31 @@ input[type=number]::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+
+.btn.btn-orange {
+    /* background-color: var(--bs-orange); */
+    background-color: #f26307;
+    color: white;
+    border:  none;
+    border-radius: 10px;
+}
+
+.btn.btn-orange:hover {
+    background-color: #d14925;
+    color: white;
+}
+
+.text-orange {
+    color: var(--bs-orange);
+}
+
+.btn.btn-login {
+    background-color: #e7e7e7;
+    color: black;
+    border:  none;
+    border-radius: 10px;
+}
+
+.btn.btn-login:hover {
+    background-color: #d7d6d6;
+}
