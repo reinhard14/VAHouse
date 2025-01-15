@@ -67,9 +67,9 @@
 
                                     <div class="row my-4">
                                         <div class="col text-center">
-                                            <button type="submit" class="btn btn-orange form-control">
+                                            <a href="{{ route('register') }}" type="button" class="btn btn-orange form-control">
                                                 {{ __('Apply as VA') }}
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </form>
