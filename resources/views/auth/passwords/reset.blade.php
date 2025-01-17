@@ -49,7 +49,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-4">
                             <label for="password-confirm">{{ __('Confirm Password') }} <span class="text-danger">*</span></label>
 
                             <div>
