@@ -17,8 +17,8 @@
                             <img src="{{asset('dist/img/nav-logo.png')}}" width="150px" height="60px">
                         </div>
 
-                        <h3>Set New Password</h3>
-                        <p class="text-muted">2 of 2: Reset password</p>
+                        <h3>Forgot Password</h3>
+                        <p class="text-muted">1 of 2: Reset password</p>
                     </div>
 
                     <form method="POST" action="{{ route('password.email') }}">
