@@ -42,11 +42,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="row my-4">
+                                    <div class="row my-4">
                                         <div class="col text-right">
                                             <a href="#" class="text-orange">Forgot Password?</a>
                                         </div>
-                                    </div> --}}
+                                    </div>
 
                                     <div class="row mb-4">
                                         <div class="col text-center">
