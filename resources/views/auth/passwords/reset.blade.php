@@ -5,9 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
-
                 <div class="card-body">
+                    <div class="row text-center mb-4">
+                        <div class="col mb-3">
+                            <img src="{{asset('dist/img/nav-logo.png')}}" width="150px" height="60px">
+                        </div>
+
+                        <h3>Forgot Password</h3>
+                        <p class="text-muted">1 of 2: Reset password</p>
+                    </div>
+
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf
 
@@ -51,7 +58,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-orange">
                                     {{ __('Reset Password') }}
                                 </button>
                             </div>
