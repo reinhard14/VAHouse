@@ -44,7 +44,7 @@
                                     </div>
                                     <div class="row my-4">
                                         <div class="col text-right">
-                                            <a href="#" class="text-orange">Forgot Password?</a>
+                                            <a href="{{ route('password.request')}}" class="text-orange">Forgot Password?</a>
                                         </div>
                                     </div>
 
