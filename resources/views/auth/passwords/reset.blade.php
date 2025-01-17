@@ -24,7 +24,7 @@
                         <div class="row mb-3">
                             <label for="email">{{ __('Email Address') }}<span class="text-danger">*</span></label>
 
-                            <div class="col-md-6">
+                            <div>
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -38,7 +38,7 @@
                         <div class="row mb-3">
                             <label for="password">{{ __('Password') }}<span class="text-danger">*</span></label>
 
-                            <div class="col-md-6">
+                            <div>
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
@@ -52,7 +52,7 @@
                         <div class="row mb-3">
                             <label for="password-confirm">{{ __('Confirm Password') }} <span class="text-danger">*</span></label>
 
-                            <div class="col-md-6">
+                            <div>
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
