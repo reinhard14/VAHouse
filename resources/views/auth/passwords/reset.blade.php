@@ -22,7 +22,7 @@
                         <input type="hidden" name="token" value="{{ $token }}">
 
                         <div class="row mb-3">
-                            <label for="email">{{ __('Email Address') }}<span class="text-danger">*</span></label>
+                            <label for="email">{{ __('Email Address') }} <span class="text-danger">*</span></label>
 
                             <div>
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
@@ -36,7 +36,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password">{{ __('Password') }}<span class="text-danger">*</span></label>
+                            <label for="password">{{ __('Password') }} <span class="text-danger">*</span></label>
 
                             <div>
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
