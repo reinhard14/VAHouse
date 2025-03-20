@@ -71,34 +71,34 @@
 
                 <div>
                     <small><strong>Intro Video Link:</strong></small>
-                    <small class="d-block">{{ isset($user->information->videolink) ? route('view.pdf', $user->information->videolink) : 'unavailable' }}</small>
+                    <small class="d-block">{{ isset($user->information->videolink) ? route('view.file', $user->information->videolink) : 'unavailable' }}</small>
                 </div>
 
                 <div>
                     <small><strong>CV Link:</strong></small>
-                    <small class="d-block">{{ isset($user->information->resume) ? route('view.pdf', $user->information->resume) : 'unavailable' }}</small></small>
+                    <small class="d-block">{{ isset($user->information->resume) ? route('view.file', $user->information->resume) : 'unavailable' }}</small></small>
                 </div>
 
                 <div>
                     <small><strong>Portfolio Link:</strong></small>
-                    <small class="d-block">{{ isset($user->information->portfolio) ? route('view.pdf', $user->information->portfolio) : 'unavailable' }}</small></small>
+                    <small class="d-block">{{ isset($user->information->portfolio) ? route('view.file', $user->information->portfolio) : 'unavailable' }}</small></small>
                 </div>
 
                 <div>
                     <small><strong>DISC Results:</strong></small>
-                    <small class="d-block">{{ isset($user->information->disc_results) ? route('view.pdf', $user->information->disc_results) : 'unavailable' }}</small></small>
+                    <small class="d-block">{{ isset($user->information->disc_results) ? route('view.file', $user->information->disc_results) : 'unavailable' }}</small></small>
                 </div>
 
                 <div>
                     <small><strong>Formal Photo:</strong></small>
-                    <small class="d-block">{{ isset($user->information->photo_formal) ? route('view.pdf', $user->information->photo_formal) : 'unavailable' }}</small></small>
+                    <small class="d-block">{{ isset($user->information->photo_formal) ? route('view.file', $user->information->photo_formal) : 'unavailable' }}</small></small>
                 </div>
 
                 @if (isset($user->mockcalls->inbound_call))
                     <div>
                         <small><strong>Mock Calls:</strong></small>
-                        <small class="d-block">Inbound: {{ isset($user->mockcalls->inbound_call) ? route('view.pdf', $user->mockcalls->inbound_call) : 'unavailable' }}</small></small>
-                        <small class="d-block">Outbound: {{ isset($user->mockcalls->outbound_call) ? route('view.pdf', $user->mockcalls->outbound_call) : 'unavailable' }}</small></small>
+                        <small class="d-block">Inbound: {{ isset($user->mockcalls->inbound_call) ? route('view.file', $user->mockcalls->inbound_call) : 'unavailable' }}</small></small>
+                        <small class="d-block">Outbound: {{ isset($user->mockcalls->outbound_call) ? route('view.file', $user->mockcalls->outbound_call) : 'unavailable' }}</small></small>
                     </div>
                 @endif
 

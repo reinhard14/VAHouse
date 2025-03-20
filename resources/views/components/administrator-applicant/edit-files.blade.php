@@ -59,7 +59,7 @@
                                             </div>
                                         @else
                                             <div class="col-md-4 text-right">
-                                                <a href="{{ route('view.pdf', $user->information->$field)}}" class="p-1" target="_blank">Open<i class="bi bi-folder2-open ml-1"></i></a>
+                                                <a href="{{ route('view.file', $user->information->$field)}}" class="p-1" target="_blank">Open<i class="bi bi-folder2-open ml-1"></i></a>
                                             </div>
                                             @if(isset($user->information->$field) && !is_null($user->information->$field))
                                                 <div class="col-md-4 text-right">
@@ -176,7 +176,7 @@
                                                 </div>
                                             @else
                                                 <div class="col-md-4 text-right">
-                                                    <a href="{{ route('view.pdf', $user->mockcalls->$field)}}" class="p-1" target="_blank">Open<i class="bi bi-folder2-open ml-1"></i></a>
+                                                    <a href="{{ route('view.file', $user->mockcalls->$field)}}" class="p-1" target="_blank">Open<i class="bi bi-folder2-open ml-1"></i></a>
                                                 </div>
                                                 @if(isset($user->mockcalls->$field) && !is_null($user->mockcalls->$field))
                                                     <div class="col-md-4 text-right">
