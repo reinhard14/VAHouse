@@ -81,6 +81,7 @@ class AdminUserController extends Controller
                                 'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
                                 'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
                                 'users.created_at', 'users.updated_at', 'users.remember_token', 'users.role_id', 'users.gender',
+                                'user.nationality', 'user.civil_status', 'user.degree',
                                 'applicant_information.experience', 'applicant_information.positions',
                                 'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id'
                             )
