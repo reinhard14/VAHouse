@@ -124,7 +124,10 @@
                             @else
                                 <select name="services_offered[]" class="form-control select2 services" multiple="multiple">
                                     @php
-                                        $applicantPositions = $user->references->services_offered;
+                                        // $applicantPositions = $user->references->services_offered;
+                                        $applicantPositions = is_array($user->references->services_offered) ?
+                                                                $user->references->services_offered : [];
+
                                         $dynamicPositions = $applicantPositions ?? [];
 
                                         $staticPositions = [
@@ -140,12 +143,16 @@
                                             'Others',
                                         ]  ?? [];
 
-                                        $mergedPositions = array_merge($dynamicPositions, $staticPositions);
+                                        // $mergedPositions = array_merge($dynamicPositions, $staticPositions);
+                                        $applicantPositions = is_array($user->references->services_offered) ?
+                                                            $user->references->services_offered : [];
+
                                         $allPositions = array_unique($mergedPositions);
                                     @endphp
 
                                     @if (!empty($applicantPositions) || is_array($applicantPositions))
                                         @foreach ($allPositions as $position)
+                                            {{-- <option value="{{ $position }}" {{ in_array($position, $applicantPositions) ? 'selected' : '' }}>{{ $position }}</option> --}}
                                             <option value="{{ $position }}" {{ in_array($position, $applicantPositions) ? 'selected' : '' }}>{{ $position }}</option>
                                         @endforeach
                                     @else
