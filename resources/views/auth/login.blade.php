@@ -51,9 +51,7 @@
                                     <div class="row mb-4">
                                         <div class="col text-center">
                                             <button type="submit" class="btn btn-login form-control">
-                                                {{-- <span class="orange-text">  --}}
-                                                    {{ __('Sign in') }}
-                                                {{-- </span> --}}
+                                                {{ __('Sign in') }}
                                             </button>
                                         </div>
                                     </div>
@@ -64,10 +62,9 @@
                                         </div>
                                     </div>
 
-
                                     <div class="row my-4">
                                         <div class="col text-center">
-                                            <a href="{{ route('register') }}" type="button" class="btn btn-orange form-control">
+                                            <a href="{{ route('register.personal.information') }}" type="button" class="btn btn-orange form-control">
                                                 {{ __('Apply as VA') }}
                                             </a>
                                         </div>

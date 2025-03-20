@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Employment;
 use App\Models\Role;
 use App\Models\Skillset;
 use App\Models\Review;
@@ -104,5 +105,9 @@ class User extends Authenticatable
 
     public function formCompleted() {
         return $this->hasOne(UserFormCompletion::class);
+    }
+
+    public function employment() {
+        return $this->hasMany(Employment::class);
     }
 }

@@ -4,18 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User;
 
-class Skillset extends Model
+class Employment extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'website',
-        'tool',
-        'skill',
-        'softskill',
-        'user_id',
+        'employment_type',
+        'date_started',
+        'date_ended',
+        'job_position',
+        'company_details',
+        'job_details',
+        'user_id'
     ];
 
     public function user()

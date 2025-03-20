@@ -3,6 +3,10 @@
     overflow: auto;
 }
 
+.container-fluid {
+    background-color: #FAFAFA;
+}
+
 .user-bg-color {
     background-color: rgba(0, 0, 0, 0.05);
 }
@@ -29,11 +33,16 @@ input[type=number] {
 }
 
 .btn.btn-orange {
-    /* background-color: var(--bs-orange); */
     background-color: #f26307;
     color: white;
-    border:  none;
+    border: none;
     border-radius: 10px;
+}
+
+.btn.btn-vah-orange {
+    background-color: #f26307;
+    color: white;
+    border: none;
 }
 
 .btn.btn-orange:hover {
@@ -41,8 +50,65 @@ input[type=number] {
     color: white;
 }
 
+.profile-edit-nav {
+    color: #1f1f1f ;
+    font-weight: 600;
+}
+
+.profile-header {
+    background: #cd5000;
+}
+
+img.overlap-image {
+    position: absolute;
+    top: -50px; /* Moves the image upwards */
+    left: 50%; /* Centers the image */
+    transform: translateX(-50%); /* Ensures precise centering */
+    z-index: 10; /* Ensures it appears above other elements */
+    border-radius: 50%;
+    object-fit: cover;
+    height: 225px;
+    width: 225px;
+}
+
+.orange-active.nav-item.menu-open > .nav-link {
+    background-color: #f26307 !important;
+    color: white !important;
+}
+
+.orange-active .nav-link.active {
+    background-color: #f26307 !important;
+}
+
+.light-orange-active .nav-link.active {
+    background-color: #ffd4a3 !important;
+}
+
+.nav-profile .nav-item .nav-link.active {
+    color: #f26307 ;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: #f26307;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 12px;
+}
+
+.nav-item .nav-link:hover {
+    color: #d14925 ;
+}
+
 .text-orange {
     color: var(--bs-orange);
+}
+
+.text-dark-orange {
+    color: #cd5000;
+}
+
+.btn.btn-orange-flat {
+    background-color: #f26307;
+    color: white;
+    border: none;
 }
 
 .btn.btn-login {
@@ -54,4 +120,73 @@ input[type=number] {
 
 .btn.btn-login:hover {
     background-color: #d7d6d6;
+}
+
+.large-icon {
+    font-size: 1.6rem;
+    vertical-align: middle;
+}
+
+.medium-icon {
+    font-size: 1.2rem;
+    background: #d9d9d9 !important;
+}
+
+.span-normal-text {
+    font-weight: normal !important;
+}
+
+.span-orange {
+    background-color: #ffd4a3;
+    font-weight: normal !important;
+}
+
+.custom-label {
+    font-weight: normal !important;
+}
+
+.select2-selection__choice {
+    background-color: #ffd4a3 !important;
+    color: white;
+    border: none;
+    border-radius: 20px !important;
+    padding: 0 10px;
+    font-size: 14px;
+    margin: 2px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.select2-selection__choice__remove {
+    color: #ffd4a3;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.select2-selection__choice__remove:hover {
+    color: #ffd4a3;
+}
+
+#progress-bar {
+    width: 0%;
+    height: 20px;
+    background: #f26307;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+}
+
+#loading-spinner {
+    display: none;
+    text-align: center;
+}
+
+#upload-progress {
+    display: none;
+}
+
+#upload-progress-text {
+    width: 100%;
+    background: #f3f3f3;
+    border-radius: 5px;
 }

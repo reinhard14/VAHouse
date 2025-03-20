@@ -55,7 +55,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                    <i class="fas fa-expand-arrows-alt"></i>
+                        <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
             </ul>
@@ -101,7 +101,7 @@
             <strong>Copyright &copy; {{ \Carbon\Carbon::now()->year }} <a href="#"  data-toggle="tooltip" data-placement="top" title="Developed by: Reinhard">VA House Corporation Management System</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 1.0.0
+                <b>Version</b> 1.1.0
             </div>
         </footer>
     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Skillset;
 use App\Models\ApplicantInformation;
 use App\Models\CallSample;
+use App\Models\Employment;
 use App\Models\User;
 use App\Models\Experience;
 use App\Models\Reference;
@@ -14,6 +15,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rules\Password as RulesPassword;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -26,9 +29,8 @@ class UserController extends Controller
     public function index()
     {
         $user = User::findOrFail(Auth::id());
-        // $userForm = UserFormCompletion::findOrFail('user_id', $user);
 
-        return view('home', compact('user'));
+        return view('user.dashboard', compact('user'));
     }
 
     /**
@@ -180,43 +182,15 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     //show form
-    public function show($id)
+    public function viewProfile($id)
     {
-            $user = User::findOrFail($id);
-            $websites = Skillset::where('user_id', $user->id)
-                            ->latest('created_at')
-                            ->value('website');
+        $user = User::findOrFail($id);
 
-            $tools = Skillset::where('user_id', $user->id)
-                            ->latest('created_at')
-                            ->value('tool');
+        $ageNow = !empty($user->age) && strtotime($user->age)
+        ? Carbon::parse($user->age)
+        : null;
 
-            $skills = Skillset::where('user_id', $user->id)
-                            ->latest('created_at')
-                            ->value('skill');
-
-            $softskills = Skillset::where('user_id', $user->id)
-                            ->latest('created_at')
-                            ->value('softskill');
-
-            $positionsApplied = ApplicantInformation::where('user_id', $user->id)
-                            ->latest('created_at')
-                            ->value('positions');
-
-            $aWebsites = json_decode($websites);
-            $aTools = json_decode($tools);
-            $aSkills = json_decode($skills);
-            $aSoftskills = json_decode($softskills);
-            $aPositionsApplied = json_decode($positionsApplied);
-
-
-        return view('user.show', compact('user',
-                                        'aWebsites',
-                                        'aTools',
-                                        'aSkills',
-                                        'aSoftskills',
-                                        'aPositionsApplied',)
-                                        )->with('success', 'show here');
+        return view('user.view-profile', compact('user', 'ageNow'));
 
     }
 
@@ -227,10 +201,450 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editProfile($id)
     {
-        $user = User::find($id);
-        return view('user.edit', compact('user'))->with('success', 'edit here');;
+        $user = User::findOrFail($id);
+
+        $skills = [
+            '3D Modelling', 'Accounting', 'Amazon', 'Animation', 'Appointment Scheduling', 'Architecture', 'Article Writing',
+            'BigCommerce', 'Blogging', 'Bookkeeping',
+            'Calendar Management' ,'Content Writing', 'Copywriting', 'Creative Writing', 'CRM (Customer Relationship Management)', 'Customer Service',
+            'Data Entry', 'Dropshipping',
+            'E-commerce', 'E-commerce SEO', 'Email Marketing', 'Engineering', 'Email Management', 'Executive Assistant',
+            'Facebook Ads',
+            'Game Development', 'Google Ads', 'Graphic Design',
+            'Human Resources', 'HTML & CSS',
+            'IT Support', 'Illustration', 'Instagram Ads', 'Interior Design',
+            'Java', 'JavaScript', 'Joomla',
+            'Lead Generation', 'Legal Services', 'LinkedIn Ads', 'Live Chat Support', 'Local SEO',
+            'Magento', 'Marketing', 'Music Production',
+            'On-Page SEO', 'Off-Page SEO',
+            'Photography', 'Pinterest Ads', 'Podcast Production', 'Print on Demand', 'Professional Email Writing', 'Project Management', 'PHP', 'Python',
+            'QA Testing', 'Quality Assurance', 'Quality Control',
+            'Recruitment',
+            'SEO', 'Sales', 'Shopify', 'Snapchat Ads', 'Social Media Content Creation', 'Social Media Management', 'Social Media Marketing', 'Software Development', 'Sound Design',
+            'Technical SEO', 'Technical Support', 'Technical Writing', 'TikTok Ads', 'Training', 'Transcription', 'Translation', 'Twitter Ads',
+            'UI/UX Design',
+            'Virtual Assistant', 'Videography', 'Video Editing', 'Voice Over',
+            'Web Design', 'Web Development', 'Website Management',
+            'WooCommerce',
+            'YouTube Ads'
+        ];
+
+        $softskills = [
+            '1soft', '3D Modelling', 'Accounting', 'Amazon', 'Animation', 'Appointment Scheduling', 'Architecture', 'Article Writing',
+            'BigCommerce', 'Blogging', 'Bookkeeping',
+            'Calendar Management' ,'Content Writing', 'Copywriting', 'Creative Writing', 'CRM (Customer Relationship Management)', 'Customer Service',
+            'Data Entry', 'Dropshipping',
+            'E-commerce', 'E-commerce SEO', 'Email Marketing', 'Engineering', 'Email Management', 'Executive Assistant',
+            'Facebook Ads',
+            'Game Development', 'Google Ads', 'Graphic Design',
+            'Human Resources', 'HTML & CSS',
+            'IT Support', 'Illustration', 'Instagram Ads', 'Interior Design',
+            'Java', 'JavaScript', 'Joomla',
+            'Lead Generation', 'Legal Services', 'LinkedIn Ads', 'Live Chat Support', 'Local SEO',
+            'Magento', 'Marketing', 'Music Production',
+            'On-Page SEO', 'Off-Page SEO',
+            'Photography', 'Pinterest Ads', 'Podcast Production', 'Print on Demand', 'Professional Email Writing', 'Project Management', 'PHP', 'Python',
+            'QA Testing', 'Quality Assurance', 'Quality Control',
+            'Recruitment',
+            'SEO', 'Sales', 'Shopify', 'Snapchat Ads', 'Social Media Content Creation', 'Social Media Management', 'Social Media Marketing', 'Software Development', 'Sound Design',
+            'Technical SEO', 'Technical Support', 'Technical Writing', 'TikTok Ads', 'Training', 'Transcription', 'Translation', 'Twitter Ads',
+            'UI/UX Design',
+            'Virtual Assistant', 'Videography', 'Video Editing', 'Voice Over',
+            'Web Design', 'Web Development', 'Website Management',
+            'WooCommerce',
+            'YouTube Ads'
+        ];
+
+        $tools = [
+            '1tool', '3D Modelling', 'Accounting', 'Amazon', 'Animation', 'Appointment Scheduling', 'Architecture', 'Article Writing',
+            'BigCommerce', 'Blogging', 'Bookkeeping',
+            'Calendar Management' ,'Content Writing', 'Copywriting', 'Creative Writing', 'CRM (Customer Relationship Management)', 'Customer Service',
+            'Data Entry', 'Dropshipping',
+            'E-commerce', 'E-commerce SEO', 'Email Marketing', 'Engineering', 'Email Management', 'Executive Assistant',
+            'Facebook Ads',
+            'Game Development', 'Google Ads', 'Graphic Design',
+            'Human Resources', 'HTML & CSS',
+            'IT Support', 'Illustration', 'Instagram Ads', 'Interior Design',
+            'Java', 'JavaScript', 'Joomla',
+            'Lead Generation', 'Legal Services', 'LinkedIn Ads', 'Live Chat Support', 'Local SEO',
+            'Magento', 'Marketing', 'Music Production',
+            'On-Page SEO', 'Off-Page SEO',
+            'Photography', 'Pinterest Ads', 'Podcast Production', 'Print on Demand', 'Professional Email Writing', 'Project Management', 'PHP', 'Python',
+            'QA Testing', 'Quality Assurance', 'Quality Control',
+            'Recruitment',
+            'SEO', 'Sales', 'Shopify', 'Snapchat Ads', 'Social Media Content Creation', 'Social Media Management', 'Social Media Marketing', 'Software Development', 'Sound Design',
+            'Technical SEO', 'Technical Support', 'Technical Writing', 'TikTok Ads', 'Training', 'Transcription', 'Translation', 'Twitter Ads',
+            'UI/UX Design',
+            'Virtual Assistant', 'Videography', 'Video Editing', 'Voice Over',
+            'Web Design', 'Web Development', 'Website Management',
+            'WooCommerce',
+            'YouTube Ads'
+        ];
+
+        $days = [
+            'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
+        ];
+
+        //LOAD JOB INFORMATION
+        //! Eager load User Information, and Skillset relationships
+        $userInformation = User::with('information', 'skillsets', 'references')->find($id);
+
+        // Decode JSON data
+        function decodeJsonArray($data) {
+            return isset($data) && !is_null($data) ? json_decode($data, true) : [];
+        }
+        // $decodeSkillset = function ($data) {
+        //     return isset($data) && !is_null($data) ? json_decode($data, true) : [];
+        // };
+
+        // Extract positions
+        $positionsItemize = decodeJsonArray($user->information->positions ?? null);
+        $daysItemize = decodeJsonArray($user->information->days_available ?? null);
+
+        // Extract references
+        $workstatusItemize = decodeJsonArray($user->references->work_status ?? null);
+        $preferredShift = decodeJsonArray($user->references->preferred_shift ?? null);
+
+        //skillsets extraction
+        $applicantSkills = decodeJsonArray($user->skillsets->skill ?? null);
+        $applicantSoftSkills = decodeJsonArray($user->skillsets->softskill ?? null);
+        $applicantTools = decodeJsonArray($user->skillsets->tool ?? null);
+
+        $availableSkills = array_diff($skills, $applicantSkills);
+        $availableSoftSkills = array_diff($softskills, $applicantSoftSkills);
+        $availableTools = array_diff($tools, $applicantTools);
+        $availableDays = array_diff($days, $daysItemize);
+
+        return view('user.edit-profile', compact('user', 'skills', 'softskills', 'tools', 'positionsItemize', 'workstatusItemize', 'preferredShift',
+                    'applicantSkills', 'applicantSoftSkills', 'applicantTools', 'availableSkills', 'availableSoftSkills', 'availableTools',
+                    'availableDays', 'daysItemize', 'days'));
+    }
+
+    public function updatePersonalDetails(Request $request, $id)
+    {
+
+        $this->validate($request, [
+            'name' => 'required',
+            'middlename' => 'required',
+            'lastname' => 'required',
+            // 'suffix' => 'required',
+            'gender' => 'required',
+            'contactnumber' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+            'birthdate' => 'required',
+            'nationality' => 'required',
+            'civil_status' => 'required',
+            'education' => 'required',
+            'degree' => 'required',
+            'skype' => 'required',
+            'ub_account' => 'required',
+            'ub_number' => 'required',
+            'emergency_person' => 'required',
+            'emergency_number' => 'required',
+            'emergency_relationship' => 'required',
+            //files
+            'photo_formal' => 'required|max:64000',
+        ],  [
+            'photo_formal.required' => 'Formal Photo file is missing.',
+            'photo_formal.mimes' => 'Formal Photo must be an image file.',
+            'photo_formal.max' => 'Formal photo file size exceed the 64 MB limit!',
+        ]);
+
+        $user = User::findOrFail($id);
+
+        if ($request->hasFile('photo_formal')) {
+            $formalPath = $request->file('photo_formal')->store('formals', 'public');
+        } else {
+            return back()->with('error', 'Please upload a file.');
+        }
+
+        // $user->information->photo_id = $request->input('photo_id');
+
+        $user->name = $request->input('name');
+        $user->middlename = $request->input('middlename');
+        $user->lastname = $request->input('lastname');
+        $user->suffix = $request->input('suffix');
+        $user->gender = $request->input('gender');
+        $user->contactnumber = $request->input('contactnumber');
+        $user->email = $request->input('email');
+        $user->address = $request->input('address');
+        //BIRTHDATE WILL BE USED IN AGE NOW.
+        $user->age = $request->input('birthdate');
+        //update:newly migrated table updated.
+        $user->nationality = $request->input('nationality');
+        $user->civil_status = $request->input('civil_status');
+        $user->education = $request->input('education');
+        $user->degree = $request->input('degree');
+
+        //update/create existing information.
+        $information = ApplicantInformation::updateOrCreate(
+            ['user_id' => $id],
+            [
+                'user_id' => $id,
+                'skype' => $request->input('skype'),
+                'ub_account' => $request->input('ub_account'),
+                'ub_number' => $request->input('ub_number'),
+                'photo_formal' => $formalPath,
+            ]
+        );
+        // dd($formalPath);
+
+        //Emergency Contact Information
+        //update existing references.
+        $references = Reference::updateOrCreate(
+            ['user_id' => $id],
+            [
+                'user_id' => $id,
+                'emergency_person' => $request->input('emergency_person'),
+                'emergency_number' => $request->input('emergency_number'),
+                'emergency_relationship' => $request->input('emergency_relationship')
+            ]
+        );
+
+        //Save to users table.
+        $user->save();
+
+        return redirect()->route('user.edit', $user->id)->with('success', 'Personal details successfully updated!')
+                                                        ->with('tab', '#job-information');
+    }
+
+    public function updateJobInformation(Request $request, $id)
+    {
+
+        $this->validate($request, [
+            'positions' => 'required|array|min:1',
+            'positions.*' => 'string',
+            'work_status' => 'required',
+            // // 'days_available' => 'required',
+            'preferred_start' => 'required',
+            'preferred_end' => 'required',
+            // 'preferred_shift' => 'required',
+            // //user information
+            'rate' => 'required',
+            'specify' => [
+                'required_if:positions,Others',
+                'string'
+            ],
+            'days_available' => 'required',
+            // 'negotiable' => 'sometimes',
+            //use services_offered col for job description field.
+            'services_offered' => 'required',
+            // // 'salary_negotiable' => 'required',
+            // // Job Profile
+            'skills' => 'required|array',
+            'skills.*' => 'string',
+            // 'softskills' => 'array',
+            // 'softskills.*' => 'string',
+            // 'tools' => 'required|array',
+            // 'tools.*' => 'string',
+        ], [
+            'preferred_start.required' => 'Please select start time for working hour shift.',
+            'preferred_end.required' => 'Please select end time for work shift.',
+            'services_offered' => 'Please enter job description.',
+            'specify.required_if' => 'Please specify the position.',
+            'specify.string' => 'Please specify the position for "Others" before proceeding.',
+
+        ]);
+
+        $user = User::findOrFail($id);
+
+        //update/create existing information.
+        $information = ApplicantInformation::updateOrCreate(
+            ['user_id' => $id],
+            [
+                'user_id' => $id,
+                'positions' => json_encode($request->input('positions')),
+                'rate' => $request->input('rate'),
+                'specify' => $request->input('specify'),
+                'days_available' => json_encode($request->input('days_available')),
+                'negotiable' => $request->input('negotiable'),
+            ]
+        );
+
+        //update existing references.
+        $references = Reference::updateOrCreate(
+            ['user_id' => $id],
+            [
+                'user_id' => $id,
+                'work_status' => $request->input('work_status'),
+                'preferred_shift' => json_encode([
+                    'start' => $request->input('preferred_start','preferred_start'),
+                    'end' => $request->input('preferred_start','preferred_end'),
+                ]),
+                'services_offered' => $request->input('services_offered'),
+            ]
+        );
+
+        //update existing skillset.
+        $skillsets = Skillset::updateOrCreate(
+            ['user_id' => $id],
+            [
+                'user_id' => $id,
+                'skill' => json_encode($request->input('skills')),
+                'softskill' => json_encode($request->input('softskills')),
+                'tool' => json_encode($request->input('tools')),
+
+            ]
+        );
+
+
+        return redirect()->route('user.edit', $user->id)->with('success', 'Job Information successfully updated!')
+                                                        ->with('tab', '#file-uploads');
+    }
+
+    public function uploadValidId(Request $request) {
+
+        $this->validate($request, [
+            'photo_id' => 'required|mimes:jpeg,png,jpg|max:64000',
+        ], [
+            'photo_id.required' => 'ID photo file is missing.',
+            'photo_id.mimes' => 'ID photo must be an image file.',
+            'photo_id.max' => 'ID photo file size exceed the 64 MB limit!',
+        ]);
+
+        if (!$request->hasFile('photo_id')) {
+            return back()->with('error', 'Please upload a file.');
+        }
+
+        $validIdPath = $request->file('photo_id')->store('IDs', 'public');
+
+        $user_id = Auth::id();
+
+        $validId = ApplicantInformation::updateOrCreate(
+            ['user_id' => $user_id],
+            ['photo_id' => $validIdPath]
+        );
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Valid ID has been uploaded!',
+            'validId' => $validId,
+        ]);
+
+    }
+
+    public function uploadResume(Request $request) {
+
+        $this->validate($request, [
+            'resume' => 'required|mimes:pdf|max:32000',
+        ], [
+            'resume.required' => 'Resume file is missing.',
+            'resume.max' => 'Resume file size exceed the 32 MB limit!',
+        ]);
+
+        if (!$request->hasFile('resume')) {
+            return back()->with('error', 'Please upload a file.');
+        }
+
+        $validResumePath = $request->file('resume')->store('pdfs', 'public');
+
+        $user_id = Auth::id();
+
+        $validResume = ApplicantInformation::updateOrCreate(
+            ['user_id' => $user_id],
+            ['resume' => $validResumePath]
+        );
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Valid resume/CV has been uploaded!',
+            'validResume' => $validResume,
+        ]);
+
+    }
+
+    public function uploadPortfolio(Request $request) {
+
+        $this->validate($request, [
+            'portfolio' => 'required|mimes:pdf|max:32000',
+        ], [
+            'portfolio.required' => 'Resume file is missing.',
+            'portfolio.max' => 'Resume file size exceed the 32 MB limit!',
+        ]);
+
+        if (!$request->hasFile('portfolio')) {
+            return back()->with('error', 'Please upload a file.');
+        }
+
+        $validPortfolioPath = $request->file('portfolio')->store('portfolios', 'public');
+
+        $user_id = Auth::id();
+
+        $validPortfolio = ApplicantInformation::updateOrCreate(
+            ['user_id' => $user_id],
+            ['portfolio' => $validPortfolioPath]
+        );
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Valid portfolio has been uploaded!',
+            'validPortfolio' => $validPortfolio,
+        ]);
+
+    }
+
+    public function uploadDisc(Request $request) {
+
+        $this->validate($request, [
+            'disc_results' => 'required|mimes:pdf|max:32000',
+        ], [
+            'disc_results.required' => 'Disc result file is required.',
+            'disc_results.max' => 'Disc result file size exceed the 32 MB limit!',
+        ]);
+
+        if (!$request->hasFile('disc_results')) {
+            return back()->with('error', 'Please upload a file.');
+        }
+
+        $validDiscPath = $request->file('disc_results')->store('DISC_Results', 'public');
+
+        $user_id = Auth::id();
+
+        $validDisc = ApplicantInformation::updateOrCreate(
+            ['user_id' => $user_id],
+            ['disc_results' => $validDiscPath]
+        );
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Disc results has been uploaded!',
+            'validDisc' => $validDisc,
+        ]);
+
+    }
+
+    public function uploadVideo(Request $request) {
+
+        $this->validate($request, [
+            'videolink' => 'required|mimes:mp4,avi,wmv|max:128000',
+        ], [
+            'videolink.required' => 'Video file is missing.',
+            'videolink.mimes' => 'Video Introduction file type must be MP4.',
+            'videolink.max' => 'Video file size exceed the 128000 MB limit!',
+        ]);
+
+        if (!$request->hasFile('videolink')) {
+            return back()->with('error', 'Please upload a file.');
+        }
+
+        $validVideoPath = $request->file('videolink')->store('intro_videos', 'public');
+
+        $user_id = Auth::id();
+
+        $validVideo = ApplicantInformation::updateOrCreate(
+            ['user_id' => $user_id],
+            ['videolink' => $validVideoPath]
+        );
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Video has been uploaded!',
+            'validId' => $validVideo,
+        ]);
+
     }
 
     /**
@@ -274,74 +688,101 @@ class UserController extends Controller
     public function experiences(Request $request) {
 
         $this->validate($request, [
-            'title' => 'required',
-            'duration' => 'required',
+            'employment_type' => 'required',
+            'date_started' => 'required',
+            'date_ended' => 'required',
+            'job_position' => 'required',
+            'company_details' => 'required',
+            'job_details' => 'required',
             'user_id' => 'required',
         ], [
-            'title.required' => 'Job title is a required field.',
-            'duration.required' => 'Duration of work a is required field.',
+            'employment_type.required' => 'Employment type is a required.',
+            'date_started.required' => 'Start date type is required.',
+            'date_ended.required' => 'End date is required.',
+            'job_position.required' => 'Job position is required.',
+            'company_details.required' => 'Company name and address is required.',
+            'job_details.required' => 'Job details is required.',
         ]);
         // dd($request->all()); // This will output the request data and stop execution
         // \Log::info($request->all());
 
         //ajax showing
-        $exists = Experience::where('user_id', $request->input('user_id'))->exists();
 
-        $experience = new Experience();
-        $experience->title = $request->input('title');
-        $experience->duration = $request->input('duration');
-        $experience->user_id = $request->input('user_id');
-        $experience->save();
-
-        $attribute = ['user_id' => $request->input('user_id')];
-        $formCompletion = UserFormCompletion::firstOrNew($attribute);
-        $formCompletion->is_experience_completed = $request->input('is_experience_completed');
-        $formCompletion->save();
+        $employment = new Employment();
+        $employment->employment_type = $request->input('employment_type');
+        $employment->date_started = $request->input('date_started');
+        $employment->date_ended = $request->input('date_ended');
+        $employment->job_position = $request->input('job_position');
+        $employment->company_details = $request->input('company_details');
+        $employment->job_details = $request->input('job_details');
+        $employment->user_id = $request->input('user_id');
+        $employment->save();
 
         return response()->json([
             'success' => true,
-            'message' => 'Experience has been saved successfully!',
-            'experience' => $experience,
-            'exists' => $exists,
+            'message' => 'Employment details has been saved successfully!',
+            'employment' => $employment,
         ]);
     }
 
-    public function uploadMockcall(Request $request) {
+    public function uploadInboundCall(Request $request) {
 
         $this->validate($request, [
             'inbound_call' => 'required|mimes:mp4,avi,wmv,mp3,wav,aac,flac,ogg,wma|max:32000',
-            'outbound_call' => 'required|mimes:mp4,avi,wmv,mp3,wav,aac,flac,ogg,wma|max:32000',
-            'user_id' => 'required',
         ], [
             'inbound_call.required' => 'Inbound call file is missing.',
             'inbound_call.mimes' => 'Inbound call file type is incorrect.',
             'inbound_call.max' => 'Inbound call file size exceed the 32000 MB limit!',
-
-            'outbound_call.required' => 'Outbound call file is missing.',
-            'outbound_call.mimes' => 'Outbound call file type is incorrect.',
-            'outbound_call.max' => 'Outbound call file size exceed the 32000 MB limit!',
         ]);
 
-        $user_id = ['user_id' => Auth::id()];
-        $callSample = CallSample::firstOrNew($user_id);
-
-        if ($request->hasFile('inbound_call') && $request->hasFile('outbound_call')) {
-            $inboundMockcallPath = $request->file('inbound_call')->store('mockcalls/inbounds', 'public');
-            $outboundMockcallPath = $request->file('outbound_call')->store('mockcalls/outbounds', 'public');
-        } else {
+        if (!$request->hasFile('inbound_call')) {
             return back()->with('error', 'Please upload a file.');
         }
 
-        $callSample->inbound_call = $inboundMockcallPath;
-        $callSample->outbound_call = $outboundMockcallPath;
-        $callSample->user_id = $request->input('user_id');
-        $callSample->save();
+        $validInboundPath = $request->file('inbound_call')->store('mockcalls/inbounds', 'public');
+
+        $user_id = Auth::id();
+
+        $validInboundCall = CallSample::updateOrCreate(
+            ['user_id' => $user_id],
+            ['inbound_call' => $validInboundPath],
+        );
 
         return response()->json([
             'success' => true,
-            'message' => 'Mock calls has been saved!',
-            'mockcalls' => $callSample,
+            'message' => 'Inbound call has been saved!',
+            'inbound' => $validInboundCall,
 
+        ]);
+    }
+
+    public function uploadOutboundCall(Request $request) {
+
+        $this->validate($request, [
+            'outbound_call' => 'required|mimes:mp4,avi,wmv,mp3,wav,aac,flac,ogg,wma|max:32000',
+        ], [
+            'outbound_call.required' => 'Inbound call file is missing.',
+            'outbound_call.mimes' => 'Inbound call file type is incorrect.',
+            'outbound_call.max' => 'Inbound call file size exceed the 32000 MB limit!',
+        ]);
+
+        if (!$request->hasFile('outbound_call')) {
+            return back()->with('error', 'Please upload a file.');
+        }
+
+        $validOutboundPath = $request->file('outbound_call')->store('mockcalls/outbounds', 'public');
+
+        $user_id = Auth::id();
+
+        $validOutboundCall = CallSample::updateOrCreate(
+            ['user_id' => $user_id],
+            ['outbound_call' => $validOutboundPath],
+        );
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Outbound call has been saved!',
+            'outbound' => $validOutboundCall,
         ]);
     }
 
@@ -404,6 +845,22 @@ class UserController extends Controller
         $userId = Auth::id();
 
         return redirect()->route('user.show', $userId);
+    }
+
+    public function viewFile($filename)
+    {
+        // Check if the file exists
+        if (!Storage::disk('public')->exists($filename)) {
+            abort(404);
+        }
+
+        // Get the file's content
+        $fileContent = Storage::disk('public')->get($filename);
+
+        // Return the file's content as a response
+        return response($fileContent, 200)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'inline; filename="' . $filename . '"');
     }
 
 }

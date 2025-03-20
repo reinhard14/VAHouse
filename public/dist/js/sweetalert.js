@@ -286,6 +286,46 @@ function handleReferencesFormSubmission() {
     });
 }
 
+function handleFileFormSubmission(response) {
+    let msg = response.message;
+
+    Swal.fire({
+        icon: 'success',
+        title: 'File Saved!',
+        text: `${msg}`,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        timerProgressBar: true,
+        timer: 3500,
+    });
+}
+
+
+function handleFileFormWithMissingField(formattedResponse) {
+    let cleanBracketResponses = formattedResponse.replace(/^\[|\]$/g, '');
+    let newlineResponses = cleanBracketResponses.replace(/,\s*/g, ',\n');
+    let itemizeResponses = newlineResponses.split(',');
+
+    let errorMessages = itemizeResponses.map(message => `<li>${message.trim()}</li>`).join('');
+
+    Swal.fire({
+        icon: 'error',
+        title: 'Upload Error...',
+        html: `
+            <p><strong>Please check the error below:</strong></p>
+            <p class="mt-4">
+                <ul class="text-left">
+                    ${errorMessages}
+                </ul>
+            </p>
+            `,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        timerProgressBar: true,
+        timer: 5000,
+    });
+}
+
 function handleFormWithMissingField(formattedResponse) {
     let cleanBracketResponses = formattedResponse.replace(/^\[|\]$/g, '');
     let newlineResponses = cleanBracketResponses.replace(/,\s*/g, ',\n');
@@ -331,6 +371,30 @@ function handleReferencesWithMissingField(formattedResponse) {
         showConfirmButton: false,
         allowOutsideClick: false,
         timer: 2000,
+    });
+}
+
+function handleMissingFields(formattedResponse) {
+    let cleanBracketResponses = formattedResponse.replace(/^\[|\]$/g, '');
+    let newlineResponses = cleanBracketResponses.replace(/,\s*/g, ',\n');
+    let itemizeResponses = newlineResponses.split(',');
+
+    let errorMessages = itemizeResponses.map(message => `<li>${message.trim()}</li>`).join('');
+
+    Swal.fire({
+        icon: 'error',
+        title: 'Incomplete answers...',
+        html: `
+            <p><strong>'Please answer all of the question in the form.'</strong></p>
+            <p class="mt-4">
+                <ul class="text-left">
+                    ${errorMessages}
+                </ul>
+            </p>
+            `,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        timer: 5000,
     });
 }
 //Administrator's actions for Applicant's prompt.

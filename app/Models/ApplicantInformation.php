@@ -25,6 +25,10 @@ class ApplicantInformation extends Model
         'photo_formal',
         'disc_results',
         'positions',
+        'user_id',
+        'specify',
+        'days_available',
+        'negotiable'
     ];
 
     public function user()

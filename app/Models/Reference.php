@@ -20,6 +20,7 @@ class Reference extends Model
         'preferred_shift',
         'work_status',
         'services_offered',
+        'user_id',
     ];
 
     protected $casts = [

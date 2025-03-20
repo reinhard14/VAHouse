@@ -3,8 +3,8 @@
     <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5">Guidelines</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h1 class="modal-title">Guidelines</h1>
+                <button type="button" class="close" data-bs-dismiss="modal">x</button>
             </div>
             <div class="modal-body">
                 <div class="modal-body">
