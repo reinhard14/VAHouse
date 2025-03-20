@@ -183,7 +183,7 @@
         </div>
 
         <div class="col my-4">
-            <div class="row mb-3">
+            <div class="row">
                 <select id="skills" name="skills[]" class="select2" multiple>
                     @if (!empty($applicantSkills) && is_array($applicantSkills))
                         @foreach ($applicantSkills as $skill)
@@ -201,6 +201,9 @@
                     @endif
                 </select>
             </div>
+            <div class="row mb-3 justify-content-end">
+                <small class="text-orange">Please separate through comma<strong>(,)</strong> or tab to add multiple items.</small>
+            </div>
         </div>
     </div>
 
@@ -212,7 +215,7 @@
             </p>
         </div>
         <div class="col my-4">
-            <div class="row mb-3">
+            <div class="row">
                 <select id="softskills" name="softskills[]" class="select2" multiple>
                     @if (!empty($applicantSoftSkills) && is_array($applicantSoftSkills))
                         @foreach ($applicantSoftSkills as $softSkill)
@@ -230,6 +233,9 @@
                     @endif
                 </select>
             </div>
+            <div class="row mb-3 justify-content-end">
+                <small class="text-orange">Please separate through comma<strong>(,)</strong> or tab to add multiple items.</small>
+            </div>
         </div>
     </div>
 
@@ -241,7 +247,7 @@
             </p>
         </div>
         <div class="col my-4">
-            <div class="row mb-3">
+            <div class="row">
                 <select id="tools" name="tools[]" class="select2" multiple>
                     @if (!empty($applicantTools) && is_array($applicantTools))
                         @foreach ($applicantTools as $tool)
@@ -258,6 +264,9 @@
                         @endforeach
                     @endif
                 </select>
+            </div>
+            <div class="row mb-3 justify-content-end">
+                <small class="text-orange">Please separate through comma<strong>(,)</strong> or tab to add multiple items.</small>
             </div>
         </div>
     </div>
