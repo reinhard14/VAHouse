@@ -453,7 +453,7 @@
                                                             @if (is_null($user->information) || is_null($user->information->videolink) || $user->information->videolink === '')
                                                                 N/A
                                                             @else
-                                                                <a href="{{ route('view.pdf', $user->information->videolink) }}" target="_blank">Open</a>
+                                                                <a href="{{ route('view.file', $user->information->videolink) }}" target="_blank">Open</a>
                                                             @endif
                                                         </div>
                                                     </td>

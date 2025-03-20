@@ -139,7 +139,7 @@
                                 @if(!isset($user->information->portfolio) || is_null($user->information->portfolio))
                                     N/A
                                 @else
-                                    <a href="{{ route('view.pdf', $user->information->portfolio) }}" target="_blank">Open</a>
+                                    <a href="{{ route('view.file', $user->information->portfolio) }}" target="_blank">Open</a>
                                 @endif
                             </p>
                         </div>
@@ -149,7 +149,7 @@
                                 @if (!isset($user->information->resume) || is_null($user->information->resume))
                                     N/A
                                 @else
-                                    <a href="{{ route('view.pdf', $user->information->resume) }}" target="_blank">Open</a>
+                                    <a href="{{ route('view.file', $user->information->resume) }}" target="_blank">Open</a>
                                 @endif
                             </p>
                         </div>
@@ -159,7 +159,7 @@
                                 @if(!isset($user->information->photo_id) || is_null($user->information->photo_id))
                                     N/A
                                 @else
-                                    <a href="{{ route('view.pdf', $user->information->photo_id) }}" target="_blank">Open</a>
+                                    <a href="{{ route('view.file', $user->information->photo_id) }}" target="_blank">Open</a>
                                 @endif
                             </p>
                         </div>
@@ -169,7 +169,7 @@
                                 @if(!isset($user->information->photo_formal) || is_null($user->information->photo_formal))
                                     N/A
                                 @else
-                                    <a href="{{ route('view.pdf', $user->information->photo_formal) }}" target="_blank">Open</a>
+                                    <a href="{{ route('view.file', $user->information->photo_formal) }}" target="_blank">Open</a>
                                 @endif
                             </p>
                         </div>
@@ -182,7 +182,7 @@
                                 @if(!isset($user->information->disc_results) || is_null($user->information->disc_results))
                                     N/A
                                 @else
-                                    <a href="{{ route('view.pdf', $user->information->disc_results) }}" target="_blank">Open</a>
+                                    <a href="{{ route('view.file', $user->information->disc_results) }}" target="_blank">Open</a>
                                 @endif
                             </p>
                         </div>
@@ -204,13 +204,13 @@
                                     @if (is_null($inboundCall))
                                         <h6>Inbound file not available.</h6>
                                     @elseif (!is_null($inboundCall))
-                                        <p>Inbound: <a href="{{ route('view.pdf', $inboundCall) }}" target="_blank">Open</a></p>
+                                        <p>Inbound: <a href="{{ route('view.file', $inboundCall) }}" target="_blank">Open</a></p>
                                     @endif
 
                                     @if (is_null($outboundCall))
                                         <h6>Outbound file not available.</h6>
                                     @elseif (!is_null($outboundCall))
-                                        <p>Outbound: <a href="{{ route('view.pdf', $outboundCall) }}" target="_blank">Open</a></p>
+                                        <p>Outbound: <a href="{{ route('view.file', $outboundCall) }}" target="_blank">Open</a></p>
                                     @endif
                                 </div>
                             @else
