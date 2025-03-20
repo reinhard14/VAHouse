@@ -143,9 +143,9 @@
                                             'Others',
                                         ]  ?? [];
 
-                                        // $mergedPositions = array_merge($dynamicPositions, $staticPositions);
-                                        $applicantPositions = is_array($user->references->services_offered) ?
-                                                            $user->references->services_offered : [];
+                                        $mergedPositions = array_merge($dynamicPositions, $staticPositions);
+                                        // $applicantPositions = is_array($user->references->services_offered) ?
+                                        //                     $user->references->services_offered : [];
 
                                         $allPositions = array_unique($mergedPositions);
                                     @endphp
