@@ -18,6 +18,14 @@
     <div class="col">
         <form id="autoUploadForm">
             @csrf
+            <div class="row mb-3">
+                <div class="col">
+                    <small>
+                        <strong> Important Note: </strong>
+                        All files are required for submission. Failure to provide them will result in automatic rejection of your application.
+                    </small>
+                </div>
+            </div>
             <div class="row">
                 <div class="col">
                     <label for="">Valid ID</label>
