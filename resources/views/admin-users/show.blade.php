@@ -98,8 +98,8 @@
                                     'Terminated' => 'btn-danger'
                                 ];
 
-                                $status = $user->status->status;
-                                $buttonClass = $statusClasses[$status] ?? 'badge-default';
+                                $status = optional($user->status)->status;
+                                $buttonClass = $statusClasses[$status] ?? 'btn-default';
                             @endphp
 
                             <a href="#" class="btn {{ $buttonClass }} btn-block disabled"><b>{{ $user->status->status ?? 'na'}}</b></a>
