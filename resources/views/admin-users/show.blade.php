@@ -102,7 +102,7 @@
                                 $buttonClass = $statusClasses[$status] ?? 'badge-default';
                             @endphp
 
-                            <a href="#" class="btn {{ $buttonClass }} btn-block disabled"><b>{{ $user->status->status }}</b></a>
+                            <a href="#" class="btn {{ $buttonClass }} btn-block disabled"><b>{{ $user->status->status ?? 'na'}}</b></a>
 
                             <div class="row mt-2">
                                 <div class="col text-center">
