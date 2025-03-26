@@ -344,8 +344,12 @@ class AdminUserController extends Controller
                 ? Carbon::parse($user->age)
                 : null;
 
-        $formattedBirthdate = Carbon::parse($user->age)->format('F j, Y');
-
+        // make sure previous age does not cause error.
+        if (is_numeric($user->age)) {
+            $formattedBirthdate = $user->age;
+        } else {
+            $formattedBirthdate = Carbon::parse($user->age)->format('F j, Y');
+        }
 
         return view('admin-users.show', compact('user',
                                                 'skillset',
