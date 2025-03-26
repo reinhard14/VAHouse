@@ -132,7 +132,10 @@
                                 <div class="row">
                                     <b class="col-sm-4">Age</b>
                                     <div class="col-sm-8">
-                                        <p> {{ $user->age ?? 'unavailable' }} </p>
+                                        {{-- <p> {{ $user->age ?? 'unavailable' }} </p> --}}
+                                        <p>
+                                            {{ $ageNow ? $ageNow->diffForHumans(null, true) : '' }}
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="row">

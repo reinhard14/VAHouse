@@ -11,6 +11,7 @@ use App\Models\Skillset;
 use App\Models\Status;
 use App\Models\Tier;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
@@ -339,9 +340,13 @@ class AdminUserController extends Controller
         $skillset = Skillset::where('user_id', $user->id )
                         ->latest()
                         ->first();
+        $ageNow = !empty($user->age) && strtotime($user->age)
+                ? Carbon::parse($user->age)
+                : null;
 
         return view('admin-users.show', compact('user',
                                                 'skillset',
+                                                'ageNow'
                                         ));
     }
 
