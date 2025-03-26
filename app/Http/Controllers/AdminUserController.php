@@ -344,7 +344,7 @@ class AdminUserController extends Controller
                 ? Carbon::parse($user->age)
                 : null;
 
-        $formattedBirthdate = Carbon::parse($user->age)->diffForHumans();
+        $formattedBirthdate = Carbon::parse($user->age)->format('F j, Y');
 
 
         return view('admin-users.show', compact('user',
