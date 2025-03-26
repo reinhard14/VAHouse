@@ -138,12 +138,12 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="row">
+                                {{-- <div class="row">
                                     <b class="col-sm-4">Birthdate</b>
                                     <div class="col-sm-8">
                                         <p> {{ $user->age->diffForHumans() ?? 'unavailable' }} </p>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="row">
                                     <b class="col-sm-4">Gender</b>
                                     <div class="col-sm-8">
