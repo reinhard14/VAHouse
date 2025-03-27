@@ -152,7 +152,8 @@
                         $negotiable = optional($user->information)->negotiable; // Prevent null errors
                     @endphp
                     <input type="checkbox" id="negotiable" name="negotiable" class="formCheckInput" value="yes"
-                        {{ ($negotiable === "yes") ? 'checked' : '' }} >
+                        {{-- {{ ($negotiable === "yes") ? 'checked' : '' }} > --}}
+                        {{ isset($user->information) && $user->information->negotiable === "yes" ? 'checked' : '' }}>
                     <label for="negotiable" class="custom-label">  Salary is negotiable? <span class="text-muted">(Check if yes)</span></label>
                 </div>
             </div>
