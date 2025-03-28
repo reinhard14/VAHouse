@@ -203,7 +203,7 @@
                 </select>
             </div>
             <div class="row mb-3 justify-content-end">
-                <small class="text-orange">Please separate through comma<strong>(,)</strong> or tab to add multiple items.</small>
+                <small class="text-orange">Please separate through comma <strong>(,)</strong> or <strong>tab</strong> to add multiple items.</small>
             </div>
         </div>
     </div>
@@ -235,7 +235,7 @@
                 </select>
             </div>
             <div class="row mb-3 justify-content-end">
-                <small class="text-orange">Please separate through comma<strong>(,)</strong> or tab to add multiple items.</small>
+                <small class="text-orange">Please separate through comma <strong>(,)</strong> or <strong>tab</strong> to add multiple items.</small>
             </div>
         </div>
     </div>
@@ -267,7 +267,7 @@
                 </select>
             </div>
             <div class="row mb-3 justify-content-end">
-                <small class="text-orange">Please separate through comma<strong>(,)</strong> or tab to add multiple items.</small>
+                <small class="text-orange">Please separate through comma <strong>(,)</strong> or <strong>tab</strong> to add multiple items.</small>
             </div>
         </div>
     </div>
