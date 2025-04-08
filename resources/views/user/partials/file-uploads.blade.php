@@ -126,7 +126,7 @@
         $positions = $user->information->positions ?? '';
         $searchTerms = ['Callers', 'Tech VAs', 'General VA'];
 
-        $matchFound = array_filter($searchTerms, fn($term) => str_contains($positions, $term));
+        $matchFound = array_filter($searchTerms, fn($term) => strpos($positions, $term) !== false);
     @endphp
 
     @if(!empty($matchFound))
