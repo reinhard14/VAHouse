@@ -124,7 +124,7 @@
 
     @php
         $positions = $user->information->positions ?? '';
-        $searchTerms = ['Callers', 'Tech VAs', 'General VA'];
+        $searchTerms = ['Callers', 'Tech VAs', 'General Virtual Assistant'];
 
         $matchFound = array_filter($searchTerms, fn($term) => strpos($positions, $term) !== false);
     @endphp
