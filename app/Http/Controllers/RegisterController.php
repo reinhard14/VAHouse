@@ -92,6 +92,14 @@ class RegisterController extends Controller
 
         ]);
 
+        $user->status()->create([
+            'user_id' => $user->id,
+            'status' => 'New',
+            'created_at' => now(),
+            'updated_at' => now(),
+            'updated_by' => '',
+        ]);
+
         // Clear session data
         Session::forget('register_data');
 
