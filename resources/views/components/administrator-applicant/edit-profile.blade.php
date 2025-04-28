@@ -34,14 +34,14 @@
                             <label class="form-label" for="rate">Rate </label>
                             <input class="form-control mb-2" type="text" name="rate" value="{{ $user->information->rate ?? '' }}" required>
 
-                            <label class="form-label" for="experience">Experience </label>
-                            <input class="form-control mb-2" type="number" name="experience" value="{{ $user->information->experience ?? '' }}" required>
+                            {{-- <label class="form-label" for="experience">Experience </label>
+                            <input class="form-control mb-2" type="number" name="experience" value="{{ $user->information->experience ?? '' }}" required> --}}
 
                             <label class="form-label" for="skype">Skype </label>
                             <input class="form-control mb-2" type="text" name="skype" value="{{ $user->information->skype ?? '' }}" required>
 
-                            <label class="form-label" for="niche">Niche </label>
-                            <input class="form-control mb-2" type="text" name="niche" value="{{ $user->information->niche ?? '' }}" required>
+                            {{-- <label class="form-label" for="niche">Niche </label>
+                            <input class="form-control mb-2" type="text" name="niche" value="{{ $user->information->niche ?? '' }}" required> --}}
 
                             <label class="form-label" for="ub_account">Union Bank Name </label>
                             <input class="form-control mb-2" type="text" name="ub_account" value="{{ $user->information->ub_account ?? '' }}" required>

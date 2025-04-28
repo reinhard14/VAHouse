@@ -89,7 +89,7 @@
                         </div>
                     </div>
 
-                    <div class="row mb-3">
+                    {{-- <div class="row mb-3">
                         <div class="col">
                             @php
                                 $applicantWebsites = [];
@@ -117,7 +117,7 @@
                                 @endif
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="row mb-3">
                         <div class="col">

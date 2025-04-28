@@ -340,9 +340,8 @@ class AdminUserController extends Controller
         $skillset = Skillset::where('user_id', $user->id )
                         ->latest()
                         ->first();
-        $ageNow = !empty($user->age) && strtotime($user->age)
-                ? Carbon::parse($user->age)
-                : null;
+        $ageNow = !empty($user->age) && strtotime($user->age) ? Carbon::parse($user->age)
+                    : null;
 
         // make sure previous age does not cause error.
         if (is_numeric($user->age)) {

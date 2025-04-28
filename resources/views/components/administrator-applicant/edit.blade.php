@@ -42,8 +42,10 @@
                             <label for="suffix" class="form-label">Suffix </label>
                             <input type="text" name="suffix" class="form-control mb-2" value="{{ $user->suffix }}">
 
-                            <label for="age" class="form-label">Age </label>
-                            <input type="number" name="age" class="form-control mb-2" value="{{ $user->age }}" required>
+                            {{-- <label for="age" class="form-label">Age </label>
+                            <input type="number" name="age" class="form-control mb-2" value="{{ $user->age }}" required> --}}
+                            {{-- {{ $ageNow ? $ageNow->diffForHumans(null, true) : '' }} --}}
+
 
                             <label for="gender" class="form-label">Gender </label>
                             <select name="gender" class="form-control mb-2">

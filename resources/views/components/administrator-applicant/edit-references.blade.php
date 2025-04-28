@@ -50,26 +50,26 @@
                         </div>
                     </div>
 
-                    <div class="row mb-2">
+                    {{-- <div class="row mb-2">
                         <div class="col">
                             <label for="start_date" class="form-label">Start Date </label>
                             <input type="date" name="start_date" class="form-control mb-2" value="{{ $user->references->start_date ?? '' }}" required>
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div class="row mb-2">
+                    {{-- <div class="row mb-2">
                         <div class="col">
                             <label for="department" class="form-label">Department </label>
                             <input type="text" name="department" class="form-control mb-2" value="{{ $user->references->department ?? '' }}" required>
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div class="row mb-2">
+                    {{-- <div class="row mb-2">
                         <div class="col">
                             <label for="team_leader" class="form-label">Team Leader </label>
                             <input type="text" name="team_leader" class="form-control mb-2" value="{{ $user->references->team_leader ?? '' }}" required>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="row mb-2">
                         <div class="col">
@@ -105,7 +105,7 @@
                         </div>
                     </div>
 
-                    <div class="row mb-2">
+                    {{-- <div class="row mb-2">
                         <div class="col">
                             <label for="services_offered" class="form-label">Services Offered</label>
                             @if(is_null($user->references))
@@ -124,7 +124,6 @@
                             @else
                                 <select name="services_offered[]" class="form-control select2 services" multiple="multiple">
                                     @php
-                                        // $applicantPositions = $user->references->services_offered;
                                         $applicantPositions = is_array($user->references->services_offered) ?
                                                                 $user->references->services_offered : [];
 
@@ -144,15 +143,12 @@
                                         ]  ?? [];
 
                                         $mergedPositions = array_merge($dynamicPositions, $staticPositions);
-                                        // $applicantPositions = is_array($user->references->services_offered) ?
-                                        //                     $user->references->services_offered : [];
 
                                         $allPositions = array_unique($mergedPositions);
                                     @endphp
 
                                     @if (!empty($applicantPositions) || is_array($applicantPositions))
                                         @foreach ($allPositions as $position)
-                                            {{-- <option value="{{ $position }}" {{ in_array($position, $applicantPositions) ? 'selected' : '' }}>{{ $position }}</option> --}}
                                             <option value="{{ $position }}" {{ in_array($position, $applicantPositions) ? 'selected' : '' }}>{{ $position }}</option>
                                         @endforeach
                                     @else
@@ -163,8 +159,7 @@
                                 </select>
                             @endif
                         </div>
-                    </div>
-
+                    </div> --}}
                 </div>
 
                 <small class="text-left ml-3">
