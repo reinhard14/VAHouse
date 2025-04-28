@@ -107,7 +107,7 @@ class User extends Authenticatable
         return $this->hasOne(UserFormCompletion::class);
     }
 
-    public function employment() {
+    public function employments() {
         return $this->hasMany(Employment::class);
     }
 }

@@ -122,6 +122,7 @@
                         <ul class="nav nav-pills">
                             <li class="nav-item"><a class="nav-link active" href="#information" data-toggle="tab">Information</a></li>
                             <li class="nav-item"><a class="nav-link" href="#skillset" data-toggle="tab">Skillset</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#employment" data-toggle="tab">Employment</a></li>
                             <li class="nav-item"><a class="nav-link" href="#attachments" data-toggle="tab">Attachments</a></li>
                         </ul>
                     </div><!-- /.card-header -->
@@ -357,6 +358,57 @@
                                         @else
                                             <p>No softskills available.</p>
                                         @endif
+                                    </div>
+                                </div>
+
+                                <div class="col d-flex justify-content-center mt-5">
+                                    <div>
+                                        <a href="#formatted-form-modal-{{ $user->id }}" class="btn btn-primary" data-bs-toggle="modal"><i class="bi bi-file-richtext mr-1"></i>Generate Form</a>
+                                    </div>
+                                    <div class="ml-3">
+                                        <a href="{{ route('admin.users.index') }}" class="btn btn-secondary" role="button"><i class="bi bi-arrow-return-right mr-1"></i>Back</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.tab-pane attachments-->
+
+                            <div class="tab-pane" id="employment">
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <table class="table table-hover">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col">Employment Type</th>
+                                                <th scope="col">Date Started</th>
+                                                <th scope="col">Date Ended</th>
+                                                <th scope="col">Job Position</th>
+                                                <th scope="col">Company Details</th>
+                                                <th scope="col">Job Details</th>
+                                              </tr>
+                                            </thead>
+
+                                            @forelse ($user->employments as $employment)
+                                                <tbody>
+                                                    <tr>
+                                                        <td>{{ $employment->employment_type ?? '' }}</td>
+                                                        <td>{{ $employment->date_started ?? ''  }}</td>
+                                                        <td>{{ $employment->date_ended ?? ''  }}</td>
+                                                        <td>{{ $employment->job_position ?? ''  }}</td>
+                                                        <td>{{ $employment->company_details ?? ''  }}</td>
+                                                        <td>{{ $employment->job_details ?? ''  }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            @empty
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="6">
+                                                            <h5 class="text-center p-3">No data available.</h5>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            @endforelse
+
+                                          </table>
                                     </div>
                                 </div>
 

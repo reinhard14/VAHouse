@@ -190,7 +190,7 @@ class UserController extends Controller
                 ? Carbon::parse($user->age)
                 : null;
 
-        $workList = $user->employment->pluck('job_position')->filter()->implode(', ') ?: 'No job positions available';
+        $workList = $user->employments->pluck('job_position')->filter()->implode(', ') ?: 'No job positions available';
 
         return view('user.view-profile', compact('user', 'ageNow', 'workList'));
 
