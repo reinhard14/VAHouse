@@ -294,7 +294,8 @@ class UserController extends Controller
         $userInformation = User::with('information', 'skillsets', 'references')->find($id);
 
         // Decode JSON data
-        function decodeJsonArray($data) {
+        function decodeJsonArray($data)
+        {
             return isset($data) && !is_null($data) ? json_decode($data, true) : [];
         }
         // $decodeSkillset = function ($data) {

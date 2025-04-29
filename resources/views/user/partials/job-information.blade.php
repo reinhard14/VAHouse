@@ -71,12 +71,14 @@
             <div class="row">
                 <div class="col">
                     <input type="checkbox" id="parttime" name="work_status[]" class="formCheckInput" value="Part-Time"
-                        {{ in_array("Part-Time", $workstatusItemize) ? 'checked' : '' }} >
+                        {{-- {{ in_array("Part-Time", $workstatusItemize) ? 'checked' : '' }} > --}}
+                        {{ is_array($workstatusItemize) && in_array("Part-Time", $workstatusItemize) ? 'checked' : '' }} >
                     <label for="parttime" class="custom-label"> Part-Time</label>
                 </div>
                 <div class="col">
                     <input type="checkbox" id="fulltime" name="work_status[]" class="formCheckInput" value="Full-Time"
-                        {{ in_array("Full-Time", $workstatusItemize) ? 'checked' : '' }} >
+                        {{-- {{ in_array("Full-Time", $workstatusItemize) ? 'checked' : '' }} > --}}
+                        {{ is_array($workstatusItemize) && in_array("Full-Time", $workstatusItemize) ? 'checked' : '' }} >
                     <label for="fulltime" class="custom-label"> Full-Time</label>
                 </div>
             </div>
@@ -84,7 +86,8 @@
             <div class="row" id="callersRow">
                 <div class="col">
                     <input type="checkbox" id="negotiable" name="work_status[]" class="formCheckInput" value="Negotiable"
-                        {{ in_array("Negotiable", $workstatusItemize) ? 'checked' : '' }} >
+                        {{-- {{ in_array("Negotiable", $workstatusItemize) ? 'checked' : '' }} > --}}
+                        {{ is_array($workstatusItemize) && in_array("Negotiable", $workstatusItemize) ? 'checked' : '' }} >
                     <label for="negotiable" class="custom-label"> Negotiable</label>
                 </div>
             </div>
@@ -152,7 +155,6 @@
                         $negotiable = optional($user->information)->negotiable; // Prevent null errors
                     @endphp
                     <input type="checkbox" id="negotiable" name="negotiable" class="formCheckInput" value="yes"
-                        {{-- {{ ($negotiable === "yes") ? 'checked' : '' }} > --}}
                         {{ isset($user->information) && $user->information->negotiable === "yes" ? 'checked' : '' }}>
                     <label for="negotiable" class="custom-label">  Salary is negotiable? <span class="text-muted">(Check if yes)</span></label>
                 </div>
@@ -160,6 +162,12 @@
         </div>
     </div>
 
+    @php
+        $description = $user->references->services_offered ?? '';
+        if (is_array($description)) {
+            $description = implode("\n", $description); // newline-separated
+        }
+    @endphp
     <div class="row border-bottom mr-3">
         <div class="col mt-4">
             <h6>Your Job Profile Description</h6>
@@ -169,7 +177,7 @@
         </div>
         <div class="col my-4">
             <div class="row">
-                <textarea name="services_offered" class="form-control" placeholder="Please enter description here..." required>{{ $user->references->services_offered ?? '' }}
+                <textarea name="services_offered" class="form-control" placeholder="Please enter description here..." required>{{ $description ?? '' }}
                 </textarea>
             </div>
         </div>
