@@ -136,7 +136,7 @@
                 <div class="card-body">
                     <h5 class="text-muted mb-3">Employment History</h5>
 
-                    @forelse ($user->employment as $employment)
+                    @forelse ($user->employments as $employment)
                         <div class="card p-4">
                             <small class="text-muted">
                                 {{ $employment->date_started ?? 'na' }} - {{ $employment->date_ended ?? 'na' }}
