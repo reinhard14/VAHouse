@@ -165,9 +165,10 @@
     @php
         $description = $user->references->services_offered ?? '';
         if (is_array($description)) {
-            $description = implode("\n", $description); // newline-separated
+            $description = implode("\n", $description);
         }
     @endphp
+
     <div class="row border-bottom mr-3">
         <div class="col mt-4">
             <h6>Your Job Profile Description</h6>

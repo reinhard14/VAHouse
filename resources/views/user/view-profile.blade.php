@@ -76,12 +76,19 @@
                 </div>
             </div>
 
+            @php
+                $description = $user->references->services_offered ?? '';
+                if (is_array($description)) {
+                    $description = implode("\n", $description);
+                }
+            @endphp
+
             <div class="card">
                 <div class="card-body">
                     <h5 class="text-muted mb-4">Profile Description</h5>
 
                     <p class="">
-                        {{ $user->references->services_offered ?? ''}}
+                        {{ $description ?? ''}}
                     </p>
                 </div>
             </div>
