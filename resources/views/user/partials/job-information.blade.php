@@ -228,7 +228,7 @@
             <div class="row">
                 <select id="softskills" name="softskills[]" class="select2" multiple>
                     @if (!empty($applicantSoftSkills) && is_array($applicantSoftSkills))
-                        @foreach ($applicantSoftSkills as $softSkill)
+                        @foreach ($applicantSoftSkills ?? [] as $softSkill)
                             <option value="{{ $softSkill }}" selected>{{ $softSkill }}</option>
                         @endforeach
 
@@ -305,7 +305,13 @@
             <div class="row text-right mb-3">
                 <div class="col">
                     <button type="button" data-bs-toggle="modal" data-bs-target="#create-details-modal" class="btn btn-vah-orange btn-sm">Add New </button>
-
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-right">
+                    <small>
+                        Entries made: {{ $user->employments->count() ?? '0'}}
+                    </small>
                 </div>
             </div>
         </div>

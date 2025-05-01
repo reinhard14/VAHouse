@@ -316,7 +316,7 @@ class UserController extends Controller
         $applicantTools = decodeJsonArray($user->skillsets->tool ?? null);
 
         $availableSkills = array_diff($skills, $applicantSkills);
-        $availableSoftSkills = array_diff($softskills, $applicantSoftSkills);
+        $availableSoftSkills = array_diff($softskills ?? [], $applicantSoftSkills ?? []);
         $availableTools = array_diff($tools, $applicantTools);
         $availableDays = array_diff($days, $daysItemize);
 
