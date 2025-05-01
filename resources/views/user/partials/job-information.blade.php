@@ -283,15 +283,29 @@
 
     <div class="row mr-3">
         <div class="col mt-4">
-            <h6>Employment History</h6>
-            <p class="">
-                Add your employment history
-            </p>
+            <div class="row">
+                <div class="col">
+                    <h6>Employment History</h6>
+                    <p class="">
+                        Add your employment history
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <small class="text-orange">
+                        <strong> Important Note: </strong>
+                        Please click <strong>"Add New"</strong> button to add your employment history.
+                        You can add multiple entries. Failure to provide them will result in automatic rejection of your application.
+                    </small>
+                </div>
+            </div>
         </div>
         <div class="col my-4">
             <div class="row text-right mb-3">
                 <div class="col">
                     <button type="button" data-bs-toggle="modal" data-bs-target="#create-details-modal" class="btn btn-vah-orange btn-sm">Add New </button>
+
                 </div>
             </div>
         </div>
