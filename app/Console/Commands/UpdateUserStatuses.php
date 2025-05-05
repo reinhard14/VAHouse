@@ -41,16 +41,31 @@ class UpdateUserStatuses extends Command
         $users = DB::table('users')->get();
 
         foreach ($users as $user) {
-            DB::table('statuses')->updateOrInsert(
-                ['user_id' => $user->id],
-                [
+            $existingStatus = DB::table('statuses')
+                ->where('user_id', $user->id)
+                ->first();
+
+            if (!$existingStatus) {
+                // No record at all — insert new
+                DB::table('statuses')->insert([
+                    'user_id' => $user->id,
                     'status' => 'New',
                     'created_at' => now(),
                     'updated_at' => now(),
-                ]
-            );
+                ]);
+            } elseif (is_null($existingStatus->status)) {
+                // Record exists but status is null — update it
+                DB::table('statuses')
+                    ->where('user_id', $user->id)
+                    ->update([
+                        'status' => 'New',
+                        'updated_at' => now(),
+                    ]);
+            }
+            // else: record exists and has a value — do nothing
         }
 
-        $this->info('Statuses updated successfully for all users.');
+        $this->info('Statuses updated for users with no status or null status.');
     }
+
 }
