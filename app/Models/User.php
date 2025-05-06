@@ -17,7 +17,7 @@ use App\Models\ApplicantInformation;
 use App\Models\CallSample;
 use App\Models\Reference;
 use App\Models\UserFormCompletion;
-
+use App\Models\Department;
 
 
 class User extends Authenticatable
@@ -109,5 +109,9 @@ class User extends Authenticatable
 
     public function employments() {
         return $this->hasMany(Employment::class);
+    }
+
+    public function department() {
+        return $this->hasOne(Department::class);
     }
 }
