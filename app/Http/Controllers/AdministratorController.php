@@ -200,7 +200,7 @@ class AdministratorController extends Controller
                 Rule::unique('users')->ignore($user->user_id),
             ],
             'department' => 'required',
-            'password' => ['required',
+            'password' => ['nullable',
                         RulesPassword::min(8)
                         ->letters()
                         ->mixedCase()

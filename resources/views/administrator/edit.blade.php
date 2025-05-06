@@ -112,7 +112,7 @@
 
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" name="password" data-toggle="password" required>
+                                <input type="password" class="form-control" name="password" data-toggle="password">
                             </div>
 
                             <div class="d-flex justify-content-center">
