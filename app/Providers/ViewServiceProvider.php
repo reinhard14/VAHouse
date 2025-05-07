@@ -25,11 +25,8 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Bind $department to the layout
-        View::composer('layouts.admin-master-layout.blade', function ($view) {
-            $view->with('department', optional(auth()->user())->name);
-            // $view->with('department', optional(auth()->user()->department)->code);
-
+        View::composer('layouts.admin-master-layout', function ($view) {
+            $view->with('adminDepartment', optional(auth()->user()->administrator)->department);
         });
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Administrator;
 use App\Models\Employment;
 use App\Models\Role;
 use App\Models\Skillset;
@@ -111,7 +112,7 @@ class User extends Authenticatable
         return $this->hasMany(Employment::class);
     }
 
-    public function department() {
-        return $this->hasOne(Department::class);
+    public function administrator() {
+        return $this->hasOne(Administrator::class);
     }
 }
