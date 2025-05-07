@@ -8,7 +8,7 @@
             <p>Dashboard</p>
             </a>
         </li>
-        @if($adminDepartment !== 'Management Team' && !$adminDepartment !== 'Virtual Assistant Managers')
+        @if($adminDepartment !== 'Management Team' && !$adminDepartment !== 'Virtual Assistant Manager')
             <li class="nav-item" >
                 <a href="{{ route('administrator.index') }}" class="nav-link {{ request()->segment(2) === 'administrators' ? 'active' : '' }}">
                 <i class="bi bi-person-fill-gear"></i>
@@ -23,7 +23,7 @@
             </a>
         </li>
         {{-- {{ $adminDepartment }} --}}
-        @if($adminDepartment !== 'Management Team' && !$adminDepartment !== 'Virtual Assistant Managers')
+        @if($adminDepartment !== 'Management Team' && $adminDepartment !== 'Virtual Assistant Manager')
             <li class="nav-item {{ request()->segment(2) === 'department' ? 'menu-open' : 'menu' }}">
                 <a href="{{ route('administrator.index') }}" class="nav-link">
                     <i class="bi bi-tools"></i>
