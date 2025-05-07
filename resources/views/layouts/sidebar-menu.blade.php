@@ -8,12 +8,14 @@
             <p>Dashboard</p>
             </a>
         </li>
-        <li class="nav-item" >
-            <a href="{{ route('administrator.index') }}" class="nav-link {{ request()->segment(2) === 'administrators' ? 'active' : '' }}">
-            <i class="bi bi-person-fill-gear"></i>
-            <p>Administrators</p>
-            </a>
-        </li>
+        @if($adminDepartment !== 'Management Team' && !$adminDepartment !== 'Virtual Assistant Managers')
+            <li class="nav-item" >
+                <a href="{{ route('administrator.index') }}" class="nav-link {{ request()->segment(2) === 'administrators' ? 'active' : '' }}">
+                <i class="bi bi-person-fill-gear"></i>
+                <p>Administrators</p>
+                </a>
+            </li>
+        @endif
         <li class="nav-item" >
             <a href="{{ route('admin.users.index') }}" class="nav-link {{ (request()->segment(2) === 'users' && request()->segment(2) === 'users') ? 'active' : '' }}">
             <i class="bi bi-file-person"></i>
