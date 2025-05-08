@@ -91,9 +91,16 @@
                                 @foreach ($latestUsers as $loopIndex => $user)
                                     <tr>
                                         {{-- <td style="{{ $loopIndex === 0 ? 'border-top: 0;' : '' }}"> --}}
-                                        <td @if ($loop->first) class="no-top-border" @endif>
+                                        <td @if ($loop->first) class="no-top-border align-middle" @endif style="padding-right: 0;" class="align-items-center">
+                                            @if (!isset($user->information->photo_formal) || is_null($user->information->photo_formal))
+                                                <img src="{{ asset('dist/img/user_default.png') }}" alt="va-avatar" class="dashboard-image">
+                                            @else
+                                                <img src="{{ asset('storage/' . $user->information->photo_formal) }}" alt="va-photo" class="dashboard-image">
+                                            @endif
+                                        </td>
+                                        <td @if ($loop->first) class="no-top-border" @endif style="padding-left: 0;">
                                             {{ $user->name ?? '' }} {{ $user->lastname ?? '' }}
-                                            <small class="d-block"> {{ $user->email ?? ''}} </small>
+                                            <small class="d-block text-muted"> {{ $user->email ?? ''}} </small>
                                         </td>
                                         {{-- <td style="{{ $loopIndex === 0 ? 'border-top: 0;' : '' }}"> --}}
                                         <td @if ($loop->first) class="no-top-border" @endif>

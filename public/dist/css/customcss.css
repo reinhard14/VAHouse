@@ -194,3 +194,11 @@ img.overlap-image {
 .no-top-border {
     border-top: 0 !important;
 }
+
+img.dashboard-image {
+    z-index: 10;
+    border-radius: 50%;
+    object-fit: cover;
+    height: 30px;
+    width: 30px;
+}
