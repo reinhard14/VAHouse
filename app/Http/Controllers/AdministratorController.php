@@ -40,6 +40,9 @@ class AdministratorController extends Controller
             'All' => 0,
         ];
 
+        $latestUsers = User::where('role_id', $AGENTS)->latest()->take(6)->get();
+
+
         // $agentsByExperience = $agents->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
         //                             ->select('users.*', 'applicant_information.experience')
         //                             ->get();
@@ -60,6 +63,7 @@ class AdministratorController extends Controller
                                     'agents',
                                     'recentUsers',
                                     'levels',
+                                    'latestUsers',
                                     // 'agentsByExperience',
                                 ));
     }

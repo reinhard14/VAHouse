@@ -77,30 +77,37 @@
             </div>
 
             {{-- FILTERS ROW --}}
-            {{-- <div class="row">
+            <div class="row">
                 <div class="col">
-                    <div class="accordion">
-                        <div id="collapseOne" class="collapse show">
-                            <div class="accordion-body">
-                                <form method="GET" action="#">
-                                    @csrf
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4 mb-3">
-                                            <label for="lms" class="d-block">lms</label>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-3">
+                        <h5 class="mb-3">
+                            Latest Applicants
+                        </h5>
 
-                                            <select id="lms" name="lms" class="form-control select2" multiple="multiple">
-                                                <option value="lms">
-                                                    lms
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                        <table class="table table-hover table-no-top-border">
+                            <tbody>
+                                @foreach ($latestUsers as $loopIndex => $user)
+                                    <tr>
+                                        {{-- <td style="{{ $loopIndex === 0 ? 'border-top: 0;' : '' }}"> --}}
+                                        <td @if ($loop->first) class="no-top-border" @endif>
+                                            {{ $user->name ?? '' }} {{ $user->lastname ?? '' }}
+                                            <small class="d-block"> {{ $user->email ?? ''}} </small>
+                                        </td>
+                                        {{-- <td style="{{ $loopIndex === 0 ? 'border-top: 0;' : '' }}"> --}}
+                                        <td @if ($loop->first) class="no-top-border" @endif>
+                                            <strong>
+                                                {{ $user->employments()->latest('created_at')->first()?->job_position ?? '' }}
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </div> --}}
+            </div>
 
         </div>
         <!-- /.container-fluid -->

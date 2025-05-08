@@ -190,3 +190,7 @@ img.overlap-image {
     background: #f3f3f3;
     border-radius: 5px;
 }
+
+.no-top-border {
+    border-top: 0 !important;
+}
