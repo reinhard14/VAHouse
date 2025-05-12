@@ -34,6 +34,11 @@ Route::prefix('administrator')
             'store' => 'administrator.store',
             'update' => 'administrator.update',
         ]);
+
+        Route::get('my-information/edit/{id}', [AdministratorController::class, 'editMyInformation'])->name('administrator.edit-myinformation');
+        // Route::get('administrator/my-information/{id}', [AdministratorController::class, 'updateMyInformation'])->name('administrator.myinformation');
+
+
         // Route resources for Users list in Admin side
         Route::resource('users', AdminUserController::class)->names([
             'index' => 'admin.users.index',

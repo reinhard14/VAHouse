@@ -8,6 +8,14 @@
             <p>Dashboard</p>
             </a>
         </li>
+        @if($adminDepartment === 'Management Team' || $adminDepartment === 'Virtual Assistant Manager')
+            <li class="nav-item">
+                <a href="{{ route('administrator.edit-myinformation', Auth::id()) }}" class="nav-link  {{ request()->segment(2) === 'my-information' ? 'active' : '' }}">
+                <i class="bi bi-person-gear"></i>
+                <p>My Information</p>
+                </a>
+            </li>
+        @endif
         @if($adminDepartment !== 'Management Team' && $adminDepartment !== 'Virtual Assistant Manager')
             <li class="nav-item" >
                 <a href="{{ route('administrator.index') }}" class="nav-link {{ request()->segment(2) === 'administrators' ? 'active' : '' }}">
