@@ -293,7 +293,7 @@
                     <span class="d-block text-muted font-weight-bold">
                         Skype
                     </span>
-                    <small class="text-muted">{{ $user->information->skype ?? '' }}</small>
+                    <small class="text-muted">{{ $user->information->skype ?? 'n/a' }}</small>
 
                     <span class="d-block text-muted font-weight-bold">
                         Email
