@@ -68,7 +68,7 @@ class UserController extends Controller
             'photo_id' => 'required|max:64000',
             'photo_formal' => 'required|max:64000',
             //applicant info
-            'skype' => 'required',
+            'skype' => 'nullable',
             'niche' => 'required',
             'ub_account' => 'required',
             'ub_number' => 'required',
@@ -342,7 +342,7 @@ class UserController extends Controller
             'civil_status' => 'required',
             'education' => 'required',
             'degree' => 'required',
-            'skype' => 'required',
+            'skype' => 'nullable',
             'ub_account' => 'required',
             'ub_number' => 'required',
             'emergency_person' => 'required',
@@ -393,7 +393,6 @@ class UserController extends Controller
                 'photo_formal' => $formalPath,
             ]
         );
-        // dd($formalPath);
 
         //Emergency Contact Information
         //update existing references.

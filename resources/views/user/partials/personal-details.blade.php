@@ -137,9 +137,9 @@
     <div class="row mb-3 border-bottom">
         <div class="col-md-6">
             <div class="form-group">
-                <label for="skype" class="custom-label">Skype <span class="text-danger">*</span> </label>
+                <label for="skype" class="custom-label">Skype</label>
 
-                <input id="skype" type="text" name="skype" class="form-control" value="{{ $user->information->skype ?? '' }}" required>
+                <input id="skype" type="text" name="skype" class="form-control" value="{{ $user->information->skype ?? '' }}">
                 <small class="text-muted">Find your Skype ID next to "Skype Name". It's under the "Profile" header.</small>
             </div>
         </div>
