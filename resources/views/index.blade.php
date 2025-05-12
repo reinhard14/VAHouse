@@ -28,6 +28,12 @@
             <div class="row">
                 <div class="col-lg-3 col-6">
                     <div class="card p-3">
+                        <p><i class="bi bi-briefcase-fill"></i> New Applicants (Monthly)</p>
+                        <h1>{{ $recentUsers->count() }}</h1>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="card p-3">
                         <p><i class="bi bi-briefcase-fill"></i> Total Users</p>
                         <h1>{{ $users->count() }}</h1>
                     </div>
@@ -42,12 +48,6 @@
                     <div class="card p-3">
                         <p><i class="bi bi-briefcase-fill"></i> Admin Account</p>
                         <h1>{{ $admins->count() }}</h1>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <div class="card p-3">
-                        <p><i class="bi bi-briefcase-fill"></i> Newly registered users</p>
-                        <h1>{{ $recentUsers->count() }}</h1>
                     </div>
                 </div>
             </div>

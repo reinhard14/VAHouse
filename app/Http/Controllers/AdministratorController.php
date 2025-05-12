@@ -42,20 +42,11 @@ class AdministratorController extends Controller
 
         $latestUsers = User::where('role_id', $AGENTS)->latest()->take(6)->get();
 
-
-        // $agentsByExperience = $agents->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
-        //                             ->select('users.*', 'applicant_information.experience')
-        //                             ->get();
-        // $agentsLevel = User::where('role_id', $AGENTS)
-        //                 ->with('information:experience')
-        //                 ->get();
-
-        // Calculate the start and end dates of one week ago
-        $startOfLastWeek = Carbon::now()->subWeek()->startOfWeek();
+        $startOfLastMonth = Carbon::now()->subMonth()->startOfMonth();
         $endOfLastWeek = Carbon::now();
 
         // Query users created exactly one week ago
-        $recentUsers = User::whereBetween('created_at', [$startOfLastWeek, $endOfLastWeek])->get();
+        $recentUsers = User::whereBetween('created_at', [$startOfLastMonth, $endOfLastWeek])->get();
 
         return view('index', compact('departments',
                                     'users',
