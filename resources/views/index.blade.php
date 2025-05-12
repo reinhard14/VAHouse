@@ -27,51 +27,27 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3 col-6">
-                    <div class="small-box bg-primary">
-                    <div class="inner">
-                        <h3>{{ $users->count() }}</h3>
-                        <p>Total Users</p>
-                    </div>
-                    <div class="icon">
-                        <i class="bi bi-person-fill"></i>
-                    </div>
-                    <a href="{{ route('admin.users.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <div class="card p-3">
+                        <p><i class="bi bi-briefcase-fill"></i> Total Users</p>
+                        <h1>{{ $users->count() }}</h1>
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
-                    <div class="small-box bg-info">
-                        <div class="inner">
-                            <h3>{{ $agents->count() }}</h3>
-                            <p>Applicants</p>
-                        </div>
-                        <div class="icon">
-                            <i class="bi bi-person-lines-fill"></i>
-                        </div>
-                        <a href="{{ route('admin.users.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <div class="card p-3">
+                        <p><i class="bi bi-briefcase-fill"></i> Applicants</p>
+                        <h1>{{ $agents->count() }}</h1>
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
-                    <div class="small-box bg-success">
-                        <div class="inner">
-                            <h3>{{ $admins->count() }}</h3>
-                            <p>Admin users</p>
-                        </div>
-                        <div class="icon">
-                            <i class="bi bi-person-fill-gear"></i>
-                        </div>
-                        <a href="{{ route('administrator.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <div class="card p-3">
+                        <p><i class="bi bi-briefcase-fill"></i> Admin Account</p>
+                        <h1>{{ $admins->count() }}</h1>
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>{{ $recentUsers->count() }}</h3>
-                            <p>Newly registered users</p>
-                        </div>
-                        <div class="icon">
-                            <i class="bi bi-person-fill-exclamation"></i>
-                        </div>
-                        <a href="{{ route('admin.users.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <div class="card p-3">
+                        <p><i class="bi bi-briefcase-fill"></i> Newly registered users</p>
+                        <h1>{{ $recentUsers->count() }}</h1>
                     </div>
                 </div>
             </div>
