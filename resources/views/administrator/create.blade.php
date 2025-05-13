@@ -48,7 +48,7 @@
 
                             <div class="form-group">
                                 <label for="age">Age</label>
-                                <input type="number" name="age" class="form-control" min="18" placeholder="Age.." value="{{ old('age') }}" required>
+                                <input type="date" name="age" class="form-control" value="{{ old('age') }}" required>
                             </div>
 
                             <div class="form-group">
