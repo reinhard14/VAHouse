@@ -85,14 +85,17 @@
                                 <label for="department">Department</label>
                                 <select class="form-control" id="department" name="department" {{ $departments->isEmpty() ? 'disabled' : ''}}>
                                     @foreach ($departments as $department)
-                                        <option value="{{ $department->name ?? '' }}">{{ $department->name ?? '' }}</option>
+                                        <option value="{{ $department->name ?? '' }}"
+                                            {{ ($department->name ?? '') == ($administrator->administrator->department ?? '') ? 'selected' : '' }}>
+                                            {{ $department->name ?? '' }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label for="position">Position</label>
-                                <input type="text" class="form-control" value="{{ $administrator->position ?? '' }}" name="position" required>
+                                <input type="text" class="form-control" value="{{ $administrator->administrator->position ?? '' }}" name="position" required>
                             </div>
 
                             <div class="form-group">
