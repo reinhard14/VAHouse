@@ -32,7 +32,10 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <div class="m-3">
-                        <form method="post" action="{{ route('administrator.update', $administrator->id) }}" id="routeAdminEditForm">
+                        {{-- @dd($administrator->id) --}}
+                        <form method="post" action="{{ route('administrator.update-myinformation', $administrator->id) }}">
+                        {{-- <form method="post" action="{{ route('administrator.update-myinformation', $administrator->id) }}" id="routeAdminEditForm"> --}}
+
                             @method('PUT')
                             @csrf
                             <input type="hidden" name="saving_option" id="savingOption" value="">

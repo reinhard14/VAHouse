@@ -36,7 +36,7 @@ Route::prefix('administrator')
         ]);
 
         Route::get('my-information/edit/{id}', [AdministratorController::class, 'editMyInformation'])->name('administrator.edit-myinformation');
-        // Route::get('administrator/my-information/{id}', [AdministratorController::class, 'updateMyInformation'])->name('administrator.myinformation');
+        Route::put('my-information/update/{id}', [AdministratorController::class, 'updateMyInformation'])->name('administrator.update-myinformation');
 
 
         // Route resources for Users list in Admin side

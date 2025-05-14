@@ -241,59 +241,58 @@ class AdministratorController extends Controller
             return redirect()->route('administrator.show', compact('administrator'))->with('success', 'Administrator information successfully edited.');
         }
     }
-    // public function updateMyInformation(Request $request, $id)
-    // {
-    //     $user = Administrator::find($id);
-    //     $this->validate($request, [
-    //         'name' => 'required',
-    //         'lastname' => 'required',
-    //         'contactnumber' => 'required',
-    //         'age' => 'required|gte:18|lte:60',
-    //         'gender' => 'required',
-    //         'email' => [
-    //             'required',
-    //             'email',
-    //             Rule::unique('users')->ignore($user->user_id),
-    //         ],
-    //         'department' => 'required',
-    //         'password' => ['nullable',
-    //                     RulesPassword::min(8)
-    //                     ->letters()
-    //                     ->mixedCase()
-    //                     ->numbers()
-    //                     ->symbols()
-    //                     ->uncompromised()
-    //                 ]
-    //     ]);
+    public function updateMyInformation(Request $request, $id)
+    {
+        $user = User::where('id', $id)->firstOrFail();
+        // dd($user);
+        // dd($request->all());
+        $this->validate($request, [
+            'name' => 'required',
+            'lastname' => 'required',
+            'contactnumber' => 'required',
+            'age' => 'required',
+            'gender' => 'required',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->ignore($user->id),
+            ],
+            'department' => 'required',
+            'password' => ['nullable',
+                        RulesPassword::min(8)
+                        ->letters()
+                        ->mixedCase()
+                        ->numbers()
+                        ->symbols()
+                        ->uncompromised()
+                    ]
+        ]);
 
-    //     $administrator = Administrator::find($id);
-    //     $administrator->department = $request->input('department');
-    //     $administrator->position = $request->input('position');
-    //     $administrator->save();
+        $administrator = Administrator::where('user_id', $id)->firstOrFail();
+        $administrator->department = $request->input('department');
+        $administrator->position = $request->input('position');
+        $administrator->save();
 
-    //     $user_id = $administrator->user_id;
+        // $user_id = $administrator->user_id;
 
-    //     $user = User::find($user_id);
-    //     $user->name = $request->input('name');
-    //     $user->lastname = $request->input('lastname');
-    //     $user->contactnumber = $request->input('contactnumber');
-    //     $user->email = $request->input('email');
-    //     $user->age = $request->input('age');
-    //     $user->gender = $request->input('gender');
-    //     $user->education = $request->input('education');
-    //     $user->address = $request->input('address');
-    //     if ($request->filled('password')) {
-    //         $user->password = bcrypt($request->input('password'));
-    //     }
-    //     // $user->password = bcrypt($request->input('password'));
-    //     $user->save();
+        // $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->lastname = $request->input('lastname');
+        $user->contactnumber = $request->input('contactnumber');
+        $user->email = $request->input('email');
+        $user->age = $request->input('age');
+        $user->gender = $request->input('gender');
+        $user->education = $request->input('education');
+        $user->address = $request->input('address');
+        if ($request->filled('password')) {
+            $user->password = bcrypt($request->input('password'));
+        }
+        // $user->password = bcrypt($request->input('password'));
+        $user->save();
 
-    //     if($request->input('saving_option') === 'save_and_exit') {
-    //         return redirect()->route('administrator.index')->with('success', 'Administrator information successfully edited.');
-    //     } else {
-    //         return redirect()->route('administrator.show', compact('administrator'))->with('success', 'Administrator information successfully edited.');
-    //     }
-    // }
+        return redirect()->route('admin.dashboard')->with('success', 'Your information has been successfully updated.');
+
+    }
     /**
      * Remove the specified resource from storage.
      *
