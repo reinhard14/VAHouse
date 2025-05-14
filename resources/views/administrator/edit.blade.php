@@ -47,7 +47,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="age">Age</label>
+                                <label for="age">Birthdate</label>
                                 <input name="age" type="date" class="form-control" value="{{ $administrator->user->age }}" required>
                             </div>
 

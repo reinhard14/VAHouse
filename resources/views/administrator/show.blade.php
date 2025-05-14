@@ -43,7 +43,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Age</label>
+                                    <label>Birthdate</label>
                                     <p>{{ $administrator->user->age }}</p>
                                 </div>
                             </div>

@@ -47,7 +47,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="age">Age</label>
+                                <label for="age">Birthdate</label>
                                 <input type="date" name="age" class="form-control" value="{{ old('age') }}" required>
                             </div>
 
