@@ -95,7 +95,7 @@ class AdministratorController extends Controller
             'name' => 'required',
             'lastname' => 'required',
             'contactnumber' => 'required',
-            'age' => 'required|gte:18|lte:60',
+            'age' => 'required',
             'gender' => 'required',
             'education' => 'required',
             'address' => 'required',
@@ -195,7 +195,7 @@ class AdministratorController extends Controller
             'name' => 'required',
             'lastname' => 'required',
             'contactnumber' => 'required',
-            'age' => 'required|gte:18|lte:60',
+            'age' => 'required',
             'gender' => 'required',
             'email' => [
                 'required',
