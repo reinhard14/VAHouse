@@ -91,6 +91,31 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-md-4">
+                    <div class="card p-3">
+                        <div class="row text-center">
+                            <div class="col">
+                                <h4>
+                                    15
+                                </h4>
+                                <p class="text-muted">
+                                    New Applicants
+                                </p>
+                            </div>
+                            <div class="col">
+                                 <h4>
+                                    150
+                                </h4>
+                                <p class="text-muted">
+                                    Verified Applicants
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
         <!-- /.container-fluid -->
