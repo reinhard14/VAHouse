@@ -54,8 +54,8 @@
 
             {{-- FILTERS ROW --}}
             <div class="row">
-                {{-- <div class="col">
-                </div> --}}
+                <div class="col">
+                </div>
                 <div class="col-md-4">
                     <div class="card p-3">
                         <h5 class="mb-3">
