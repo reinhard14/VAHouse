@@ -8,6 +8,7 @@
             <p>Dashboard</p>
             </a>
         </li>
+
         @if($adminDepartment === 'Management Team' || $adminDepartment === 'Virtual Assistant Manager')
             <li class="nav-item">
                 <a href="{{ route('administrator.edit-myinformation', Auth::id()) }}" class="nav-link  {{ request()->segment(2) === 'my-information' ? 'active' : '' }}">
@@ -16,6 +17,7 @@
                 </a>
             </li>
         @endif
+
         @if($adminDepartment !== 'Management Team' && $adminDepartment !== 'Virtual Assistant Manager')
             <li class="nav-item" >
                 <a href="{{ route('administrator.index') }}" class="nav-link {{ request()->segment(2) === 'administrators' ? 'active' : '' }}">
@@ -24,13 +26,30 @@
                 </a>
             </li>
         @endif
-        <li class="nav-item" >
-            <a href="{{ route('admin.users.index') }}" class="nav-link {{ (request()->segment(2) === 'users' && request()->segment(2) === 'users') ? 'active' : '' }}">
-            <i class="bi bi-file-person"></i>
-            <p>Applicants</p>
-            </a>
-        </li>
-        {{-- {{ $adminDepartment }} --}}
+
+        @if($adminDepartment === 'Virtual Assistant Manager')
+            <li class="nav-item" >
+                <a href="{{ route('admin.users.vamIndex') }}" class="nav-link {{ (request()->segment(2) === 'users' && request()->segment(2) === 'users') ? 'active' : '' }}">
+                <i class="bi bi-file-person"></i>
+                <p>VAM Applicants List</p>
+                </a>
+            </li>
+        @elseif($adminDepartment === 'Management Team')
+            <li class="nav-item" >
+                <a href="{{ route('admin.users.vamIndex') }}" class="nav-link {{ (request()->segment(2) === 'users' && request()->segment(2) === 'users') ? 'active' : '' }}">
+                <i class="bi bi-file-person"></i>
+                <p>HR Applicants List</p>
+                </a>
+            </li>
+        @else
+            <li class="nav-item" >
+                <a href="{{ route('admin.users.index') }}" class="nav-link {{ (request()->segment(2) === 'users' && request()->segment(2) === 'users') ? 'active' : '' }}">
+                <i class="bi bi-file-person"></i>
+                <p>Applicants</p>
+                </a>
+            </li>
+        @endif
+
         @if($adminDepartment !== 'Management Team' && $adminDepartment !== 'Virtual Assistant Manager')
             <li class="nav-item {{ request()->segment(2) === 'department' ? 'menu-open' : 'menu' }}">
                 <a href="{{ route('administrator.index') }}" class="nav-link">

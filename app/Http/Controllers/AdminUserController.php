@@ -269,6 +269,7 @@ class AdminUserController extends Controller
         ));
 
     }
+
     public function vamIndex(Request $request)
     {
 
@@ -492,7 +493,7 @@ class AdminUserController extends Controller
         $addedSkills = ['Executive Assistant'];
         $uniqueSkills = array_merge(array_unique($uniqueSkillsFilter), $addedSkills);
 
-        return view('admin-users.index', compact(
+        return view('admin-users.VAM.index', compact(
             'users',
             'userJobs',
             'sortByLastname',
