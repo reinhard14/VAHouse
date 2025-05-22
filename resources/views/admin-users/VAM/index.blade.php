@@ -71,7 +71,7 @@
                                     </div>
                                     <div class="col-md-4 text-right p-1">
                                         <button type="submit" class="btn btn-secondary btn-sm"><i class="bi bi-search mr-1"></i>Search</button>
-                                        <a href="{{ route('admin.users.index') }}" type="submit" class="btn btn-outline-danger btn-sm" ><i class="bi bi-arrow-counterclockwise mr-1"></i>Clear</a>
+                                        <a href="{{ route('admin.users.vamIndex') }}" type="submit" class="btn btn-outline-danger btn-sm" ><i class="bi bi-arrow-counterclockwise mr-1"></i>Clear</a>
                                     </div>
                                 </form>
                             </div>
@@ -283,7 +283,6 @@
                                                             </thead>
                                                             <tbody>
                                                                 @foreach ($userJobs as $userJob)
-                                                                    {{-- @dump($userJob) --}}
                                                                     <tr>
                                                                         @if(isset($userJob))
                                                                             <td>
@@ -313,38 +312,58 @@
                         {{-- DISPLAYING ROW --}}
                         <div class="row">
                             <div class="col-md-12">
-                                {{-- <ul>
-                                    @foreach ($users as $user)
-                                        <li>{{ $user->name }} -> {{ $user->skillsets->skill ?? 'na' }}</li>
-                                    @endforeach
-                                </ul> --}}
-                                {{-- {{ $page }} --}}
                                 <div class="table-responsive">
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th>
                                                     @if ($toggleSortLastname === 'desc')
-                                                        <a href="{{ route('admin.users.index', ['sortByLastname' => 'asc',
-                                                                                                'sortByFirstname' => $sortByFirstname, 'display' => $displayIncompleteApplicants, 'searchResult' => $search ?? '']) }}"
+                                                        <a href="{{ route('admin.users.vamIndex', [
+                                                                                                    'sortByLastname' => 'asc',
+                                                                                                    'sortByFirstname' => $sortByFirstname,
+                                                                                                    'display' => $displayIncompleteApplicants,
+                                                                                                    'searchResult' => $search ?? ''
+                                                                                                ])
+                                                                }}"
                                                             type="submit" class="btn text-primary" data-toggle="tooltip" title="Click to ascend last name.">
-                                                            <strong>Last Name</strong> <i class="bi bi-sort-alpha-down-alt"></i> </a>
+                                                                <strong>Last Name</strong> <i class="bi bi-sort-alpha-down-alt"></i>
+                                                        </a>
                                                     @else
-                                                        <a href="{{ route('admin.users.index', ['sortByLastname' => 'desc',
-                                                                                                'sortByFirstname' => $sortByFirstname, 'display' => $displayIncompleteApplicants, 'searchResult' => $search ?? '']) }}"
+                                                        <a href="{{ route('admin.users.vamIndex', [
+                                                                                                    'sortByLastname' => 'desc',
+                                                                                                    'sortByFirstname' => $sortByFirstname,
+                                                                                                    'display' => $displayIncompleteApplicants,
+                                                                                                    'searchResult' => $search ?? ''
+                                                                                                ])
+                                                                }}"
                                                             type="submit" class="btn text-primary" data-toggle="tooltip" title="Click to descend last name.">
-                                                            <strong>Last Name</strong> <i class="bi bi-sort-alpha-up"></i> </a>
+                                                                <strong>Last Name</strong> <i class="bi bi-sort-alpha-up"></i>
+                                                        </a>
                                                     @endif
                                                 </th>
                                                 <th>
                                                     @if ($toggleSortFirstname === 'desc')
-                                                        <a href="{{ route('admin.users.index', ['sortByLastname' => $sortByLastname,
-                                                                                                'sortByFirstname' => 'asc', 'display' => $displayIncompleteApplicants, 'searchResult' => $search ?? '']) }}" type="submit" class="btn text-primary"
-                                                            data-toggle="tooltip" title="Click to ascend first name."><strong>First Name</strong> <i class="bi bi-sort-alpha-down-alt"></i> </a>
+                                                        <a href="{{ route('admin.users.vamIndex', [
+                                                                                                    'sortByLastname' => $sortByLastname,
+                                                                                                    'sortByFirstname' => 'asc',
+                                                                                                    'display' => $displayIncompleteApplicants,
+                                                                                                    'searchResult' => $search ?? ''
+                                                                                                ])
+                                                                }}"
+                                                            type="submit" class="btn text-primary" data-toggle="tooltip" title="Click to ascend first name.">
+                                                                <strong>First Name</strong> <i class="bi bi-sort-alpha-down-alt"></i>
+                                                        </a>
                                                     @else
-                                                        <a href="{{ route('admin.users.index', ['sortByLastname' => $sortByLastname,
-                                                                                                'sortByFirstname' => 'desc', 'display' => $displayIncompleteApplicants, 'searchResult' => $search ?? '']) }}" type="submit" class="btn text-primary"
-                                                            data-toggle="tooltip" title="Click to descend first name."><strong>First Name</strong> <i class="bi bi-sort-alpha-up"></i> </a>
+                                                        <a href="{{ route('admin.users.vamIndex', [
+                                                                                                    'sortByLastname' => $sortByLastname,
+                                                                                                    'sortByFirstname' => 'desc',
+                                                                                                    'display' => $displayIncompleteApplicants,
+                                                                                                    'searchResult' => $search ?? ''
+                                                                                                ])
+                                                                }}"
+                                                            type="submit" class="btn text-primary" data-toggle="tooltip" title="Click to descend first name.">
+                                                                <strong>First Name</strong> <i class="bi bi-sort-alpha-up"></i>
+                                                        </a>
                                                     @endif
                                                 </th>
                                                 <th class="text-center">Level</th>
@@ -356,15 +375,29 @@
                                                 <th class="text-center">Tier</th>
                                                 <th>
                                                     @if ($toggleSortByDateSubmitted === 'desc')
-                                                        <a href="{{ route('admin.users.index', ['sortByDateSubmitted' => 'asc', 'sortByLastname' => $sortByLastname,
-                                                                                                'sortByFirstname' => $sortByFirstname, 'display' => $displayIncompleteApplicants, 'searchResult' => $search ?? '']) }}"
+                                                        <a href="{{ route('admin.users.vamIndex', [
+                                                                                                    'sortByDateSubmitted' => 'asc',
+                                                                                                    'sortByLastname' => $sortByLastname,
+                                                                                                    'sortByFirstname' => $sortByFirstname,
+                                                                                                    'display' => $displayIncompleteApplicants,
+                                                                                                    'searchResult' => $search ?? '',
+                                                                                                ])
+                                                                }}"
                                                             type="submit" class="btn text-primary" data-toggle="tooltip" title="Click to descend submitted date.">
-                                                            <strong>Submitted</strong> <i class="bi bi-sort-numeric-up"></i> </a>
+                                                                <strong>Submitted</strong> <i class="bi bi-sort-numeric-up"></i>
+                                                        </a>
                                                     @else
-                                                        <a href="{{ route('admin.users.index', ['sortByDateSubmitted' => 'desc', 'sortByLastname' => $sortByLastname,
-                                                                                                'sortByFirstname' => $sortByFirstname, 'display' => $displayIncompleteApplicants, 'searchResult' => $search ?? '']) }}"
+                                                        <a href="{{ route('admin.users.vamIndex', [
+                                                                                                    'sortByDateSubmitted' => 'desc',
+                                                                                                    'sortByLastname' => $sortByLastname,
+                                                                                                    'sortByFirstname' => $sortByFirstname,
+                                                                                                    'display' => $displayIncompleteApplicants,
+                                                                                                    'searchResult' => $search ?? '',
+                                                                                                ])
+                                                                }}"
                                                             type="submit" class="btn text-primary" data-toggle="tooltip" title="Click to ascend submitted date.">
-                                                            <strong>Submitted</strong> <i class="bi bi-sort-numeric-down-alt"></i> </a>
+                                                                <strong>Submitted</strong> <i class="bi bi-sort-numeric-down-alt"></i>
+                                                        </a>
                                                     @endif
                                                 </th>
                                                 <th class="text-right">
@@ -434,7 +467,9 @@
                                                                                 'display' => $displayIncompleteApplicants,
                                                                                 'page' => request()->query('page') ?? 1,
                                                                                 'search' => $search ?? ''
-                                                                                ]) }}" class="deleteItemPrompt">
+                                                                                            ])
+                                                                                        }}"
+                                                                class="deleteItemPrompt">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button type="submit" class="btn text-danger"> <i class="bi bi-person-x"></i> Delete </button>
