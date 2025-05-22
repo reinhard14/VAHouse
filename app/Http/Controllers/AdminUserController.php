@@ -288,7 +288,7 @@ class AdminUserController extends Controller
         $param_tiers = $request->query('tiers');
         $param_lms = $request->query('LMS');
 
-        $sortByColumn = 'lastname';
+        $sortByColumn = 'users.created_at';
         $sortOrder = 'asc';
 
         if ($sortByFirstname) {
