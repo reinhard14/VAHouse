@@ -291,6 +291,10 @@ class AdminUserController extends Controller
         $sortByColumn = 'users.created_at';
         $sortOrder = 'asc';
 
+        if ($sortByLastname) {
+            $sortByColumn = 'lastname';
+        }
+
         if ($sortByFirstname) {
             $sortByColumn = 'name';
         }
@@ -424,13 +428,6 @@ class AdminUserController extends Controller
                         if (is_numeric($tag)) {
                             $query->orWhere($dbField, '=', $tag);
                         } else if ($dbField=='skillsets.skill') {
-                            // $query->orWhere($dbField, 'like', '%' . $tag . '%')
-                            //         ->orWhere(function ($q) use ($tag) {
-                            //             $words = explode(' ', $tag); // Split the tag into words
-                            //             foreach ($words as $word) {
-                            //                 $q->orWhere('experiences.title', 'like', '%' . $word . '%');
-                            //             }
-                            //         });
                             $query->orWhere($dbField, 'like', '%' . $tag . '%')
                                     ->orWhere('experiences.title', 'like', '%' . $tag . '%');
                         } else {
@@ -482,12 +479,6 @@ class AdminUserController extends Controller
         //tranform titles to uppercase first letter.
         $getUniqueSkills_UCWords = array_map('ucwords', $getUniqueSkills);
 
-        //!todo temporary disable for now.
-        // $getUniqueTitles_UCWords = array_map('ucwords', $uniqueTitles->toArray());
-        // //Combine the collection and array, this is for skills, also display the title.
-        // $uniqueSkillsFilter = array_unique(array_merge($getUniqueSkills_UCWords, $getUniqueTitles_UCWords));
-        //!todo temporary disable for now.
-
         $uniqueSkillsFilter = array_unique($getUniqueSkills_UCWords);
         //get unique values only in the array.
         $addedSkills = ['Executive Assistant'];
@@ -498,10 +489,10 @@ class AdminUserController extends Controller
             'userJobs',
             'sortByLastname',
             'sortByFirstname',
+            'sortByDateSubmitted',
             'toggleSortLastname',
             'toggleSortFirstname',
             'toggleSortByDateSubmitted',
-            'sortByDateSubmitted',
             'uniqueWebsites',
             'uniqueExperiences',
             'uniqueTools',
@@ -515,6 +506,7 @@ class AdminUserController extends Controller
         ));
 
     }
+
     private function getUniqueValues($skillsets, $field) {
         return $skillsets->pluck($field)
                     ->map(function($item) {
