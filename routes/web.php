@@ -52,6 +52,9 @@ Route::prefix('administrator')
 
         //VAM Index route
         Route::get('users/vam/index', [AdminUserController::class, 'vamIndex'])->name('admin.users.vamIndex');
+        //VAM Index route
+        Route::get('users/hr/index', [AdminUserController::class, 'hrIndex'])->name('admin.users.hrIndex');
+
         // Route resources for departments list in Admin side.
         Route::resource('department', DepartmentController::class);
 

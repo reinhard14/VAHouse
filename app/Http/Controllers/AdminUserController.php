@@ -507,6 +507,243 @@ class AdminUserController extends Controller
 
     }
 
+    public function hrIndex(Request $request)
+    {
+
+        // Check if sorting parameter exists in the URL
+        $sortByLastname = $request->query('sortByLastname');
+        $sortByFirstname = $request->query('sortByFirstname');
+        $sortByDateSubmitted = $request->query('sortByDateSubmitted');
+        $displayIncompleteApplicants = $request->query('display');
+        //filters parameters for pagination
+        $param_websites = $request->query('websites');
+        $param_tools = $request->query('tools');
+        $param_skills = $request->query('skills');
+        $param_softskills = $request->query('softskills');
+        $param_experiences = $request->query('experiences');
+        $param_statuses = $request->query('statuses');
+        $param_tiers = $request->query('tiers');
+        $param_lms = $request->query('LMS');
+
+        $sortByColumn = 'users.created_at';
+        $sortOrder = 'asc';
+
+        if ($sortByLastname) {
+            $sortByColumn = 'lastname';
+        }
+
+        if ($sortByFirstname) {
+            $sortByColumn = 'name';
+        }
+
+        if ($sortByDateSubmitted) {
+            $sortByColumn = 'users.created_at';
+        }
+
+        // Determine sorting order based on the parameter (asc or desc)
+        $sortOrder = ($sortByLastname === 'desc' ||
+                     $sortByFirstname === 'desc' ||
+                     $sortByDateSubmitted === 'desc') ? 'desc' : 'asc';
+
+        $toggleSortLastname = $this->sortOrder($sortByLastname);
+        $toggleSortFirstname = $this->sortOrder($sortByFirstname);
+        $toggleSortByDateSubmitted = $this->sortOrder($sortByDateSubmitted);
+
+        $applicant = 3;
+
+        if(is_null($displayIncompleteApplicants)) {
+            $usersQuery = User::where('role_id', $applicant)
+                            ->whereNotNull('skillsets.id')
+                            ->leftJoin('skillsets', 'users.id', '=', 'skillsets.user_id')
+                            ->leftJoin('statuses', 'users.id', '=', 'statuses.user_id')
+                            ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
+                            ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
+                            ->leftJoin('tiers', 'users.id', '=', 'tiers.user_id')
+                            ->select('users.*',
+                                        DB::raw('GROUP_CONCAT(DISTINCT skillsets.skill SEPARATOR ", ") as skills'),
+                                        DB::raw('GROUP_CONCAT(DISTINCT statuses.status SEPARATOR ", ") as status'),
+                                        'applicant_information.experience', 'applicant_information.positions',
+                                        DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
+                                        'tiers.*',
+                            )
+                            ->groupBy(
+                                'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
+                                'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
+                                'users.created_at', 'users.updated_at', 'users.remember_token', 'users.role_id', 'users.gender',
+                                'users.nationality', 'users.civil_status', 'users.degree',
+                                'applicant_information.experience', 'applicant_information.positions',
+                                'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id'
+                            )
+                            ->orderBy($sortByColumn, $sortOrder);
+        } else if ($displayIncompleteApplicants == 'optionIncomplete') {
+            $usersQuery = User::where('role_id', $applicant)
+                            ->whereNull('skillsets.id')
+                            ->leftJoin('skillsets', 'users.id', '=', 'skillsets.user_id')
+                            ->leftJoin('statuses', 'users.id', '=', 'statuses.user_id')
+                            ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
+                            ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
+                            ->leftJoin('tiers', 'users.id', '=', 'tiers.user_id')
+                            ->select('users.*',
+                                        DB::raw('GROUP_CONCAT(DISTINCT skillsets.skill SEPARATOR ", ") as skills'),
+                                        DB::raw('GROUP_CONCAT(DISTINCT statuses.status SEPARATOR ", ") as status'),
+                                        'applicant_information.experience', 'applicant_information.positions',
+                                        DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
+                                        'tiers.*',
+                            )
+                            ->groupBy(
+                                'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
+                                'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
+                                'users.created_at', 'users.updated_at', 'users.remember_token', 'users.role_id', 'users.gender',
+                                'users.nationality', 'users.civil_status', 'users.degree',
+                                'applicant_information.experience', 'applicant_information.positions',
+                                'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id'
+                            )
+                            ->orderBy($sortByColumn, $sortOrder);
+        } else if ($displayIncompleteApplicants == 'optionMixed') {
+            $usersQuery = User::where('role_id', $applicant)
+                            ->leftJoin('skillsets', 'users.id', '=', 'skillsets.user_id')
+                            ->leftJoin('statuses', 'users.id', '=', 'statuses.user_id')
+                            ->leftJoin('applicant_information', 'users.id', '=', 'applicant_information.user_id')
+                            ->leftJoin('experiences', 'users.id', '=', 'experiences.user_id')
+                            ->leftJoin('tiers', 'users.id', '=', 'tiers.user_id')
+                            ->select('users.*',
+                                        DB::raw('GROUP_CONCAT(DISTINCT skillsets.skill SEPARATOR ", ") as skills'),
+                                        DB::raw('GROUP_CONCAT(DISTINCT statuses.status SEPARATOR ", ") as status'),
+                                        'applicant_information.experience', 'applicant_information.positions',
+                                        DB::raw('GROUP_CONCAT(DISTINCT experiences.title SEPARATOR ", ") as experiences'),
+                                        'tiers.*',
+                            )
+                            ->groupBy(
+                                'users.id', 'users.name', 'users.lastname', 'users.contactnumber', 'users.email', 'users.email_verified_at',
+                                'users.age', 'users.education', 'users.address', 'users.middlename', 'users.suffix', 'users.password',
+                                'users.created_at', 'users.updated_at', 'users.remember_token', 'users.role_id', 'users.gender',
+                                'users.nationality', 'users.civil_status', 'users.degree',
+                                'applicant_information.experience', 'applicant_information.positions',
+                                'tiers.id', 'tiers.created_at', 'tiers.updated_at', 'tiers.tier', 'tiers.user_id'
+                            )
+                            ->orderBy($sortByColumn, $sortOrder);
+        }
+
+        // Searching
+        if ($search = $request->query('search')) {
+            $usersQuery->where(function ($query) use ($search) {
+                $query->where(function ($subQuery) use ($search) {
+                    // Check for combined name and lastname match
+                    $subQuery->whereRaw("CONCAT(users.name, ' ', users.lastname) LIKE ?", ["%{$search}%"])
+                        ->orWhereRaw("CONCAT(users.lastname, ' ', users.name) LIKE ?", ["%{$search}%"]);
+                })
+                // Check for individual name or lastname matches
+                ->orWhere('users.name', 'like', '%' . $search . '%')
+                ->orWhere('users.lastname', 'like', '%' . $search . '%')
+                // Check for skillsets or experiences match
+                ->orWhere('skillsets.website', 'like', '%' . $search . '%')
+                ->orWhere('skillsets.tool', 'like', '%' . $search . '%')
+                ->orWhere('skillsets.skill', 'like', '%' . $search . '%')
+                ->orWhere('experiences.title', 'like', '%' . $search . '%');
+            });
+
+            $displayIncompleteApplicants = $request->query('display');
+        }
+
+        // Get the selected tags from the request
+        $filters = [
+            'websites' => 'skillsets.website',
+            'tools' => 'skillsets.tool',
+            'skills' => 'skillsets.skill',
+            'softskills' => 'skillsets.softskill',
+            'experiences' => 'applicant_information.experience',
+            'statuses' => 'status',
+            'tiers' => 'tier',
+            'LMS' => 'lesson',
+        ];
+
+        // Apply tag filters
+        foreach ($filters as $inputField => $dbField) {
+            if ($tags = $request->input($inputField, [])) {
+                $usersQuery->where(function ($query) use ($tags, $dbField) {
+                    foreach ($tags as $tag) {
+                        if (is_numeric($tag)) {
+                            $query->orWhere($dbField, '=', $tag);
+                        } else if ($dbField=='skillsets.skill') {
+                            $query->orWhere($dbField, 'like', '%' . $tag . '%')
+                                    ->orWhere('experiences.title', 'like', '%' . $tag . '%');
+                        } else {
+                            $query->orWhere($dbField, 'like', '%' . $tag . '%');
+                        }
+                    }
+                });
+            }
+        }
+
+        // Retrieve the experience titles directly from the existing usersQuery
+        $userJobs = $usersQuery->get();
+        $userCount = $usersQuery->get()->count();
+        $users = $usersQuery->select('users.*')->paginate(5);
+
+        $appendParams = array_filter([
+            'websites' => $param_websites ?? null,
+            'tools' => $param_tools ?? null,
+            'skills' => $param_skills ?? null,
+            'softskills' => $param_softskills ?? null,
+            'experiences' => $param_experiences ?? null,
+            'statuses' => $param_statuses ?? null,
+            'tiers' => $param_tiers ?? null,
+            'LMS' => $param_lms ?? null,
+            //default
+            'sortByLastname' => $sortByLastname ?? null,
+            'sortByFirstname' => $sortByFirstname ?? null,
+            'sortByDateSubmitted' => $sortByDateSubmitted ?? null,
+            'display' => $displayIncompleteApplicants ?? null,
+            'searchResult' => $search ?? null,
+        ]);
+
+        $users->appends($appendParams);
+
+        // get data of skillset to display on select filters.
+        $skillsets = Skillset::all();
+
+        //Array types
+        $uniqueWebsites = $this->getUniqueValues($skillsets, 'website');
+        $uniqueTools = $this->getUniqueValues($skillsets, 'tool');
+        $getUniqueSkills = $this->getUniqueValues($skillsets, 'skill');
+        $uniqueSoftskills = $this->getUniqueValues($skillsets, 'softskill');
+        //Collection types
+        $uniqueStatuses = Status::groupBy('status')->pluck('status');
+        $uniqueExperiences = ApplicantInformation::groupBy('experience')->pluck('experience');
+        $uniqueTitles = Experience::groupBy('title')->pluck('title');
+        $uniqueTiers = Tier::groupBy('tier')->pluck('tier');
+        $uniqueLMS = Status::groupBy('lesson')->pluck('lesson');
+        //tranform titles to uppercase first letter.
+        $getUniqueSkills_UCWords = array_map('ucwords', $getUniqueSkills);
+
+        $uniqueSkillsFilter = array_unique($getUniqueSkills_UCWords);
+        //get unique values only in the array.
+        $addedSkills = ['Executive Assistant'];
+        $uniqueSkills = array_merge(array_unique($uniqueSkillsFilter), $addedSkills);
+
+        return view('admin-users.VAM.index', compact(
+            'users',
+            'userJobs',
+            'sortByLastname',
+            'sortByFirstname',
+            'sortByDateSubmitted',
+            'toggleSortLastname',
+            'toggleSortFirstname',
+            'toggleSortByDateSubmitted',
+            'uniqueWebsites',
+            'uniqueExperiences',
+            'uniqueTools',
+            'uniqueSkills',
+            'uniqueSoftskills',
+            'uniqueStatuses',
+            'uniqueTiers',
+            'uniqueLMS',
+            'userCount',
+            'displayIncompleteApplicants',
+        ));
+
+    }
+
     private function getUniqueValues($skillsets, $field) {
         return $skillsets->pluck($field)
                     ->map(function($item) {

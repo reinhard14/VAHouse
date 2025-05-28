@@ -260,7 +260,7 @@
                         <div class="row mb-4">
                             <div class="col-md-12 text-right">
                                 <button type="button" id="filterButton" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseTitles">
-                                    Show/Hide VA Jobs Details
+                                    Show/Hide VA Jobs Details HR
                                 </button>
                             </div>
                         </div>

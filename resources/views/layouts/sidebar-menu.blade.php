@@ -36,7 +36,7 @@
             </li>
         @elseif($adminDepartment === 'Management Team')
             <li class="nav-item" >
-                <a href="{{ route('admin.users.vamIndex') }}" class="nav-link {{ (request()->segment(2) === 'users' && request()->segment(2) === 'users') ? 'active' : '' }}">
+                <a href="{{ route('admin.users.hrIndex') }}" class="nav-link {{ (request()->segment(2) === 'users' && request()->segment(2) === 'users') ? 'active' : '' }}">
                 <i class="bi bi-file-person"></i>
                 <p>HR Applicants List</p>
                 </a>
