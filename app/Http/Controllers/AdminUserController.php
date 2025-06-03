@@ -721,7 +721,7 @@ class AdminUserController extends Controller
         $addedSkills = ['Executive Assistant'];
         $uniqueSkills = array_merge(array_unique($uniqueSkillsFilter), $addedSkills);
 
-        return view('admin-users.VAM.index', compact(
+        return view('admin-users.HR.index', compact(
             'users',
             'userJobs',
             'sortByLastname',
