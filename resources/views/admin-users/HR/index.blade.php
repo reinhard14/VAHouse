@@ -34,7 +34,7 @@
 
                     @else
                         {{-- SEARCH ROW--}}
-                        <div class="row mb-4">
+                        <div class="row mb-5">
                             <div class="col" id="search_col">
                                 <form method="GET" action="#" class="form-inline row">
                                     <input type="hidden" id="display" name="display" value="{{ request('display') }}">
@@ -49,23 +49,6 @@
                             </div>
                         </div>
 
-                        {{-- FILTERS ROW --}}
-                        <div class="row">
-                            <div class="col">
-                                <div class="accordion">
-                                    <div id="collapseOne" class="collapse show">
-                                        <div class="accordion-body">
-                                            <form method="GET" action="#">
-                                                @csrf
-
-                                            </form>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         {{-- DISPLAYING ROW --}}
                         <div class="row">
                             <div class="col-md-12">
@@ -73,91 +56,22 @@
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>
-                                                    @if ($toggleSortLastname === 'desc')
-                                                        <a href="{{ route('admin.users.hrIndex', [
-                                                                                                    'sortByLastname' => 'asc',
-                                                                                                    'sortByFirstname' => $sortByFirstname,
-                                                                                                    'display' => $displayIncompleteApplicants,
-                                                                                                    'searchResult' => $search ?? ''
-                                                                                                ])
-                                                                }}"
-                                                            type="submit" class="btn text-primary" data-toggle="tooltip" title="Click to ascend last name.">
-                                                                <strong>Last Name</strong> <i class="bi bi-sort-alpha-down-alt"></i>
-                                                        </a>
-                                                    @else
-                                                        <a href="{{ route('admin.users.hrIndex', [
-                                                                                                    'sortByLastname' => 'desc',
-                                                                                                    'sortByFirstname' => $sortByFirstname,
-                                                                                                    'display' => $displayIncompleteApplicants,
-                                                                                                    'searchResult' => $search ?? ''
-                                                                                                ])
-                                                                }}"
-                                                            type="submit" class="btn text-primary" data-toggle="tooltip" title="Click to descend last name.">
-                                                                <strong>Last Name</strong> <i class="bi bi-sort-alpha-up"></i>
-                                                        </a>
-                                                    @endif
+                                                <th class="text-center border-top-0">
+                                                    Last Name
                                                 </th>
-                                                <th>
-                                                    @if ($toggleSortFirstname === 'desc')
-                                                        <a href="{{ route('admin.users.hrIndex', [
-                                                                                                    'sortByLastname' => $sortByLastname,
-                                                                                                    'sortByFirstname' => 'asc',
-                                                                                                    'display' => $displayIncompleteApplicants,
-                                                                                                    'searchResult' => $search ?? ''
-                                                                                                ])
-                                                                }}"
-                                                            type="submit" class="btn text-primary" data-toggle="tooltip" title="Click to ascend first name.">
-                                                                <strong>First Name</strong> <i class="bi bi-sort-alpha-down-alt"></i>
-                                                        </a>
-                                                    @else
-                                                        <a href="{{ route('admin.users.hrIndex', [
-                                                                                                    'sortByLastname' => $sortByLastname,
-                                                                                                    'sortByFirstname' => 'desc',
-                                                                                                    'display' => $displayIncompleteApplicants,
-                                                                                                    'searchResult' => $search ?? ''
-                                                                                                ])
-                                                                }}"
-                                                            type="submit" class="btn text-primary" data-toggle="tooltip" title="Click to descend first name.">
-                                                                <strong>First Name</strong> <i class="bi bi-sort-alpha-up"></i>
-                                                        </a>
-                                                    @endif
+                                                <th class="text-center border-top-0"> First Name
                                                 </th>
-                                                <th class="text-center">Level</th>
-                                                <th class="text-center">Skills</th>
-                                                <th class="text-center">Actions</th>
-                                                <th class="text-center">Information</th>
-                                                <th class="text-center">Intro Vid</th>
-                                                <th class="text-center">Status</th>
-                                                <th class="text-center">Tier</th>
-                                                <th>
-                                                    @if ($toggleSortByDateSubmitted === 'desc')
-                                                        <a href="{{ route('admin.users.hrIndex', [
-                                                                                                    'sortByDateSubmitted' => 'asc',
-                                                                                                    'sortByLastname' => $sortByLastname,
-                                                                                                    'sortByFirstname' => $sortByFirstname,
-                                                                                                    'display' => $displayIncompleteApplicants,
-                                                                                                    'searchResult' => $search ?? '',
-                                                                                                ])
-                                                                }}"
-                                                            type="submit" class="btn text-primary" data-toggle="tooltip" title="Click to descend submitted date.">
-                                                                <strong>Submitted</strong> <i class="bi bi-sort-numeric-up"></i>
-                                                        </a>
-                                                    @else
-                                                        <a href="{{ route('admin.users.hrIndex', [
-                                                                                                    'sortByDateSubmitted' => 'desc',
-                                                                                                    'sortByLastname' => $sortByLastname,
-                                                                                                    'sortByFirstname' => $sortByFirstname,
-                                                                                                    'display' => $displayIncompleteApplicants,
-                                                                                                    'searchResult' => $search ?? '',
-                                                                                                ])
-                                                                }}"
-                                                            type="submit" class="btn text-primary" data-toggle="tooltip" title="Click to ascend submitted date.">
-                                                                <strong>Submitted</strong> <i class="bi bi-sort-numeric-down-alt"></i>
-                                                        </a>
-                                                    @endif
+                                                <th class="text-center border-top-0">Level</th>
+                                                <th class="text-center border-top-0">Skills</th>
+                                                <th class="text-center border-top-0">Actions</th>
+                                                <th class="text-center border-top-0">Information</th>
+                                                <th class="text-center border-top-0">Intro Vid</th>
+                                                <th class="text-center border-top-0">Status</th>
+                                                <th class="text-center border-top-0">Tier</th>
+                                                <th class="text-center border-top-0">
+                                                    Submitted
                                                 </th>
-                                                <th class="text-right">
+                                                <th class="text-right border-top-0">
                                                     <label class="form-check-label" for="deleteMasterCheckbox">Delete?</label>
                                                     <input type="checkbox" id="deleteMasterCheckbox">
                                                 </th>

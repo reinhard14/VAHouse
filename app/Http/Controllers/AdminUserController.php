@@ -541,9 +541,7 @@ class AdminUserController extends Controller
         }
 
         // Determine sorting order based on the parameter (asc or desc)
-        $sortOrder = ($sortByLastname === 'desc' ||
-                     $sortByFirstname === 'desc' ||
-                     $sortByDateSubmitted === 'desc') ? 'desc' : 'asc';
+        $sortOrder = 'desc';
 
         $toggleSortLastname = $this->sortOrder($sortByLastname);
         $toggleSortFirstname = $this->sortOrder($sortByFirstname);
