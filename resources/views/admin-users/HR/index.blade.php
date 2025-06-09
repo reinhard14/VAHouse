@@ -3,19 +3,13 @@
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper"">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
+    <div class="content-header" >
+        <div class="container-fluid" style="background-color: transparent;">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="ml-2">Ready for Shortlist Applicants</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active"><a href="#">Ready for Shortlist Applicants</a></li>
-                    </ol>
+                    <h1 class="ml-2">Applicants List</h1>
                 </div>
             </div><!-- /.row -->
         </div>
@@ -25,28 +19,6 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card">
-                <div class="card-header">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div class="d-none d-sm-block">
-                            <h3>List </h3>
-                        </div>
-                        <div class="d-sm-none">
-                            <i class="bi bi-list-ol"></i>
-                        </div>
-                        <div class="form-inline">
-                            <a href="#create-user-modal" class="btn btn-primary mr-1" data-bs-toggle="modal"><i class="bi bi-person-add mr-1"></i></ion-icon>Add</a>
-                            <form method="post" action="#" id="deleteForm">
-                                @csrf
-                                @method('delete')
-                                <input type="hidden" name="selectedUserIds" id="selectedUserIds" value="">
-                                <button type="submit" class="btn btn-danger" id="checkboxDeleteButton" disabled>
-                                    <i class="bi bi-trash mr-1"></i>Delete
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="card-body">
                     @if ($users->isEmpty())
                         <div class="row">
@@ -63,22 +35,17 @@
                     @else
                         {{-- SEARCH ROW--}}
                         <div class="row mb-4">
-                            <div class="col-md-6" id="search_col">
+                            <div class="col" id="search_col">
                                 <form method="GET" action="#" class="form-inline row">
                                     <input type="hidden" id="display" name="display" value="{{ request('display') }}">
                                     <div class="col-md-8">
-                                        <input type="text" name="search" placeholder="Search name, previous jobs, skills, tools, websites here.." class="form-control w-100">
+                                        <input type="text" name="search" placeholder="Type to search..." class="form-control w-100">
                                     </div>
                                     <div class="col-md-4 text-right p-1">
                                         <button type="submit" class="btn btn-secondary btn-sm"><i class="bi bi-search mr-1"></i>Search</button>
-                                        <a href="{{ route('admin.users.vamIndex') }}" type="submit" class="btn btn-outline-danger btn-sm" ><i class="bi bi-arrow-counterclockwise mr-1"></i>Clear</a>
+                                        <a href="{{ route('admin.users.hrIndex') }}" type="submit" class="btn btn-outline-danger btn-sm" ><i class="bi bi-arrow-counterclockwise mr-1"></i>Clear</a>
                                     </div>
                                 </form>
-                            </div>
-                            <div class="col-md-6 text-right">
-                                <button type="button" id="filterButton" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                                    Show/Hide Filters
-                                </button>
                             </div>
                         </div>
 
@@ -90,88 +57,7 @@
                                         <div class="accordion-body">
                                             <form method="GET" action="#">
                                                 @csrf
-                                                <div class="form-row">
-                                                    @php
-                                                        $fields = ['websites',
-                                                                    'tools',
-                                                                    'skills',
-                                                                    'softskills',
-                                                                    'experiences',
-                                                                    'statuses',
-                                                                    'tiers',
-                                                                    'LMS',
-                                                                ];
-                                                        $count = 0;
-                                                    @endphp
 
-                                                    @foreach ($fields as $index => $field)
-                                                        @if ($count % 2 == 0 && $count != 0)
-                                                            </div>
-                                                            <div class="form-row">
-                                                        @endif
-
-                                                        <div class="form-group col-md-4 mb-3">
-                                                            @if ($field=='experience')
-                                                                <label for="{{ $field }}" class="d-block">Years of {{ ucfirst($field) }}s:</label>
-                                                            @else
-                                                                <label for="{{ $field }}" class="d-block">{{ ucfirst($field) }}:</label>
-                                                            @endif
-
-                                                            <select id="{{ $field }}" name="{{ $field }}[]" class="form-control select2" data-placeholder="Select {{ $field }}" multiple="multiple">
-                                                                @foreach (${"unique" . ucfirst($field)} as $item)
-                                                                    <option value="{{ $item }}" {{ in_array($item, request()->query($field, [])) ? 'selected' : '' }}>
-                                                                        {{ $item }}
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    @endforeach
-
-                                                    @php $count++; @endphp
-
-                                                    <div class="form-group col-md-12 d-flex justify-content-around">
-                                                        <div class="col-md-4">
-                                                            <h6>Display:</h6>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" name="display" id="flexRadioDefault2" value="" {{ request('display') == '' ? 'checked' : '' }}>
-                                                                <label class="form-check-label" for="flexRadioDefault2">
-                                                                    Complete Forms Only
-                                                                </label>
-                                                              </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" name="display" id="flexRadioDefault1" value="optionIncomplete" {{ request('display') == 'optionIncomplete' ? 'checked' : '' }}>
-                                                                <label class="form-check-label" for="flexRadioDefault1">
-                                                                    Incomplete Forms Only
-                                                                </label>
-                                                              </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" name="display" id="incompleteRadio" value="optionMixed" {{ request('display') == 'optionMixed' ? 'checked' : '' }}>
-                                                                <label class="form-check-label" for="incompleteRadio">
-                                                                    All Forms
-                                                                </label>
-                                                              </div>
-                                                        </div>
-
-                                                        <div class="col-md-4" id="view_col">
-                                                            <p> <label> Current view - </label>
-                                                                @if ($sortByLastname)
-                                                                    Last Name: <span class="badge badge-info"> {{ $sortByLastname }}</span>
-                                                                @elseif ($sortByFirstname)
-                                                                    First Name: <span class="badge badge-info">{{ $sortByFirstname }}</span>
-                                                                @elseif ($sortByDateSubmitted)
-                                                                    Date Submitted: <span class="badge badge-info"> {{ $sortByDateSubmitted }}</span>
-                                                                @else
-                                                                    Default
-                                                                @endif
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-md-4 text-right">
-                                                            <button type="submit" class="btn btn-primary btn-sm px-5">
-                                                                <i class="bi bi-search"></i> Filter
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </form>
 
                                         </div>
@@ -179,135 +65,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        {{-- TALLY ROW --}}
-                        {{--
-                        <div class="row mb-4">
-                            <div class="col-md-12 text-right">
-                                <button type="button" id="filterButton" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseServicesOffered">
-                                    Show/Hide Tally
-                                </button>
-                            </div>
-                        </div>
-                        --}}
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="accordion">
-                                    <div id="collapseServicesOffered" class="collapse">
-                                        <div class="accordion-body">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <div class="table-responsive">
-                                                        @php
-                                                            // Initialize an empty array to store all services
-                                                            $allServices = [];
-
-                                                            // Loop through each user job
-                                                            foreach ($userJobs as $userJob) {
-                                                                // echo $userJob->positions . " ";
-                                                                // Check if services_offered is set and not null
-                                                                if (isset($userJob->positions)) {
-                                                                    // Remove brackets and convert to array
-                                                                    $cleanedServices = str_replace(['[', ']', '"'], '', $userJob->positions);
-                                                                    $arrayServices = explode(',', $cleanedServices);
-
-                                                                    // Trim and remove empty values
-                                                                    $arrayServices = array_map('trim', $arrayServices);
-                                                                    $arrayServices = array_filter($arrayServices);
-
-                                                                    // Merge with the main array
-                                                                    $allServices = array_merge($allServices, $arrayServices);
-                                                                }
-                                                            }
-
-                                                            $serviceCounts = array_count_values($allServices);
-                                                        @endphp
-
-                                                        <table class="table table-hover table-borderless table-sm">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Positions Applied</th>
-                                                                    <th>Count</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                @foreach ($serviceCounts as $service => $count)
-                                                                    <tr>
-                                                                        <td>{{ $service }}</td>
-                                                                        <td>{{ $count }}</td>
-                                                                    </tr>
-                                                                @endforeach
-
-                                                                <tr class="border-top">
-                                                                    <td><strong>Total VA results</strong></td>
-                                                                    <td><strong>{{ $userCount }}</strong></td>
-                                                                </tr>
-
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{-- END TALLY ROW HERE --}}
-
-                        {{-- Details ROW --}}
-                        <div class="row mb-4">
-                            <div class="col-md-12 text-right">
-                                <button type="button" id="filterButton" class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseTitles">
-                                    Show/Hide VA Jobs Details HR
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="accordion">
-                                    <div id="collapseTitles" class="collapse show">
-                                        <div class="accordion-body">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <div class="table-responsive">
-                                                        <table class="table table-hover table-borderless table-sm">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>VA Name</th>
-                                                                    <th>Previous Job Title</th>
-                                                                    <th>Services Offered</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                @foreach ($userJobs as $userJob)
-                                                                    <tr>
-                                                                        @if(isset($userJob))
-                                                                            <td>
-                                                                                {{ $userJob->name }} {{ $userJob->lastname }}
-                                                                            </td>
-                                                                            <td>
-                                                                                {{ $userJob->experiences }}
-                                                                            </td>
-                                                                               <td>
-                                                                                    {{ str_replace(['[', ']', '"'], ' ', $userJob->positions) }}
-                                                                                </td>
-                                                                        @endif
-                                                                    </tr>
-                                                                @endforeach
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {{-- END TALLY ROW HERE --}}
 
                         {{-- DISPLAYING ROW --}}
                         <div class="row">
@@ -318,7 +75,7 @@
                                             <tr>
                                                 <th>
                                                     @if ($toggleSortLastname === 'desc')
-                                                        <a href="{{ route('admin.users.vamIndex', [
+                                                        <a href="{{ route('admin.users.hrIndex', [
                                                                                                     'sortByLastname' => 'asc',
                                                                                                     'sortByFirstname' => $sortByFirstname,
                                                                                                     'display' => $displayIncompleteApplicants,
@@ -329,7 +86,7 @@
                                                                 <strong>Last Name</strong> <i class="bi bi-sort-alpha-down-alt"></i>
                                                         </a>
                                                     @else
-                                                        <a href="{{ route('admin.users.vamIndex', [
+                                                        <a href="{{ route('admin.users.hrIndex', [
                                                                                                     'sortByLastname' => 'desc',
                                                                                                     'sortByFirstname' => $sortByFirstname,
                                                                                                     'display' => $displayIncompleteApplicants,
@@ -343,7 +100,7 @@
                                                 </th>
                                                 <th>
                                                     @if ($toggleSortFirstname === 'desc')
-                                                        <a href="{{ route('admin.users.vamIndex', [
+                                                        <a href="{{ route('admin.users.hrIndex', [
                                                                                                     'sortByLastname' => $sortByLastname,
                                                                                                     'sortByFirstname' => 'asc',
                                                                                                     'display' => $displayIncompleteApplicants,
@@ -354,7 +111,7 @@
                                                                 <strong>First Name</strong> <i class="bi bi-sort-alpha-down-alt"></i>
                                                         </a>
                                                     @else
-                                                        <a href="{{ route('admin.users.vamIndex', [
+                                                        <a href="{{ route('admin.users.hrIndex', [
                                                                                                     'sortByLastname' => $sortByLastname,
                                                                                                     'sortByFirstname' => 'desc',
                                                                                                     'display' => $displayIncompleteApplicants,
@@ -375,7 +132,7 @@
                                                 <th class="text-center">Tier</th>
                                                 <th>
                                                     @if ($toggleSortByDateSubmitted === 'desc')
-                                                        <a href="{{ route('admin.users.vamIndex', [
+                                                        <a href="{{ route('admin.users.hrIndex', [
                                                                                                     'sortByDateSubmitted' => 'asc',
                                                                                                     'sortByLastname' => $sortByLastname,
                                                                                                     'sortByFirstname' => $sortByFirstname,
@@ -387,7 +144,7 @@
                                                                 <strong>Submitted</strong> <i class="bi bi-sort-numeric-up"></i>
                                                         </a>
                                                     @else
-                                                        <a href="{{ route('admin.users.vamIndex', [
+                                                        <a href="{{ route('admin.users.hrIndex', [
                                                                                                     'sortByDateSubmitted' => 'desc',
                                                                                                     'sortByLastname' => $sortByLastname,
                                                                                                     'sortByFirstname' => $sortByFirstname,
