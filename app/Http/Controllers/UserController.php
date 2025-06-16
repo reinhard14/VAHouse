@@ -30,6 +30,27 @@ class UserController extends Controller
     {
         $user = User::findOrFail(Auth::id());
 
+        $info = $user->information;
+        $requiredFields = [
+            'photo_id'      => 'Valid ID',
+            'resume'        => 'CV or Resume',
+            'disc_results'  => 'DISC Results',
+            'videolink'     => 'Video Introduction',
+            'portfolio'     => 'Portfolio',
+        ];
+
+        $missingFiles = [];
+
+        foreach ($requiredFields as $field => $label) {
+            if (empty($info->$field)) {
+                $missingFiles[] = $label;
+            }
+        }
+
+        if ($missingFiles) {
+            session()->flash('missing_files', $missingFiles);
+        }
+
         return view('user.dashboard', compact('user'));
     }
 
