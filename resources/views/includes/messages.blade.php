@@ -26,10 +26,15 @@
 @if(session('missing_files'))
     <div class="alert alert-warning" role="alert">
         <p class="text-center">"Please submit the missing files, as they are mandatory." </p>
+
         <ul class="text-center list-unstyled">
             @foreach (session('missing_files') as $file)
                 <li>{{ $file }}</li>
             @endforeach
         </ul>
+
+        <div class="text-right">
+            <small>Go to <strong>Edit Profile</strong> -> File upload</small>
+        </div>
     </div>
 @endif
