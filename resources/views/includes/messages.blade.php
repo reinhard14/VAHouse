@@ -34,7 +34,7 @@
         </ul>
 
         <div class="text-right">
-            <small>Go to <strong>Edit Profile</strong> -> File upload</small>
+            <small>Go to <a href="{{ route('user.edit', $user->id) }}" class="text-orange"><strong>Edit Profile</strong></a> -> File upload</small>
         </div>
     </div>
 @endif
