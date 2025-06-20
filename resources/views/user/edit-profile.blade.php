@@ -32,6 +32,7 @@
                     <div class="card">
                         <div class="card-body">
                             @include('includes.messages')
+
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="personal-details">
                                     @include('user.partials.personal-details')
@@ -40,6 +41,7 @@
                                 <div class="tab-pane fade" id="job-information">
                                     @include('user.partials.job-information')
                                 </div>
+
                                 <div class="tab-pane fade" id="file-uploads">
                                     @include('user.partials.file-uploads')
                                 </div>
@@ -54,7 +56,6 @@
 
     <div class="row pb-5">
     </div>
-
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

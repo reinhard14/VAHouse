@@ -341,6 +341,28 @@ class UserController extends Controller
         $availableTools = array_diff($tools, $applicantTools);
         $availableDays = array_diff($days, $daysItemize);
 
+        //flashing the missing files.
+        $info = $user->information;
+        $requiredFields = [
+            'photo_id'      => 'Valid ID',
+            'resume'        => 'CV or Resume',
+            'disc_results'  => 'DISC Results',
+            'videolink'     => 'Video Introduction',
+            'portfolio'     => 'Portfolio',
+        ];
+
+        $missingFiles = [];
+
+        foreach ($requiredFields as $field => $label) {
+            if (empty($info->$field)) {
+                $missingFiles[] = $label;
+            }
+        }
+
+        if ($missingFiles) {
+            session()->flash('missing_files', $missingFiles);
+        }
+
         return view('user.edit-profile', compact('user', 'skills', 'softskills', 'tools', 'positionsItemize', 'workstatusItemize', 'preferredShift',
                     'applicantSkills', 'applicantSoftSkills', 'applicantTools', 'availableSkills', 'availableSoftSkills', 'availableTools',
                     'availableDays', 'daysItemize', 'days'));
