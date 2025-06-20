@@ -33,8 +33,21 @@
             @endforeach
         </ul>
 
+
         <div class="text-right">
-            <small class="font-italic">Go to <a href="{{ route('user.edit', $user->id) }}" class="text-orange"><strong>Edit Profile</strong></a> -> File uploads</small>
+
+            <small class="font-italic">
+                @unless (Route::is('user.edit'))
+                    Go to
+                        <a href="{{ route('user.edit', $user->id) }}" class="text-orange">
+                            <strong>Edit Profile</strong>
+                        </a>
+                    ->
+                @endunless
+                File uploads
+            </small>
+
         </div>
+
     </div>
 @endif
