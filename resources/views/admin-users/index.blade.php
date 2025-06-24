@@ -411,7 +411,7 @@
                                                             </ul>
                                                         @else
                                                             <p class="text-center">
-                                                                <span class="badge badge-warning">Did Not Finish</span>
+                                                                <span class="badge badge-warning">Profile Incomplete</span>
                                                             </p>
                                                         @endif
                                                     </td>
