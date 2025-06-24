@@ -347,7 +347,7 @@
                                                             data-toggle="tooltip" title="Click to descend first name."><strong>First Name</strong> <i class="bi bi-sort-alpha-up"></i> </a>
                                                     @endif
                                                 </th>
-                                                <th class="text-center">Level</th>
+                                                {{-- <th class="text-center">Level</th> --}}
                                                 <th class="text-center">Skills</th>
                                                 <th class="text-center">Actions</th>
                                                 <th class="text-center">Information</th>
@@ -378,7 +378,7 @@
                                                 <tr>
                                                     <td>{{ $user->lastname }}</td>
                                                     <td>{{ $user->name }}</td>
-                                                    <td>
+                                                    {{-- <td>
                                                         @if(isset($user->information->experience) && !empty($user->information->experience))
                                                             @if ($user->information->experience <= 2)
                                                                 <span class="badge badge-success"> Beginner </span>
@@ -390,7 +390,7 @@
                                                         @else
                                                             <span class="badge badge-warning"> Not available </span>
                                                         @endif
-                                                    </td>
+                                                    </td> --}}
                                                     <td>
                                                         @php
                                                             $skills = [];
