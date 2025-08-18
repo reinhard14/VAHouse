@@ -369,40 +369,43 @@
                             <div class="tab-pane" id="employment">
                                 <div class="row mb-2">
                                     <div class="col">
-                                        <table class="table table-hover">
-                                            <thead>
-                                              <tr>
-                                                <th scope="col">Employment Type</th>
-                                                <th scope="col">Date Started</th>
-                                                <th scope="col">Date Ended</th>
-                                                <th scope="col">Job Position</th>
-                                                <th scope="col">Company Details</th>
-                                                <th scope="col">Job Details</th>
-                                              </tr>
-                                            </thead>
+                                        @if ($user->employments->isEmpty())
+                                            <h5 class="text-center p-3">No employment data available.</h5>
+                                        @else
+                                            <table class="table table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">Employment Type</th>
+                                                    <th scope="col">Date Started</th>
+                                                    <th scope="col">Date Ended</th>
+                                                    <th scope="col">Job Position</th>
+                                                    <th scope="col">Company Details</th>
+                                                    <th scope="col">Job Details</th>
+                                                </tr>
+                                                </thead>
 
-                                            @forelse ($user->employments as $employment)
-                                                <tbody>
-                                                    <tr>
-                                                        <td>{{ $employment->employment_type ?? '' }}</td>
-                                                        <td>{{ $employment->date_started ?? ''  }}</td>
-                                                        <td>{{ $employment->date_ended ?? ''  }}</td>
-                                                        <td>{{ $employment->job_position ?? ''  }}</td>
-                                                        <td>{{ $employment->company_details ?? ''  }}</td>
-                                                        <td>{{ $employment->job_details ?? ''  }}</td>
-                                                    </tr>
-                                                </tbody>
-                                            @empty
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="6">
-                                                            <h5 class="text-center p-3">No data available.</h5>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            @endforelse
-
-                                          </table>
+                                                @forelse ($user->employments as $employment)
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>{{ $employment->employment_type ?? '' }}</td>
+                                                            <td>{{ $employment->date_started ?? ''  }}</td>
+                                                            <td>{{ $employment->date_ended ?? ''  }}</td>
+                                                            <td>{{ $employment->job_position ?? ''  }}</td>
+                                                            <td>{{ $employment->company_details ?? ''  }}</td>
+                                                            <td>{{ $employment->job_details ?? ''  }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                @empty
+                                                    <tbody>
+                                                        <tr>
+                                                            <td colspan="6">
+                                                                <h5 class="text-center p-3">No data available.</h5>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                @endforelse
+                                            </table>
+                                        @endif
                                     </div>
                                 </div>
 
