@@ -163,12 +163,6 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <b class="col-sm-4">Skype</b>
-                                    <div class="col-sm-8">
-                                        <p> {{ $user->information->skype ?? 'unavailable' }} </p>
-                                    </div>
-                                </div>
-                                <div class="row">
                                     <b class="col-sm-4">Highest Educational Attainment</b>
                                     <div class="col-sm-8">
                                         <p> {{ $user->education ?? 'unavailable' }} </p>
