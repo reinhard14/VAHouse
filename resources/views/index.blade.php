@@ -58,9 +58,23 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card p-3">
-                        <h5 class="mb-3">
-                            Latest Applicants
-                        </h5>
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="mb-3">
+                                    Latest Applicants
+                                </h5>
+                            </div>
+                            <div class="col text-right">
+                                @if($adminDepartment === 'Virtual Assistant Manager')
+                                    <a href="{{ route('admin.users.vamIndex') }}" class="text-muted">Go</a>
+                                @elseif($adminDepartment === 'Management Team')
+                                    <a href="{{ route('admin.users.hrIndex') }}" class="text-muted">Go</a>
+                                @else
+                                    <a href="{{ route('admin.users.index') }}" class="text-muted">Go</a>
+                                @endif
+                            </div>
+                        </div>
+
 
                         <table class="table table-hover table-no-top-border">
                             <tbody>
