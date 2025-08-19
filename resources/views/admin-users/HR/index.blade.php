@@ -57,9 +57,7 @@
                                         <thead>
                                             <tr>
                                                 <th class="text-center border-top-0">
-                                                    Last Name
-                                                </th>
-                                                <th class="text-center border-top-0"> First Name
+                                                    Full Name
                                                 </th>
                                                 <th class="text-center border-top-0">Level</th>
                                                 <th class="text-center border-top-0">Skills</th>
@@ -80,8 +78,7 @@
                                         <tbody>
                                             @foreach ($users as $user)
                                                 <tr>
-                                                    <td>{{ $user->lastname }}</td>
-                                                    <td>{{ $user->name }}</td>
+                                                    <td>{{ $user->name }} {{ $user->middlename[0] }}. {{ $user->lastname }}</td>
                                                     <td>
                                                         @if(isset($user->information->experience) && !empty($user->information->experience))
                                                             @if ($user->information->experience <= 2)
