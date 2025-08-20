@@ -146,7 +146,7 @@
                         <div class="row text-center">
                             <div class="col">
                                 <h4>
-                                    {{ $recentUsers->count() }}
+                                    {{ $currentMonthUsers->count() }}
                                 </h4>
                                 <p class="text-muted">
                                     New Applicants
