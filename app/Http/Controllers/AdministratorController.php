@@ -50,6 +50,10 @@ class AdministratorController extends Controller
         $recentUsers = User::whereBetween('created_at', [$startOfLastMonth, $startOfMonth])->get();
         $currentMonthUsers = User::whereBetween('created_at', [$startOfMonth, $endOfLastWeek])->get();
 
+        $currentMonthPercentage = $currentMonthUsers->count() && $recentUsers->count() > 0
+            ? round(((($recentUsers->count() - $currentMonthUsers->count()) / $recentUsers->count()) * 100), 2)
+            : 0;
+
         return view('index', compact('departments',
                                     'users',
                                     'admins',
@@ -58,6 +62,7 @@ class AdministratorController extends Controller
                                     'levels',
                                     'latestUsers',
                                     'currentMonthUsers',
+                                    'currentMonthPercentage'
                                 ));
     }
     /**

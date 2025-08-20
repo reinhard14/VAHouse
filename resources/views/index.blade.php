@@ -145,13 +145,27 @@
                     <div class="card p-3">
                         <div class="row text-center">
                             <div class="col">
-                                <h4>
-                                    {{ $currentMonthUsers->count() }}
-                                </h4>
-                                <p class="text-muted">
-                                    New Applicants
-                                    <small class="d-block">(This Month)</small>
-                                </p>
+                                <div class="row">
+                                    <div class="col">
+                                        <h4>
+                                            {{ $currentMonthUsers->count() }}
+                                        </h4>
+                                    </div>
+                                    <div class="col">
+                                        <span class="badge rounded-pill bg-danger">
+                                            {{ $currentMonthPercentage }} %
+                                            <i class="bi bi-arrow-down-short"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="text-muted">
+                                            New Applicants
+                                            <small class="d-block">(This Month)</small>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col">
                                  <h4>
