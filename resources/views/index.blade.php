@@ -146,10 +146,11 @@
                         <div class="row text-center">
                             <div class="col">
                                 <h4>
-                                    15
+                                    {{ $recentUsers->count() }}
                                 </h4>
                                 <p class="text-muted">
                                     New Applicants
+                                    <small class="d-block">(This Month)</small>
                                 </p>
                             </div>
                             <div class="col">
