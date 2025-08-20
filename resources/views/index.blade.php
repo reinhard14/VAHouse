@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-lg-3 col-6">
                     <div class="card p-3">
-                        <p><i class="bi bi-briefcase-fill"></i> New Applicants (Monthly)</p>
+                        <p><i class="bi bi-briefcase-fill"></i> New Applicants (Last Month)</p>
                         <h1>{{ $recentUsers->count() }}</h1>
                     </div>
                 </div>

@@ -47,10 +47,8 @@ class AdministratorController extends Controller
         $endOfLastWeek = Carbon::now();
 
         // Query users created exactly one week ago
-        $recentUsers = User::whereBetween('created_at', [$startOfLastMonth, $endOfLastWeek])->get();
+        $recentUsers = User::whereBetween('created_at', [$startOfLastMonth, $startOfMonth])->get();
         $currentMonthUsers = User::whereBetween('created_at', [$startOfMonth, $endOfLastWeek])->get();
-
-        // dd($currentMonthUsers->count());
 
         return view('index', compact('departments',
                                     'users',
