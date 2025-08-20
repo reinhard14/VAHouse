@@ -104,10 +104,16 @@
 
                             <a href="#" class="btn {{ $buttonClass }} btn-block disabled"><b>{{ $user->status->status ?? 'na'}}</b></a>
 
-                            <div class="row mt-2">
+                            <div class="row mt-1">
                                 <div class="col text-center">
                                     <strong><i class="far fa-file-alt mr-1"></i> Status set by: </strong>
                                     <p class="text-muted">{{ $user->status->updated_by ?? 'unavailable' }}</p>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col text-center">
+                                    <b>Registered</b>
+                                    <p class="text-muted"> {{ $user->created_at->format('M. d, Y') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -181,12 +187,6 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <b class="col-sm-4">Registered</b>
-                                    <div class="col-sm-8">
-                                        <p> {{ $user->created_at->format('M. d, Y') }}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
                                     <b class="col-sm-4">Union Bank Details</b>
                                     <div class="col-sm-8">
                                         <p> {{ $user->information->ub_account ?? 'unavailable'}} - {{ $user->information->ub_number ?? 'unavailable'}} </p>
@@ -196,12 +196,6 @@
                                     <b class="col-sm-4">VA experience</b>
                                     <div class="col-sm-8">
                                         <p> {{ $user->information->experience ?? 'unavailable'}}</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <b class="col-sm-4">Registered</b>
-                                    <div class="col-sm-8">
-                                        <p> {{ $user->created_at->format('M. d, Y') }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
