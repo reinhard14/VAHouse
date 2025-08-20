@@ -78,7 +78,7 @@
                                         <tbody>
                                             @foreach ($users as $user)
                                                 <tr>
-                                                    <td>{{ $user->name }} {{ $user->middlename[0] }}. {{ $user->lastname }}</td>
+                                                    <td>{{ $user->name }} {{ $user->middlename[0] ?? '' }}. {{ $user->lastname }}</td>
                                                     <td>
                                                         @if(isset($user->information->experience) && !empty($user->information->experience))
                                                             @if ($user->information->experience <= 2)

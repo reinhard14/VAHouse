@@ -410,7 +410,7 @@
                                             @foreach ($users as $user)
                                                 <tr>
                                                     <td>{{ $user->lastname }}</td>
-                                                    <td>{{ $user->name }} {{ $user->middlename[0] }}.</td>
+                                                    <td>{{ $user->name }} {{ $user->middlename[0] ?? '' }}.</td>
                                                     <td>
                                                         @if(isset($user->information->experience) && !empty($user->information->experience))
                                                             @if ($user->information->experience <= 2)
