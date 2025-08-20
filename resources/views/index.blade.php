@@ -79,18 +79,23 @@
                             <tbody>
                                 @foreach ($latestUsers as $loopIndex => $user)
                                     <tr>
-                                        <td @if ($loop->first) class="no-top-border align-middle" @endif style="padding-right: 0;" class="align-items-center">
+                                        <td @if ($loop->first) class="no-top-border" @endif style="padding-right: 0; padding-top: 20px;">
                                             @if (!isset($user->information->photo_formal) || is_null($user->information->photo_formal))
                                                 <img src="{{ asset('dist/img/user_default.png') }}" alt="va-avatar" class="dashboard-image">
                                             @else
                                                 <img src="{{ asset('storage/' . $user->information->photo_formal) }}" alt="va-photo" class="dashboard-image">
                                             @endif
                                         </td>
+
                                         <td @if ($loop->first) class="no-top-border" @endif style="padding-left: 0;">
-                                            {{ $user->name ?? '' }} {{ $user->lastname ?? '' }}
+                                            <a href="{{ route('admin.users.show', $user->id) }}" class="text-muted" target="_blank">
+                                                {{ $user->name ?? '' }}
+                                                {{ $user->middlename ? $user->middlename[0] . '.' : '' }}
+                                                {{ $user->lastname ?? '' }}
+                                            </a>
                                             <small class="d-block text-muted"> {{ $user->email ?? ''}} </small>
                                         </td>
-                                        <td @if ($loop->first) class="no-top-border" @endif  style="padding-right: 0;" class="align-items-center">
+                                        <td @if ($loop->first) class="no-top-border" @endif class="align-items-center">
                                             @if(!isset($user->status->status))
                                                 N/A
                                             @else
