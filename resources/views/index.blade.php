@@ -159,7 +159,11 @@
                                     <div class="col">
                                         <span class="badge rounded-pill bg-danger">
                                             {{ $currentMonthPercentage }} %
-                                            <i class="bi bi-arrow-down-short"></i>
+                                            @if ($currentMonthUsers->count() > $lastMonthUsers->count())
+                                                <i class="bi bi-arrow-up-short"></i>
+                                            @else
+                                                <i class="bi bi-arrow-down-short"></i>
+                                            @endif
                                         </span>
                                     </div>
                                 </div>
