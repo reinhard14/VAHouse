@@ -54,7 +54,7 @@ class AdministratorController extends Controller
             ? round(((($currentMonthUsers->count() - $lastMonthUsers->count()) / $lastMonthUsers->count()) * 100), 2)
             : 0;
 
-        $userOnboarded = Status::where('status', 'Ready for shortlisting')->count();
+        $userShortlisted = Status::where('status', 'Ready for shortlisting')->count();
 
         return view('index', compact('departments',
                                     'users',
@@ -65,7 +65,7 @@ class AdministratorController extends Controller
                                     'latestUsers',
                                     'currentMonthUsers',
                                     'currentMonthPercentage',
-                                    'userOnboarded'
+                                    'userShortlisted'
                                 ));
     }
     /**

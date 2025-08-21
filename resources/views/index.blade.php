@@ -184,7 +184,7 @@
                             </div>
                             <div class="col">
                                  <h4>
-                                    {{ $userOnboarded }}
+                                    {{ $userShortlisted }}
                                 </h4>
                                 <p class="text-muted">
                                     Shortlisted Applicants
