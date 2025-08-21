@@ -157,7 +157,13 @@
                                         </h4>
                                     </div>
                                     <div class="col">
-                                        <span class="badge rounded-pill bg-danger">
+                                        @php
+                                            $lastMonthCount = $lastMonthUsers->count();
+                                            $currentMonthCount = $currentMonthUsers->count();
+
+                                            $badgeClass = $currentMonthCount > $lastMonthCount ? 'bg-success' : 'bg-danger';
+                                        @endphp
+                                        <span class="badge rounded-pill {{ $badgeClass }}">
                                             {{ $currentMonthPercentage }} %
                                             @if ($currentMonthUsers->count() > $lastMonthUsers->count())
                                                 <i class="bi bi-arrow-up-short"></i>
