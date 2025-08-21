@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Administrator;
 use App\Models\Department;
+use App\Models\Status;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -46,13 +47,14 @@ class AdministratorController extends Controller
         $startOfMonth = Carbon::now()->startOfMonth();
         $endOfLastWeek = Carbon::now();
 
-        // Query users created exactly one week ago
         $lastMonthUsers = User::whereBetween('created_at', [$startOfLastMonth, $startOfMonth])->get();
         $currentMonthUsers = User::whereBetween('created_at', [$startOfMonth, $endOfLastWeek])->get();
 
         $currentMonthPercentage = $currentMonthUsers->count() && $lastMonthUsers->count() > 0
             ? round(((($currentMonthUsers->count() - $lastMonthUsers->count()) / $lastMonthUsers->count()) * 100), 2)
             : 0;
+
+        $userOnboarded = Status::where('status', 'Ready for shortlisting')->count();
 
         return view('index', compact('departments',
                                     'users',
@@ -62,7 +64,8 @@ class AdministratorController extends Controller
                                     'levels',
                                     'latestUsers',
                                     'currentMonthUsers',
-                                    'currentMonthPercentage'
+                                    'currentMonthPercentage',
+                                    'userOnboarded'
                                 ));
     }
     /**

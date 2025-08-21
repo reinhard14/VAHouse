@@ -184,10 +184,10 @@
                             </div>
                             <div class="col">
                                  <h4>
-                                    150
+                                    {{ $userOnboarded }}
                                 </h4>
                                 <p class="text-muted">
-                                    Verified Applicants
+                                    Shortlisted Applicants
                                 </p>
                             </div>
                         </div>
