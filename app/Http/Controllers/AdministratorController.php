@@ -47,18 +47,18 @@ class AdministratorController extends Controller
         $endOfLastWeek = Carbon::now();
 
         // Query users created exactly one week ago
-        $recentUsers = User::whereBetween('created_at', [$startOfLastMonth, $startOfMonth])->get();
+        $lastMonthUsers = User::whereBetween('created_at', [$startOfLastMonth, $startOfMonth])->get();
         $currentMonthUsers = User::whereBetween('created_at', [$startOfMonth, $endOfLastWeek])->get();
 
-        $currentMonthPercentage = $currentMonthUsers->count() && $recentUsers->count() > 0
-            ? round(((($recentUsers->count() - $currentMonthUsers->count()) / $recentUsers->count()) * 100), 2)
+        $currentMonthPercentage = $currentMonthUsers->count() && $lastMonthUsers->count() > 0
+            ? round(((($currentMonthUsers->count() - $lastMonthUsers->count()) / $currentMonthUsers->count()) * 100), 2)
             : 0;
 
         return view('index', compact('departments',
                                     'users',
                                     'admins',
                                     'agents',
-                                    'recentUsers',
+                                    'lastMonthUsers',
                                     'levels',
                                     'latestUsers',
                                     'currentMonthUsers',
