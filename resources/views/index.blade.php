@@ -56,20 +56,22 @@
                 </div>
                 <div class="col-lg-3 col-6">
                     <div class="card p-3">
-                        <p><i class="bi bi-briefcase-fill"></i> Total Users</p>
-                        <h1>{{ $users->count() }}</h1>
+                        <p><i class="bi bi-briefcase-fill"></i> Last Month's Applicants</p>
+                        <h1>
+                            {{ $lastMonthUsers->count() }}
+                        </h1>
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
                     <div class="card p-3">
-                        <p><i class="bi bi-briefcase-fill"></i> Applicants</p>
+                        <p><i class="bi bi-briefcase-fill"></i> Ready for shortlisting</p>
+                        <h1>{{ $userShortlisted }}</h1>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="card p-3">
+                        <p><i class="bi bi-briefcase-fill"></i> Total Applicants</p>
                         <h1>{{ $agents->count() }}</h1>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <div class="card p-3">
-                        <p><i class="bi bi-briefcase-fill"></i> Admin Account</p>
-                        <h1>{{ $admins->count() }}</h1>
                     </div>
                 </div>
             </div>
@@ -212,17 +214,19 @@
                     <div class="card p-3">
                         <div class="row text-center">
                             <div class="col">
-                                <h4> {{ $lastMonthUsers->count() }} </h4>
+                                <h4>
+                                    {{ $users->count() }}
+                                 </h4>
                                 <p class="text-muted">
-                                    Last Month's Applicants
+                                    Total Users registered
                                 </p>
                             </div>
                             <div class="col">
                                 <h4>
-                                    {{ $userShortlisted }}
+                                    {{ $admins->count() }}
                                 </h4>
                                 <p class="text-muted">
-                                    Shortlisted Applicants
+                                    Site Administrators
                                 </p>
                             </div>
                         </div>
