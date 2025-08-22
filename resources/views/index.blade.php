@@ -38,7 +38,7 @@
                         <p><i class="bi bi-briefcase-fill"></i> New Applicants (This Month) </p>
 
                         <div class="row">
-                            <div class="col text-right">
+                            <div class="col">
                                 <h1> {{ $currentMonthUsers->count() }} </h1>
                             </div>
                             <div class="col">
