@@ -55,6 +55,35 @@
             {{-- FILTERS ROW --}}
             <div class="row">
                 <div class="col">
+                        <div class="card card-success">
+                            <div class="card-header">
+                                <h3 class="card-title">Bar Chart</h3>
+
+                                <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="chart">
+                                    <div class="chartjs-size-monitor">
+                                        <div class="chartjs-size-monitor-expand">
+                                            <div class=""></div>
+                                        </div>
+                                        <div class="chartjs-size-monitor-shrink">
+                                            <div class=""></div>
+                                        </div>
+                                    </div>
+                                <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 433px;" width="405" height="234" class="chartjs-render-monitor"></canvas>
+                                </div>
+                            </div>
+                    <!-- /.card-body -->
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card p-3">
@@ -144,6 +173,19 @@
                     </div>
                 </div>
             </div>
+            @foreach ($monthlyCounts as $perMonth)
+                <script>
+                    window.monthlyCounts = window.monthlyCounts || [];
+                    window.monthlyCounts.push({{ $perMonth }});
+                </script>
+            @endforeach
+            {{-- {{ $userPreviousMonths }} --}}
+            @foreach ($userPreviousMonths as $monthlyRegister)
+                <script>
+                    window.monthlyRegister = window.monthlyRegister || [];
+                    window.monthlyRegister.push({{ $monthlyRegister }});
+                </script>
+            @endforeach
             <div class="row">
                 <div class="col"></div>
                 <div class="col-md-4">
@@ -205,5 +247,12 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+
+<script>
+    window.chartData = {
+        labels: {!! json_encode($months, JSON_NUMERIC_CHECK) !!},
+        datasets: {!! json_encode($perMonth, JSON_NUMERIC_CHECK) !!},
+    }
+</script>
 
 @endsection

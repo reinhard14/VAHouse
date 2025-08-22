@@ -56,6 +56,42 @@ class AdministratorController extends Controller
 
         $userShortlisted = Status::where('status', 'Ready for shortlisting')->count();
 
+        $start = Carbon::now()->subMonths(6)->startOfMonth();
+        $end = Carbon::now()->endOfMonth();
+
+        $monthlyCounts = [];
+        $userPreviousMonths = [];
+        $current = $start->copy();
+
+        while ($current <= $end) {
+            $monthStart = $current->copy()->startOfMonth();
+            $monthEnd = $current->copy()->endOfMonth();
+
+            $monthlyCounts[$current->format('F Y')] = Status::where('status', 'Onboarded')
+                                                ->whereBetween('created_at', [$monthStart, $monthEnd])
+                                                ->count();
+            $userPreviousMonths[] = User::whereBetween('created_at', [$monthStart, $monthEnd])->count();
+
+            $current->addMonth();
+        }
+
+        $userOnboarded = Status::where('status', 'Onboarded')
+                    ->whereBetween('created_at', [$start, $end])
+                    ->count();
+
+        //Get the last 6 months.
+        $now = Carbon::now();
+        $start = $now->copy()->subMonths(5)->startOfMonth();
+        $end = $now->copy()->endOfMonth();
+
+        $months = collect();
+        $current = $start->copy();
+
+        while($current <= $end) {
+            $months->push($current->format('F Y'));
+            $current->addMonth();
+        }
+
         return view('index', compact('departments',
                                     'users',
                                     'admins',
@@ -65,7 +101,11 @@ class AdministratorController extends Controller
                                     'latestUsers',
                                     'currentMonthUsers',
                                     'currentMonthPercentage',
-                                    'userShortlisted'
+                                    'userShortlisted',
+                                    'months',
+                                    'userOnboarded',
+                                    'monthlyCounts',
+                                    'userPreviousMonths'
                                 ));
     }
     /**

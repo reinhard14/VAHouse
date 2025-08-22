@@ -120,8 +120,13 @@
 <script src="{{ asset('plugins/popper/popper.js') }}"></script>
 <!-- Bootstrap -->
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- Charts -->
+<script src="{{ asset('plugins/chart.js/Chart.min.css') }}"></script>
+<script src="{{ asset('plugins/chart.js/Chart.bundle.min.js') }}"></script>
+<script src="{{ asset('plugins/chart.js/Chart.min.css') }}"></script>
 <!-- AdminLTE -->
 <script src="{{ asset('dist/js/adminlte.js') }}"></script>
+<script src="{{ asset('dist/js/dashboard-charts.js') }}"></script>
 <!-- Show password JavaScript -->
 {{-- <script src="{{ asset('plugins/bootstrap/js/bootstrap-show-password.min.js') }}"></script> --}}
 
