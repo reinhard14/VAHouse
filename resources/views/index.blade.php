@@ -81,7 +81,7 @@
                 <div class="col">
                         <div class="card card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Bar Chart</h3>
+                                <h3 class="card-title">Last 6 month's VA registered and Onboarded table</h3>
 
                                 <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
