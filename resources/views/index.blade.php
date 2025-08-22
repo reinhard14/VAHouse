@@ -28,8 +28,30 @@
             <div class="row">
                 <div class="col-lg-3 col-6">
                     <div class="card p-3">
-                        <p><i class="bi bi-briefcase-fill"></i> New Applicants (Last Month)</p>
-                        <h1>{{ $lastMonthUsers->count() }}</h1>
+                        @php
+                            $lastMonthCount = $lastMonthUsers->count();
+                            $currentMonthCount = $currentMonthUsers->count();
+
+                            $badgeClass = $currentMonthCount > $lastMonthCount ? 'bg-success' : 'bg-danger';
+                        @endphp
+
+                        <p><i class="bi bi-briefcase-fill"></i> New Applicants (This Month) </p>
+
+                        <div class="row">
+                            <div class="col text-right">
+                                <h1> {{ $currentMonthUsers->count() }} </h1>
+                            </div>
+                            <div class="col">
+                                <span class="badge rounded-pill {{ $badgeClass }}">
+                                    {{ $currentMonthPercentage }} %
+                                    @if ($currentMonthUsers->count() > $lastMonthUsers->count())
+                                        <i class="bi bi-arrow-up-short"></i>
+                                    @else
+                                        <i class="bi bi-arrow-down-short"></i>
+                                    @endif
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-6">
@@ -164,8 +186,6 @@
                                                 {{ $user->employments()->latest('created_at')->first()?->job_position ?? '' }}
                                             </small>
                                         </td>
-                                        {{-- <td @if ($loop->first) class="no-top-border" @endif style="padding-left: 0;">
-                                        </td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -179,7 +199,7 @@
                     window.monthlyCounts.push({{ $perMonth }});
                 </script>
             @endforeach
-            {{-- {{ $userPreviousMonths }} --}}
+
             @foreach ($userPreviousMonths as $monthlyRegister)
                 <script>
                     window.monthlyRegister = window.monthlyRegister || [];
@@ -192,40 +212,13 @@
                     <div class="card p-3">
                         <div class="row text-center">
                             <div class="col">
-                                <div class="row">
-                                    <div class="col text-right">
-                                        <h4>
-                                            {{ $currentMonthUsers->count() }}
-                                        </h4>
-                                    </div>
-                                    <div class="col">
-                                        @php
-                                            $lastMonthCount = $lastMonthUsers->count();
-                                            $currentMonthCount = $currentMonthUsers->count();
-
-                                            $badgeClass = $currentMonthCount > $lastMonthCount ? 'bg-success' : 'bg-danger';
-                                        @endphp
-                                        <span class="badge rounded-pill {{ $badgeClass }}">
-                                            {{ $currentMonthPercentage }} %
-                                            @if ($currentMonthUsers->count() > $lastMonthUsers->count())
-                                                <i class="bi bi-arrow-up-short"></i>
-                                            @else
-                                                <i class="bi bi-arrow-down-short"></i>
-                                            @endif
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <p class="text-muted">
-                                            New Applicants
-                                            <small class="d-block">(This Month)</small>
-                                        </p>
-                                    </div>
-                                </div>
+                                <h4> {{ $lastMonthUsers->count() }} </h4>
+                                <p class="text-muted">
+                                    Last Month's Applicants
+                                </p>
                             </div>
                             <div class="col">
-                                 <h4>
+                                <h4>
                                     {{ $userShortlisted }}
                                 </h4>
                                 <p class="text-muted">
