@@ -47,6 +47,8 @@ class AdministratorController extends Controller
         $startOfMonth = Carbon::now()->startOfMonth();
         $endOfLastWeek = Carbon::now();
 
+        //Dashboard statistics -- New Applicants
+        //Get users created in the last month and the current month
         $lastMonthUsers = User::whereBetween('created_at', [$startOfLastMonth, $startOfMonth])->get();
         $currentMonthUsers = User::whereBetween('created_at', [$startOfMonth, $endOfLastWeek])->get();
 
@@ -54,11 +56,13 @@ class AdministratorController extends Controller
             ? round(((($currentMonthUsers->count() - $lastMonthUsers->count()) / $lastMonthUsers->count()) * 100), 2)
             : 0;
 
+        //Dashboard statistics -- Shortlisted Applicants
         $userShortlisted = Status::where('status', 'Ready for shortlisting')->count();
 
-        $start = Carbon::now()->subMonths(6)->startOfMonth();
+        $start = Carbon::now()->subMonths(5)->startOfMonth();
         $end = Carbon::now()->endOfMonth();
 
+        $months = collect();
         $monthlyCounts = [];
         $userPreviousMonths = [];
         $current = $start->copy();
@@ -66,6 +70,8 @@ class AdministratorController extends Controller
         while ($current <= $end) {
             $monthStart = $current->copy()->startOfMonth();
             $monthEnd = $current->copy()->endOfMonth();
+
+            $months->push($current->format('F Y'));
 
             $monthlyCounts[$current->format('F Y')] = Status::where('status', 'Onboarded')
                                                 ->whereBetween('created_at', [$monthStart, $monthEnd])
@@ -75,22 +81,6 @@ class AdministratorController extends Controller
             $current->addMonth();
         }
 
-        $userOnboarded = Status::where('status', 'Onboarded')
-                    ->whereBetween('created_at', [$start, $end])
-                    ->count();
-
-        //Get the last 6 months.
-        $now = Carbon::now();
-        $start = $now->copy()->subMonths(5)->startOfMonth();
-        $end = $now->copy()->endOfMonth();
-
-        $months = collect();
-        $current = $start->copy();
-
-        while($current <= $end) {
-            $months->push($current->format('F Y'));
-            $current->addMonth();
-        }
 
         return view('index', compact('departments',
                                     'users',
@@ -103,7 +93,6 @@ class AdministratorController extends Controller
                                     'currentMonthPercentage',
                                     'userShortlisted',
                                     'months',
-                                    'userOnboarded',
                                     'monthlyCounts',
                                     'userPreviousMonths'
                                 ));
