@@ -27,7 +27,13 @@
                     <span class="d-block mt-5 pt-5">{{ $user->suffix }} {{ $user->name }} {{ $user->middlename }} {{ $user->lastname }} </span>
                     <span class="badge badge-pill badge-success span-normal-text">Active</span>
                     <h5> {{ $workList }} </h5>
-                    <span class="text-orange"><i class="bi bi-patch-check-fill"></i> </span> <small class=""> Tier 1 VA </small>
+                    <span class="text-orange">
+                        <i @class([
+                            'bi bi-patch-check-fill' => isset($user->tier->tier),
+                            'bi-x-circle' => !isset($user->tier->tier)
+                        ])></i>
+                    </span>
+                        <small class=""> @if(isset($user->tier->tier)){{ $user->tier->tier }} @else Tier not set for this @endif VA</small>
                     <span class="text-orange pl-3"><i class="bi bi-shield-fill-check"></i></span><small> HR Unverified</small>
                 </div>
             </div>
