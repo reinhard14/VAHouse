@@ -25,7 +25,7 @@
 
 @if(session('missing_files'))
     <div class="alert alert-warning" role="alert">
-        <p class="text-center">"Please submit the missing files, as they are mandatory." </p>
+        <p class="text-center"><strong>Incomplete profile</strong> will not be evaluated by our HR. Please pass complete profile and pass the missing file/s. </p>
 
         <ul class="text-center list-unstyled">
             @foreach (session('missing_files') as $file)
