@@ -4,21 +4,20 @@ const barChartData = {
     datasets: [
         {
             label: 'Registered VAs',
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(250, 106, 3, 0.2)',
+            borderColor: 'rgba(234, 132, 30, 1)',
             borderWidth: 1,
             data: window.monthlyRegister,
         },
         {
             label: 'Onboarded VAs',
-            backgroundColor: 'rgba(153, 102, 255, 0.2)',
-            borderColor: 'rgba(153, 102, 255, 1)',
+            backgroundColor: 'rgba(6, 6, 249, 0.2)',
+            borderColor: 'rgba(35, 35, 157, 1)',
             borderWidth: 1,
             data: window.monthlyCounts,
         },
     ],
 };
-// console.log('Bar Chart Data:', window.monthlyCounts);
 
 // Ensure the chart is responsive
 const barChartConfig = {
