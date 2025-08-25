@@ -176,7 +176,7 @@
                     <h5 class="text-muted mb-3">VA Information</h5>
                     <small class="text-muted">Age</small>
                     <p class="text-muted font-weight-bold">
-                        {{ $ageNow ? $ageNow->diffForHumans(null, true) : '' }}
+                        {{ $ageNow ? $ageNow->diffForHumans(null, true) : '' }} old
                     </p>
 
                     <small class="text-muted">Gender</small>
