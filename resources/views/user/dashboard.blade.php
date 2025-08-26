@@ -115,7 +115,9 @@
                                         <small>
                                             Team Leader
                                         </small>
-                                        <p class="font-weight-bold">Eunny Fas</p>
+                                        <p class="font-weight-bold">
+                                            {{ $user->references->team_leader ?? '' }}
+                                        </p>
                                     </div>
                                 </div>
 
@@ -132,7 +134,18 @@
                                         <small>
                                             Rate in Peso
                                         </small>
-                                        <p class="font-weight-bold">129.6</p>
+                                        <p class="font-weight-bold">
+                                            @if (in_array('part-time', array_map('strtolower', json_decode($user->references->work_status))) &&
+                                                 in_array('full-time', array_map('strtolower', json_decode($user->references->work_status))))
+                                                {{ ((($user->information->rate)/21)/8) ?? '' }}
+                                            @elseif ((in_array('part-time', array_map('strtolower', json_decode($user->references->work_status)))))
+                                                {{ ((($user->information->rate)/11)/8) ?? '' }}
+                                            @elseif (in_array('full-time', array_map('strtolower', json_decode($user->references->work_status))))
+                                                {{ ((($user->information->rate)/21)/8) ?? '' }}
+                                            @else
+                                                ---
+                                            @endif
+                                        </p>
                                     </div>
                                 </div>
 
