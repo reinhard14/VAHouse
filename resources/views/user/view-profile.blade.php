@@ -52,7 +52,7 @@
                         </div>
                         <div class="col text-muted">
                             Looking for <strong> {{ str_replace(['[', ']'], '', $user->references->work_status ?? '') }}</strong> for
-                            <strong>{{ (implode(', ', json_decode($user->references->work_status)) == 'Part-Time') ? '20' : '40'}}</strong>
+                            {{-- <strong>{{ (implode(', ', json_decode($user->references->work_status)) == 'Part-Time') ? '20' : '40'}}</strong> --}}
                              per week. <strong>{{ $user->information->rate ?? '' }}</strong> Pesos monthly salary.
                         </div>
                     </div>
