@@ -91,12 +91,12 @@
                                         <small>
                                             Date Hired
                                         </small>
-                                        <p class="font-weight-bold">January 01, 2021</p>
+                                        <p class="font-weight-bold">NA</p>
 
                                         <small>
                                             Department/Client
                                         </small>
-                                        <p class="font-weight-bold">Esther Buns</p>
+                                        <p class="font-weight-bold">NA</p>
                                     </div>
                                     <div class="col">
                                         <small>
