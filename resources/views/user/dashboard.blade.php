@@ -16,56 +16,142 @@
                         <div class="card-body">
                             @include('includes.messages')
 
-                            <div class="row">
-                                <div class="col-md-4 border-right">
-                                    <p class="py-3">
-                                        Completing your profile will allow us to better understand your qualifications and ensure a smooth evaluation
-                                        of your application. This is an essential step before we can consider you for any opportunities.
-                                    </p>
-                                    <p class="font-italic">
-                                        Note: Your profile is still incomplete. Please complete your profile to proceed with the application process.
-                                    </p>
+                            @if($user->information->videolink == null)
+                                <div class="row">
+                                    <div class="col-md-4 border-right">
+                                        <p class="py-3">
+                                            Completing your profile will allow us to better understand your qualifications and ensure a smooth evaluation
+                                            of your application. This is an essential step before we can consider you for any opportunities.
+                                        </p>
+                                        <p class="font-italic">
+                                            Note: Your profile is still incomplete. Please complete your profile to proceed with the application process.
+                                        </p>
+                                    </div>
+
+                                    <div class="col py-3">
+                                        <div class="row">
+                                            <div class="col">
+                                                <span class="text-success"> <i class="bi bi-check-circle-fill large-icon"></i></span>
+                                                <span class="pl-3 font-weight-bolder">Sign up to a VA House Applicant System</span>
+                                            </div>
+                                            <div class="col-4 text-right align-content-center">
+                                                <a href="#" class="text-muted btn-link disabled">Completed <i class="bi bi-arrow-right-circle"></i></a>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col ">
+                                                <span class="text-success"> <i class="bi bi-check-circle-fill large-icon"></i></span>
+                                                <span class="pl-3 font-weight-bolder">Email Verification</span>
+                                            </div>
+                                            <div class="col-4 text-right align-content-center">
+                                                <a href="#" class="text-muted btn-link disabled">Completed <i class="bi bi-arrow-right-circle"></i></a>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col">
+                                                <span class="text-secondary"><i class="bi bi-check-circle-fill large-icon"></i></span>
+                                                <span class="pl-3 font-weight-bolder">Complete Profile</span>
+                                            </div>
+                                            <div class="col-4 text-right align-content-center">
+                                                <a href="{{ route('user.edit', $user->id) }}" class="text-muted"><span class="text-orange pl-3"> Proceed <i class="bi bi-arrow-right-circle"></i></span></a>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col">
+                                                <span class="text-secondary"><i class="bi bi-check-circle-fill large-icon"></i></span>
+                                                <span class="pl-3 font-weight-bolder">HR Verification</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="row border-bottom mb-3">
+                                    <div class="col text-center mb-3">
+                                        @if (!isset($user->information->photo_formal) || is_null($user->information->photo_formal))
+                                            <img src="{{ asset('dist/img/user_default.png') }}" alt="va-avatar" class="overlap-image-dashboard">
+                                        @else
+                                            <img src="{{ asset('storage/' . $user->information->photo_formal) }}" alt="va-photo" class="overlap-image-dashboard">
+                                        @endif
+                                        <p>
+                                            <span class=" badge badge-pill badge-success span-normal-text"> {{ $user->status->status ?? '' }}</span>
+                                        </p>
+
+                                        <span class="text-orange"><i class="bi bi-patch-check-fill"></i> </span> <small class=""> @if(isset($user->tier->tier)){{ $user->tier->tier }} @else Tier not set for this @endif </small>
+                                        <span class="text-orange pl-3"><i class="bi bi-shield-fill-check"></i></span><small> HR Unverified</small>
+                                    </div>
+                                    <div class="col">
+                                        <small>
+                                            Service Provider Name
+                                        </small>
+                                        <p class="font-weight-bold">{{ $user->name }} {{ $user->middlename }} {{ $user->lastname }} {{ $user->suffix }}</p>
+
+                                        <small>
+                                            Date Hired
+                                        </small>
+                                        <p class="font-weight-bold">January 01, 2021</p>
+
+                                        <small>
+                                            Department/Client
+                                        </small>
+                                        <p class="font-weight-bold">Esther Buns</p>
+                                    </div>
+                                    <div class="col">
+                                        <small>
+                                            Designation
+                                        </small>
+                                        <p class="font-weight-bold">Virtual Assistant</p>
+
+                                        <small>
+                                            Shift
+                                        </small>
+                                        <p class="font-weight-bold">
+                                            {{ implode(', ', json_decode($user->references->work_status)) }}
+                                        / 40 hours per week
+                                        </p>
+
+                                        <small>
+                                            Team Leader
+                                        </small>
+                                        <p class="font-weight-bold">Eunny Fas</p>
+                                    </div>
                                 </div>
 
-                                <div class="col py-3">
-                                    <div class="row">
-                                        <div class="col">
-                                            <span class="text-success"> <i class="bi bi-check-circle-fill large-icon"></i></span>
-                                            <span class="pl-3 font-weight-bolder">Sign up to a VA House Applicant System</span>
-                                        </div>
-                                        <div class="col-4 text-right align-content-center">
-                                            <a href="#" class="text-muted btn-link disabled">Completed <i class="bi bi-arrow-right-circle"></i></a>
-                                        </div>
+                                <div class="row border-bottom mb-3 px-4">
+                                    <div class="col-md-8">
+                                        <small>
+                                            Services Offered
+                                        </small>
+                                        <p class="font-weight-bold">
+                                            {{ implode(', ', json_decode($user->information->positions)) }}
+                                        </p>
                                     </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col ">
-                                            <span class="text-success"> <i class="bi bi-check-circle-fill large-icon"></i></span>
-                                            <span class="pl-3 font-weight-bolder">Email Verification</span>
-                                        </div>
-                                        <div class="col-4 text-right align-content-center">
-                                            <a href="#" class="text-muted btn-link disabled">Completed <i class="bi bi-arrow-right-circle"></i></a>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col">
-                                            <span class="text-secondary"><i class="bi bi-check-circle-fill large-icon"></i></span>
-                                            <span class="pl-3 font-weight-bolder">Complete Profile</span>
-                                        </div>
-                                        <div class="col-4 text-right align-content-center">
-                                            <a href="{{ route('user.edit', $user->id) }}" class="text-muted"><span class="text-orange pl-3"> Proceed <i class="bi bi-arrow-right-circle"></i></span></a>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col">
-                                            <span class="text-secondary"><i class="bi bi-check-circle-fill large-icon"></i></span>
-                                            <span class="pl-3 font-weight-bolder">HR Verification</span>
-                                        </div>
+                                    <div class="col">
+                                        <small>
+                                            Rate in Peso
+                                        </small>
+                                        <p class="font-weight-bold">129.6</p>
                                     </div>
                                 </div>
-                            </div>
+
+                                <div class="row px-4">
+                                    <div class="col-md-8">
+                                        <small>
+                                            Mobile Number
+                                        </small>
+                                        <p class="font-weight-bold"> {{ $user->contactnumber ?? '' }} </p>
+                                    </div>
+                                    <div class="col">
+                                        <small>
+                                            Email
+                                        </small>
+                                        <p class="font-weight-bold"> {{ $user->email ?? '' }} </p>
+                                    </div>
+                                </div>
+                            @endif
+
                         </div>
                     </div>
                 </div>

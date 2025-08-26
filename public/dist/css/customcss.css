@@ -71,6 +71,15 @@ img.overlap-image {
     width: 225px;
 }
 
+img.overlap-image-dashboard {
+    position: relative;
+    z-index: 10;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    height: 175px;
+    width: 175px;
+}
 .orange-active.nav-item.menu-open > .nav-link {
     background-color: #f26307 !important;
     color: white !important;
