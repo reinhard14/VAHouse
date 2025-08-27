@@ -34,7 +34,7 @@
                         ])></i>
                     </span>
                         <small class=""> @if(isset($user->tier->tier)){{ $user->tier->tier }} @else Tier not set for this @endif VA</small>
-                    <span class="text-orange pl-3"><i class="bi bi-shield-fill-check"></i></span><small> HR Unverified</small>
+                    <span class="text-orange pl-3"><i class="bi bi-shield-fill-check"></i></span><small> @if(isset($user->status->updated_by)){{ $user->status->status }} @else HR Unverified @endif </small>
                 </div>
             </div>
         </div>
