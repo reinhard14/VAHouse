@@ -80,7 +80,13 @@
                                         </p>
 
                                         <span class="text-orange"><i class="bi bi-patch-check-fill"></i> </span> <small class=""> @if(isset($user->tier->tier)){{ $user->tier->tier }} @else Tier not set for this @endif </small>
-                                        <span class="text-orange pl-3"><i class="bi bi-shield-fill-check"></i></span><small> @if(isset($user->status->updated_by)){{ $user->status->status }} @else HR Unverified @endif </small>
+                                        <span class="text-orange pl-3">
+                                            <i @class([
+                                                'bi bi-shield-fill-check' => isset($user->status->updated_by),
+                                                'bi-x-circle' => !isset($user->status->updated_by)
+                                            ])></i>
+                                        </span>
+                                        <small> @if(isset($user->status->updated_by)){{ $user->status->status }} @else HR Unverified @endif </small>
                                     </div>
                                     <div class="col">
                                         <small>
