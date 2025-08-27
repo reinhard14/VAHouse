@@ -108,7 +108,11 @@
                                             Shift
                                         </small>
                                         <p class="font-weight-bold">
-                                            {{ implode(', ', json_decode($user->references->work_status)) }}
+                                            @if(gettype($user->references->work_status) == 'string')
+                                                {{ $user->references->work_status ?? ''}}
+                                            @else
+                                                {{ implode(', ', json_decode($user->references->work_status)) }}
+                                            @endif
                                         / 40 hours per week
                                         </p>
 
@@ -135,15 +139,23 @@
                                             Rate in Peso
                                         </small>
                                         <p class="font-weight-bold">
-                                            @if (in_array('part-time', array_map('strtolower', json_decode($user->references->work_status))) &&
-                                                 in_array('full-time', array_map('strtolower', json_decode($user->references->work_status))))
-                                                {{ ((($user->information->rate)/21)/8) ?? '' }}
-                                            @elseif ((in_array('part-time', array_map('strtolower', json_decode($user->references->work_status)))))
-                                                {{ ((($user->information->rate)/11)/8) ?? '' }}
-                                            @elseif (in_array('full-time', array_map('strtolower', json_decode($user->references->work_status))))
-                                                {{ ((($user->information->rate)/21)/8) ?? '' }}
+                                            @if(gettype($user->references->work_status) == 'string')
+                                                @if (strcasecmp($user->references->work_status, 'part-time') == 0)
+                                                    {{ ((($user->information->rate)/11)/8) ?? '' }}
+                                                @else
+                                                    {{ ((($user->information->rate)/21)/8) ?? '' }}
+                                                @endif
                                             @else
-                                                ---
+                                                @if (in_array('part-time', array_map('strtolower', json_decode($user->references->work_status))) &&
+                                                    in_array('full-time', array_map('strtolower', json_decode($user->references->work_status))))
+                                                    {{ ((($user->information->rate)/21)/8) ?? '' }}
+                                                @elseif ((in_array('part-time', array_map('strtolower', json_decode($user->references->work_status)))))
+                                                    {{ ((($user->information->rate)/11)/8) ?? '' }}
+                                                @elseif (in_array('full-time', array_map('strtolower', json_decode($user->references->work_status))))
+                                                    {{ ((($user->information->rate)/21)/8) ?? '' }}
+                                                @else
+                                                    ---
+                                                @endif
                                             @endif
                                         </p>
                                     </div>
