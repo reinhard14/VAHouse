@@ -52,7 +52,11 @@
                         </div>
                         <div class="col text-muted">
                             Looking for <strong> {{ str_replace(['[', ']'], '', $user->references->work_status ?? '') }}</strong> for
-                            {{-- <strong>{{ (implode(', ', json_decode($user->references->work_status)) == 'Part-Time') ? '20' : '40'}}</strong> --}}
+                            @if(gettype($user->references->work_status) == 'string')
+                                <strong>{{ strcasecmp($user->references->work_status, 'part-time') == 0 ? '20' : '40' }}</strong>
+                            @else
+                                <strong>{{ in_array('Part-time', [$user->references->work_status]) ? '20' : '40' }}</strong>
+                            @endif
                              per week. <strong>{{ $user->information->rate ?? '' }}</strong> Pesos monthly salary.
                         </div>
                     </div>
