@@ -319,22 +319,17 @@
                     </div>
 
                     <small class="text-muted">Contacts</small>
-                    <span class="d-block text-muted font-weight-bold">
-                        Skype
-                    </span>
-                    <small class="text-muted">{{ $user->information->skype ?? 'n/a' }}</small>
-
-                    <span class="d-block text-muted font-weight-bold">
+                    <span class="d-block text-muted font-weight-bold mt-1">
                         Email
                     </span>
                     <small class="text-muted">{{ $user->email ?? '' }}</small>
 
-                    <span class="d-block text-muted font-weight-bold">
+                    <span class="d-block text-muted font-weight-bold mt-3">
                         Phone Number
                     </span>
                     <small class="text-muted">{{ $user->contactnumber ?? '' }}</small>
 
-                    <small class="d-block text-muted mt-4">Bank Account</small>
+                    <small class="d-block text-muted mt-3">Bank Account</small>
                     <span class="d-block text-muted font-weight-bold">
                         {{ $user->information->ub_account ?? '' }}
                     </span>
