@@ -336,10 +336,11 @@ class UserController extends Controller
         $applicantSoftSkills = decodeJsonArray($user->skillsets->softskill ?? null);
         $applicantTools = decodeJsonArray($user->skillsets->tool ?? null);
 
-        $availableSkills = array_diff($skills, $applicantSkills);
+        // dd(array_diff($tools, $applicantTools));
+        $availableSkills = array_diff($skills ?? [], $applicantSkills ?? []);
         $availableSoftSkills = array_diff($softskills ?? [], $applicantSoftSkills ?? []);
-        $availableTools = array_diff($tools, $applicantTools);
-        $availableDays = array_diff($days, $daysItemize);
+        $availableTools = array_diff($tools ?? [], $applicantTools ?? []);
+        $availableDays = array_diff($days ?? [], $daysItemize ?? []);
 
         //flashing the missing files.
         $info = $user->information;
