@@ -26,8 +26,15 @@
             <div class="row mb-3">
                 <div class="col">
                     <span class="d-block mt-5 pt-5"> {{ $user->name }} {{ $user->middlename }} {{ $user->lastname }} {{ $user->suffix }} </span>
-                    <span class="badge badge-pill badge-success span-normal-text">
-                        @if(isset($user->status->updated_by))
+                    <span @class([
+                            'badge badge-pill span-normal-text badge-secondary' => isset($user->status->updated_by),
+                            'badge badge-pill span-normal-text badge-secondary' => !isset($user->status->updated_by),
+                            'badge badge-pill span-normal-text badge-success' => (strcasecmp($user->status->status,'hired') == 0),
+                    ])>
+
+                        @if(!isset($user->status->updated_by) || is_null($user->status->updated_by))
+                            Inactive
+                        @else
                             {{ ((strcasecmp($user->status->status,'hired') == 0) ? 'Active' : 'Inactive') }}
                         @endif
                     </span>
