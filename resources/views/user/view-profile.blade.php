@@ -22,11 +22,14 @@
                     <a href="{{ route('user.edit', $user->id) }}" class="btn btn-orange-flat form-control">Edit</a>
                 </div>
             </div>
+
             <div class="row mb-3">
                 <div class="col">
                     <span class="d-block mt-5 pt-5"> {{ $user->name }} {{ $user->middlename }} {{ $user->lastname }} {{ $user->suffix }} </span>
                     <span class="badge badge-pill badge-success span-normal-text">
-                        @if(isset($user->status->updated_by)){{ $user->status->status }} @else HR Unverified @endif
+                        @if(isset($user->status->updated_by))
+                            {{ ((strcasecmp($user->status->status,'hired') == 0) ? 'Active' : 'Inactive') }}
+                        @endif
                     </span>
                     <h5> {{ $workList }} </h5>
                     <span class="text-orange">
