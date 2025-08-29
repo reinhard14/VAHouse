@@ -293,7 +293,7 @@
             </div>
             <div class="row">
                 <div class="col-md-8">
-                    <small class="text-orange">
+                    <small class="text-orange font-italic">
                         <strong> Important Note: </strong>
                         Please click <strong>"Add New"</strong> button to add your employment history.
                         You can add multiple entries. Failure to provide them will result in automatic rejection of your application.
@@ -310,7 +310,7 @@
             <div class="row">
                 <div class="col text-right">
                     <small>
-                        Entries made: {{ $user->employments->count() ?? '0'}}
+                        Entries made: {{ $user->employments->count() ?? '0'}} <p id="tally"></p>
                     </small>
                 </div>
             </div>

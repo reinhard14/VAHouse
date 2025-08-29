@@ -749,8 +749,6 @@ class UserController extends Controller
             'company_details.required' => 'Company name and address is required.',
             'job_details.required' => 'Job details is required.',
         ]);
-        // dd($request->all()); // This will output the request data and stop execution
-        // \Log::info($request->all());
 
         //ajax showing
 
@@ -768,6 +766,7 @@ class UserController extends Controller
             'success' => true,
             'message' => 'Employment details has been saved successfully!',
             'employment' => $employment,
+            'tally' => Employment::where('user_id', $request->input('user_id'))->count(),
         ]);
     }
 

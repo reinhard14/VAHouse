@@ -17,7 +17,7 @@
                     <span>Employment Type</span>
                     <div class="row mb-2">
                         <div class="col">
-                            <input type="radio" id="VA" name="employment_type" value="VA">
+                            <inpu t type="radio" id="VA" name="employment_type" value="VA">
                             <label for="VA" class="form-label custom-label">VA</label>
                         </div>
                         <div class="col">
