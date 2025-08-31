@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="card-text">
-                        Welcome to VA House Corporation
+                        Welcome to VA House Corporation 
                     </div>
                     <div class="card-tools">
                         <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#guidelinesModal">
