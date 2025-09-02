@@ -16,7 +16,7 @@
                         <div class="card-body">
                             @include('includes.messages')
 
-                            @if($user->information->videolink == null)
+                            @if(!isset($user->information->videolink) || $user->information->videolink == null)
                                 <div class="row">
                                     <div class="col-md-4 border-right">
                                         <p class="py-3">
