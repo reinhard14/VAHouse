@@ -68,13 +68,15 @@
                             <span class="badge badge-pill medium-icon p-2"><i class="bi bi-briefcase"></i></span>
                         </div>
                         <div class="col text-muted">
-                            Looking for <strong> {{ str_replace(['[', ']'], '', $user->references->work_status ?? '') }}</strong> for
-                            @if(gettype($user->references->work_status) == 'string')
-                                <strong>{{ strcasecmp($user->references->work_status, 'part-time') == 0 ? '20' : '40' }}</strong>
-                            @else
-                                <strong>{{ in_array('Part-time', [$user->references->work_status]) ? '20' : '40' }}</strong>
+                            @if (isset($user->references->work_status))
+                                Looking for <strong> {{ str_replace(['[', ']'], '', $user->references->work_status ?? '') }}</strong> for
+                                @if(gettype($user->references->work_status) == 'string')
+                                    <strong>{{ strcasecmp($user->references->work_status, 'part-time') == 0 ? '20' : '40' }}</strong>
+                                @else
+                                    <strong>{{ in_array('Part-time', [$user->references->work_status]) ? '20' : '40' }}</strong>
+                                @endif
+                                per week. <strong>{{ $user->information->rate ?? '' }}</strong> Pesos monthly salary.
                             @endif
-                             per week. <strong>{{ $user->information->rate ?? '' }}</strong> Pesos monthly salary.
                         </div>
                     </div>
 
