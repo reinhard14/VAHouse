@@ -23,7 +23,7 @@ $(document).ready(function(){
 
             success: function(response) {
 
-                handleExperienceFormSubmission();
+                handleExperienceFormSubmission(response);
                 $('#experienceForm')[0].reset();
 
                 $('#create-details-modal').modal('hide');

@@ -766,7 +766,7 @@ class UserController extends Controller
             'success' => true,
             'message' => 'Employment details has been saved successfully!',
             'employment' => $employment,
-            'tally' => Employment::where('user_id', $request->input('user_id'))->count(),
+            'employmentCount' => Employment::where('user_id', $request->input('user_id'))->count(),
         ]);
     }
 

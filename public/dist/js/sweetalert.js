@@ -232,7 +232,9 @@ function handleMockcallFormSubmission(response) {
 
 }
 
-function handleExperienceFormSubmission() {
+function handleExperienceFormSubmission(response) {
+
+    let employmentCount = response.employmentCount;
 
     Swal.fire({
         title: 'Add more experiences?',
@@ -257,6 +259,12 @@ function handleExperienceFormSubmission() {
             allowOutsideClick: false,
             timer: 2000
             });
+
+            const newRow = `
+                   ${employmentCount}
+                `;
+            $('#tally').append(newRow);
+
         } else if (result.isDenied) {
         Swal.fire({
             icon: 'success',
@@ -270,6 +278,10 @@ function handleExperienceFormSubmission() {
             const createExperienceModal = new bootstrap.Modal(document.getElementById('create-details-modal'));
             createExperienceModal.show();
 
+            const newRow = `
+                   ${employmentCount}
+                `;
+            $('#tally').append(newRow);
         }
     });
 }

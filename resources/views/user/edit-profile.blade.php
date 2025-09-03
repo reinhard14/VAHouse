@@ -60,6 +60,8 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="{{ asset('dist/js/pages/user-end/edit-profile.js') }}"></script>
+<!-- AJAX Saving Employment details-->
+<script src="{{ asset('dist/js/ajax/user/employment-details.js') }}"></script>
 
 <script>
     $(document).ready(function () {

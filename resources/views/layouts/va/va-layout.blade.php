@@ -167,8 +167,6 @@
 <script src="{{ asset('dist/js/adminlte.js') }}"></script>
 <!-- AdminLTE -->
 <script src="{{ asset('dist/js/pages/global.js') }}"></script>
-<!-- AJAX Saving Employment details-->
-<script src="{{ asset('dist/js/ajax/user/employment-details.js') }}"></script>
 
 <!-- OPTIONAL SCRIPTS -->
 <!-- Ion Icons -->
