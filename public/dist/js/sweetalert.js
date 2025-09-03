@@ -260,10 +260,19 @@ function handleExperienceFormSubmission(response) {
             timer: 2000
             });
 
-            const newRow = `
+            const newSpan = `
                    ${employmentCount}
                 `;
-            $('#tally').append(newRow);
+
+            $('#tally').append(newSpan);
+
+            if ($('tally').children().lenght > 1) {
+                $('#tally').hide();
+                $('#existing_tally').hide();
+            } else {
+                $('#tally').text(employmentCount);
+                $('#existing_tally').hide();
+            }
 
         } else if (result.isDenied) {
         Swal.fire({
@@ -278,10 +287,20 @@ function handleExperienceFormSubmission(response) {
             const createExperienceModal = new bootstrap.Modal(document.getElementById('create-details-modal'));
             createExperienceModal.show();
 
-            const newRow = `
+            const newSpan = `
                    ${employmentCount}
                 `;
-            $('#tally').append(newRow);
+
+            $('#tally').append(newSpan);
+
+            if ($('tally').children().lenght > 1) {
+                $('#tally').hide();
+                $('#existing_tally').hide();
+            } else {
+                $('#tally').text(employmentCount);
+                $('#existing_tally').hide();
+            }
+
         }
     });
 }

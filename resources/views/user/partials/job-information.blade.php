@@ -309,8 +309,8 @@
             </div>
             <div class="row">
                 <div class="col text-right">
-                    <small id="tally">
-                        Entries made: {{ $user->employments->count() ?? '0'}}
+                    <small>
+                        Entries made: <span id="existing_tally">{{ $user->employments->count() ?? '0'}}</span> <span id="tally"></span>
                     </small>
                 </div>
             </div>
