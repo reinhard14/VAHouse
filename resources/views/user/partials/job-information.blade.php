@@ -287,7 +287,7 @@
                 <div class="col">
                     <h6>Employment History</h6>
                     <p class="">
-                        Add your employment history
+                        Add your previous employment details here.
                     </p>
                 </div>
             </div>
@@ -295,7 +295,7 @@
                 <div class="col-md-8">
                     <small class="text-orange font-italic">
                         <strong> Important Note: </strong>
-                        Please click <strong>"Add New"</strong> button to add your employment history.
+                        Please click <strong>"Add New"</strong> button to add your previous employment details.
                         You can add multiple entries. Failure to provide them will result in automatic rejection of your application.
                     </small>
                 </div>

@@ -76,7 +76,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-light-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="{{ route('user.dashboard') }}" class="brand-link pl-4">
+            <a href="{{ route('user.dashga') }}" class="brand-link pl-4">
                 <img src="{{ asset('dist/img/nav-logo.png') }}" alt="VA House Logo" height="23px" width="55px">
             </a>
 
