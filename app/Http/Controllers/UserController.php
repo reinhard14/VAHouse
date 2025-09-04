@@ -213,7 +213,9 @@ class UserController extends Controller
 
         $workList = $user->employments->pluck('job_position')->filter()->implode(', ') ?: 'No job positions available';
 
-        return view('user.view-profile', compact('user', 'ageNow', 'workList'));
+        $employments = Employment::where('user_id', $id)->paginate(2);
+
+        return view('user.view-profile', compact('user', 'ageNow', 'workList', 'employments'));
 
     }
 

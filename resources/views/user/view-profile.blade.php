@@ -174,7 +174,7 @@
                 <div class="card-body">
                     <h5 class="text-muted mb-3">Employment History</h5>
 
-                    @forelse ($user->employments as $employment)
+                    @forelse ($employments as $employment)
                         <div class="card p-4">
                             <small class="text-muted">
                                 {{ $employment->date_started ?? 'na' }} - {{ $employment->date_ended ?? 'na' }}
@@ -189,6 +189,7 @@
                                 {{ $employment->job_details ?? 'na' }}
                             </p>
                         </div>
+
                     @empty
                         <div class="card p-4">
                             <h6 class="text-muted text-center">
@@ -196,6 +197,9 @@
                             </h6>
                         </div>
                     @endforelse
+
+                    <div class="pagination justify-content-center mt-4"> {{ $employments->links() }} </div>
+
                 </div>
             </div>
 
