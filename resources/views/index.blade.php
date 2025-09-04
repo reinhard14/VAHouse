@@ -2,25 +2,25 @@
 
 @section('content')
 
-  <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="my-class">Dashboard for {{ auth()->user()->administrator->department ?? 'Super-admin'}}</h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid container-fluid-bg">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="my-class">Dashboard for {{ auth()->user()->administrator->department ?? 'Super-admin'}}</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
 
     <!-- Main content -->
     <div class="content">
@@ -215,7 +215,7 @@
                             <div class="col">
                                 <h4>
                                     {{ $users->count() }}
-                                 </h4>
+                                </h4>
                                 <p class="text-muted">
                                     Total Users registered
                                 </p>
@@ -236,9 +236,9 @@
         </div>
         <!-- /.container-fluid -->
     </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+    <!-- Main /.content -->
+</div>
+<!-- /.content-wrapper -->
 
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

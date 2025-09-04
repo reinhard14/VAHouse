@@ -23,7 +23,7 @@
     <!-- /.content-header -->
 
     <section class="content">
-        <div class="container-fluid">
+        <div class="container-fluid container-fluid-bg">
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center justify-content-between">

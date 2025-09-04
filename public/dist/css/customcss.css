@@ -211,3 +211,7 @@ img.dashboard-image {
     height: 30px;
     width: 30px;
 }
+
+.container-fluid-bg {
+    background-color: transparent;
+}
