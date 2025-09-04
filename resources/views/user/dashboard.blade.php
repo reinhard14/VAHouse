@@ -23,7 +23,7 @@
                                             Completing your profile will allow us to better understand your qualifications and ensure a smooth evaluation
                                             of your application. This is an essential step before we can consider you for any opportunities.
                                         </p>
-                                        <p class="font-italic">
+                                        <p class="font-italic text-orange">
                                             Note: Your profile is still incomplete. Please complete your profile to proceed with the application process.
                                         </p>
                                     </div>
