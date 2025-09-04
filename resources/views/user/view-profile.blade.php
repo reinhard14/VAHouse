@@ -108,7 +108,7 @@
             </div>
 
             @php
-                $description = $user->references->services_offered ?? '';
+                $description = $user->references->services_offered ?? 'na';
                 if (is_array($description)) {
                     $description = implode("\n", $description);
                 }
@@ -119,7 +119,7 @@
                     <h5 class="text-muted mb-4">Profile Description</h5>
 
                     <p class="">
-                        {{ $description ?? ''}}
+                        {{ $description ?? '' }}
                     </p>
                 </div>
             </div>
@@ -140,7 +140,7 @@
                                 {{ $skill }}
                             </span>
                         @empty
-                            No skills available.
+                            <span class="text-orange">No skills available.</span>
                         @endforelse
                     </div>
 
@@ -152,7 +152,7 @@
                                 {{ $otherSkill }}
                             </span>
                         @empty
-                            No soft skills available.
+                            <span class="text-orange">No soft skills available.</span>
                         @endforelse
                     </div>
 
@@ -164,7 +164,7 @@
                                 {{ $tool }}
                             </span>
                         @empty
-                            No tools available.
+                            <span class="text-orange">No tools available.</span>
                         @endforelse
                     </div>
                 </div>
@@ -193,7 +193,7 @@
                     @empty
                         <div class="card p-4">
                             <h6 class="text-muted text-center">
-                                No Employment History added yet.
+                                No <span class="text-orange">Employment</span> added yet.
                             </h6>
                         </div>
                     @endforelse
@@ -312,7 +312,7 @@
                     <div class="row mb-3">
                         <div class="col">
                             <span class="d-block text-muted font-weight-bold">Valid ID</span>
-                            <small>
+                            <small class="font-weight-bold text-orange">
                                 @if(isset($user->information->photo_id) && $user->information->photo_id)
                                     <a href="{{ route('view.file', $user->information->photo_id) }}" target="_blank"
                                         class="font-weight-bold text-orange">Open
@@ -351,7 +351,7 @@
                         Incase of Emergency
                     </small>
                     <p class="text-muted font-weight-bold">
-                        {{ $user->references->emergency_person ?? '' }}
+                        {{ $user->references->emergency_person ?? 'na' }}
                     </p>
                     <small class="text-muted d-block font-weight-bold">
                         {{ $user->references->emergency_relationship ?? '' }}
