@@ -121,12 +121,10 @@
 <!-- Bootstrap -->
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- Charts -->
-<script src="{{ asset('plugins/chart.js/Chart.min.css') }}"></script>
-<script src="{{ asset('plugins/chart.js/Chart.bundle.min.js') }}"></script>
-<script src="{{ asset('plugins/chart.js/Chart.min.css') }}"></script>
+
 <!-- AdminLTE -->
 <script src="{{ asset('dist/js/adminlte.js') }}"></script>
-<script src="{{ asset('dist/js/dashboard-charts.js') }}"></script>
+
 <!-- Show password JavaScript -->
 {{-- <script src="{{ asset('plugins/bootstrap/js/bootstrap-show-password.min.js') }}"></script> --}}
 
@@ -138,6 +136,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+@stack('scripts')
 
 </body>
 </html>

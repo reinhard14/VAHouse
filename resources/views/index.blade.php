@@ -240,9 +240,7 @@
 </div>
 <!-- /.content-wrapper -->
 
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+@push('scripts')
 
 <script>
     window.chartData = {
@@ -250,5 +248,14 @@
         datasets: {!! json_encode($perMonth, JSON_NUMERIC_CHECK) !!},
     }
 </script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="{{ asset('plugins/chart.js/Chart.min.css') }}"></script>
+<script src="{{ asset('plugins/chart.js/Chart.bundle.min.js') }}"></script>
+<script src="{{ asset('plugins/chart.js/Chart.min.css') }}"></script>
+<script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+<script src="{{ asset('dist/js/pages/dashboard/dashboard-charts.js') }}"></script>
+
+@endpush
 
 @endsection
