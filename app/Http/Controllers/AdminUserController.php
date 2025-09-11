@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ApplicantInformation;
 use App\Models\CallSample;
+use App\Models\Employment;
 use App\Models\Experience;
 use App\Models\Reference;
 use App\Models\Review;
@@ -1354,38 +1355,51 @@ class AdminUserController extends Controller
     public function deleteExperience($id)
     {
 
-        $experience = Experience::findOrFail($id);
-        $experience->delete();
+        $employment = Employment::findOrFail($id);
+        $employment->delete();
 
         return response()->json([
             'success' => true,
             'tr' => 'tr_'.$id,
-            'experience' => $experience,
+            'employment' => $employment,
         ]);
     }
 
     public function addExperiences(Request $request) {
 
         $this->validate($request, [
-            'title' => 'required',
-            'duration' => 'required',
+            'employment_type' => 'required',
+            'date_started' => 'required|date',
+            'date_ended' => 'required|date|after_or_equal:date_started',
+            'job_position' => 'required',
+            'company_details' => 'required',
+            'job_details' => 'required',
             'user_id' => 'required',
         ], [
-            'title.required' => 'Job title is a required field.',
-            'duration.required' => 'Duration of work a is required field.',
+            'employment_type.required' => 'Please select an employment type.',
+            'date_started.required' => 'Set start date for the work experience.',
+            'date_ended.required' => 'Set end date for the work experience.',
+            'job_position.required' => 'Please add job title.',
+            'company_details.required' => 'Please add company name and address.',
+            'job_details.required' => 'Add concise description for the job.',
         ]);
+
         // $exists = Experience::where('user_id', $request->input('user_id'))->exists();
 
-        $experience = new Experience();
-        $experience->title = $request->input('title');
-        $experience->duration = $request->input('duration');
-        $experience->user_id = $request->input('user_id');
-        $experience->save();
+        $employment = new Employment();
+        $employment->employment_type = $request->input('employment_type');
+        $employment->date_started = $request->input('date_started');
+        $employment->date_ended = $request->input('date_ended');
+        $employment->job_position = $request->input('job_position');
+        $employment->company_details = $request->input('company_details');
+        $employment->job_details = $request->input('job_details');
+        $employment->user_id = $request->input('user_id');
+        $employment->save();
 
         return response()->json([
             'success' => true,
             'message' => 'Experience has been saved successfully!',
-            'experience' => $experience,
+            'employment' => $employment,
             // 'exists' => $exists,
         ]);
     }

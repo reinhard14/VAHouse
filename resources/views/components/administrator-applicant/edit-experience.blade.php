@@ -4,7 +4,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Edit Applicant's Experiences</h5>
+                <h5 class="modal-title">Edit Applicant's Employment</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">x</button>
             </div>
 
@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="text-right mb-3">
-                            <button type="submit" id="addExperienceButton-{{ $user->id }}" class="btn btn-outline-primary btn-sm" data-user-id="{{ $user->id }}">Add Experience</button>
+                            <button type="submit" id="addExperienceButton-{{ $user->id }}" class="btn btn-outline-primary btn-sm" data-user-id="{{ $user->id }}">Add Employment</button>
                         </div>
 
                         <form id="add-experience-form-{{ $user->id }}" data-user-id="{{ $user->id }}">
@@ -41,19 +41,26 @@
                         <div class="table-responsive">
                             <table class="table table-hover border">
                                 <thead>
-                                    <th>Job Experience</th>
-                                    <th>Duration</th>
-                                    <th>Last Updated</th>
+                                    <th>Employment Type</th>
+                                    <th>Date Started</th>
+                                    <th>Date Ended</th>
+                                    <th>Job Title</th>
+                                    <th>Company Details</th>
+                                    <th>Job Details</th>
                                     <th>Delete ?</th>
                                 </thead>
-                                @forelse ($user->experiences as $experience)
+                                @forelse ($user->employments as $employment)
                                     <tbody id="experienceRow-{{ $user->id }}">
-                                        <tr id="tr_{{ $experience->id }}">
-                                            <td>{{ $experience->title }}</td>
-                                            <td>{{ $experience->duration }}</td>
-                                            <td>{{ $experience->updated_at->shortRelativeDiffForHumans() }}</td>
+                                        <tr id="tr_{{ $employment->id }}">
+                                            <td>{{ $employment->employment_type }}</td>
+                                            <td>{{ $employment->date_started }}</td>
+                                            <td>{{ $employment->date_ended }}</td>
+                                            <td>{{ $employment->job_position }}</td>
+                                            <td>{{ $employment->company_details }}</td>
+                                            <td>{{ $employment->job_details }}</td>
+                                            <td>{{ $employment->updated_at->shortRelativeDiffForHumans() }}</td>
                                             <td class="text-right">
-                                                <form id="delete-experience-form-{{ $experience->id }}" data-experience-id="{{ $experience->id }}">
+                                                <form id="delete-experience-form-{{ $employment->id }}" data-employment-id="{{ $employment->id }}">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash mr-1"></i></button>

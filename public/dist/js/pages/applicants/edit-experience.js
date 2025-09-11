@@ -2,7 +2,7 @@ $(document).ready(function() {
     $(document).on('submit', 'form[id^="delete-experience-form-"]', function(e) {
         e.preventDefault();
 
-        var experienceId = $(this).data('experience-id');
+        var experienceId = $(this).data('employment-id');
         var form = $('#delete-experience-form-' + experienceId);
         var formData = form.serialize();
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
@@ -40,29 +40,58 @@ $(document).ready(function() {
         }
     });
 
-    // $('#addExperienceButton').on('click', function(){
     $(document).on('click', '[id^="addExperienceButton-"]', function() {
         var userId = $(this).data('user-id');
         // console.log('Clicked button with user ID:', userId);
-        // Add a new element to the open modal
-        $(`#modalContent-${userId}`).append(`
+         $(`#modalContent-${userId}`).append(`
             <div class="form-group">
-                <label for="title">Job Experience</label>
-                <input type="text" id="title" name="title" class="form-control mb-3" placeholder="Enter new experience">
+                <span>Employment Type</span>
+                <div class="row mb-2">
+                    <div class="col">
+                        <input type="radio" id="VA" name="employment_type" value="VA">
+                        <label for="VA" class="form-label custom-label">VA</label>
+                    </div>
+                    <div class="col">
+                        <input type="radio" id="Corporate" name="employment_type" value="Corporate">
+                        <label for="Corporate" class="form-label custom-label">Corporate</label>
+                    </div>
+                    <div class="col">
+                        <input type="radio" id="BPO" name="employment_type" value="BPO">
+                        <label for="BPO" class="form-label custom-label">BPO</label>
+                    </div>
+                </div>
 
-                <label for="duration">Duration</label>
-                <input type="text" id="duration" name="duration" class="form-control" placeholder="Enter duration of experience">
+                <label for="date" class="form-label custom-label">Date</label>
+                <div class="input-group mb-3">
+                    <input type="date" id="date_started" name="date_started" class="form-control">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="bi bi-arrow-right-short"></i></span>
+                    </div>
+                    <input type="date" id="date_ended" name="date_ended" class="form-control">
+                </div>
+
+                <label for="job_position" class="form-label custom-label">Job Position</label>
+                <input type="text" id="job_position" name="job_position" class="form-control mb-2">
+
+                <label for="company_details" class="form-label custom-label">Company Name, Company Address</label>
+                <input type="text" id="company_details" name="company_details" class="form-control mb-2" >
+
+                <label for="job_details" class="form-label custom-label">Job Details</label>
+                <textarea id="job_details" name="job_details" class="form-control mb-2"></textarea>
 
                 <div class="text-right mt-3">
                     <button type="submit" id="addNewExperience" class="btn btn-outline-info btn-sm">Add Entry</button>
-                    <button type="button" id="removeExperience-${userId}" class="btn btn-outline-danger btn-sm" data-user-id="${userId}">Hide</button>
+                    <button type="button" id="removeExperience-${userId}" class="btn btn-outline-secondary btn-sm" data-user-id="${userId}">Hide</button>
                 </div>
             </div>
         `);
 
         // Optional: Scroll to the new element or highlight it
-        $('#title').focus().css('background-color', '#f0f8ff');
-        $('#duration').focus().css('background-color', '#f0f8ff');
+        $('#date_ended').css('background-color', '#f0f8ff');
+        $('#date_started').css('background-color', '#f0f8ff');
+        $('#job_position').focus().css('background-color', '#f0f8ff');
+        $('#company_details').css('background-color', '#f0f8ff');
+        $('#job_details').css('background-color', '#f0f8ff');
 
         // console.log($('#modalContent-'+userId));
 
@@ -77,7 +106,6 @@ $(document).ready(function() {
 
         // Remove the form group containing this button
         $(this).closest('.form-group').remove();
-        // console.log(userId);
         $('#addExperienceButton-' + userId).prop('disabled', false);
     });
 
@@ -90,7 +118,7 @@ $(document).ready(function() {
         var formData = form.serialize();
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
         var url = '/administrator/users/experiences/' + userId;
-
+        // console.log(formData + "Form Data");
         $.ajax({
             type: 'POST',
             url: url,
@@ -98,29 +126,43 @@ $(document).ready(function() {
             headers: {
                 'X-CSRF-TOKEN': csrfToken
             },
-
             success: function(response) {
-
                 $(`#tr_null_${userId}`).remove();
                 handleAddExperienceForm(response);
 
-                const experience_id = response.experience.id;
-                const experience_title = response.experience.title;
-                const experience_duration = response.experience.duration;
+                const employment_id = response.employment.id;
+                const employment_type = response.employment.employment_type;
+                const date_started = response.employment.date_started;
+                const date_ended = response.employment.date_ended;
+                const job_position = response.employment.job_position;
+                const company_details = response.employment.company_details;
+                const job_details = response.employment.job_details;
 
                 const newRow = `
-                        <tr id="tr_${experience_id}">
+                        <tr id="tr_${employment_id}">
                             <td>
-                                ${experience_title}
+                                ${employment_type}
                             </td>
                             <td>
-                                ${experience_duration}
+                                ${date_started}
+                            </td>
+                            <td>
+                                ${date_ended}
+                            </td>
+                            <td>
+                                ${job_position}
+                            </td>
+                            <td>
+                                ${company_details}
+                            </td>
+                            <td>
+                                ${job_details}
                             </td>
                             <td>
                                 Just Now
                             </td>
                             <td class="text-right">
-                                <form id="delete-experience-form-${experience_id}" data-experience-id="${experience_id}">
+                                <form id="delete-experience-form-${employment_id}" data-employment-id="${employment_id}">
                                     <input type="hidden" name="_token" value="${csrfToken}">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash mr-1"></i></button>
@@ -139,7 +181,6 @@ $(document).ready(function() {
                         : 'No errors found in the response';
 
                     formattedResponse = JSON.stringify(errorResponse);
-                    // console.log(formattedResponse);
                     handleReferencesWithMissingField(formattedResponse);
                 } catch (e) {
                     alert('Invalid JSON response: ' + jqXHR.responseText);

@@ -149,8 +149,8 @@ function handleAddExperienceForm(response) {
     if(response.success) {
         Swal.fire({
             icon: 'success',
-            title: `VA Experience added!`,
-            text: `${response.experience.title} has been added successfully.`,
+            title: `VA Employment added!`,
+            text: `${response.employment.job_position} has been added successfully.`,
             showConfirmButton: false,
             allowOutsideClick: false,
             timerProgressBar: true,
@@ -163,8 +163,8 @@ function deleteExperienceForm(response) {
     if(response.success) {
         Swal.fire({
             icon: 'success',
-            title: `VA Experience deleted!`,
-            text: `${response.experience.title} has been deleted.`,
+            title: `VA Employment deleted!`,
+            text: `${response.employment.job_position} has been deleted.`,
             showConfirmButton: false,
             allowOutsideClick: false,
             timerProgressBar: true,
