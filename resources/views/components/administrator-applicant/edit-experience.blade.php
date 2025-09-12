@@ -71,7 +71,7 @@
                                 @empty
                                     <tbody id="experienceRow-{{ $user->id }}">
                                         <tr id="tr_null_{{ $user->id }}">
-                                            <td colspan="4">
+                                            <td colspan="7">
                                                 <h5 class="text-center p-3">No data available.</h5>
                                             </td>
                                         </tr>
