@@ -1079,9 +1079,9 @@ class AdminUserController extends Controller
     {
         $this->validate($request, [
             'rate' => 'required',
-            'experience' => 'required|gte:0',
-            'skype' => 'required',
-            'niche' => 'required',
+            // 'experience' => 'required|gte:0',
+            // 'skype' => 'required',
+            // 'niche' => 'required',
             'ub_account' => 'required',
             'ub_number' => 'required',
             'positions' => 'sometimes|array|min:1',
@@ -1092,9 +1092,9 @@ class AdminUserController extends Controller
 
         $information = ApplicantInformation::firstOrNew($attributes);
         $information->rate = $request->input('rate');
-        $information->experience = $request->input('experience');
-        $information->skype = $request->input('skype');
-        $information->niche = $request->input('niche');
+        // $information->experience = $request->input('experience');
+        // $information->skype = $request->input('skype');
+        // $information->niche = $request->input('niche');
         $information->ub_account = $request->input('ub_account');
         $information->ub_number = $request->input('ub_number');
         $information->user_id = $id;
