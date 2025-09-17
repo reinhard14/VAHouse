@@ -841,7 +841,7 @@ class AdminUserController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'age' => 'required|gte:18|lte:60',
+            // 'age' => 'required|gte:18|lte:60',
             'email' => [
                 'required',
                 Rule::unique('users')->ignore($id)
@@ -856,7 +856,7 @@ class AdminUserController extends Controller
         $user->suffix = $request->input('suffix');
         $user->contactnumber = $request->input('contactnumber');
         $user->email = $request->input('email');
-        $user->age = $request->input('age');
+        // $user->age = $request->input('age');
         $user->gender = $request->input('gender');
         $user->education = $request->input('education');
         $user->address = $request->input('address');
