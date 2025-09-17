@@ -1148,24 +1148,24 @@ class AdminUserController extends Controller
             'emergency_person' => 'required',
             'emergency_relationship' => 'required',
             'emergency_number' => 'required',
-            'start_date' => 'required',
-            'department' => 'required',
-            'team_leader' => 'required',
+            // 'start_date' => 'required',
+            // 'department' => 'required',
+            // 'team_leader' => 'required',
             'referral' => 'required',
             'preferred_shift' => 'required',
             'work_status' => 'required',
-            'services_offered' => 'required|array',
+            // 'services_offered' => 'required|array',
         ], [
             'emergency_person.required' => 'Please enter the name of emergency person.',
             'emergency_relationship.required' => 'Please enter the relationship with the person.',
             'emergency_number.required' => 'Please enter the number of the person.',
-            'start_date.required' => 'Kindly select a date of commencement.',
-            'department.required' => 'Please add the department/client you belong.',
-            'team_leader.required' => 'Please add the team leader/client you belong.',
+            // 'start_date.required' => 'Kindly select a date of commencement.',
+            // 'department.required' => 'Please add the department/client you belong.',
+            // 'team_leader.required' => 'Please add the team leader/client you belong.',
             'referral.required' => 'Please select where you heard from us.',
             'preferred_shift.required' => 'Please select preferred working shift.',
             'work_status.required' => 'Select work status.',
-            'services_offered.required' => 'Please select services offered from the choices.',
+            // 'services_offered.required' => 'Please select services offered from the choices.',
         ]);
 
         $userId = $id;
@@ -1174,13 +1174,13 @@ class AdminUserController extends Controller
         $reference->emergency_person = $request->input('emergency_person');
         $reference->emergency_relationship = $request->input('emergency_relationship');
         $reference->emergency_number = $request->input('emergency_number');
-        $reference->start_date = $request->input('start_date');
-        $reference->department = $request->input('department');
-        $reference->team_leader = $request->input('team_leader');
+        // $reference->start_date = $request->input('start_date');
+        // $reference->department = $request->input('department');
+        // $reference->team_leader = $request->input('team_leader');
         $reference->referral = $request->input('referral');
         $reference->preferred_shift = $request->input('preferred_shift');
         $reference->work_status = $request->input('work_status');
-        $reference->services_offered = $request->input('services_offered');
+        // $reference->services_offered = $request->input('services_offered');
         $reference->user_id = $userId;
         $reference->save();
 
