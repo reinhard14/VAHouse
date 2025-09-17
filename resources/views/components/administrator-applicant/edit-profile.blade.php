@@ -37,8 +37,8 @@
                             {{-- <label class="form-label" for="experience">Experience </label>
                             <input class="form-control mb-2" type="number" name="experience" value="{{ $user->information->experience ?? '' }}" required> --}}
 
-                            <label class="form-label" for="skype">Skype </label>
-                            <input class="form-control mb-2" type="text" name="skype" value="{{ $user->information->skype ?? '' }}" required>
+                            {{-- <label class="form-label" for="skype">Skype </label>
+                            <input class="form-control mb-2" type="text" name="skype" value="{{ $user->information->skype ?? '' }}" required> --}}
 
                             {{-- <label class="form-label" for="niche">Niche </label>
                             <input class="form-control mb-2" type="text" name="niche" value="{{ $user->information->niche ?? '' }}" required> --}}
