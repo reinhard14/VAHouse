@@ -1117,8 +1117,8 @@ class AdminUserController extends Controller
             'skills.*' => 'string',
             'tools' => 'sometimes|array|min:1',
             'tools.*' => 'string',
-            'websites' => 'sometimes|array|min:1',
-            'websites.*' => 'string',
+            // 'websites' => 'sometimes|array|min:1',
+            // 'websites.*' => 'string',
             'softskills' => 'sometimes|array|min:1',
             'softskills.*' => 'string',
         ]);
@@ -1128,7 +1128,7 @@ class AdminUserController extends Controller
         $skillset = Skillset::firstOrNew($attributes);
         $skillset->skill = json_encode($request->input('skills'));
         $skillset->tool = json_encode($request->input('tools'));
-        $skillset->website = json_encode($request->input('websites'));
+        // $skillset->website = json_encode($request->input('websites'));
         $skillset->softskill = json_encode($request->input('softskills'));
         $skillset->user_id = $id;
         $skillset->save();

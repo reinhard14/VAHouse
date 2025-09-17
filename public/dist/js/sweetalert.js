@@ -94,7 +94,7 @@ function handleSkillsetForm(response) {
         const skillset = response.skillsets;
         const skill = skillset.skill;
         const tool = skillset.tool;
-        const website = skillset.website;
+        // const website = skillset.website;
         const softskill = skillset.softskill;
         const user = response.user.name;
 
@@ -104,7 +104,6 @@ function handleSkillsetForm(response) {
             html:`
             <p><strong>Skill:</strong> ${skill}</p>
             <p><strong>Tool:</strong> ${tool}</p>
-            <p><strong>Website:</strong> ${website}</p>
             <p><strong>Softskill:</strong> ${softskill}</p>
 
             <p>Skillsets has been saved accordingly.</p>
