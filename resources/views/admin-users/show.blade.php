@@ -420,7 +420,7 @@
                                     <div class="col">
 
                                         @if (!isset($user->references->id) || is_null($user->references->id))
-                                            <h5 class="text-center p-3">No employment data available.</h5>
+                                            <h5 class="text-center p-3">No References data available.</h5>
                                         @else
                                             <table class="table table-hover table-responsive">
                                                 <thead>
