@@ -129,6 +129,7 @@
                             <li class="nav-item"><a class="nav-link active" href="#information" data-toggle="tab">Information</a></li>
                             <li class="nav-item"><a class="nav-link" href="#skillset" data-toggle="tab">Skillset</a></li>
                             <li class="nav-item"><a class="nav-link" href="#employment" data-toggle="tab">Employment</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#references" data-toggle="tab">Reference</a></li>
                             <li class="nav-item"><a class="nav-link" href="#attachments" data-toggle="tab">Attachments</a></li>
                         </ul>
                     </div><!-- /.card-header -->
@@ -409,6 +410,53 @@
                                     </div>
                                     <div class="ml-3">
                                         <a href="{{ route('admin.users.index') }}" class="btn btn-secondary" role="button"><i class="bi bi-arrow-return-right mr-1"></i>Back</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.tab-pane attachments-->
+
+                            <div class="tab-pane" id="references">
+                                <div class="row mb-2">
+                                    <div class="col">
+
+                                        @if (!isset($user->references->id) || is_null($user->references->id))
+                                            <h5 class="text-center p-3">No employment data available.</h5>
+                                        @else
+                                            <table class="table table-hover table-responsive">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Emergency Person</th>
+                                                        <th scope="col">Emergency Relationship</th>
+                                                        <th scope="col">Emergency Contact</th>
+                                                        <th scope="col">Preferred Shift</th>
+                                                        <th scope="col">Work Status</th>
+                                                        <th scope="col">Referral</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                    <tr>
+                                                        <td>{{ $user->references->emergency_person ?? '' }}</td>
+                                                        <td>{{ $user->references->emergency_relationship ?? ''  }}</td>
+                                                        <td>{{ $user->references->emergency_number ?? ''  }}</td>
+                                                        <td>{{ $user->references->preferred_shift ?? ''  }}</td>
+                                                        <td>{{ $user->references->work_status ?? ''  }}</td>
+                                                        <td>{{ $user->references->referral ?? ''  }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col d-flex justify-content-center mt-5">
+                                        <div>
+                                            <a href="#formatted-form-modal-{{ $user->id }}" class="btn btn-primary" data-bs-toggle="modal"><i class="bi bi-file-richtext mr-1"></i>Generate Form</a>
+                                        </div>
+                                        <div class="ml-3">
+                                            <a href="{{ route('admin.users.index') }}" class="btn btn-secondary" role="button"><i class="bi bi-arrow-return-right mr-1"></i>Back</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
