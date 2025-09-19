@@ -69,7 +69,7 @@
                             </select>
 
                             <label for="email" class="form-label">Email Address </label>
-                            <input type="email" name="email" class="form-control mb-2" value="{{ $user->email }}" required>
+                            <input t ype="email" name="email" class="form-control mb-2" value="{{ $user->email }}" required>
 
                             <label for="address" class="form-label">Address</label>
                             <input type="text" name="address" class="form-control mb-2" value="{{ $user->address }}" required>

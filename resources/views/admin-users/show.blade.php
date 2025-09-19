@@ -439,7 +439,7 @@
                                                         <td>{{ $user->references->emergency_person ?? '' }}</td>
                                                         <td>{{ $user->references->emergency_relationship ?? ''  }}</td>
                                                         <td>{{ $user->references->emergency_number ?? ''  }}</td>
-                                                        <td>{{ $user->references->preferred_shift ?? ''  }}</td>
+                                                        <td>{{ trim(preg_replace('/["""{}"]/u', '',$user->references->preferred_shift)) ?? ''  }}</td>
                                                         <td>{{ $user->references->work_status ?? ''  }}</td>
                                                         <td>{{ $user->references->referral ?? ''  }}</td>
                                                     </tr>
