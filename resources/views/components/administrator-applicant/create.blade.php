@@ -12,14 +12,20 @@
                 @csrf
                 <input type="hidden" name="role_id" value="3">
                 <div class="modal-body">
-                    <label class="form-label" for="name">Name </label>
+                    <label class="form-label" for="name">First Name </label>
                     <input class="form-control mb-2" type="text" name="name" required>
+
+                    <label class="form-label" for="middlename">Middle Name </label>
+                    <input class="form-control mb-2" type="text" name="middlename" required>
 
                     <label class="form-label" for="lastname">Last Name </label>
                     <input class="form-control mb-2" type="text" name="lastname" required>
 
-                    <label class="form-label" for="age">Age </label>
-                    <input class="form-control mb-2" type="number" name="age" required>
+                    <label class="form-label" for="suffix">Suffix</label>
+                    <input class="form-control mb-2" type="text" name="suffix" required>
+
+                    {{-- <label class="form-label" for="age">Age </label>
+                    <input class="form-control mb-2" type="number" name="age" required> --}}
 
                     <label class="form-label" for="gender">Gender </label>
                     <select name="gender" class="form-control mb-2">
@@ -42,14 +48,14 @@
                         <option value="Vocational">Vocational</option>
                     </select>
 
-                    <label class="form-label" for="contactnumber">Contact Number</label>
-                    <input class="form-control mb-2" type="number" name="contactnumber" required>
-
                     <label class="form-label" for="email">Email Address </label>
                     <input class="form-control mb-2" type="email" name="email" required>
 
                     <label class="form-label" for="address">Address</label>
                     <input class="form-control mb-2" type="text" name="address" required>
+
+                    <label class="form-label" for="contactnumber">Contact Number</label>
+                    <input class="form-control mb-2" type="number" name="contactnumber" required>
 
                     <label class="form-label" for="password">Password </label>
                     <div class="input-group mb-2">

@@ -770,7 +770,7 @@ class AdminUserController extends Controller
             'lastname' => 'required',
             'email' => ['required', 'unique:users'],
             'contactnumber' => 'required',
-            'age' => 'required|gte:18|lte:60',
+            // 'age' => 'required|gte:18|lte:60',
             'gender' => 'required',
             'education' => 'required',
             'address' => 'required',
@@ -786,10 +786,12 @@ class AdminUserController extends Controller
 
         $user = new User();
         $user->name = $request->input('name');
+        $user->middlename = $request->input('middlename');
         $user->lastname = $request->input('lastname');
+        $user->suffix = $request->input('suffix');
         $user->email = $request->input('email');
         $user->contactnumber = $request->input('contactnumber');
-        $user->age = $request->input('age');
+        $user->age = '18';
         $user->gender = $request->input('gender');
         $user->education = $request->input('education');
         $user->address = $request->input('address');
