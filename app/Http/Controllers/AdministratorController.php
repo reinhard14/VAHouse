@@ -134,7 +134,7 @@ class AdministratorController extends Controller
             'name' => 'required',
             'lastname' => 'required',
             'contactnumber' => 'required',
-            'age' => 'required',
+            // 'age' => 'required',
             'gender' => 'required',
             'education' => 'required',
             'address' => 'required',
@@ -157,7 +157,7 @@ class AdministratorController extends Controller
         $user->lastname = $request->input('lastname');
         $user->contactnumber = $request->input('contactnumber');
         $user->email = $request->input('email');
-        $user->age = $request->input('age');
+        // $user->age = '18';
         $user->gender = $request->input('gender');
         $user->education = $request->input('education');
         $user->address = $request->input('address');
@@ -234,7 +234,7 @@ class AdministratorController extends Controller
             'name' => 'required',
             'lastname' => 'required',
             'contactnumber' => 'required',
-            'age' => 'required',
+            // 'age' => 'required',
             'gender' => 'required',
             'email' => [
                 'required',
@@ -264,7 +264,7 @@ class AdministratorController extends Controller
         $user->lastname = $request->input('lastname');
         $user->contactnumber = $request->input('contactnumber');
         $user->email = $request->input('email');
-        $user->age = $request->input('age');
+        // $user->age = '18';
         $user->gender = $request->input('gender');
         $user->education = $request->input('education');
         $user->address = $request->input('address');
